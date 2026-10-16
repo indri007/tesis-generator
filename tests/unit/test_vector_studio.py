@@ -288,4 +288,3 @@ def test_vector_project_invalid_mutation_payload_safety() -> None:
     # Non-existent ID returns False
     assert project.update_object("non_existent_id", x=50.0) is False
     assert project.remove_object("non_existent_id") is False
-
