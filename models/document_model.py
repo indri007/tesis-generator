@@ -99,39 +99,17 @@ class ParsedDocument:
         # 1. Structure Analysis
         struct = DocumentStructure(full_text)
 
-        # 2. Extract citations
-        # e.g., (Smith, 2022) or Smith (2022)
-        citation_pattern = re.compile(
-            r"(?:\((?P<cit_paren>[A-Z][a-zA-Z\s\-–]+(?:,\s*(?:19|20)\d{2}|[a-zA-Z\s]+,\s*(?:19|20)\d{2}))\)|(?P<cit_narrative>[A-Z][a-zA-Z\-–]+(?:\s+[A-Z][a-zA-Z\-–]+){0,2})\s*\((?P<cit_year>(?:19|20)\d{2})\))"
-        )
-        found_citations = []
-        for m in citation_pattern.finditer(full_text):
-            cit_text = m.group("cit_paren") or f"{m.group('cit_narrative')}, {m.group('cit_year')}"
-            author = cit_text.split(",")[0].strip()
-            author = re.sub(r"^(?:menurut|berdasarkan|kajian|studi|oleh)\s+", "", author, flags=re.IGNORECASE).strip()
-            found_citations.append({"raw": cit_text, "author": author})
+        # 2. Extract and audit citations using canonical citation parser
+        from parsers.citation_parser import audit_citations
+        audit_res = audit_citations(full_text)
 
-        # 3. Extract bibliography entries
-        bib_lines = struct.bibliography.get("lines", [])
-        bib_text = struct.bibliography.get("text", "")
-        orphaned_citations = 0
-        if bib_lines:
-            bib_lower = bib_text.lower()
-            for c in found_citations:
-                author_first = c["author"].split()[0].lower()
-                if len(author_first) > 2 and author_first not in bib_lower:
-                    orphaned_citations += 1
-
-        unused_references = 0
-        if bib_lines:
-            body_before_bib = full_text[:full_text.lower().find("daftar pustaka")] if "daftar pustaka" in full_text.lower() else full_text
-            body_lower = body_before_bib.lower()
-            for line in bib_lines[1:]:
-                words = line.split()
-                if words and len(words[0]) > 2:
-                    ref_author = words[0].strip(".,;:").lower()
-                    if ref_author not in body_lower:
-                        unused_references += 1
+        found_citations = [
+            {"raw": c.raw, "author": c.author, "key": c.surname, "year": c.year}
+            for c in audit_res.body_citations
+        ]
+        orphaned_citations = len(set(c.raw for c in audit_res.orphaned_citations))
+        unused_references = len(audit_res.unused_references)
+        bib_lines = [r.raw for r in audit_res.references]
 
         # 4. Variable Consistency
         # Look for variable definitions like:
@@ -260,7 +238,7 @@ class ParsedDocument:
                 "BAB_V": {"exists": struct.chapters.get("BAB V", {}).get("is_present", False)},
             },
             "bibliography": {
-                "exists": struct.bibliography.get("is_present", False),
+                "exists": bool(struct.bibliography.get("is_present", False) or (audit_res.segmentation.bib_present and len(bib_lines) > 0)),
                 "count": len(bib_lines),
             },
             "abstract": {
@@ -269,7 +247,8 @@ class ParsedDocument:
             },
             "citations": {
                 "count": len(found_citations),
-                "orphaned_count": orphaned_citations
+                "orphaned_count": orphaned_citations,
+                "list": found_citations,
             },
             "references": {
                 "count": len(bib_lines),

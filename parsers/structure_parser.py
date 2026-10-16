@@ -44,8 +44,8 @@ class DocumentStructure:
             "BAB III": re.compile(r"^BAB\s+III\b[\s\.:\-]*(METODE\s+PENELITIAN|METODOLOGI)?", re.IGNORECASE),
             "BAB IV": re.compile(r"^BAB\s+IV\b[\s\.:\-]*(HASIL\s+DAN\s+PEMBAHASAN|ANALISIS\s+DATA)?", re.IGNORECASE),
             "BAB V": re.compile(r"^BAB\s+V\b[\s\.:\-]*(KESIMPULAN|SIMPULAN|PENUTUP)?", re.IGNORECASE),
-            "DAFTAR PUSTAKA": re.compile(r"^(DAFTAR\s+PUSTAKA|DAFTAR\s+RUJUKAN|REFERENCES)\b", re.IGNORECASE),
-            "LAMPIRAN": re.compile(r"^(LAMPIRAN|APPENDICES)\b", re.IGNORECASE),
+            "DAFTAR PUSTAKA": re.compile(r"^(DAFTAR\s+PUSTAKA|DAFTAR\s+RUJUKAN|REFERENCES|BIBLIOGRAPHY)\b", re.IGNORECASE),
+            "LAMPIRAN": re.compile(r"^(LAMPIRAN|APPENDICES|APPENDIX)\b", re.IGNORECASE),
         }
 
         for line in lines:
