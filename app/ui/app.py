@@ -80,6 +80,21 @@ with st.sidebar:
     - **Gaya Sitasi:** APA 7th Edition
     """)
     st.divider()
+    st.markdown("### 📊 Empiris NodeXL Pro")
+    st.caption("Visualisasi Graf Jaringan Komunikasi Monorepo ThisIsEconomy")
+    st.markdown("""
+    - **Token:** `c1d8d71236e1cae9628f0b5c7a55b581`
+    - **Simpul ($|V|$):** 971 Akun
+    - **Sisi ($|E|$):** 666 Relasi
+    - **Modularitas ($Q$):** 0.9837
+    - **Tata Letak:** Group-in-a-Box (GIB)
+    """)
+    st.link_button(
+        "🌐 NodeXL Cloud Gallery",
+        "https://www.nodexlgraphgallery.org/Pages/Cloud.aspx?token=c1d8d71236e1cae9628f0b5c7a55b581",
+        use_container_width=True
+    )
+    st.divider()
     st.caption("Privacy: File diproses di buffer memory dan dibersihkan otomatis.")
 
 # Header

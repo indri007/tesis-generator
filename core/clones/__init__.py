@@ -16,6 +16,13 @@ from core.clones.consensus_ai import (
     ConsensusVerdict,
     StudyDesign,
 )
+from core.clones.doclaynet_layout import (
+    BoundingBox,
+    DocLayNetCategory,
+    DocLayNetClone,
+    DocLayNetElement,
+    LayoutAnalysisReport,
+)
 from core.clones.duplication_detector import (
     DataComPyClone,
     DedupeClone,
@@ -112,4 +119,10 @@ __all__ = [
     "ConsensusClaim",
     "ConsensusMeter",
     "ConsensusSynthesisResult",
+    # DocLayNet Layout
+    "BoundingBox",
+    "DocLayNetCategory",
+    "DocLayNetClone",
+    "DocLayNetElement",
+    "LayoutAnalysisReport",
 ]
