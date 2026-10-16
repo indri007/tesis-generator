@@ -8,8 +8,10 @@ from __future__ import annotations
 
 import ast
 import json
+import os
 import re
 import sys
+import tempfile
 import time
 from dataclasses import asdict, dataclass
 from pathlib import Path
@@ -171,7 +173,8 @@ class RayyanConsensus50GatesAuditor:
     def gate_03(self) -> tuple[bool, str]:
         """3. Dependency Audit."""
         req = self.root / "requirements.txt"
-        assert req.exists()
+        if not req.exists():
+            return False, "requirements.txt missing."
         lines = [line.strip() for line in req.read_text().splitlines() if line.strip() and not line.startswith("#")]
         return len(lines) >= 15, f"{len(lines)} core Python dependencies tracked."
 
@@ -255,6 +258,7 @@ class RayyanConsensus50GatesAuditor:
                 config={"max_pages": 175, "margin_cm": 4.0},
             )
             db.create_project("P1", "Title", "Author", None, "TEST_MIKOM_2026")
+            tmp_dir = tempfile.gettempdir()
             db.register_document(
                 document_id="DOC1",
                 project_id="P1",
@@ -262,7 +266,7 @@ class RayyanConsensus50GatesAuditor:
                 file_type="DOCX",
                 total_pages=175,
                 word_count=1000,
-                storage_path="/tmp/test.docx",
+                storage_path=os.path.join(tmp_dir, "test.docx"),
                 sha256_hash="hash1",
             )
             try:
@@ -273,7 +277,7 @@ class RayyanConsensus50GatesAuditor:
                     file_type="DOCX",
                     total_pages=176,
                     word_count=1000,
-                    storage_path="/tmp/test2.docx",
+                    storage_path=os.path.join(tmp_dir, "test2.docx"),
                     sha256_hash="hash2",
                 )
                 ex176 = False
@@ -284,23 +288,24 @@ class RayyanConsensus50GatesAuditor:
     def gate_14(self) -> tuple[bool, str]:
         """14. Negative Testing."""
         from core.integrations.elsevier_client import normalize_doi
-        assert normalize_doi(None) is None
-        assert normalize_doi("") is None
-        assert normalize_doi("   ") is None
+        if normalize_doi(None) is not None or normalize_doi("") is not None or normalize_doi("   ") is not None:
+            return False, "Negative input failed."
         return True, "Negative input handling validated without crashes."
 
     def gate_15(self) -> tuple[bool, str]:
         """15. Property-Based Testing."""
         from core.integrations.rayyan_importer import normalize_title
         for t in ["AI in Journalism", "ai in journalism!", "AI  IN   JOURNALISM..."]:
-            assert normalize_title(t) == "ai in journalism"
+            if normalize_title(t) != "ai in journalism":
+                return False, f"Title normalization failed on {t}."
         return True, "Invariance properties held across title normalization."
 
     def gate_16(self) -> tuple[bool, str]:
         """16. Mutation Testing."""
         from engines.revision_engine import RevisionEngine
         score1 = RevisionEngine([]).calculate_scores()
-        assert score1["overall_score"] == 100.0
+        if score1.get("overall_score") != 100.0:
+            return False, "Mutation resilience check failed on scoring calculus."
         return True, "Mutation resilience verified on scoring calculus."
 
     def gate_17(self) -> tuple[bool, str]:
@@ -328,7 +333,8 @@ class RayyanConsensus50GatesAuditor:
         from parsers.docx_parser import DocxParser
         sample = self.root / "golden_dataset" / "documents" / "TEST-001_normal.docx"
         p = DocxParser(str(sample))
-        assert p is not None
+        if p is None:
+            return False, "Document AST parser initialization failed."
         return True, "Document AST parser operational."
 
     # ==========================================================================

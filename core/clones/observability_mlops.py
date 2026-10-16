@@ -492,9 +492,9 @@ class PydanticModel:
             except (ValueError, TypeError):
                 raise TypeError(f"Field '{field_name}' failed coercion to {getattr(target_type, '__name__', str(target_type))}: {val}")
 
-        if hasattr(target_type, "__origin__"):
+        origin = getattr(target_type, "__origin__", None)
+        if origin is not None:
             # Generics like list[str], dict[str, Any]
-            origin = target_type.__origin__
             if origin is list and not isinstance(val, list):
                 raise TypeError(f"Field '{field_name}' expected list, got {type(val).__name__}")
             if origin is dict and not isinstance(val, dict):

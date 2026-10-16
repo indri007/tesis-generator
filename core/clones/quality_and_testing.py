@@ -72,7 +72,7 @@ class HypothesisClone:
 
     @staticmethod
     def integers(min_val: int = -1000, max_val: int = 1000) -> list[int]:
-        return [min_val, 0, max_val] + [random.randint(min_val, max_val) for _ in range(20)]
+        return [min_val, 0, max_val] + [random.randint(min_val, max_val) for _ in range(20)]  # nosec B311
 
     @staticmethod
     def text_samples() -> list[str]:
