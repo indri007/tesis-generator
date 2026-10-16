@@ -255,3 +255,28 @@ Does content quality improve loyalty?,Content Quality and Audience Retention,Smi
     assert report.gate_status["rayyan_dedup_completed"] is True
     assert report.gate_status["consensus_verified"] is True
     assert report.gate_status["citations_passed"] is True
+
+
+def test_unified_research_pipeline_with_elsevier_scopus():
+    """Verify UnifiedResearchPipeline seamlessly includes Elsevier Scopus/ScienceDirect imports."""
+    text = """BAB I PENDAHULUAN
+Penelitian ini bertujuan untuk menguji pengaruh otomasi AI terhadap jurnalisme digital.
+Smith (2022) mengkaji kerangka komunikasi.
+
+DAFTAR PUSTAKA
+Smith, J. (2022). Environmental Communication. Academic Press.
+"""
+    doc = ParsedDocument(filename="thesis_test.docx", file_type="docx")
+    doc.paragraphs = [ParsedParagraph(text=line) for line in text.splitlines()]
+
+    scopus_csv = """Authors,Title,Year,Source title,Cited by,DOI
+"Santoso B.","Artificial Intelligence in Journalism",2023,"Telematics and Informatics",48,10.1016/j.tele.2023.102045
+"""
+    pipeline = UnifiedResearchPipeline(doc)
+    report = pipeline.audit(elsevier_content=scopus_csv, elsevier_format="csv")
+
+    assert report.elsevier_summary["total_results"] == 1
+    assert report.elsevier_summary["q1_count"] == 1
+    assert report.elsevier_summary["articles"][0]["doi"] == "10.1016/j.tele.2023.102045"
+    assert report.gate_status["elsevier_verified"] is True
+

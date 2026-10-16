@@ -16,6 +16,13 @@ from core.integrations.consensus_importer import (
     ConsensusSearchResult,
     parse_consensus_csv,
 )
+from core.integrations.elsevier_client import (
+    ElsevierArticle,
+    ElsevierClient,
+    ElsevierSearchResult,
+    parse_elsevier_ris,
+    parse_scopus_csv,
+)
 from core.integrations.pico_extractor import PICOResult, extract_pico_from_text
 from core.integrations.rayyan_importer import (
     RayyanRecord,
@@ -35,12 +42,14 @@ class UnifiedAuditReport:
     citation_findings: list[dict[str, Any]]
     rule_input: dict[str, Any]
     gate_status: dict[str, bool]
+    elsevier_summary: dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         return {
             "pico": self.pico,
             "rayyan_summary": self.rayyan_summary,
             "consensus_summary": self.consensus_summary,
+            "elsevier_summary": self.elsevier_summary,
             "citation_findings": self.citation_findings,
             "rule_input": self.rule_input,
             "gate_status": self.gate_status,
@@ -59,6 +68,9 @@ class UnifiedResearchPipeline:
         rayyan_content: str | None = None,
         rayyan_format: str = "csv",
         consensus_content: str | None = None,
+        elsevier_content: str | None = None,
+        elsevier_format: str = "csv",
+        elsevier_query: str | None = None,
     ) -> UnifiedAuditReport:
         # 1. PICO Extraction from Abstract / Bab I
         pico_res = extract_pico_from_text(self.full_text)
@@ -101,11 +113,37 @@ class UnifiedResearchPipeline:
             }
         )
 
-        # 4. Standard Citation Auditor (APA 7)
+        # 4. Elsevier ScienceDirect / Scopus Integration
+        elsevier_res: ElsevierSearchResult | None = None
+        if elsevier_content:
+            if elsevier_format.lower() == "ris":
+                elsevier_res = parse_elsevier_ris(elsevier_content, query=elsevier_query or "")
+            else:
+                elsevier_res = parse_scopus_csv(elsevier_content, query=elsevier_query or "")
+        elif elsevier_query:
+            client = ElsevierClient()
+            elsevier_res = client.search_articles(elsevier_query)
+
+        elsevier_summary = (
+            elsevier_res.to_dict()
+            if elsevier_res
+            else {
+                "query": elsevier_query or "Not provided",
+                "total_results": 0,
+                "q1_count": 0,
+                "q2_count": 0,
+                "open_access_count": 0,
+                "avg_citations": 0.0,
+                "api_status": "OFFLINE_NO_DATA",
+                "articles": [],
+            }
+        )
+
+        # 5. Standard Citation Auditor (APA 7)
         auditor = CitationAuditor(self.doc)
         citation_findings = auditor.audit()
 
-        # 5. Rule input parity
+        # 6. Rule input parity
         rule_input = self.doc.to_rule_input()
 
         # Gate Verification
@@ -113,6 +151,7 @@ class UnifiedResearchPipeline:
             "pico_verified": pico_res.population.is_present or pico_res.intervention.is_present or pico_res.outcome.is_present,
             "rayyan_dedup_completed": True if not rayyan_content or len(rayyan_records) > 0 else False,
             "consensus_verified": True if not consensus_content or (consensus_res and consensus_res.total_results > 0) else False,
+            "elsevier_verified": True if not (elsevier_content or elsevier_query) or (elsevier_res and elsevier_res.total_results > 0) else False,
             "citations_passed": not any(f["status"] == "ERROR" for f in citation_findings),
         }
 
@@ -120,6 +159,7 @@ class UnifiedResearchPipeline:
             pico=pico_res.to_dict(),
             rayyan_summary=rayyan_summary,
             consensus_summary=consensus_summary,
+            elsevier_summary=elsevier_summary,
             citation_findings=citation_findings,
             rule_input=rule_input,
             gate_status=gate_status,
