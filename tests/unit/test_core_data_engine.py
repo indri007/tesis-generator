@@ -362,3 +362,62 @@ class TestCoreDataEnginePipeline:
         # Check SHA256 checksums are populated (#389)
         assert len(manifest["output_files"]["master_csv"]["sha256"]) == 64
         assert len(manifest["output_files"]["master_jsonl"]["sha256"]) == 64
+
+    def test_doi_consistency_verification(self):
+        from core.sources.doi_verifier import verify_doi_consistency
+
+        local = CanonicalPaperRecord(
+            record_id="rec_loc",
+            title="Social Media Analysis in Indonesian Government",
+            authors=["Utomo, Indri"],
+            year=2024,
+            journal="Telematics and Informatics",
+            doi="10.1016/j.tele.2024.101",
+        )
+
+        # Consistent metadata
+        consistent_meta = {
+            "title": "Social Media Analysis in Indonesian Government",
+            "year": 2024,
+            "journal": "Telematics and Informatics",
+        }
+        res_ok = verify_doi_consistency(local, consistent_meta)
+        assert res_ok["is_consistent"] is True
+        assert len(res_ok["conflicts"]) == 0
+
+        # Inconsistent metadata (year mismatch & journal mismatch)
+        inconsistent_meta = {
+            "title": "Unrelated Physics Quantum mechanics",
+            "year": 2015,
+            "journal": "Physical Review Letters",
+        }
+        res_bad = verify_doi_consistency(local, inconsistent_meta)
+        assert res_bad["is_consistent"] is False
+        assert len(res_bad["conflicts"]) >= 2
+
+    def test_process_all_raw_metadata_integration(self, tmp_path, monkeypatch):
+        import core.sources.process_metadata as pm
+
+        raw_dir = tmp_path / "raw"
+        processed_file = tmp_path / "processed" / "clean_references.jsonl"
+        raw_dir.mkdir(parents=True)
+
+        sample_item = {
+            "doi": "10.1016/j.tele.2023.102045",
+            "title": "Public sentiment and network dynamics in Indonesian social media",
+            "authors": ["Utomo, Indri"],
+            "published": 2023,
+            "journal": "Telematics and Informatics",
+            "type": "journal-article",
+        }
+        with open(raw_dir / "sample.jsonl", "w", encoding="utf-8") as f:
+            f.write(json.dumps(sample_item) + "\n")
+
+        monkeypatch.setattr(pm, "RAW_DIR", raw_dir)
+        monkeypatch.setattr(pm, "PROCESSED_FILE", processed_file)
+
+        res = pm.process_all_raw_metadata()
+        assert res["total_raw"] == 1
+        assert res["unique_saved"] == 1
+        assert processed_file.exists()
+
