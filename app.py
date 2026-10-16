@@ -15,6 +15,7 @@ import streamlit as st
 
 from core.database.db_manager import DatabaseManager
 from core.generator.thesis_generator import ThesisGenerator
+from core.integrations.thisiseconomy_bridge import ThisIsEconomyBridge
 from engines.audit_engine import audit_thesis
 from engines.citation_auditor import CitationAuditor
 from engines.cross_document_auditor import CrossDocumentAuditor
@@ -1081,6 +1082,74 @@ with tab_landing:
             **btn_w()
         )
         st.caption("5 Klaster Aturan: (1) Format & Margin EMU, (2) Struktur 5 BAB, (3) Formula & Statistik, (4) Sitasi APA 7 & Jurnal, (5) Empiris NodeXL & NLP.")
+
+    st.divider()
+    st.subheader("🔬 Jembatan Riset Empiris: ThisIsEconomy Monorepo Bridge (Fase 5)")
+    st.markdown(
+        "Integrasi modular dengan monorepo riset **ThisIsEconomy** (*\"Communication Network Analysis of Sarcasm in MBG Discourse: "
+        "Decoding Emotion Behind the Network\"*, DOI: [10.5281/zenodo.11029482](https://doi.org/10.5281/zenodo.11029482)) "
+        "menghubungkan artefak empiris tri-layer computational communication science ke dalam sistem penelaahan tesis."
+    )
+
+    tie_bridge = ThisIsEconomyBridge()
+    baseline = tie_bridge.baseline
+
+    c_tl1, c_tl2, c_tl3 = st.columns(3)
+    with c_tl1:
+        st.markdown("#### 🌐 Layer 1: Makro (SNA)")
+        st.caption("Directed Mention & Reply Network (NetworkX & Louvain)")
+        st.metric("Simpul (|V|)", f"{baseline.total_nodes} Aktor")
+        st.metric("Tepi Terarah (|E|)", f"{baseline.total_edges} Tepi")
+        st.metric("Modularity (Q)", f"{baseline.modularity_q:.4f}")
+        st.metric("Partisi Komunitas", f"{baseline.communities_detected} Klaster")
+        st.caption(f"🔒 Echo Chamber Salience: **{baseline.echo_chambers_internal_edge_pct:.2f}%** internal edges")
+
+    with c_tl2:
+        st.markdown("#### 🧠 Layer 2: Meso (IndoBERT)")
+        st.caption("Fine-Tuned 9 Plutchik Emotions & Sarcasm Semiotics")
+        st.metric("IndoBERT Akurasi", f"{baseline.indobert_accuracy * 100:.1f}%")
+        st.metric("F1-Score (Weighted)", f"{baseline.indobert_f1_weighted * 100:.1f}%")
+        st.metric("Prevalensi Sarkasme", f"{baseline.sarcasm_prevalence_pct:.2f}%")
+        st.metric("Korpus Tervalidasi", f"{baseline.sarcasm_instances_analyzed:,} Baris")
+        st.caption(f"🎭 Emoji Sarkasme: {' '.join(baseline.sarcasm_emojis[:6])}")
+
+    with c_tl3:
+        st.markdown("#### 🎯 Layer 3: Mikro (ABSA)")
+        st.caption("Aspect-Based Sentiment & Phygital Public Gap")
+        st.metric("Dominan Emosi Aspek", "Jijik (Disgust > 70%)")
+        st.metric("Total Mentions Aspek", "2,282 Mentions")
+        st.metric("Kategori Aspek", "3 Kategori (A1, A2, A3)")
+        st.metric("Landasan Teori", "Marketing 6.0 Kotler")
+        st.caption("Kategori: Anggaran (A1), Logistik (A2), Kualitas Gizi (A3)")
+
+    st.markdown("##### ⚖️ Matriks Komparasi Afordansi Lintas Platform (Platform X vs Telegram)")
+    st.dataframe(
+        baseline.cross_platform_matrix,
+        column_config={
+            "dimension": "Dimensi Afordansi",
+            "platform_x": "Platform X (Twitter)",
+            "telegram": "Telegram (Bot & Saluran)",
+            "policy_salience": "Relevansi Kebijakan MBG",
+        },
+        **df_w()
+    )
+
+    st.markdown("##### 🧪 Penelaah Keselarasan Literatur Tesis (Section I #138–#160)")
+    sample_text_input = st.text_area(
+        "Ketik atau tempel abstrak / judul artikel untuk menguji deteksi 23 fitur tematik tesis MIKOM 2026:",
+        value="Analisis Jaringan Komunikasi (SNA) kebijakan MBG menggunakan IndoBERT dan algoritma Louvain Q=0.9837, deteksi sarkasme dan Marketing 6.0 phygital gap.",
+        height=100,
+        key="tie_sample_text_input"
+    )
+    if sample_text_input:
+        det_res = tie_bridge.detect_thesis_components(sample_text_input)
+        col_res1, col_res2 = st.columns([1, 2])
+        with col_res1:
+            st.metric("Skor Keselarasan Tesis (#159)", f"{det_res['thesis_alignment_score']:.1f}%")
+            st.metric("Fitur Terdeteksi (#160)", f"{det_res['component_coverage']['features_detected_count']} / {det_res['component_coverage']['total_section_i_features']}")
+        with col_res2:
+            st.write("**Fitur Aktif Teridentifikasi:**")
+            st.write(", ".join([f"`{f}`" for f in det_res["component_coverage"]["detected_list"]]))
 
 # ==============================================================================
 # TAB 5: BASIS DATA RIWAYAT AUDIT
