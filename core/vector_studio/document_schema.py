@@ -305,7 +305,7 @@ class VectorProjectSchema:
                 if not obj.is_visible:
                     continue
 
-                cat = DocLayNetCategory.PICTURE
+                cat = DocLayNetCategory.TEXT
                 text = (obj.text_content or "").strip()
 
                 if obj.shape_type == VectorShapeType.TEXT:
@@ -325,6 +325,9 @@ class VectorProjectSchema:
                             cat = DocLayNetCategory.SECTION_HEADER
                         else:
                             cat = DocLayNetCategory.TEXT
+                    else:
+                        # Empty rectangle / background card
+                        cat = DocLayNetCategory.SECTION_HEADER if "section" in obj.name.lower() else DocLayNetCategory.TEXT
 
                 elements.append(
                     DocLayNetElement(

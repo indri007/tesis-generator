@@ -5,6 +5,13 @@ Verifies:
 2. Spatial Bounding Box intersections and IoU calculations.
 3. Reading order sorting and spatial caption pairing.
 4. Margin violation detection against Pedoman Penulisan Tesis MIKOM 2026.
+5. Empty diagram handling.
+6. Normal diagram with valid caption pairing and zero false warnings.
+7. Unpaired caption detection (caption without picture/table).
+8. Two overlapping objects with significant IoU.
+9. Objects placed out of canvas bounds.
+10. Dynamic revalidation on parameter changes.
+11. Invalid / zero dimension coordinate resilience.
 """
 
 from __future__ import annotations
@@ -14,6 +21,14 @@ from core.clones.doclaynet_layout import (
     DocLayNetCategory,
     DocLayNetClone,
     DocLayNetElement,
+)
+from core.vector_studio.academic_templates import AcademicTemplateFactory
+from core.vector_studio.document_schema import (
+    FigureAttribution,
+    VectorLayer,
+    VectorObject,
+    VectorProjectSchema,
+    VectorShapeType,
 )
 
 
@@ -42,7 +57,6 @@ def test_bounding_box_geometry() -> None:
 def test_doclaynet_document_layout_analysis() -> None:
     """Verifies document layout segmentation, caption spatial pairing, and margin check."""
     elements = [
-        # Page 1 Title
         DocLayNetElement(
             element_id="el_title",
             category=DocLayNetCategory.TITLE,
@@ -50,14 +64,12 @@ def test_doclaynet_document_layout_analysis() -> None:
             page_number=1,
             text_content="BAB III METODOLOGI PENELITIAN",
         ),
-        # Page 1 Picture
         DocLayNetElement(
             element_id="el_pic",
             category=DocLayNetCategory.PICTURE,
             bbox=BoundingBox(x=120, y=150, width=350, height=200),
             page_number=1,
         ),
-        # Page 1 Caption directly below Picture
         DocLayNetElement(
             element_id="el_cap",
             category=DocLayNetCategory.CAPTION,
@@ -65,7 +77,6 @@ def test_doclaynet_document_layout_analysis() -> None:
             page_number=1,
             text_content="Gambar 3.1: Diagram Alir Penelitian",
         ),
-        # Page 1 Body text
         DocLayNetElement(
             element_id="el_txt",
             category=DocLayNetCategory.TEXT,
@@ -85,3 +96,123 @@ def test_doclaynet_document_layout_analysis() -> None:
     assert report.figure_caption_pairs[0]["caption_id"] == "el_cap"
     assert report.layout_score == 100.0
     assert len(report.formatting_warnings) == 0
+
+
+def test_empty_diagram_analysis() -> None:
+    """Verifies that an empty vector project produces valid zero-count report without crashing."""
+    empty_proj = VectorProjectSchema(
+        canvas_width=800.0,
+        canvas_height=600.0,
+        layers=[],
+        attribution=FigureAttribution(title="", source=""),
+    )
+    # Clear layers explicitly
+    empty_proj.layers = []
+
+    report = DocLayNetClone.analyze_vector_project(empty_proj, check_page_margins=False)
+    assert report.total_elements >= 1  # Base composite figure & caption element
+    assert report.layout_score == 100.0
+
+
+def test_normal_diagram_zero_false_warnings() -> None:
+    """Verifies that default PRISMA 2020 project produces zero false warnings and a high layout score."""
+    prisma_proj = AcademicTemplateFactory.create_prisma_2020_flowchart(chapter=3, figure_idx=1)
+    report = DocLayNetClone.analyze_vector_project(prisma_proj, check_page_margins=False)
+
+    assert report.total_elements > 5
+    assert len(report.out_of_bounds_elements) == 0
+    assert len(report.figure_caption_pairs) >= 1
+    assert report.layout_score >= 90.0
+
+
+def test_unpaired_caption_detection() -> None:
+    """Verifies warning when a caption has no corresponding picture or table."""
+    orphan_caption = DocLayNetElement(
+        element_id="cap_orphan",
+        category=DocLayNetCategory.CAPTION,
+        bbox=BoundingBox(x=100, y=600, width=200, height=20),
+        page_number=1,
+        text_content="Gambar 9.9: Gambar Hilang",
+    )
+    report = DocLayNetClone.analyze_document_layout([orphan_caption], page_width=500, page_height=700)
+    assert "cap_orphan" in report.unpaired_captions
+    assert any("tidak terhubung" in w for w in report.formatting_warnings)
+
+
+def test_overlapping_objects_detection() -> None:
+    """Verifies detection of overlapping objects with IoU > 0.25."""
+    proj = VectorProjectSchema(canvas_width=800, canvas_height=600)
+    layer = VectorLayer(name="L1")
+    obj1 = VectorObject(
+        object_id="obj_box_1",
+        shape_type=VectorShapeType.RECTANGLE,
+        x=50,
+        y=50,
+        width=100,
+        height=100,
+        text_content="Box 1",
+    )
+    obj2 = VectorObject(
+        object_id="obj_box_2",
+        shape_type=VectorShapeType.RECTANGLE,
+        x=80,
+        y=80,
+        width=100,
+        height=100,
+        text_content="Box 2",
+    )
+    layer.objects = [obj1, obj2]
+    proj.layers = [layer]
+
+    report = DocLayNetClone.analyze_vector_project(proj, check_page_margins=False)
+    assert len(report.overlapping_pairs) >= 1
+    ov = report.overlapping_pairs[0]
+    assert ov["element_a"] == "obj_box_1"
+    assert ov["element_b"] == "obj_box_2"
+    assert ov["iou"] > 0.25
+
+
+def test_out_of_bounds_detection() -> None:
+    """Verifies detection of objects placed outside the canvas boundary."""
+    proj = VectorProjectSchema(canvas_width=500, canvas_height=400)
+    layer = VectorLayer(name="L1")
+    escaped_obj = VectorObject(
+        object_id="obj_escaped",
+        shape_type=VectorShapeType.RECTANGLE,
+        x=550,  # Beyond canvas_width 500
+        y=100,
+        width=100,
+        height=100,
+    )
+    layer.objects = [escaped_obj]
+    proj.layers = [layer]
+
+    report = DocLayNetClone.analyze_vector_project(proj, check_page_margins=False)
+    assert "obj_escaped" in report.out_of_bounds_elements
+    assert any("di luar batas" in w for w in report.formatting_warnings)
+
+
+def test_parameter_change_revalidation() -> None:
+    """Verifies that changing template parameters generates fresh distinct analysis reports."""
+    proj1 = AcademicTemplateFactory.create_prisma_2020_flowchart(identification_count=500)
+    proj2 = AcademicTemplateFactory.create_prisma_2020_flowchart(identification_count=9000)
+
+    report1 = DocLayNetClone.analyze_vector_project(proj1)
+    report2 = DocLayNetClone.analyze_vector_project(proj2)
+
+    # Identifiers must be unique across project instances
+    assert proj1.project_id != proj2.project_id
+    assert report1.total_elements == report2.total_elements
+
+
+def test_invalid_and_zero_dimensions_handling() -> None:
+    """Verifies resilience against zero-width or negative coordinate elements."""
+    zero_box = DocLayNetElement(
+        element_id="el_zero",
+        category=DocLayNetCategory.TEXT,
+        bbox=BoundingBox(x=-10, y=-20, width=0, height=0),
+        page_number=1,
+    )
+    report = DocLayNetClone.analyze_document_layout([zero_box], page_width=500, page_height=500)
+    assert "el_zero" in report.out_of_bounds_elements
+    assert report.total_elements == 1

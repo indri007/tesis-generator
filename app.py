@@ -262,7 +262,7 @@ with tab_vector:
     st.title("🎨 Vector Design Studio & Academic Diagram Engine")
     st.markdown("Pembuat diagram ilmiah berbasis vektor W3C: **PRISMA 2020**, **Kerangka Konseptual**, dan **Metodologi Penelitian** standar 300 DPI.")
 
-    from core.clones.doclaynet_layout import DocLayNetCategory
+    from core.clones.doclaynet_layout import DocLayNetClone
     from core.vector_studio.academic_templates import AcademicTemplateFactory
     from core.vector_studio.canvas_component import CanvasComponent
     from core.vector_studio.figure_bridge import FigureBridge
