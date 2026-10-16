@@ -373,9 +373,15 @@ with tab_audit:
                 mapped_findings = [map_finding_to_evidence(f, doc) for f in sanitized_findings]
 
                 # Revision Engine
-                rev_engine = RevisionEngine(mapped_findings, base_summary=results.summary)
+                try:
+                    rev_engine = RevisionEngine(mapped_findings, base_summary=results.summary)
+                except TypeError:
+                    rev_engine = RevisionEngine(mapped_findings)
                 checklist = rev_engine.generate_checklist()
-                score_card = rev_engine.calculate_scores()
+                try:
+                    score_card = rev_engine.calculate_scores(base_summary=results.summary)
+                except TypeError:
+                    score_card = rev_engine.calculate_scores()
                 counts = score_card["counts"]
                 overall_score = score_card["overall_score"]
 

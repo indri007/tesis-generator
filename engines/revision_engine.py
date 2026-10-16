@@ -17,11 +17,18 @@ class RevisionEngine:
         self,
         findings: list[dict[str, Any]] | None = None,
         base_summary: dict[str, Any] | None = None,
+        *args: Any,
+        **kwargs: Any,
     ):
         self.findings = findings if findings is not None else []
-        self.base_summary = base_summary or {}
+        self.base_summary = base_summary or kwargs.get("base_summary", {})
 
-    def calculate_scores(self, base_summary: dict[str, Any] | None = None) -> dict[str, Any]:
+    def calculate_scores(
+        self,
+        base_summary: dict[str, Any] | None = None,
+        *args: Any,
+        **kwargs: Any,
+    ) -> dict[str, Any]:
         """Calculates compliance score and status counts strictly according to MIKOM 2026 rules.
 
         Formula:

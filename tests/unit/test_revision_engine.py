@@ -228,3 +228,27 @@ def test_streamlit_ui_audit_flow_with_apptest():
     subheaders = [s.value for s in at.subheader]
     assert any("Ringkasan Hasil Audit" in s for s in subheaders)
     assert any("Unduh Laporan Audit Lengkap" in s for s in subheaders)
+
+
+def test_revision_engine_accepts_flexible_kwargs_and_backward_compatibility():
+    """Verify RevisionEngine is resilient to arbitrary kwargs and preserves base_summary."""
+    from engines.revision_engine import RevisionEngine
+
+    findings = [{"rule_id": "ERR_1", "status": "ERROR", "category": "Format"}]
+    base_summary = {"PASS": 10, "ERROR": 0, "WARNING": 0, "UNVERIFIED": 0}
+
+    # Pass unexpected keyword arguments to verify defensive initialization
+    engine = RevisionEngine(
+        findings,
+        base_summary=base_summary,
+        unexpected_argument="test_val",
+        another_flag=True,
+    )
+    assert engine.base_summary == base_summary
+
+    # calculate_scores with unexpected kwargs
+    score_card = engine.calculate_scores(base_summary=base_summary, extra_param="ignored")
+    assert score_card["counts"]["PASS"] == 10
+    assert score_card["counts"]["ERROR"] == 1
+    assert score_card["overall_score"] == 85.0
+
