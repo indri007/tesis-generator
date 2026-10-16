@@ -1,0 +1,426 @@
+{
+  "rule_set_id": "MIKOM_2026",
+  "version": "2026.1.0",
+  "rules": [
+    {
+      "id": "FORMAT_PAGE_LIMIT_001",
+      "category": "format",
+      "description": "Batas maksimal naskah tesis adalah 175 halaman.",
+      "severity": "ERROR",
+      "field": "page_count",
+      "operator": "max",
+      "expected": 175,
+      "recommendation": "Kurangi panjang naskah agar tidak melebihi batas maksimum 175 halaman.",
+      "source": {
+        "document": "PEDOMAN PENULISAN TESIS MIKOM 2026",
+        "chapter": "Ketentuan Umum",
+        "page": 1
+      }
+    },
+    {
+      "id": "FORMAT_MARGIN_TOP_001",
+      "category": "format",
+      "description": "Batas tepi pengetikan atas (margin top) adalah 4,0 cm.",
+      "severity": "ERROR",
+      "field": "margins.top_cm",
+      "operator": "equals",
+      "expected": 4.0,
+      "recommendation": "Ubah margin atas menjadi 4,0 cm pada pengaturan Page Setup.",
+      "source": {
+        "document": "PEDOMAN PENULISAN TESIS MIKOM 2026",
+        "chapter": "Bab IV.B.4",
+        "page": 40
+      }
+    },
+    {
+      "id": "FORMAT_MARGIN_LEFT_001",
+      "category": "format",
+      "description": "Batas tepi pengetikan kiri (margin left) adalah 4,0 cm.",
+      "severity": "ERROR",
+      "field": "margins.left_cm",
+      "operator": "equals",
+      "expected": 4.0,
+      "recommendation": "Ubah margin kiri menjadi 4,0 cm pada pengaturan Page Setup.",
+      "source": {
+        "document": "PEDOMAN PENULISAN TESIS MIKOM 2026",
+        "chapter": "Bab IV.B.4",
+        "page": 40
+      }
+    },
+    {
+      "id": "FORMAT_MARGIN_BOTTOM_001",
+      "category": "format",
+      "description": "Batas tepi pengetikan bawah (margin bottom) adalah 3,0 cm.",
+      "severity": "ERROR",
+      "field": "margins.bottom_cm",
+      "operator": "equals",
+      "expected": 3.0,
+      "recommendation": "Ubah margin bawah menjadi 3,0 cm pada pengaturan Page Setup.",
+      "source": {
+        "document": "PEDOMAN PENULISAN TESIS MIKOM 2026",
+        "chapter": "Bab IV.B.4",
+        "page": 40
+      }
+    },
+    {
+      "id": "FORMAT_MARGIN_RIGHT_001",
+      "category": "format",
+      "description": "Batas tepi pengetikan kanan (margin right) adalah 3,0 cm.",
+      "severity": "ERROR",
+      "field": "margins.right_cm",
+      "operator": "equals",
+      "expected": 3.0,
+      "recommendation": "Ubah margin kanan menjadi 3,0 cm pada pengaturan Page Setup.",
+      "source": {
+        "document": "PEDOMAN PENULISAN TESIS MIKOM 2026",
+        "chapter": "Bab IV.B.4",
+        "page": 40
+      }
+    },
+    {
+      "id": "FORMAT_FONT_FAMILY_001",
+      "category": "format",
+      "description": "Jenis huruf badan naskah harus Times New Roman.",
+      "severity": "ERROR",
+      "field": "typography.font_family",
+      "operator": "equals",
+      "expected": "Times New Roman",
+      "recommendation": "Ubah jenis huruf seluruh naskah menjadi Times New Roman.",
+      "source": {
+        "document": "PEDOMAN PENULISAN TESIS MIKOM 2026",
+        "chapter": "Bab IV.B.1.a",
+        "page": 39
+      }
+    },
+    {
+      "id": "FORMAT_FONT_SIZE_001",
+      "category": "format",
+      "description": "Ukuran huruf badan naskah adalah 12 pt.",
+      "severity": "ERROR",
+      "field": "typography.font_size_pt",
+      "operator": "equals",
+      "expected": 12,
+      "recommendation": "Ubah ukuran huruf badan paragraf menjadi 12 pt.",
+      "source": {
+        "document": "PEDOMAN PENULISAN TESIS MIKOM 2026",
+        "chapter": "Bab IV.B.1",
+        "page": 39
+      }
+    },
+    {
+      "id": "FORMAT_LINE_SPACING_001",
+      "category": "format",
+      "description": "Jarak spasi antarbaris badan naskah adalah 2 (dua) spasi.",
+      "severity": "ERROR",
+      "field": "typography.line_spacing",
+      "operator": "equals",
+      "expected": 2.0,
+      "recommendation": "Atur line spacing badan teks menjadi 2.0 (Double).",
+      "source": {
+        "document": "PEDOMAN PENULISAN TESIS MIKOM 2026",
+        "chapter": "Bab IV.B.3.a",
+        "page": 40
+      }
+    },
+    {
+      "id": "FORMAT_ALIGNMENT_001",
+      "category": "format",
+      "description": "Penulisan paragraf naskah utama rata kanan kiri (Justified).",
+      "severity": "WARNING",
+      "field": "typography.alignment",
+      "operator": "equals",
+      "expected": "JUSTIFY",
+      "recommendation": "Atur perataan paragraf naskah utama menjadi rata kanan-kiri (Justify).",
+      "source": {
+        "document": "PEDOMAN PENULISAN TESIS MIKOM 2026",
+        "chapter": "Bab IV.B.3.c",
+        "page": 40
+      }
+    },
+    {
+      "id": "STRUCT_WORDS_MIN_001",
+      "category": "structure",
+      "description": "Jumlah kata isi utama (Bab I - V) minimal 40.000 kata.",
+      "severity": "ERROR",
+      "field": "word_count.total_body_words",
+      "operator": "min",
+      "expected": 40000,
+      "recommendation": "Kembangkan kedalaman pembahasan dan analisis data agar memenuhi batas minimal 40.000 kata.",
+      "source": {
+        "document": "PEDOMAN PENULISAN TESIS MIKOM 2026",
+        "chapter": "Bab I.B.5",
+        "page": 2
+      }
+    },
+    {
+      "id": "STRUCT_WORDS_MAX_001",
+      "category": "structure",
+      "description": "Jumlah kata isi utama (Bab I - V) maksimal 60.000 kata.",
+      "severity": "ERROR",
+      "field": "word_count.total_body_words",
+      "operator": "max",
+      "expected": 60000,
+      "recommendation": "Ringkas dan padatkan uraian naskah agar tidak melampaui batas maksimal 60.000 kata.",
+      "source": {
+        "document": "PEDOMAN PENULISAN TESIS MIKOM 2026",
+        "chapter": "Bab I.B.5",
+        "page": 2
+      }
+    },
+    {
+      "id": "STRUCT_CHAP_BAB1_001",
+      "category": "structure",
+      "description": "Tesis wajib memuat BAB I PENDAHULUAN.",
+      "severity": "ERROR",
+      "field": "chapters.BAB_I.exists",
+      "operator": "equals",
+      "expected": true,
+      "recommendation": "Lengkapi struktur tesis dengan menyertakan BAB I Pendahuluan.",
+      "source": {
+        "document": "PEDOMAN PENULISAN TESIS MIKOM 2026",
+        "chapter": "Bab III",
+        "page": 16
+      }
+    },
+    {
+      "id": "STRUCT_CHAP_BAB2_001",
+      "category": "structure",
+      "description": "Tesis wajib memuat BAB II TINJAUAN PUSTAKA.",
+      "severity": "ERROR",
+      "field": "chapters.BAB_II.exists",
+      "operator": "equals",
+      "expected": true,
+      "recommendation": "Lengkapi struktur tesis dengan menyertakan BAB II Tinjauan Pustaka.",
+      "source": {
+        "document": "PEDOMAN PENULISAN TESIS MIKOM 2026",
+        "chapter": "Bab III",
+        "page": 21
+      }
+    },
+    {
+      "id": "STRUCT_CHAP_BAB3_001",
+      "category": "structure",
+      "description": "Tesis wajib memuat BAB III METODE PENELITIAN.",
+      "severity": "ERROR",
+      "field": "chapters.BAB_III.exists",
+      "operator": "equals",
+      "expected": true,
+      "recommendation": "Lengkapi struktur tesis dengan menyertakan BAB III Metode Penelitian.",
+      "source": {
+        "document": "PEDOMAN PENULISAN TESIS MIKOM 2026",
+        "chapter": "Bab III",
+        "page": 28
+      }
+    },
+    {
+      "id": "STRUCT_CHAP_BAB4_001",
+      "category": "structure",
+      "description": "Tesis wajib memuat BAB IV HASIL DAN PEMBAHASAN.",
+      "severity": "ERROR",
+      "field": "chapters.BAB_IV.exists",
+      "operator": "equals",
+      "expected": true,
+      "recommendation": "Lengkapi struktur tesis dengan menyertakan BAB IV Hasil dan Pembahasan.",
+      "source": {
+        "document": "PEDOMAN PENULISAN TESIS MIKOM 2026",
+        "chapter": "Bab III",
+        "page": 40
+      }
+    },
+    {
+      "id": "STRUCT_CHAP_BAB5_001",
+      "category": "structure",
+      "description": "Tesis wajib memuat BAB V KESIMPULAN DAN SARAN.",
+      "severity": "ERROR",
+      "field": "chapters.BAB_V.exists",
+      "operator": "equals",
+      "expected": true,
+      "recommendation": "Lengkapi struktur tesis dengan menyertakan BAB V Kesimpulan dan Saran.",
+      "source": {
+        "document": "PEDOMAN PENULISAN TESIS MIKOM 2026",
+        "chapter": "Bab III",
+        "page": 43
+      }
+    },
+    {
+      "id": "STRUCT_BIB_PRESENCE_001",
+      "category": "citation",
+      "description": "Tesis wajib memiliki bagian DAFTAR PUSTAKA.",
+      "severity": "ERROR",
+      "field": "bibliography.exists",
+      "operator": "equals",
+      "expected": true,
+      "recommendation": "Tambahkan bagian Daftar Pustaka lengkap di bagian akhir tesis.",
+      "source": {
+        "document": "PEDOMAN PENULISAN TESIS MIKOM 2026",
+        "chapter": "Bab III.C.1",
+        "page": 44
+      }
+    },
+    {
+      "id": "ABST_WORDS_MIN_001",
+      "category": "abstract",
+      "description": "Abstrak Bahasa Indonesia minimal 150 kata.",
+      "severity": "ERROR",
+      "field": "abstract.id.word_count",
+      "operator": "min",
+      "expected": 150,
+      "recommendation": "Perluas isi abstrak agar mencakup latar belakang, tujuan, metode, hasil, dan kesimpulan minimal 150 kata.",
+      "source": {
+        "document": "PEDOMAN PENULISAN TESIS MIKOM 2026",
+        "chapter": "Bab III.A.8",
+        "page": 20
+      }
+    },
+    {
+      "id": "ABST_WORDS_MAX_001",
+      "category": "abstract",
+      "description": "Abstrak Bahasa Indonesia maksimal 250 kata.",
+      "severity": "ERROR",
+      "field": "abstract.id.word_count",
+      "operator": "max",
+      "expected": 250,
+      "recommendation": "Ringkas kalimat abstrak agar tidak melampaui 250 kata.",
+      "source": {
+        "document": "PEDOMAN PENULISAN TESIS MIKOM 2026",
+        "chapter": "Bab III.A.8",
+        "page": 20
+      }
+    },
+    {
+      "id": "ABST_KEYWORDS_MIN_001",
+      "category": "abstract",
+      "description": "Abstrak wajib mencantumkan minimal 3 kata kunci.",
+      "severity": "WARNING",
+      "field": "abstract.id.keyword_count",
+      "operator": "min",
+      "expected": 3,
+      "recommendation": "Sertakan 3 sampai 5 kata kunci yang mewakili variabel pokok penelitian.",
+      "source": {
+        "document": "PEDOMAN PENULISAN TESIS MIKOM 2026",
+        "chapter": "Bab III.A.8",
+        "page": 20
+      }
+    },
+    {
+      "id": "CITATION_ORPHAN_001",
+      "category": "citation",
+      "description": "Semua sitasi dalam teks wajib memiliki entri rujukan di Daftar Pustaka.",
+      "severity": "ERROR",
+      "field": "citations.orphaned_count",
+      "operator": "equals",
+      "expected": 0,
+      "recommendation": "Lengkapi rujukan daftar pustaka untuk setiap sitasi yang ditemukan di badan naskah.",
+      "source": {
+        "document": "PEDOMAN PENULISAN TESIS MIKOM 2026",
+        "chapter": "Bab IV.D",
+        "page": 43
+      }
+    },
+    {
+      "id": "CITATION_UNUSED_REF_001",
+      "category": "citation",
+      "description": "Setiap entri Daftar Pustaka harus disitasi dalam isi naskah.",
+      "severity": "WARNING",
+      "field": "references.unused_count",
+      "operator": "equals",
+      "expected": 0,
+      "recommendation": "Hapus rujukan yang tidak pernah disitasi atau tambahkan sitasinya pada bab relevan.",
+      "source": {
+        "document": "PEDOMAN PENULISAN TESIS MIKOM 2026",
+        "chapter": "Bab III.C.1",
+        "page": 44
+      }
+    },
+    {
+      "id": "VARIABLE_CONSISTENCY_001",
+      "category": "variable_consistency",
+      "description": "Definisi, nama, dan notasi variabel harus konsisten di seluruh bab.",
+      "severity": "ERROR",
+      "field": "variables.inconsistency_count",
+      "operator": "equals",
+      "expected": 0,
+      "recommendation": "Samakan nama dan simbol notasi variabel (misal X1) di seluruh bab tesis.",
+      "source": {
+        "document": "PEDOMAN PENULISAN TESIS MIKOM 2026",
+        "chapter": "Standar Metodologi",
+        "page": 30
+      }
+    },
+    {
+      "id": "FORMULA_RECALCULATION_001",
+      "category": "formula_recalculation",
+      "description": "Hasil perhitungan aritmetika substitusi rumus harus eksak dan akurat.",
+      "severity": "ERROR",
+      "field": "formulas.arithmetic_error_count",
+      "operator": "equals",
+      "expected": 0,
+      "recommendation": "Lakukan rekalkulasi perhitungan manual/software untuk mengoreksi angka hasil estimasi rumus.",
+      "source": {
+        "document": "PEDOMAN PENULISAN TESIS MIKOM 2026",
+        "chapter": "Komputasi Matematis",
+        "page": 41
+      }
+    },
+    {
+      "id": "FORMULA_MODEL_CONSISTENCY_001",
+      "category": "formula_consistency",
+      "description": "Model persamaan di Bab III harus konsisten dengan model yang diuji di Bab IV.",
+      "severity": "ERROR",
+      "field": "formulas.model_mismatch_count",
+      "operator": "equals",
+      "expected": 0,
+      "recommendation": "Pastikan model persamaan regresi yang diajukan di metodologi sama persis dengan yang diuji di bab hasil.",
+      "source": {
+        "document": "PEDOMAN PENULISAN TESIS MIKOM 2026",
+        "chapter": "Metodologi dan Analisis",
+        "page": 41
+      }
+    },
+    {
+      "id": "STAT_DECISION_CONSISTENCY_001",
+      "category": "statistical_consistency",
+      "description": "Kesimpulan penerimaan/penolakan hipotesis harus konsisten dengan nilai p dan alpha.",
+      "severity": "ERROR",
+      "field": "statistics.contradiction_count",
+      "operator": "equals",
+      "expected": 0,
+      "recommendation": "Koreksi kesimpulan pengujian hipotesis: jika p < 0,05 maka berpengaruh signifikan.",
+      "source": {
+        "document": "PEDOMAN PENULISAN TESIS MIKOM 2026",
+        "chapter": "Statistika Inferensial",
+        "page": 42
+      }
+    },
+    {
+      "id": "STAT_SAMPLE_CONSISTENCY_001",
+      "category": "sample_consistency",
+      "description": "Jumlah sampel responden di Bab III harus konsisten dengan yang dianalisis di Bab IV.",
+      "severity": "ERROR",
+      "field": "statistics.sample_mismatch_count",
+      "operator": "equals",
+      "expected": 0,
+      "recommendation": "Jelaskan alasan pengurangan sampel jika ada responden gugur, atau samakan jumlah sampel.",
+      "source": {
+        "document": "PEDOMAN PENULISAN TESIS MIKOM 2026",
+        "chapter": "Bab III.5 & Bab IV",
+        "page": 35
+      }
+    },
+    {
+      "id": "JOURNAL_ALIGNMENT_SAMPLE_001",
+      "category": "journal_thesis_alignment",
+      "description": "Jumlah responden pada jurnal publikasi harus selaras dengan tesis.",
+      "severity": "ERROR",
+      "field": "journal_comparison.critical_mismatch_count",
+      "operator": "equals",
+      "expected": 0,
+      "recommendation": "Verifikasi dan berikan catatan kaki pada jurnal apabila naskah publikasi menggunakan subset data tesis.",
+      "source": {
+        "document": "PEDOMAN PENULISAN TESIS MIKOM 2026",
+        "chapter": "Komponen Publikasi Ilmiah",
+        "page": 3
+      }
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "category": "structure",
+  "total_word_count": {
+    "min": 40000,
+    "max": 60000,
+    "excludes": ["preliminary", "daftar_isi", "daftar_tabel", "daftar_gambar", "daftar_pustaka", "lampiran"]
+  },
+  "chapter_proportions": {
+    "BAB I": {
+      "target_pct": 15.0,
+      "min_words": 6000,
+      "max_words": 9000,
+      "description": "Pendahuluan"
+    },
+    "BAB II": {
+      "target_pct": 25.0,
+      "min_words": 10000,
+      "max_words": 15000,
+      "description": "Tinjauan Pustaka"
+    },
+    "BAB III": {
+      "target_pct": 15.0,
+      "min_words": 6000,
+      "max_words": 9000,
+      "description": "Metode Penelitian"
+    },
+    "BAB IV": {
+      "target_pct": 35.0,
+      "min_words": 14000,
+      "max_words": 21000,
+      "description": "Hasil dan Pembahasan"
+    },
+    "BAB V": {
+      "target_pct": 10.0,
+      "min_words": 4000,
+      "max_words": 6000,
+      "description": "Kesimpulan dan Saran"
+    }
+  },
+  "quantitative_subsections": {
+    "BAB I": ["1.1 Latar Belakang Masalah", "1.2 Rumusan Masalah", "1.3 Tujuan Penelitian", "1.4 Manfaat Penelitian"],
+    "BAB II": ["2.1 Penelitian Terdahulu", "2.2 Tinjauan Pustaka", "2.3 Kerangka Berpikir", "2.4 Hipotesis"],
+    "BAB III": [
+      "3.1 Pendekatan Penelitian",
+      "3.2 Definisi dan Operasionalisasi",
+      "3.3 Pengukuran Variabel",
+      "3.4 Lokasi dan Waktu Penelitian",
+      "3.5 Populasi, Sampel dan Teknik Penarikan Sampel",
+      "3.6 Teknik Pengumpulan Data",
+      "3.7 Teknik Analisis Data"
+    ],
+    "BAB IV": [
+      "4.1 Gambaran Umum Obyek dan/atau Subyek Penelitian",
+      "4.2 Penyajian dan Analisis Data",
+      "4.3 Pembahasan"
+    ],
+    "BAB V": ["5.1 Simpulan", "5.2 Saran"]
+  },
+  "qualitative_subsections": {
+    "BAB I": ["1.1 Latar Belakang Masalah", "1.2 Rumusan Masalah", "1.3 Tujuan Penelitian", "1.4 Manfaat Penelitian"],
+    "BAB II": ["2.1 Penelitian Terdahulu", "2.2 Tinjauan Pustaka", "2.3 Kerangka Berpikir"],
+    "BAB III": [
+      "3.1 Pendekatan Penelitian",
+      "3.2 Definisi Konseptual",
+      "3.3 Lokasi dan Waktu Penelitian",
+      "3.4 Obyek dan/atau Subyek Penelitian",
+      "3.5 Pengumpulan Data",
+      "3.6 Analisis Data"
+    ],
+    "BAB IV": [
+      "4.1 Gambaran Umum Obyek dan/atau Subyek Penelitian",
+      "4.2 Hasil dan Pembahasan"
+    ],
+    "BAB V": ["5.1 Simpulan", "5.2 Saran"]
+  },
+  "abstract": {
+    "min_words": 150,
+    "max_words": 250,
+    "min_keywords": 3,
+    "max_keywords": 5,
+    "required_elements": ["Latar Belakang / Masalah", "Tujuan", "Metode", "Hasil", "Kesimpulan"]
+  }
+}

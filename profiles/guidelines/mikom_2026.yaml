@@ -1,0 +1,70 @@
+guideline_name: "PEDOMAN PENULISAN TESIS MIKOM 2026"
+institution: "Program Studi Magister Ilmu Komunikasi - Fakultas Ilmu Sosial, Budaya dan Politik - UPN Veteran Jawa Timur"
+version: "2026.1"
+rules:
+  - rule_id: "MIKOM-DOC-001"
+    category: "page_limit"
+    name: "Batas Maksimal Halaman"
+    description: "Naskah tesis maksimal 175 halaman. Dokumen melebihi batas ini ditolak dari audit."
+    severity: "ERROR"
+    source: "Pedoman Penulisan Tesis MIKOM 2026"
+    checker_type: "deterministic"
+    expected:
+      max_pages: 175
+
+  - rule_id: "MIKOM-FMT-001"
+    category: "format_paper"
+    name: "Ukuran Kertas"
+    description: "Ukuran kertas naskah tesis adalah A4 (21,5 cm x 29,0 cm) warna putih 80 gram."
+    severity: "ERROR"
+    source: "Pedoman Penulisan Tesis MIKOM 2026 Bab IV.A"
+    checker_type: "deterministic"
+    expected:
+      paper_type: "A4"
+      width_cm: 21.5
+      height_cm: 29.0
+
+  - rule_id: "MIKOM-FMT-002"
+    category: "format_margin"
+    name: "Margin Halaman"
+    description: "Batas tepi pengetikan (margin): Atas 4 cm, Kiri 4 cm, Bawah 3 cm, Kanan 3 cm."
+    severity: "ERROR"
+    source: "Pedoman Penulisan Tesis MIKOM 2026 Bab IV.B.4"
+    checker_type: "deterministic"
+    expected:
+      top_cm: 4.0
+      left_cm: 4.0
+      bottom_cm: 3.0
+      right_cm: 3.0
+
+  - rule_id: "MIKOM-FMT-003"
+    category: "format_font"
+    name: "Jenis dan Ukuran Huruf"
+    description: "Naskah diketik dengan jenis huruf Times New Roman ukuran 12 pt untuk badan teks."
+    severity: "ERROR"
+    source: "Pedoman Penulisan Tesis MIKOM 2026 Bab IV.B.1"
+    checker_type: "deterministic"
+    expected:
+      font_family: "Times New Roman"
+      font_size_pt: 12
+
+  - rule_id: "MIKOM-FMT-004"
+    category: "format_spacing"
+    name: "Spasi Antarbaris Badan Teks"
+    description: "Jarak antarbaris naskah adalah 2 (dua) spasi (double spacing)."
+    severity: "ERROR"
+    source: "Pedoman Penulisan Tesis MIKOM 2026 Bab IV.B.3.a"
+    checker_type: "deterministic"
+    expected:
+      line_spacing: 2.0
+
+  - rule_id: "MIKOM-WORDS-001"
+    category: "word_count"
+    name: "Total Jumlah Kata Badan Tesis"
+    description: "Jumlah kata isi utama (Bab I - V) minimal 40.000 kata dan maksimal 60.000 kata."
+    severity: "ERROR"
+    source: "Pedoman Penulisan Tesis MIKOM 2026 Bab I.B.5"
+    checker_type: "deterministic"
+    expected:
+      min_words: 40000
+      max_words: 60000
