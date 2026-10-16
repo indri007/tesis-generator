@@ -94,3 +94,35 @@ def test_prd_and_app_contain_erd_specifications():
     assert "17_erd_nodexl_database_schema.png" in app_root
     assert "Entity-Relationship Diagram (ERD): NodeXL Group-in-a-Box Layout" in app_root
 
+
+def test_nodexl_rule_engine_visual_asset_integrity():
+    """Verifies that the NodeXL Rule Engine schema image exists, is >100KB and has valid PNG bytes."""
+    rule_path = ROOT_DIR / "assets" / "images" / "18_nodexl_rule_engine_schema.png"
+    assert rule_path.exists(), f"Asset not found at {rule_path}"
+    assert rule_path.stat().st_size > 100_000, "Rule engine image should be high-resolution (>100KB)"
+
+    with open(rule_path, "rb") as f:
+        header = f.read(8)
+    assert header == b"\x89PNG\r\n\x1a\n", "Rule engine file is not a valid PNG image"
+
+
+def test_prd_and_app_contain_rule_engine_specifications():
+    """Verifies that PRD documents and app.py contain the Rule Engine diagram and specifications."""
+    prd_paths = [
+        ROOT_DIR / "docs" / "PRD_AI_THESIS_GENERATOR.md",
+        ROOT_DIR / "docs" / "superpowers" / "specs" / "PRODUCT_REQUIREMENTS_DOCUMENT_PRD_2026.md",
+    ]
+
+    for p in prd_paths:
+        content = p.read_text(encoding="utf-8")
+        assert "18_nodexl_rule_engine_schema.png" in content, f"Rule Engine image link missing in {p}"
+        assert "FORMAT_PAGE_LIMIT_001" in content, f"FORMAT_PAGE_LIMIT_001 missing in {p}"
+        assert "FORMULA_REGRESSION_RECALC" in content, f"FORMULA_REGRESSION_RECALC missing in {p}"
+        assert "CIT_RECIPROCAL_APA7" in content, f"CIT_RECIPROCAL_APA7 missing in {p}"
+        assert "EMPIRICAL_SNA_BASELINE" in content, f"EMPIRICAL_SNA_BASELINE missing in {p}"
+
+    app_root = (ROOT_DIR / "app.py").read_text(encoding="utf-8")
+    assert "18_nodexl_rule_engine_schema.png" in app_root
+    assert "Rule Engine & Verification Schema: NodeXL Group-in-a-Box Layout" in app_root
+
+

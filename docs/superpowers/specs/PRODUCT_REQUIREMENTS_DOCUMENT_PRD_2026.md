@@ -223,6 +223,19 @@ erDiagram
 4. **Group 4 (Sesi Audit & Auto-Revisi Dokumen):** Menyimpan histori sesi audit (`audit_sessions`), kartu temuan kepatuhan (`audit_findings`), proposal revisi dokumen berjenjang (`revision_proposals`), dan log perubahan aman (`change_logs`).
 5. **Group 5 (NodeXL Pro SNA Empirical Network):** Menghubungkan secara langsung snapshot graf empiris (`nodexl_snapshots`), partisi komunitas Louvain (`nodexl_communities`), simpul aktor ber-atribusi emosi (`nodexl_nodes`), dan relasi interaksi jembatan (`nodexl_edges`).
 
+### 2.5 Rule Engine & Verification Schema — NodeXL Group-in-a-Box Topology
+Seluruh aturan evaluasi kepatuhan naskah (10 Pilar Pedoman MIKOM 2026) dipetakan ke dalam topologi verifikasi **NodeXL Pro Group-in-a-Box (GIB)**:
+
+![Gambar 3.3: Rule Engine & Verification Schema Berbasis Partisi NodeXL Pro Group-in-a-Box](file:///Users/jevin/AI-Thesis-Generator/assets/images/18_nodexl_rule_engine_schema.png)
+
+#### Klasterisasi Aturan Evaluasi Deterministik (Zero-Hallucination):
+- **Klaster 1 (Format & Margin EMU):** `FORMAT_PAGE_LIMIT_001` (Maks. 175 hal, `ERROR`), `FORMAT_MARGIN_4433` (L/T: 4cm, R/B: 3cm via konversi EMU Word), `FORMAT_FONT_SPACING` (Times New Roman 12 pt, Spasi Ganda 2.0).
+- **Klaster 2 (Sistematika Struktur 5 BAB):** `STRUCT_BAB_SEQUENCE_001` (Kelengkapan Bab I–V), `STRUCT_BAB_SUB_SECTIONS` (Hierarki sub-bab desimal 1.1, 1.2), `STRUCT_WORD_COUNT_RANGE` (40.000–60.000 kata).
+- **Klaster 3 (Formula & Uji Statistik):** `FORMULA_REGRESSION_RECALC` (Rekalkulasi rumus regresi linear $Y=a+bX$ via AST Python aman), `STAT_ALPHA_THRESHOLD` (Evaluasi signifikansi $p < 0.05$), `STAT_SAMPLE_CONSISTENCY` (Pencocokan jumlah sampel $N$ Bab III vs Bab IV).
+- **Klaster 4 (Sitasi APA 7th & Integritas Publikasi):** `CIT_RECIPROCAL_APA7` (Pencocokan resiprokal dua arah sitasi tubuh $\leftrightarrow$ daftar pustaka), `CIT_ORPHAN_DANGLING` (Nol sitasi yatim / dangling references), `JOURNAL_SCOPUS_QUARTILE` (Verifikasi kuartil Scimago/SJR dengan aturan proteksi status `UNVERIFIED`), `CIT_RETRACTION_WATCH` (Pemindaian status penarikan artikel jurnal Retraction Watch).
+- **Klaster 5 (Empiris Riset NodeXL & NLP ThisIsEconomy):** `EMPIRICAL_SNA_BASELINE` (Topologi $|V|=971, |E|=666, Q=0.9837$), `EMPIRICAL_INDOBERT_9EMO` (Weighted F1 $78.5\%$ pada 9 emosi Plutchik), `EMPIRICAL_SARCASM_GUARD` (Validasi korpus 3.395 baris, prevalensi $9.28\%$), `EMPIRICAL_PHYGITAL_GAP` (Konsep kesenjangan fisik-digital komunikasi kebijakan MBG).
+- **Central Hub:** Seluruh klaster aturan terhubung ke modul sentral [`AuditEngine`](file:///Users/jevin/AI-Thesis-Generator/engines/audit_engine.py) dan [`DocxAutoFixer`](file:///Users/jevin/AI-Thesis-Generator/engines/revision_engine.py) untuk menghasilkan kartu temuan dan naskah revisi otomatis.
+
 ---
 
 ## 3. Product Scope & Functional Requirements (8-Phase Architecture)

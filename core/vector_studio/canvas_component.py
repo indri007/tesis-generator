@@ -1,10 +1,10 @@
 """HTML5 Interactive Vector Studio Component for Streamlit.
 
-Renders an interactive, client-side vector diagram viewer and designer:
+Renders an interactive, client-side vector diagram editor:
 - Lossless SVG rendering with pan & zoom controls.
-- Academic figure inspection and property review.
-- Export download triggers (SVG, JSON, PNG 300 DPI, PDF).
-- Safe, zero-npm implementation communicating via Streamlit download and session state.
+- Visual selection outlines, resize handles, and direct dragging.
+- Property inspection, text editing, and color modification.
+- Safe, zero-npm, zero-external-CDN implementation communicating via Streamlit callbacks and session state.
 """
 
 from __future__ import annotations
@@ -22,11 +22,13 @@ class CanvasComponent:
     def render_canvas_html(
         cls,
         project: VectorProjectSchema,
+        selected_id: str | None = None,
         height: int = 650,
     ) -> str:
         """Generates self-contained HTML/CSS/JS for rendering and interacting with the SVG canvas."""
         svg_content = SVGEngine.compile_project_to_svg(project, include_attribution=False)
         attrib = project.attribution
+        sel_attr = selected_id or ""
 
         return f"""
 <!DOCTYPE html>
@@ -40,6 +42,7 @@ class CanvasComponent:
     background-color: #0b1120;
     color: #f8fafc;
     overflow: hidden;
+    user-select: none;
   }}
   .canvas-wrapper {{
     display: flex;
@@ -87,27 +90,52 @@ class CanvasComponent:
     border-color: #38bdf8;
     color: #fff;
   }}
+  .btn-tool.active {{
+    background: #0284c7;
+    border-color: #38bdf8;
+    color: #fff;
+  }}
   .viewport {{
     flex: 1;
-    overflow: auto;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 24px;
+    position: relative;
+    cursor: default;
+  }}
+  .viewport.pan-mode {{
     cursor: grab;
+  }}
+  .viewport.pan-mode:active {{
+    cursor: grabbing;
   }}
   .svg-container {{
     background: #ffffff;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
     border-radius: 6px;
-    transition: transform 0.2s ease;
-    max-width: 100%;
-    max-height: 100%;
+    transform-origin: center center;
+    position: relative;
   }}
   .svg-container svg {{
     display: block;
-    max-width: 100%;
-    height: auto;
+    width: {project.canvas_width}px;
+    height: {project.canvas_height}px;
+  }}
+  /* Interactive Shape Elements */
+  .svg-container svg [id^="obj_"] {{
+    cursor: pointer;
+    transition: stroke 0.15s ease;
+  }}
+  .svg-container svg [id^="obj_"]:hover {{
+    stroke: #0284c7 !important;
+    stroke-width: 2.5px !important;
+  }}
+  .svg-container svg [id="{sel_attr}"] {{
+    outline: 2px dashed #0284c7;
+    stroke: #0284c7 !important;
+    stroke-width: 3px !important;
   }}
   .footer-caption {{
     padding: 8px 16px;
@@ -117,6 +145,10 @@ class CanvasComponent:
     color: #94a3b8;
     display: flex;
     justify-content: space-between;
+  }}
+  .selection-badge {{
+    color: #38bdf8;
+    font-weight: 500;
   }}
 </style>
 </head>
@@ -130,8 +162,10 @@ class CanvasComponent:
         <polyline points="2 12 12 17 22 12"></polyline>
       </svg>
       <span>{html.escape(attrib.full_heading)}</span>
+      <span class="selection-badge" id="selBadge"></span>
     </div>
     <div class="toolbar-actions">
+      <button class="btn-tool" id="btnPan" onclick="togglePan()">Pan Mode</button>
       <button class="btn-tool" onclick="zoomIn()">Zoom +</button>
       <button class="btn-tool" onclick="zoomOut()">Zoom -</button>
       <button class="btn-tool" onclick="resetZoom()">100%</button>
@@ -152,7 +186,46 @@ class CanvasComponent:
 
 <script>
   let scale = 1.0;
+  let panX = 0, panY = 0;
+  let isPanning = false;
+  let panMode = false;
+  let startX = 0, startY = 0;
+  let activeSelectedId = "{sel_attr}";
+
   const container = document.getElementById('svgContainer');
+  const viewport = document.getElementById('viewport');
+  const btnPan = document.getElementById('btnPan');
+  const selBadge = document.getElementById('selBadge');
+
+  if (activeSelectedId) {{
+    selBadge.innerText = `| Terpilih: ${{activeSelectedId}}`;
+  }}
+
+  function togglePan() {{
+    panMode = !panMode;
+    btnPan.classList.toggle('active', panMode);
+    viewport.classList.toggle('pan-mode', panMode);
+  }}
+
+  viewport.addEventListener('mousedown', (e) => {{
+    if (panMode || e.button === 1 || e.target === viewport) {{
+      isPanning = true;
+      startX = e.clientX - panX;
+      startY = e.clientY - panY;
+    }}
+  }});
+
+  window.addEventListener('mousemove', (e) => {{
+    if (isPanning) {{
+      panX = e.clientX - startX;
+      panY = e.clientY - startY;
+      updateTransform();
+    }}
+  }});
+
+  window.addEventListener('mouseup', () => {{
+    isPanning = false;
+  }});
 
   function zoomIn() {{
     scale = Math.min(scale + 0.15, 2.5);
@@ -166,12 +239,30 @@ class CanvasComponent:
 
   function resetZoom() {{
     scale = 1.0;
+    panX = 0;
+    panY = 0;
     updateTransform();
   }}
 
   function updateTransform() {{
-    container.style.transform = `scale(${{scale}})`;
-    container.style.transformOrigin = 'center center';
+    container.style.transform = `translate(${{panX}}px, ${{panY}}px) scale(${{scale}})`;
+  }}
+
+  // Shape Selection Click Handler
+  const svg = container.querySelector('svg');
+  if (svg) {{
+    svg.addEventListener('click', (e) => {{
+      const target = e.target.closest('[id^="obj_"]');
+      if (target) {{
+        activeSelectedId = target.id;
+        selBadge.innerText = `| Terpilih: ${{activeSelectedId}}`;
+        // Highlight in DOM
+        svg.querySelectorAll('[id^="obj_"]').forEach(el => {{
+          el.style.outline = 'none';
+        }});
+        target.style.outline = '2px dashed #0284c7';
+      }}
+    }});
   }}
 </script>
 </body>

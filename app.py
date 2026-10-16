@@ -862,6 +862,21 @@ with tab_landing:
         )
         st.caption("5 Klaster Partisi: (1) Pedoman & Aturan, (2) Naskah & Sitasi, (3) Verifikasi Literatur, (4) Sesi Audit, (5) Jaringan Empiris NodeXL.")
 
+    img_rule_path = Path(__file__).parent / "assets" / "images" / "18_nodexl_rule_engine_schema.png"
+    if img_rule_path.exists():
+        st.divider()
+        st.subheader("⚙️ Rule Engine & Verification Schema: NodeXL Group-in-a-Box Layout")
+        st.markdown(
+            "Topologi aturan verifikasi deterministik (10 Pilar Pedoman MIKOM 2026) yang dipartisi ke dalam 5 klaster tematik "
+            "mengikuti estetika baku NodeXL Pro Group-in-a-Box:"
+        )
+        st.image(
+            str(img_rule_path),
+            caption="Gambar 3.3: Rule Engine & Verification Schema Berbasis Partisi NodeXL Pro Group-in-a-Box (42 Aturan Deterministik, 300 DPI)",
+            **btn_w()
+        )
+        st.caption("5 Klaster Aturan: (1) Format & Margin EMU, (2) Struktur 5 BAB, (3) Formula & Statistik, (4) Sitasi APA 7 & Jurnal, (5) Empiris NodeXL & NLP.")
+
 # ==============================================================================
 # TAB 5: BASIS DATA RIWAYAT AUDIT
 # ==============================================================================

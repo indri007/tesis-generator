@@ -241,6 +241,56 @@ class VectorProjectSchema:
         idx = max(0, min(layer_index, len(self.layers) - 1))
         self.layers[idx].objects.append(obj)
 
+    def remove_object(self, object_id: str) -> bool:
+        """Removes an object by id across all layers."""
+        for layer in self.layers:
+            initial_len = len(layer.objects)
+            layer.objects = [o for o in layer.objects if o.object_id != object_id]
+            if len(layer.objects) < initial_len:
+                return True
+        return False
+
+    def update_object(
+        self,
+        object_id: str,
+        x: float | None = None,
+        y: float | None = None,
+        width: float | None = None,
+        height: float | None = None,
+        text_content: str | None = None,
+        fill: str | None = None,
+        stroke: str | None = None,
+        stroke_width: float | None = None,
+    ) -> bool:
+        """Updates geometry, text, or style attributes of an object safely."""
+        obj = self.find_object(object_id)
+        if not obj:
+            return False
+        if x is not None:
+            obj.x = float(x)
+        if y is not None:
+            obj.y = float(y)
+        if width is not None and width > 0:
+            obj.width = float(width)
+        if height is not None and height > 0:
+            obj.height = float(height)
+        if text_content is not None:
+            obj.text_content = text_content
+        if fill is not None:
+            obj.style.fill = fill
+        if stroke is not None:
+            obj.style.stroke = stroke
+        if stroke_width is not None and stroke_width >= 0:
+            obj.style.stroke_width = float(stroke_width)
+        return True
+
+    def all_objects(self) -> list[VectorObject]:
+        """Returns flat list of all objects across visible layers."""
+        objs: list[VectorObject] = []
+        for layer in self.layers:
+            objs.extend(layer.objects)
+        return objs
+
     def to_doclaynet_elements(self, page_number: int = 1) -> list[Any]:
         """Converts vector project objects and attribution into DocLayNetElement representations.
 
