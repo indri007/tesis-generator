@@ -476,12 +476,23 @@ class PydanticModel:
         if val is None:
             return None
 
+        type_map = {
+            "int": int,
+            "float": float,
+            "str": str,
+            "bool": bool,
+            "list": list,
+            "dict": dict,
+        }
+        if isinstance(target_type, str) and target_type in type_map:
+            target_type = type_map[target_type]
+
         # Basic types
         if target_type in (int, float, str, bool):
             try:
                 return target_type(val)
             except (ValueError, TypeError):
-                raise TypeError(f"Field '{field_name}' failed coercion to {target_type.__name__}: {val}")
+                raise TypeError(f"Field '{field_name}' failed coercion to {getattr(target_type, '__name__', str(target_type))}: {val}")
 
         if hasattr(target_type, "__origin__"):
             # Generics like list[str], dict[str, Any]
