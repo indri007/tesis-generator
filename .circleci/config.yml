@@ -1,0 +1,45 @@
+version: 2.1
+
+jobs:
+  quality-and-tests:
+    docker:
+      - image: cimg/python:3.12
+    working_directory: ~/project
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - python-deps-v1-{{ checksum "requirements.txt" }}
+            - python-deps-v1-
+
+      - run:
+          name: Install dependencies
+          command: |
+            python -m pip install --upgrade pip
+            python -m pip install -r requirements.txt
+            python -m pip install pytest ruff
+
+      - save_cache:
+          key: python-deps-v1-{{ checksum "requirements.txt" }}
+          paths:
+            - ~/.cache/pip
+
+      - run:
+          name: Ruff lint
+          command: python -m ruff check .
+
+      - run:
+          name: Compile Python
+          command: |
+            python -m compileall -q \
+              app.py core engines parsers models tests
+
+      - run:
+          name: Regression tests
+          command: python -m pytest tests/ -q --tb=short
+
+workflows:
+  test-on-push:
+    jobs:
+      - quality-and-tests
