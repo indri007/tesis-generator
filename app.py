@@ -149,7 +149,7 @@ tab_generator, tab_audit, tab_reviser, tab_landing, tab_history = st.tabs([
 # TAB 1: AI THESIS GENERATOR (BAB 1–5)
 # ==============================================================================
 with tab_generator:
-    st.title("⚡ AI Thesis Generator (Bab 1–5)")
+    st.title("⚡ AI Thesis Generator (Bab 1–5) — TesisCheck MIKOM 2026")
     st.markdown("Penyusunan naskah draf tesis akademik berstandar resmi **PEDOMAN PENULISAN TESIS MIKOM 2026** berbasis bukti ilmiah dan nol halusinasi.")
 
     gen = ThesisGenerator()
@@ -373,7 +373,7 @@ with tab_audit:
                 mapped_findings = [map_finding_to_evidence(f, doc) for f in sanitized_findings]
 
                 # Revision Engine
-                rev_engine = RevisionEngine(mapped_findings)
+                rev_engine = RevisionEngine(mapped_findings, base_summary=results.summary)
                 checklist = rev_engine.generate_checklist()
                 score_card = rev_engine.calculate_scores()
                 counts = score_card["counts"]

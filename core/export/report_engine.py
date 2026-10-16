@@ -29,8 +29,12 @@ class ReportEngine:
         self.findings = findings
         self.doc_info = document_info
         self.checklist = checklist
-        self.category_scores = category_scores or {}
-        self.overall_score = overall_score
+        if isinstance(category_scores, (int, float)):
+            self.overall_score = float(category_scores)
+            self.category_scores = {}
+        else:
+            self.category_scores = category_scores or {}
+            self.overall_score = float(overall_score)
 
     def to_json(self) -> str:
         """Exports audit report as structured JSON."""

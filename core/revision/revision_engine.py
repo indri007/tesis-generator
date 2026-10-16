@@ -13,8 +13,87 @@ from docx.shared import Cm, Pt
 class RevisionEngine:
     """Classifies revision priorities and prepares corrected output files."""
 
-    def __init__(self, findings: list[dict[str, Any]]):
-        self.findings = findings
+    def __init__(
+        self,
+        findings: list[dict[str, Any]] | None = None,
+        base_summary: dict[str, Any] | None = None,
+    ):
+        self.findings = findings if findings is not None else []
+        self.base_summary = base_summary or {}
+
+    def calculate_scores(self, base_summary: dict[str, Any] | None = None) -> dict[str, Any]:
+        """Calculates compliance score and status counts strictly according to MIKOM 2026 rules.
+
+        Formula:
+            penalty = (ERROR * 15.0) + (WARNING * 5.0) + (UNVERIFIED * 2.0)
+            overall_score = max(0.0, min(100.0, 100.0 - penalty))
+
+        Returns:
+            dict containing:
+                - counts: dict with counts for PASS, ERROR, WARNING, INFO, UNVERIFIED
+                - penalty: total deduction applied
+                - overall_score: final compliance score in [0.0, 100.0]
+                - category_scores: breakdown of scores per audit category
+        """
+        import math
+
+        summary_source = base_summary if base_summary is not None else self.base_summary
+        counts: dict[str, int] = {
+            "PASS": int(summary_source.get("PASS", 0)) if isinstance(summary_source, dict) else 0,
+            "ERROR": 0,
+            "WARNING": 0,
+            "INFO": 0,
+            "UNVERIFIED": 0,
+        }
+
+        category_counts: dict[str, dict[str, int]] = {}
+
+        for item in self.findings:
+            if not isinstance(item, dict):
+                counts["UNVERIFIED"] += 1
+                continue
+
+            raw_status = item.get("status") or item.get("finding_status") or item.get("severity") or "UNVERIFIED"
+            status_norm = str(raw_status).strip().upper()
+
+            if status_norm in ("ERROR", "ERR", "CRITICAL", "FATAL"):
+                effective_status = "ERROR"
+            elif status_norm in ("WARNING", "WARN"):
+                effective_status = "WARNING"
+            elif status_norm in ("PASS", "PASSED", "SUCCESS"):
+                effective_status = "PASS"
+            elif status_norm in ("INFO", "INFORMATION"):
+                effective_status = "INFO"
+            else:
+                effective_status = "UNVERIFIED"
+
+            counts[effective_status] += 1
+
+            cat = str(item.get("category", "General")).strip() or "General"
+            if cat not in category_counts:
+                category_counts[cat] = {"ERROR": 0, "WARNING": 0, "UNVERIFIED": 0}
+            if effective_status in category_counts[cat]:
+                category_counts[cat][effective_status] += 1
+
+        penalty = (counts["ERROR"] * 15.0) + (counts["WARNING"] * 5.0) + (counts["UNVERIFIED"] * 2.0)
+        raw_score = 100.0 - penalty
+        if math.isnan(raw_score) or math.isinf(raw_score):
+            overall_score = 0.0
+        else:
+            overall_score = max(0.0, min(100.0, raw_score))
+
+        category_scores: dict[str, float] = {}
+        for cat, c_dict in category_counts.items():
+            cat_pen = (c_dict["ERROR"] * 15.0) + (c_dict["WARNING"] * 5.0) + (c_dict["UNVERIFIED"] * 2.0)
+            cat_score = max(0.0, min(100.0, 100.0 - cat_pen))
+            category_scores[cat] = round(cat_score, 1)
+
+        return {
+            "counts": counts,
+            "penalty": round(penalty, 1),
+            "overall_score": round(overall_score, 1),
+            "category_scores": category_scores,
+        }
 
     def generate_checklist(self) -> dict[str, list[dict[str, Any]]]:
         """Categorizes findings into 3 actionable priority groups."""
