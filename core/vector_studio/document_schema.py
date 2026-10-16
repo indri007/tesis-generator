@@ -240,3 +240,112 @@ class VectorProjectSchema:
             self.layers.append(VectorLayer())
         idx = max(0, min(layer_index, len(self.layers) - 1))
         self.layers[idx].objects.append(obj)
+
+    def to_doclaynet_elements(self, page_number: int = 1) -> list[Any]:
+        """Converts vector project objects and attribution into DocLayNetElement representations.
+
+        Uses lazy import of core.clones.doclaynet_layout to prevent circular dependencies.
+        Maps:
+        - Shapes with text / headers -> Section-Header / Text / Formula
+        - Vector objects overall -> Picture / Section-Header / List-Item / Text
+        - FigureAttribution heading -> Caption (bound to the overall figure)
+        """
+        from core.clones.doclaynet_layout import (
+            BoundingBox,
+            DocLayNetCategory,
+            DocLayNetElement,
+        )
+
+        elements: list[DocLayNetElement] = []
+
+        # 1. Whole Diagram Composite Bounding Box as a PICTURE element
+        elements.append(
+            DocLayNetElement(
+                element_id=f"fig_{self.project_id}",
+                category=DocLayNetCategory.PICTURE,
+                bbox=BoundingBox(
+                    x=0.0,
+                    y=0.0,
+                    width=float(self.canvas_width),
+                    height=float(self.canvas_height),
+                ),
+                page_number=page_number,
+                confidence=1.0,
+                text_content=self.title,
+                metadata={"title": self.title, "dpi": self.dpi},
+            )
+        )
+
+        # 2. Figure Caption element from Attribution (MIKOM 2026 standard)
+        if self.attribution:
+            attrib = self.attribution
+            # Placed standardly at bottom or top with standard height 20pt
+            elements.append(
+                DocLayNetElement(
+                    element_id=f"cap_{self.project_id}",
+                    category=DocLayNetCategory.CAPTION,
+                    bbox=BoundingBox(
+                        x=0.0,
+                        y=float(self.canvas_height) + 12.0,  # 12pt spatial distance
+                        width=float(self.canvas_width),
+                        height=24.0,
+                    ),
+                    page_number=page_number,
+                    confidence=1.0,
+                    text_content=attrib.full_heading,
+                    metadata={"source": attrib.source, "label": attrib.figure_label},
+                )
+            )
+
+        # 3. Internal Vector Objects
+        for layer in self.layers:
+            if not layer.is_visible:
+                continue
+            for obj in layer.objects:
+                if not obj.is_visible:
+                    continue
+
+                cat = DocLayNetCategory.PICTURE
+                text = (obj.text_content or "").strip()
+
+                if obj.shape_type == VectorShapeType.TEXT:
+                    if obj.typography.font_size >= 14.0 or (obj.typography.font_size >= 11.0 and obj.typography.font_weight == "bold"):
+                        cat = DocLayNetCategory.SECTION_HEADER
+                    else:
+                        cat = DocLayNetCategory.TEXT
+                elif obj.shape_type in (VectorShapeType.RECTANGLE, VectorShapeType.ROUNDED_RECT):
+                    if text:
+                        if text.lower().startswith(("gambar ", "tabel ")):
+                            cat = DocLayNetCategory.CAPTION
+                        elif text.startswith(("- ", "• ", "* ")):
+                            cat = DocLayNetCategory.LIST_ITEM
+                        elif "formula" in text.lower() or "\\begin" in text:
+                            cat = DocLayNetCategory.FORMULA
+                        elif obj.typography.font_weight == "bold" and len(text) < 80:
+                            cat = DocLayNetCategory.SECTION_HEADER
+                        else:
+                            cat = DocLayNetCategory.TEXT
+
+                elements.append(
+                    DocLayNetElement(
+                        element_id=obj.object_id,
+                        category=cat,
+                        bbox=BoundingBox(
+                            x=float(obj.x),
+                            y=float(obj.y),
+                            width=float(obj.width),
+                            height=float(obj.height),
+                        ),
+                        page_number=page_number,
+                        confidence=1.0,
+                        text_content=text,
+                        metadata={
+                            "layer": layer.name,
+                            "shape": obj.shape_type.value,
+                            "name": obj.name,
+                        },
+                    )
+                )
+
+        return elements
+

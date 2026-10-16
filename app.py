@@ -360,16 +360,51 @@ with tab_vector:
 
         st.caption(f"📐 {project_obj.attribution.full_source_line} | Resolusi Standar: 300 DPI")
 
-        # DocLayNet Academic Layout Validator Section
-        with st.expander("📑 DocLayNet Layout & Spatial Validator (Analisis Segmentasi Dokumen)"):
-            st.markdown("""
-            **IBM DocLayNet Analysis:** Validasi pemetaan elemen dokumen (Title, Header, Text, Table, Picture, Caption, Formula) 
-            berdasarkan pedoman penulisan tesis MIKOM 2026.
-            """)
-            st.write(f"- **Kategori Elemen:** {DocLayNetCategory.PICTURE.value} & {DocLayNetCategory.CAPTION.value}")
-            st.write(f"- **Batas Bounding Box Gambar:** x=40pt, y=60pt, width={project_obj.canvas_width}pt, height={project_obj.canvas_height}pt")
-            st.write("- **Margin Kepatuhan:** 4.0 cm (Kiri) & 3.0 cm (Kanan) -> **TERPENUHI (PASS)**")
-            st.write("- **Spatial Caption Distance:** 12.0 pt -> **TERLINDUNGI (PASS)**")
+        # DocLayNet Academic Layout Validator Section (Dynamic Integration)
+        with st.expander("📑 DocLayNet Spatial & Layout Validator (Evaluasi Geometri Berbasis Aturan)", expanded=False):
+            st.markdown(
+                "**Evaluasi Geometri Berbasis Taksonomi DocLayNet:** "
+                "Memvalidasi batas kanvas, tumpang-tindih (IoU), pemetaan *Caption* $\\leftrightarrow$ *Picture*, "
+                "serta urutan baca (*reading-order*) elemen diagram secara runtime."
+            )
+
+            # Dynamic Analysis Call
+            layout_report = DocLayNetClone.analyze_vector_project(project_obj, check_page_margins=False)
+
+            col_m1, col_m2, col_m3 = st.columns(3)
+            with col_m1:
+                st.metric("Total Objek Terdeteksi", layout_report.total_elements)
+            with col_m2:
+                st.metric("Skor Kepatuhan Spasial", f"{layout_report.layout_score:.1f}%")
+            with col_m3:
+                status_label = "PASS" if not layout_report.formatting_warnings else "WARNING"
+                st.metric("Status Validasi", status_label)
+
+            # Details
+            st.write(f"- **Kategori Elemen:** {', '.join(f'{k} ({v})' for k, v in layout_report.category_counts.items() if v > 0)}")
+
+            # Overlapping pairs
+            if layout_report.overlapping_pairs:
+                st.warning(f"⚠️ Ditemukan {len(layout_report.overlapping_pairs)} pasangan objek bertumpuk (IoU > 0.25):")
+                for ov in layout_report.overlapping_pairs:
+                    st.write(f"  • `{ov['element_a']}` ({ov['category_a']}) $\\leftrightarrow$ `{ov['element_b']}` ({ov['category_b']}) | IoU: **{ov['iou']}**")
+            else:
+                st.success("✓ **Deteksi Tumpang-Tindih:** Nol tumpang-tindih ilegal (IoU $\\le$ 0.25).")
+
+            # Out of bounds
+            if layout_report.out_of_bounds_elements:
+                st.warning(f"⚠️ Objek di luar kanvas: {', '.join(layout_report.out_of_bounds_elements)}")
+            else:
+                st.success(f"✓ **Batas Kanvas:** Seluruh objek berada dalam batas ({project_obj.canvas_width:.0f} × {project_obj.canvas_height:.0f} pt).")
+
+            # Caption pairing
+            if layout_report.figure_caption_pairs:
+                st.success(f"✓ **Relasi Caption:** Terhubung presisi dengan `{layout_report.figure_caption_pairs[0]['caption_text']}` (Jarak: {layout_report.figure_caption_pairs[0]['distance_pt']} pt).")
+            elif layout_report.unpaired_captions:
+                st.warning(f"⚠️ Caption tanpa pasangan gambar: {', '.join(layout_report.unpaired_captions)}")
+
+            # Academic Page Margin Status
+            st.info("ℹ️ **Pemeriksaan Margin Halaman (4-4-3-3 cm):** NOT CHECKED pada kanvas editor (Diagram disiapkan untuk disisipkan otomatis ke naskah Word dengan margin penuh saat ekspor DOCX).")
 
 # ==============================================================================
 # TAB 3: AUDIT & ANALISIS NASKAH
@@ -811,6 +846,21 @@ with tab_landing:
         "sembari menampilkan interkoneksi lintas batas (*inter-group bridge edges*) dan parameter global jaringan "
         "(*|V| = 971, |E| = 666, Graph Density = 0.00071, Modularity Q = 0.9837*)."
     )
+
+    img_erd_path = Path(__file__).parent / "assets" / "images" / "17_erd_nodexl_database_schema.png"
+    if img_erd_path.exists():
+        st.divider()
+        st.subheader("🗄️ Entity-Relationship Diagram (ERD): NodeXL Group-in-a-Box Layout")
+        st.markdown(
+            "Diagram relasional basis data TesisCheck MIKOM 2026 yang distrukturkan ke dalam 5 kotak partisi tematik "
+            "mengikuti kaidah baku Group-in-a-Box (GIB) NodeXL Pro:"
+        )
+        st.image(
+            str(img_erd_path),
+            caption="Gambar 3.2: Entity-Relationship Diagram (ERD) Berbasis Partisi NodeXL Pro Group-in-a-Box (|V_ERD|=16 Entitas, |E_ERD|=18 Relasi, 300 DPI)",
+            **btn_w()
+        )
+        st.caption("5 Klaster Partisi: (1) Pedoman & Aturan, (2) Naskah & Sitasi, (3) Verifikasi Literatur, (4) Sesi Audit, (5) Jaringan Empiris NodeXL.")
 
 # ==============================================================================
 # TAB 5: BASIS DATA RIWAYAT AUDIT

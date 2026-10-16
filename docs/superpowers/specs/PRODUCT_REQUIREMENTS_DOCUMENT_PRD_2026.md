@@ -71,6 +71,158 @@ Setiap penyematan diagram NodeXL ke dalam naskah DOCX/PDF wajib mematuhi ketentu
 - **Keterangan Sumber:** `Sumber: Data primer diolah menggunakan NodeXL Pro Academic License #14103 berdasarkan token c1d8d71236e1cae9628f0b5c7a55b581 (2026).`
 - **Jarak Spasial:** 12 pt ruang sebelum judul, 4 pt spasi gambar, 12 pt ruang sesudah sumber (*spatial caption clearance*).
 
+### 2.4 Entity-Relationship Diagram (ERD) — NodeXL Group-in-a-Box Architecture
+Seluruh arsitektur basis data relasional sistem dipetakan menggunakan tata letak **NodeXL Pro Group-in-a-Box (GIB) Treemap Partitioning** dengan 5 klaster tematik (16 entitas tabel, 18 relasi foreign key):
+
+![Gambar 3.2: Entity-Relationship Diagram (ERD) Berbasis Partisi NodeXL Pro Group-in-a-Box](file:///Users/jevin/AI-Thesis-Generator/assets/images/17_erd_nodexl_database_schema.png)
+
+```mermaid
+erDiagram
+    GUIDELINE_PROFILES ||--o{ RULE_DEFINITIONS : "defines"
+    GUIDELINE_PROFILES ||--o{ PROJECTS : "governs"
+    PROJECTS ||--o{ DOCUMENTS : "contains"
+    DOCUMENTS ||--o{ IN_TEXT_CITATIONS : "cites"
+    IN_TEXT_CITATIONS }o--|| REFERENCE_MASTERS : "matches_doi"
+    REFERENCE_MASTERS ||--o{ SCOPUS_RECORDS : "indexes_issn"
+    REFERENCE_MASTERS ||--o{ CONSENSUS_CLAIMS : "synthesizes"
+    PROJECTS ||--o{ AUDIT_SESSIONS : "initiates"
+    DOCUMENTS ||--o{ AUDIT_SESSIONS : "audited_in"
+    AUDIT_SESSIONS ||--o{ AUDIT_FINDINGS : "produces"
+    RULE_DEFINITIONS ||--o{ AUDIT_FINDINGS : "evaluates"
+    AUDIT_SESSIONS ||--o{ REVISION_PROPOSALS : "generates"
+    REVISION_PROPOSALS ||--o{ CHANGE_LOGS : "logs"
+    AUDIT_SESSIONS ||--|| NODEXL_SNAPSHOTS : "bridges_empirical"
+    NODEXL_SNAPSHOTS ||--o{ NODEXL_COMMUNITIES : "partitions"
+    NODEXL_SNAPSHOTS ||--o{ NODEXL_NODES : "contains"
+    NODEXL_SNAPSHOTS ||--o{ NODEXL_EDGES : "connects"
+    NODEXL_COMMUNITIES ||--o{ NODEXL_NODES : "groups"
+
+    GUIDELINE_PROFILES {
+        string profile_id PK
+        string university_name
+        string program_study
+        string version
+        string config_json
+    }
+    RULE_DEFINITIONS {
+        string rule_id PK
+        string profile_id FK
+        string category
+        string severity
+        string field_target
+        string operator
+        string expectation_json
+    }
+    PROJECTS {
+        string project_id PK
+        string guideline_id FK
+        string title
+        string author_name
+        string nim
+    }
+    DOCUMENTS {
+        string document_id PK
+        string project_id FK
+        string file_type
+        int total_pages
+        string sha256_hash
+    }
+    IN_TEXT_CITATIONS {
+        string citation_id PK
+        string document_id FK
+        string raw_citation
+        string author_key
+        int publication_year
+    }
+    REFERENCE_MASTERS {
+        string doi PK
+        string clean_title
+        string authors_json
+        int publication_year
+        string verification_status
+    }
+    SCOPUS_RECORDS {
+        string issn_l PK
+        string journal_title
+        string quartile
+        float sjr
+        bool is_verified
+    }
+    CONSENSUS_CLAIMS {
+        string claim_id PK
+        string doi FK
+        float consensus_yes_pct
+        string study_design
+    }
+    AUDIT_SESSIONS {
+        string session_id PK
+        string project_id FK
+        string document_id FK
+        float compliance_score
+        int errors_count
+        int unverified_count
+    }
+    AUDIT_FINDINGS {
+        string finding_id PK
+        string session_id FK
+        string rule_id FK
+        string status
+        string recommendation
+    }
+    REVISION_PROPOSALS {
+        string proposal_id PK
+        string session_id FK
+        string resulting_document_id FK
+        string policy_tier
+        string status
+    }
+    CHANGE_LOGS {
+        string log_id PK
+        string proposal_id FK
+        string rule_id
+        string action_type
+        string applied_by
+    }
+    NODEXL_SNAPSHOTS {
+        string token PK
+        int total_nodes
+        int total_edges
+        float modularity
+        float graph_density
+    }
+    NODEXL_COMMUNITIES {
+        int community_id PK
+        string token FK
+        string cluster_name
+        string dominant_topic
+        int member_count
+    }
+    NODEXL_NODES {
+        string actor_id PK
+        string token FK
+        int community_id FK
+        string label
+        float degree
+        float betweenness
+        string dominant_emotion
+    }
+    NODEXL_EDGES {
+        string edge_id PK
+        string token FK
+        string source_id FK
+        string target_id FK
+        string rel_type
+        bool is_bridge_edge
+    }
+```
+
+#### Spesifikasi 5 Klaster Partisi Skema ERD:
+1. **Group 1 (Pedoman & Rule Engine):** Mengunci parameter acuan buku pedoman (`guideline_profiles`) dan batasan aturan deterministik (`rule_definitions`) untuk konversi margin EMU, spasi ganda, dan font.
+2. **Group 2 (Naskah & Sitasi Teks):** Mengelola siklus naskah (`documents`), batas ketat maksimal 175 halaman, dan penanda kutipan dalam teks tubuh (`in_text_citations`).
+3. **Group 3 (Verifikasi Literatur & Q1):** Memetakan master referensi daftar pustaka (`reference_masters`), status kuartil Scopus konservatif (`scopus_records`), dan konsensus riset ilmiah (`consensus_claims`).
+4. **Group 4 (Sesi Audit & Auto-Revisi Dokumen):** Menyimpan histori sesi audit (`audit_sessions`), kartu temuan kepatuhan (`audit_findings`), proposal revisi dokumen berjenjang (`revision_proposals`), dan log perubahan aman (`change_logs`).
+5. **Group 5 (NodeXL Pro SNA Empirical Network):** Menghubungkan secara langsung snapshot graf empiris (`nodexl_snapshots`), partisi komunitas Louvain (`nodexl_communities`), simpul aktor ber-atribusi emosi (`nodexl_nodes`), dan relasi interaksi jembatan (`nodexl_edges`).
+
 ---
 
 ## 3. Product Scope & Functional Requirements (8-Phase Architecture)

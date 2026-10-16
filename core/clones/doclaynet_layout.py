@@ -104,6 +104,11 @@ class LayoutAnalysisReport:
     table_caption_pairs: list[dict[str, Any]]
     formatting_warnings: list[str]
     layout_score: float  # 0.0 - 100.0
+    overlapping_pairs: list[dict[str, Any]] = field(default_factory=list)
+    out_of_bounds_elements: list[str] = field(default_factory=list)
+    unpaired_captions: list[str] = field(default_factory=list)
+    unpaired_pictures: list[str] = field(default_factory=list)
+    reading_order_sequence: list[str] = field(default_factory=list)
 
 
 class DocLayNetClone:
@@ -151,6 +156,7 @@ class DocLayNetClone:
         category_counts: dict[str, int] = {c.value: 0 for c in DocLayNetCategory}
         elements_by_page: dict[int, list[DocLayNetElement]] = {}
         warnings: list[str] = []
+        out_of_bounds: list[str] = []
 
         # Sort elements by page then reading order (top-to-bottom, left-to-right)
         sorted_elements = sorted(elements, key=lambda e: (e.page_number, e.bbox.y, e.bbox.x))
@@ -160,35 +166,78 @@ class DocLayNetClone:
             category_counts[cat_name] = category_counts.get(cat_name, 0) + 1
             elements_by_page.setdefault(el.page_number, []).append(el)
 
-            # Check Margin Violations
-            if el.bbox.x < (margin_left - 10.0):
+            # Check Out-of-bounds (canvas / page)
+            if el.bbox.x < 0 or el.bbox.y < 0 or el.bbox.x2 > page_width or el.bbox.y2 > page_height:
+                out_of_bounds.append(el.element_id)
+                warnings.append(
+                    f"Halaman {el.page_number}: Elemen '{el.element_id}' berada di luar batas kanvas/halaman "
+                    f"(x={el.bbox.x:.1f}, y={el.bbox.y:.1f}, x2={el.bbox.x2:.1f}, y2={el.bbox.y2:.1f})."
+                )
+
+            # Check Margin Violations (only when margins specified and element is on page)
+            if margin_left > 0 and el.bbox.x < (margin_left - 10.0):
                 warnings.append(
                     f"Halaman {el.page_number}: Elemen '{el.element_id}' ({cat_name}) melebihi batas margin kiri 4.0 cm."
                 )
-            if (el.bbox.x2) > (page_width - margin_right + 10.0):
+            if margin_right > 0 and (el.bbox.x2) > (page_width - margin_right + 10.0):
                 warnings.append(
                     f"Halaman {el.page_number}: Elemen '{el.element_id}' ({cat_name}) melebihi batas margin kanan 3.0 cm."
                 )
 
+        # Overlapping Detection (Pairwise IoU)
+        overlapping_pairs: list[dict[str, Any]] = []
+        for i in range(len(sorted_elements)):
+            for j in range(i + 1, len(sorted_elements)):
+                el_a = sorted_elements[i]
+                el_b = sorted_elements[j]
+                if el_a.page_number != el_b.page_number:
+                    continue
+                # Skip parent composite figure wrapping internal shapes
+                if el_a.element_id.startswith("fig_") or el_b.element_id.startswith("fig_"):
+                    continue
+                # Skip connector arrows or zero-area lines
+                if el_a.bbox.area <= 0 or el_b.bbox.area <= 0:
+                    continue
+
+                if el_a.bbox.intersects(el_b.bbox):
+                    iou = el_a.bbox.intersection_over_union(el_b.bbox)
+                    # Significant overlap (> 0.25)
+                    if iou > 0.25:
+                        overlapping_pairs.append({
+                            "element_a": el_a.element_id,
+                            "element_b": el_b.element_id,
+                            "category_a": el_a.category.value,
+                            "category_b": el_b.category.value,
+                            "iou": round(iou, 3),
+                        })
+
         # Spatial Pairing: Match Pictures and Tables with their nearest Captions
         fig_caption_pairs: list[dict[str, Any]] = []
         table_caption_pairs: list[dict[str, Any]] = []
+        unpaired_captions: list[str] = []
+        unpaired_pictures: list[str] = []
 
         for p_num, p_elements in elements_by_page.items():
-            pictures = [e for e in p_elements if e.category == DocLayNetCategory.PICTURE]
+            pictures = [e for e in p_elements if e.category == DocLayNetCategory.PICTURE and not e.element_id.startswith("fig_")]
+            # If no internal pictures, use composite figure if present
+            if not pictures:
+                pictures = [e for e in p_elements if e.category == DocLayNetCategory.PICTURE]
             tables = [e for e in p_elements if e.category == DocLayNetCategory.TABLE]
             captions = [e for e in p_elements if e.category == DocLayNetCategory.CAPTION]
 
+            matched_caption_ids = set()
+
             for pic in pictures:
-                # Find caption closest to picture (above or below within 60 points)
                 closest_cap = None
                 min_dist = float("inf")
                 for cap in captions:
-                    dist = abs(cap.bbox.y - pic.bbox.y2)  # below picture
-                    if dist < min_dist and dist < 80.0:
+                    # distance below picture or near bottom
+                    dist = abs(cap.bbox.y - pic.bbox.y2)
+                    if dist < min_dist and dist < 120.0:
                         min_dist = dist
                         closest_cap = cap
                 if closest_cap:
+                    matched_caption_ids.add(closest_cap.element_id)
                     fig_caption_pairs.append({
                         "picture_id": pic.element_id,
                         "caption_id": closest_cap.element_id,
@@ -196,23 +245,29 @@ class DocLayNetClone:
                         "distance_pt": round(min_dist, 2),
                     })
                 else:
+                    unpaired_pictures.append(pic.element_id)
                     warnings.append(f"Halaman {p_num}: Gambar '{pic.element_id}' tidak memiliki keterangan caption di dekatnya.")
 
             for tbl in tables:
-                # Tables in Indonesian thesis standards usually have captions above
                 closest_cap = None
                 min_dist = float("inf")
                 for cap in captions:
-                    dist = abs(tbl.bbox.y - cap.bbox.y2)  # above table
-                    if dist < min_dist and dist < 60.0:
+                    dist = abs(tbl.bbox.y - cap.bbox.y2)
+                    if dist < min_dist and dist < 80.0:
                         min_dist = dist
                         closest_cap = cap
                 if closest_cap:
+                    matched_caption_ids.add(closest_cap.element_id)
                     table_caption_pairs.append({
                         "table_id": tbl.element_id,
                         "caption_id": closest_cap.element_id,
                         "caption_text": closest_cap.text_content,
                     })
+
+            for cap in captions:
+                if cap.element_id not in matched_caption_ids:
+                    unpaired_captions.append(cap.element_id)
+                    warnings.append(f"Halaman {p_num}: Caption '{cap.element_id}' ('{cap.text_content}') tidak terhubung dengan Gambar atau Tabel manapun.")
 
         # Calculate Compliance Score (100 - penalties)
         penalty = len(warnings) * 4.0
@@ -226,4 +281,50 @@ class DocLayNetClone:
             table_caption_pairs=table_caption_pairs,
             formatting_warnings=warnings,
             layout_score=round(score, 1),
+            overlapping_pairs=overlapping_pairs,
+            out_of_bounds_elements=out_of_bounds,
+            unpaired_captions=unpaired_captions,
+            unpaired_pictures=unpaired_pictures,
+            reading_order_sequence=[e.element_id for e in sorted_elements],
         )
+
+    @classmethod
+    def analyze_vector_project(
+        cls,
+        project: Any,
+        check_page_margins: bool = False,
+    ) -> LayoutAnalysisReport:
+        """Dynamically converts and validates a VectorProjectSchema using DocLayNet rules.
+
+        - If check_page_margins is False: Validates canvas boundary integrity [0, width, height]
+          without penalizing diagram components for page margins.
+        - If check_page_margins is True: Validates against full A4 page thesis margins (4-4-3-3 cm).
+        """
+        # Ensure project elements can be extracted
+        if hasattr(project, "to_doclaynet_elements"):
+            elements = project.to_doclaynet_elements(page_number=1)
+        else:
+            elements = []
+
+        cw = float(getattr(project, "canvas_width", 800.0))
+        ch = float(getattr(project, "canvas_height", 600.0))
+
+        if check_page_margins:
+            # Full A4 Page
+            return cls.analyze_document_layout(
+                elements=elements,
+                page_width=595.0,
+                page_height=842.0,
+                margin_left=113.38,
+                margin_right=85.04,
+            )
+        # Diagram Canvas Viewport (No page margin penalty, strict canvas boundary check)
+        # We allow canvas_height + 40 for attribution caption box
+        return cls.analyze_document_layout(
+            elements=elements,
+            page_width=cw,
+            page_height=ch + 50.0,
+            margin_left=0.0,
+            margin_right=0.0,
+        )
+

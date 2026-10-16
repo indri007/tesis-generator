@@ -60,3 +60,37 @@ def test_thisiseconomy_bridge_baseline_alignment():
     """Verifies that the ThisIsEconomyBridge incorporates the verified 971 nodes baseline."""
     bridge = ThisIsEconomyBridge()
     assert bridge.baseline.total_nodes == 971
+
+
+def test_nodexl_erd_visual_asset_integrity():
+    """Verifies that the NodeXL Group-in-a-Box ERD image exists, is >100KB and has valid PNG bytes."""
+    erd_path = ROOT_DIR / "assets" / "images" / "17_erd_nodexl_database_schema.png"
+    assert erd_path.exists(), f"Asset not found at {erd_path}"
+    assert erd_path.stat().st_size > 100_000, "ERD image should be high-resolution (>100KB)"
+
+    with open(erd_path, "rb") as f:
+        header = f.read(8)
+    assert header == b"\x89PNG\r\n\x1a\n", "ERD file is not a valid PNG image"
+
+
+def test_prd_and_app_contain_erd_specifications():
+    """Verifies that PRD documents and app.py contain the ERD diagram and specifications."""
+    prd_paths = [
+        ROOT_DIR / "docs" / "PRD_AI_THESIS_GENERATOR.md",
+        ROOT_DIR / "docs" / "superpowers" / "specs" / "PRODUCT_REQUIREMENTS_DOCUMENT_PRD_2026.md",
+    ]
+
+    for p in prd_paths:
+        content = p.read_text(encoding="utf-8")
+        assert "17_erd_nodexl_database_schema.png" in content, f"ERD image link missing in {p}"
+        assert "erDiagram" in content, f"Mermaid erDiagram missing in {p}"
+        assert "GUIDELINE_PROFILES" in content, f"GUIDELINE_PROFILES missing in {p}"
+        assert "NODEXL_SNAPSHOTS" in content, f"NODEXL_SNAPSHOTS missing in {p}"
+        assert "NODEXL_COMMUNITIES" in content, f"NODEXL_COMMUNITIES missing in {p}"
+        assert "NODEXL_NODES" in content, f"NODEXL_NODES missing in {p}"
+        assert "NODEXL_EDGES" in content, f"NODEXL_EDGES missing in {p}"
+
+    app_root = (ROOT_DIR / "app.py").read_text(encoding="utf-8")
+    assert "17_erd_nodexl_database_schema.png" in app_root
+    assert "Entity-Relationship Diagram (ERD): NodeXL Group-in-a-Box Layout" in app_root
+
