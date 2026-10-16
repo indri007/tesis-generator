@@ -315,8 +315,9 @@ with tab_audit:
                     st.stop()
 
                 # Cek Batas 175 Halaman
-                if doc.page_count > 175:
-                    st.error(f"❌ FATAL ERROR: Naskah melebihi batas 175 halaman (Terdeteksi: {doc.page_count} halaman).")
+                page_count = doc.page_count if doc.page_count is not None else 1
+                if page_count > 175:
+                    st.error(f"❌ FATAL ERROR: Naskah melebihi batas 175 halaman (Terdeteksi: {page_count} halaman).")
                     st.stop()
 
                 # Parsing Dokumen Jurnal Pembanding

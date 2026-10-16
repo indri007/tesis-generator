@@ -53,6 +53,15 @@ class ParsedDocument:
             p.text for p in self.paragraphs
         )
 
+    def get_effective_page_count(self) -> int:
+        """Returns a guaranteed positive integer page count, calculating academic word density for DOCX if missing."""
+        if isinstance(self.page_count, int) and self.page_count > 0:
+            return self.page_count
+        words = len(self.get_text().split())
+        estimated = max(1, round(words / 275)) if words > 0 else 1
+        self.page_count = estimated
+        return estimated
+
     def to_rule_input(self) -> dict:
         full_text = self.get_text()
 
