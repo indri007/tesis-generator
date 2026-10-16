@@ -2,9 +2,10 @@ from pathlib import Path
 
 from engines.docx_parser import parse_docx
 from engines.pdf_parser import parse_pdf
+from models.document_model import ParsedDocument
 
 
-def parse_document(path: str):
+def parse_document(path: str) -> ParsedDocument:
     file_path = Path(path)
     extension = file_path.suffix.lower()
 

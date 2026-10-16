@@ -7,7 +7,7 @@ import re
 import shutil
 import tempfile
 from pathlib import Path
-from typing import BinaryIO
+from typing import Any, BinaryIO
 
 from typing_extensions import Self
 
@@ -55,7 +55,7 @@ class TempFileManager:
             file_stream.seek(0)
         return dest_path
 
-    def __exit__(self, exc_type, exc_val, exc_tb):
+    def __exit__(self, exc_type: Any, exc_val: Any, exc_tb: Any) -> None:
         if self.temp_dir and os.path.exists(self.temp_dir):
             try:
                 shutil.rmtree(self.temp_dir)

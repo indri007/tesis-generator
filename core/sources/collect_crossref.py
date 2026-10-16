@@ -24,7 +24,7 @@ HEADERS = {
     )
 }
 
-def main():
+def main() -> None:
     count = 0
 
     with OUT.open("a", encoding="utf-8") as output:
