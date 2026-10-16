@@ -537,10 +537,31 @@ with tab_vector:
         )
 
     with col_v2:
-        st.subheader(f"👁️ Pratinjau Kanvas: {project_obj.attribution.full_heading}")
+        st.subheader(f"👁️ Kanvas Interaktif: {project_obj.attribution.full_heading}")
         selected_target = st.session_state.get("vector_selected_id")
-        canvas_html = CanvasComponent.render_canvas_html(project_obj, selected_id=selected_target, height=620)
-        st.components.v1.html(canvas_html, height=630, scrolling=False)
+
+        # Bidirectional Custom Component Call
+        event_payload = CanvasComponent.render_interactive_canvas(
+            project=project_obj,
+            selected_id=selected_target,
+            key="vstudio_interactive_canvas_comp",
+        )
+
+        # Handle Incoming Two-Way Event from JavaScript
+        if event_payload and isinstance(event_payload, dict):
+            last_ts = st.session_state.get("vector_last_event_ts")
+            ev_ts = event_payload.get("timestamp")
+            if ev_ts != last_ts:
+                st.session_state["vector_last_event_ts"] = ev_ts
+                res = CanvasComponent.validate_and_apply_event(project_obj, event_payload)
+                if res["success"]:
+                    if res["action"] == "select_object":
+                        st.session_state["vector_selected_id"] = res["object_id"]
+                        st.rerun()
+                    elif res["mutated"]:
+                        push_history_state(project_obj)
+                        st.session_state["vector_selected_id"] = res["object_id"]
+                        st.rerun()
 
         st.caption(f"📐 {project_obj.attribution.full_source_line} | Resolusi Standar: 300 DPI")
 

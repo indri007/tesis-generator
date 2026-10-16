@@ -1,22 +1,54 @@
-"""HTML5 Interactive Vector Studio Component for Streamlit.
+"""Bidirectional Interactive Vector Studio Component for Streamlit.
 
-Renders an interactive, client-side vector diagram editor:
-- Lossless SVG rendering with pan & zoom controls.
-- Visual selection outlines, resize handles, and direct dragging.
-- Property inspection, text editing, and color modification.
-- Safe, zero-npm, zero-external-CDN implementation communicating via Streamlit callbacks and session state.
+Provides real-time two-way communication between SVG canvas (JavaScript) and Python:
+- Native Streamlit custom component declared via `st.components.v1.declare_component`.
+- Handles visual drag, resize, and selection events via `Streamlit.setComponentValue()`.
+- Validates all incoming payloads in Python (bounds, NaN/Infinity protection, object existence)
+  before mutating VectorProjectSchema.
+- Provides fallback to static HTML canvas rendering if custom component initialization is bypassed.
 """
 
 from __future__ import annotations
 
-import html
+import math
+from pathlib import Path
+from typing import Any
+
+import streamlit.components.v1 as components
 
 from core.vector_studio.document_schema import VectorProjectSchema
 from core.vector_studio.svg_engine import SVGEngine
 
+# Declare custom component with local static HTML bundle (Zero-npm, zero-CDN)
+_FRONTEND_DIR = Path(__file__).parent / "frontend"
+_vector_canvas_component = components.declare_component("vector_canvas_component", path=str(_FRONTEND_DIR))
+
 
 class CanvasComponent:
-    """Manages the visual interactive canvas in the Streamlit frontend."""
+    """Manages the bidirectional interactive vector canvas in Streamlit."""
+
+    @classmethod
+    def render_interactive_canvas(
+        cls,
+        project: VectorProjectSchema,
+        selected_id: str | None = None,
+        key: str = "vector_canvas_component",
+    ) -> dict[str, Any] | None:
+        """Renders bidirectional interactive canvas and returns JavaScript interaction event payload."""
+        svg_content = SVGEngine.compile_project_to_svg(project, include_attribution=False)
+        attrib = project.attribution
+
+        component_value = _vector_canvas_component(
+            svg_content=svg_content,
+            title=attrib.full_heading if attrib else project.title,
+            source=attrib.source if attrib else "",
+            selected_id=selected_id or "",
+            width=project.canvas_width,
+            height=project.canvas_height,
+            default=None,
+            key=key,
+        )
+        return component_value
 
     @classmethod
     def render_canvas_html(
@@ -25,246 +57,90 @@ class CanvasComponent:
         selected_id: str | None = None,
         height: int = 650,
     ) -> str:
-        """Generates self-contained HTML/CSS/JS for rendering and interacting with the SVG canvas."""
+        """Renders self-contained standalone HTML bundle for testing and offline fallback."""
+        frontend_html = (_FRONTEND_DIR / "index.html").read_text(encoding="utf-8")
         svg_content = SVGEngine.compile_project_to_svg(project, include_attribution=False)
         attrib = project.attribution
-        sel_attr = selected_id or ""
 
-        return f"""
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<style>
-  * {{ box-sizing: border-box; margin: 0; padding: 0; }}
-  body {{
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #0b1120;
-    color: #f8fafc;
-    overflow: hidden;
-    user-select: none;
-  }}
-  .canvas-wrapper {{
-    display: flex;
-    flex-direction: column;
-    height: {height}px;
-    background: radial-gradient(circle at 50% 50%, #172554 0%, #0b1120 100%);
-    border: 1px solid rgba(88, 216, 255, 0.2);
-    border-radius: 12px;
-    position: relative;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
-  }}
-  .toolbar {{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 16px;
-    background: rgba(15, 23, 42, 0.85);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  }}
-  .toolbar-title {{
-    font-size: 13px;
-    font-weight: 600;
-    color: #38bdf8;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }}
-  .toolbar-actions {{
-    display: flex;
-    gap: 8px;
-  }}
-  .btn-tool {{
-    background: rgba(30, 41, 59, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: #e2e8f0;
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 12px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }}
-  .btn-tool:hover {{
-    background: rgba(56, 189, 248, 0.2);
-    border-color: #38bdf8;
-    color: #fff;
-  }}
-  .btn-tool.active {{
-    background: #0284c7;
-    border-color: #38bdf8;
-    color: #fff;
-  }}
-  .viewport {{
-    flex: 1;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    position: relative;
-    cursor: default;
-  }}
-  .viewport.pan-mode {{
-    cursor: grab;
-  }}
-  .viewport.pan-mode:active {{
-    cursor: grabbing;
-  }}
-  .svg-container {{
-    background: #ffffff;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-    border-radius: 6px;
-    transform-origin: center center;
-    position: relative;
-  }}
-  .svg-container svg {{
-    display: block;
-    width: {project.canvas_width}px;
-    height: {project.canvas_height}px;
-  }}
-  /* Interactive Shape Elements */
-  .svg-container svg [id^="obj_"] {{
-    cursor: pointer;
-    transition: stroke 0.15s ease;
-  }}
-  .svg-container svg [id^="obj_"]:hover {{
-    stroke: #0284c7 !important;
-    stroke-width: 2.5px !important;
-  }}
-  .svg-container svg [id="{sel_attr}"] {{
-    outline: 2px dashed #0284c7;
-    stroke: #0284c7 !important;
-    stroke-width: 3px !important;
-  }}
-  .footer-caption {{
-    padding: 8px 16px;
-    background: rgba(15, 23, 42, 0.95);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    font-size: 11px;
-    color: #94a3b8;
-    display: flex;
-    justify-content: space-between;
-  }}
-  .selection-badge {{
-    color: #38bdf8;
-    font-weight: 500;
-  }}
-</style>
-</head>
-<body>
-<div class="canvas-wrapper">
-  <div class="toolbar">
-    <div class="toolbar-title">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-        <polyline points="2 17 12 22 22 17"></polyline>
-        <polyline points="2 12 12 17 22 12"></polyline>
-      </svg>
-      <span>{html.escape(attrib.full_heading)}</span>
-      <span class="selection-badge" id="selBadge"></span>
-    </div>
-    <div class="toolbar-actions">
-      <button class="btn-tool" id="btnPan" onclick="togglePan()">Pan Mode</button>
-      <button class="btn-tool" onclick="zoomIn()">Zoom +</button>
-      <button class="btn-tool" onclick="zoomOut()">Zoom -</button>
-      <button class="btn-tool" onclick="resetZoom()">100%</button>
-    </div>
-  </div>
+        rendered = frontend_html.replace(
+            '<div id="svgMount"></div>',
+            f'<div id="svgMount">{svg_content}</div>',
+        )
+        if attrib:
+            rendered = rendered.replace("Vector Canvas", attrib.full_heading)
+            rendered = rendered.replace("Sumber: Standard MIKOM 2026", f"Sumber: {attrib.source}")
+        if selected_id:
+            rendered = rendered.replace('let activeSelectedId = null;', f'let activeSelectedId = "{selected_id}";')
+        return rendered
 
-  <div class="viewport" id="viewport">
-    <div class="svg-container" id="svgContainer">
-      {svg_content}
-    </div>
-  </div>
+    @classmethod
+    def validate_and_apply_event(
+        cls,
+        project: VectorProjectSchema,
+        event_payload: Any,
+    ) -> dict[str, Any]:
+        """Validates payload and mutates project safely in Python.
 
-  <div class="footer-caption">
-    <span><strong>Standard:</strong> Pedoman MIKOM 2026 (300 DPI Ready)</span>
-    <span><strong>Sumber:</strong> {html.escape(attrib.source)}</span>
-  </div>
-</div>
+        Returns a dictionary:
+        {
+            "success": bool,
+            "action": str,
+            "object_id": str | None,
+            "error": str | None,
+            "mutated": bool,
+        }
+        """
+        if not isinstance(event_payload, dict):
+            return {"success": False, "action": "none", "object_id": None, "error": "Payload must be a dict", "mutated": False}
 
-<script>
-  let scale = 1.0;
-  let panX = 0, panY = 0;
-  let isPanning = false;
-  let panMode = false;
-  let startX = 0, startY = 0;
-  let activeSelectedId = "{sel_attr}";
+        action = event_payload.get("action")
+        obj_id = event_payload.get("object_id")
 
-  const container = document.getElementById('svgContainer');
-  const viewport = document.getElementById('viewport');
-  const btnPan = document.getElementById('btnPan');
-  const selBadge = document.getElementById('selBadge');
+        if not action or not isinstance(action, str):
+            return {"success": False, "action": "unknown", "object_id": None, "error": "Missing action type", "mutated": False}
 
-  if (activeSelectedId) {{
-    selBadge.innerText = `| Terpilih: ${{activeSelectedId}}`;
-  }}
+        if not obj_id or not isinstance(obj_id, str):
+            return {"success": False, "action": action, "object_id": None, "error": "Missing object_id", "mutated": False}
 
-  function togglePan() {{
-    panMode = !panMode;
-    btnPan.classList.toggle('active', panMode);
-    viewport.classList.toggle('pan-mode', panMode);
-  }}
+        target_obj = project.find_object(obj_id)
+        if not target_obj:
+            return {"success": False, "action": action, "object_id": obj_id, "error": f"Object {obj_id} not found", "mutated": False}
 
-  viewport.addEventListener('mousedown', (e) => {{
-    if (panMode || e.button === 1 || e.target === viewport) {{
-      isPanning = true;
-      startX = e.clientX - panX;
-      startY = e.clientY - panY;
-    }}
-  }});
+        if action == "select_object":
+            return {"success": True, "action": "select_object", "object_id": obj_id, "error": None, "mutated": False}
 
-  window.addEventListener('mousemove', (e) => {{
-    if (isPanning) {{
-      panX = e.clientX - startX;
-      panY = e.clientY - startY;
-      updateTransform();
-    }}
-  }});
+        if action == "drag_object":
+            new_x = event_payload.get("x")
+            new_y = event_payload.get("y")
+            if not isinstance(new_x, (int, float)) or not isinstance(new_y, (int, float)):
+                return {"success": False, "action": action, "object_id": obj_id, "error": "Coordinates must be numbers", "mutated": False}
 
-  window.addEventListener('mouseup', () => {{
-    isPanning = false;
-  }});
+            if math.isnan(new_x) or math.isinf(new_x) or math.isnan(new_y) or math.isinf(new_y):
+                return {"success": False, "action": action, "object_id": obj_id, "error": "Coordinates cannot be NaN or Infinity", "mutated": False}
 
-  function zoomIn() {{
-    scale = Math.min(scale + 0.15, 2.5);
-    updateTransform();
-  }}
+            # Constrain to reasonable canvas bounds
+            bounded_x = max(-50.0, min(float(project.canvas_width) + 50.0, float(new_x)))
+            bounded_y = max(-50.0, min(float(project.canvas_height) + 50.0, float(new_y)))
 
-  function zoomOut() {{
-    scale = Math.max(scale - 0.15, 0.4);
-    updateTransform();
-  }}
+            target_obj.x = bounded_x
+            target_obj.y = bounded_y
+            return {"success": True, "action": "drag_object", "object_id": obj_id, "error": None, "mutated": True}
 
-  function resetZoom() {{
-    scale = 1.0;
-    panX = 0;
-    panY = 0;
-    updateTransform();
-  }}
+        if action == "resize_object":
+            new_w = event_payload.get("width")
+            new_h = event_payload.get("height")
+            if not isinstance(new_w, (int, float)) or not isinstance(new_h, (int, float)):
+                return {"success": False, "action": action, "object_id": obj_id, "error": "Dimensions must be numbers", "mutated": False}
 
-  function updateTransform() {{
-    container.style.transform = `translate(${{panX}}px, ${{panY}}px) scale(${{scale}})`;
-  }}
+            if math.isnan(new_w) or math.isinf(new_w) or math.isnan(new_h) or math.isinf(new_h):
+                return {"success": False, "action": action, "object_id": obj_id, "error": "Dimensions cannot be NaN or Infinity", "mutated": False}
 
-  // Shape Selection Click Handler
-  const svg = container.querySelector('svg');
-  if (svg) {{
-    svg.addEventListener('click', (e) => {{
-      const target = e.target.closest('[id^="obj_"]');
-      if (target) {{
-        activeSelectedId = target.id;
-        selBadge.innerText = `| Terpilih: ${{activeSelectedId}}`;
-        // Highlight in DOM
-        svg.querySelectorAll('[id^="obj_"]').forEach(el => {{
-          el.style.outline = 'none';
-        }});
-        target.style.outline = '2px dashed #0284c7';
-      }}
-    }});
-  }}
-</script>
-</body>
-</html>
-"""
+            # Minimum 15 pt, maximum 2x canvas size
+            bounded_w = max(15.0, min(float(project.canvas_width) * 1.5, float(new_w)))
+            bounded_h = max(15.0, min(float(project.canvas_height) * 1.5, float(new_h)))
+
+            target_obj.width = bounded_w
+            target_obj.height = bounded_h
+            return {"success": True, "action": "resize_object", "object_id": obj_id, "error": None, "mutated": True}
+
+        return {"success": False, "action": action, "object_id": obj_id, "error": f"Unsupported action {action}", "mutated": False}

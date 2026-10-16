@@ -288,3 +288,76 @@ def test_vector_project_invalid_mutation_payload_safety() -> None:
     # Non-existent ID returns False
     assert project.update_object("non_existent_id", x=50.0) is False
     assert project.remove_object("non_existent_id") is False
+
+
+def test_canvas_component_bidirectional_event_validation() -> None:
+    """Verifies that CanvasComponent validates and applies JavaScript events safely."""
+    project = AcademicTemplateFactory.create_prisma_2020_flowchart()
+    target_obj = project.layers[0].objects[1]
+    target_id = target_obj.object_id
+
+    # 1. Valid Drag Event
+    drag_payload = {
+        "action": "drag_object",
+        "object_id": target_id,
+        "x": 150.0,
+        "y": 200.0,
+        "timestamp": 12345678,
+    }
+    res_drag = CanvasComponent.validate_and_apply_event(project, drag_payload)
+    assert res_drag["success"] is True
+    assert res_drag["mutated"] is True
+    assert target_obj.x == 150.0
+    assert target_obj.y == 200.0
+
+    # 2. Valid Resize Event
+    resize_payload = {
+        "action": "resize_object",
+        "object_id": target_id,
+        "width": 320.0,
+        "height": 140.0,
+        "timestamp": 12345679,
+    }
+    res_resize = CanvasComponent.validate_and_apply_event(project, resize_payload)
+    assert res_resize["success"] is True
+    assert res_resize["mutated"] is True
+    assert target_obj.width == 320.0
+    assert target_obj.height == 140.0
+
+    # 3. Reflection in Rendered SVG
+    svg_output = SVGEngine.compile_project_to_svg(project)
+    assert f'x="{target_obj.x}"' in svg_output
+    assert f'y="{target_obj.y}"' in svg_output
+
+    # 4. Unknown Object ID Rejected
+    invalid_id_payload = {
+        "action": "drag_object",
+        "object_id": "ghost_object_999",
+        "x": 100.0,
+        "y": 100.0,
+    }
+    res_inv = CanvasComponent.validate_and_apply_event(project, invalid_id_payload)
+    assert res_inv["success"] is False
+    assert "not found" in (res_inv["error"] or "")
+
+    # 5. NaN / Infinity Protection
+    nan_payload = {
+        "action": "drag_object",
+        "object_id": target_id,
+        "x": float("nan"),
+        "y": 50.0,
+    }
+    res_nan = CanvasComponent.validate_and_apply_event(project, nan_payload)
+    assert res_nan["success"] is False
+    assert "NaN" in (res_nan["error"] or "")
+
+    inf_payload = {
+        "action": "resize_object",
+        "object_id": target_id,
+        "width": float("inf"),
+        "height": 50.0,
+    }
+    res_inf = CanvasComponent.validate_and_apply_event(project, inf_payload)
+    assert res_inf["success"] is False
+    assert "Infinity" in (res_inf["error"] or "")
+

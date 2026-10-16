@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #0b1120;
+    color: #f8fafc;
+    overflow: hidden;
+    user-select: none;
+  }
+  .canvas-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 640px;
+    background: radial-gradient(circle at 50% 50%, #172554 0%, #0b1120 100%);
+    border: 1px solid rgba(88, 216, 255, 0.2);
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+  }
+  .toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .toolbar-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #38bdf8;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .toolbar-actions {
+    display: flex;
+    gap: 8px;
+  }
+  .btn-tool {
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #e2e8f0;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .btn-tool:hover {
+    background: rgba(56, 189, 248, 0.2);
+    border-color: #38bdf8;
+    color: #fff;
+  }
+  .btn-tool.active {
+    background: #0284c7;
+    border-color: #38bdf8;
+    color: #fff;
+  }
+  .viewport {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    position: relative;
+    cursor: default;
+  }
+  .viewport.pan-mode {
+    cursor: grab;
+  }
+  .viewport.pan-mode:active {
+    cursor: grabbing;
+  }
+  .svg-container {
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    border-radius: 6px;
+    transform-origin: center center;
+    position: relative;
+  }
+  .svg-container svg {
+    display: block;
+  }
+  /* Interactive Shape Elements */
+  .svg-container svg [id^="obj_"] {
+    cursor: move;
+  }
+  .svg-container svg [id^="obj_"]:hover {
+    stroke: #0284c7 !important;
+  }
+  /* Selected Box & Handles */
+  #selectionOverlay {
+    position: absolute;
+    border: 2px dashed #0284c7;
+    pointer-events: none;
+    display: none;
+    z-index: 100;
+  }
+  .resize-handle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #0284c7;
+    border: 1.5px solid #ffffff;
+    border-radius: 2px;
+    pointer-events: all;
+    z-index: 101;
+    display: none;
+  }
+  .resize-handle.se {
+    cursor: se-resize;
+  }
+  .footer-caption {
+    padding: 8px 16px;
+    background: rgba(15, 23, 42, 0.95);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 11px;
+    color: #94a3b8;
+    display: flex;
+    justify-content: space-between;
+  }
+  .selection-badge {
+    color: #38bdf8;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+<div class="canvas-wrapper">
+  <div class="toolbar">
+    <div class="toolbar-title">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+        <polyline points="2 17 12 22 22 17"></polyline>
+        <polyline points="2 12 12 17 22 12"></polyline>
+      </svg>
+      <span id="titleLabel">Vector Canvas</span>
+      <span class="selection-badge" id="selBadge"></span>
+    </div>
+    <div class="toolbar-actions">
+      <button class="btn-tool" id="btnPan" onclick="togglePan()">Pan Mode</button>
+      <button class="btn-tool" onclick="zoomIn()">Zoom +</button>
+      <button class="btn-tool" onclick="zoomOut()">Zoom -</button>
+      <button class="btn-tool" onclick="resetZoom()">100%</button>
+    </div>
+  </div>
+
+  <div class="viewport" id="viewport">
+    <div class="svg-container" id="svgContainer">
+      <div id="selectionOverlay"></div>
+      <div class="resize-handle se" id="handleSE"></div>
+      <div id="svgMount"></div>
+    </div>
+  </div>
+
+  <div class="footer-caption">
+    <span><strong>Standard:</strong> Pedoman MIKOM 2026 (300 DPI Ready) &bull; Drag objek untuk pindah &bull; Handle untuk resize</span>
+    <span id="sourceLabel">Sumber: Standard MIKOM 2026</span>
+  </div>
+</div>
+
+<script>
+  // Streamlit Custom Component Message Protocol
+  function sendMessageToStreamlit(type, data) {
+    const payload = Object.assign({ isStreamlitMessage: true, type: type }, data);
+    window.parent.postMessage(payload, "*");
+  }
+
+  function setComponentReady() {
+    sendMessageToStreamlit("streamlit:componentReady", { apiVersion: 1 });
+  }
+
+  function setFrameHeight(height) {
+    sendMessageToStreamlit("streamlit:setFrameHeight", { height: height || document.body.offsetHeight });
+  }
+
+  function sendComponentValue(value) {
+    sendMessageToStreamlit("streamlit:setComponentValue", { value: value });
+  }
+
+  let scale = 1.0;
+  let panX = 0, panY = 0;
+  let isPanning = false;
+  let panMode = false;
+  let startX = 0, startY = 0;
+
+  let activeSelectedId = null;
+  let isDraggingObj = false;
+  let isResizingObj = false;
+  let dragStartX = 0, dragStartY = 0;
+  let origObjX = 0, origObjY = 0;
+  let origObjW = 0, origObjH = 0;
+  let currentProject = null;
+
+  const container = document.getElementById('svgContainer');
+  const viewport = document.getElementById('viewport');
+  const svgMount = document.getElementById('svgMount');
+  const btnPan = document.getElementById('btnPan');
+  const selBadge = document.getElementById('selBadge');
+  const titleLabel = document.getElementById('titleLabel');
+  const sourceLabel = document.getElementById('sourceLabel');
+  const overlay = document.getElementById('selectionOverlay');
+  const handleSE = document.getElementById('handleSE');
+
+  function togglePan() {
+    panMode = !panMode;
+    btnPan.classList.toggle('active', panMode);
+    viewport.classList.toggle('pan-mode', panMode);
+    if (panMode) {
+      clearSelection();
+    }
+  }
+
+  function clearSelection() {
+    activeSelectedId = null;
+    overlay.style.display = 'none';
+    handleSE.style.display = 'none';
+    selBadge.innerText = '';
+  }
+
+  function updateTransform() {
+    container.style.transform = `translate(${panX}px, ${panY}px) scale(${scale})`;
+  }
+
+  function zoomIn() {
+    scale = Math.min(scale + 0.15, 2.5);
+    updateTransform();
+  }
+
+  function zoomOut() {
+    scale = Math.max(scale - 0.15, 0.4);
+    updateTransform();
+  }
+
+  function resetZoom() {
+    scale = 1.0;
+    panX = 0;
+    panY = 0;
+    updateTransform();
+  }
+
+  function updateSelectionOverlay() {
+    if (!activeSelectedId) {
+      overlay.style.display = 'none';
+      handleSE.style.display = 'none';
+      return;
+    }
+    const target = svgMount.querySelector(`[id="${activeSelectedId}"]`);
+    if (!target) return;
+
+    let x = parseFloat(target.getAttribute('x') || 0);
+    let y = parseFloat(target.getAttribute('y') || 0);
+    let w = parseFloat(target.getAttribute('width') || target.getBBox().width);
+    let h = parseFloat(target.getAttribute('height') || target.getBBox().height);
+
+    overlay.style.left = `${x}px`;
+    overlay.style.top = `${y}px`;
+    overlay.style.width = `${w}px`;
+    overlay.style.height = `${h}px`;
+    overlay.style.display = 'block';
+
+    handleSE.style.left = `${x + w - 5}px`;
+    handleSE.style.top = `${y + h - 5}px`;
+    handleSE.style.display = 'block';
+  }
+
+  // Handle Resize Mouse Events
+  handleSE.addEventListener('mousedown', (e) => {
+    e.stopPropagation();
+    if (!activeSelectedId) return;
+    const target = svgMount.querySelector(`[id="${activeSelectedId}"]`);
+    if (!target) return;
+
+    isResizingObj = true;
+    dragStartX = e.clientX;
+    dragStartY = e.clientY;
+    origObjW = parseFloat(target.getAttribute('width') || target.getBBox().width);
+    origObjH = parseFloat(target.getAttribute('height') || target.getBBox().height);
+  });
+
+  // Viewport & Pan Mousedown
+  viewport.addEventListener('mousedown', (e) => {
+    if (panMode || e.button === 1 || e.target === viewport) {
+      isPanning = true;
+      startX = e.clientX - panX;
+      startY = e.clientY - panY;
+    }
+  });
+
+  // Global MouseMove
+  window.addEventListener('mousemove', (e) => {
+    if (isPanning) {
+      panX = e.clientX - startX;
+      panY = e.clientY - startY;
+      updateTransform();
+    } else if (isDraggingObj && activeSelectedId) {
+      const dx = (e.clientX - dragStartX) / scale;
+      const dy = (e.clientY - dragStartY) / scale;
+      const target = svgMount.querySelector(`[id="${activeSelectedId}"]`);
+      if (target) {
+        const newX = Math.round(origObjX + dx);
+        const newY = Math.round(origObjY + dy);
+        target.setAttribute('x', newX);
+        target.setAttribute('y', newY);
+        updateSelectionOverlay();
+      }
+    } else if (isResizingObj && activeSelectedId) {
+      const dx = (e.clientX - dragStartX) / scale;
+      const dy = (e.clientY - dragStartY) / scale;
+      const target = svgMount.querySelector(`[id="${activeSelectedId}"]`);
+      if (target) {
+        const newW = Math.max(20, Math.round(origObjW + dx));
+        const newH = Math.max(20, Math.round(origObjH + dy));
+        target.setAttribute('width', newW);
+        target.setAttribute('height', newH);
+        updateSelectionOverlay();
+      }
+    }
+  });
+
+  // Global MouseUp: Finalize and Send Component Value to Python
+  window.addEventListener('mouseup', (e) => {
+    if (isDraggingObj && activeSelectedId) {
+      isDraggingObj = false;
+      const target = svgMount.querySelector(`[id="${activeSelectedId}"]`);
+      if (target) {
+        const finalX = parseFloat(target.getAttribute('x'));
+        const finalY = parseFloat(target.getAttribute('y'));
+        sendComponentValue({
+          action: 'drag_object',
+          object_id: activeSelectedId,
+          x: finalX,
+          y: finalY,
+          timestamp: Date.now()
+        });
+      }
+    } else if (isResizingObj && activeSelectedId) {
+      isResizingObj = false;
+      const target = svgMount.querySelector(`[id="${activeSelectedId}"]`);
+      if (target) {
+        const finalW = parseFloat(target.getAttribute('width'));
+        const finalH = parseFloat(target.getAttribute('height'));
+        sendComponentValue({
+          action: 'resize_object',
+          object_id: activeSelectedId,
+          width: finalW,
+          height: finalH,
+          timestamp: Date.now()
+        });
+      }
+    }
+    isPanning = false;
+  });
+
+  // Attach Click / Drag to SVG Object Nodes
+  function attachSvgListeners() {
+    const objs = svgMount.querySelectorAll('[id^="obj_"]');
+    objs.forEach((el) => {
+      el.addEventListener('mousedown', (e) => {
+        if (panMode) return;
+        e.stopPropagation();
+
+        activeSelectedId = el.id;
+        selBadge.innerText = `| Terpilih: ${activeSelectedId}`;
+        updateSelectionOverlay();
+
+        isDraggingObj = true;
+        dragStartX = e.clientX;
+        dragStartY = e.clientY;
+        origObjX = parseFloat(el.getAttribute('x') || 0);
+        origObjY = parseFloat(el.getAttribute('y') || 0);
+
+        // Notify Python of selection change
+        sendComponentValue({
+          action: 'select_object',
+          object_id: activeSelectedId,
+          timestamp: Date.now()
+        });
+      });
+    });
+  }
+
+  // Receive Data from Streamlit via render event
+  function onRenderEvent(event) {
+    if (!event.data || event.data.type !== 'streamlit:render') return;
+    const args = event.data.args;
+    if (!args) return;
+
+    if (args.svg_content) {
+      svgMount.innerHTML = args.svg_content;
+      attachSvgListeners();
+    }
+    if (args.title) {
+      titleLabel.innerText = args.title;
+    }
+    if (args.source) {
+      sourceLabel.innerText = `Sumber: ${args.source}`;
+    }
+    if (args.selected_id) {
+      activeSelectedId = args.selected_id;
+      selBadge.innerText = `| Terpilih: ${activeSelectedId}`;
+      updateSelectionOverlay();
+    }
+
+    setFrameHeight(650);
+  }
+
+  window.addEventListener('message', onRenderEvent);
+
+  // Initialize Handshake with Streamlit Host
+  setComponentReady();
+  setFrameHeight(650);
+</script>
+</body>
+</html>
