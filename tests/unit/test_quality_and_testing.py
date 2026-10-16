@@ -1,11 +1,10 @@
 """Unit tests for Quality, Testing & CI/CD Clones (Tools 21–30)."""
 
-import pytest
 from core.clones.quality_and_testing import (
     CoverageClone,
     HypothesisClone,
-    MypyPyrightClone,
     MutmutClone,
+    MypyPyrightClone,
     PreCommitClone,
     PytestClone,
     RuffBanditClone,

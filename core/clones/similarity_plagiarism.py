@@ -14,7 +14,7 @@ from __future__ import annotations
 import math
 import re
 from dataclasses import asdict, dataclass, field
-from typing import Any, List, Optional, Set, Tuple
+from typing import Any
 
 
 # ==============================================================================
@@ -79,7 +79,6 @@ class TurnitinClone:
         total_words = max(1, len(tokens))
         manuscript_shingles = self._generate_shingles(tokens)
 
-        all_matched_tokens: set[int] = set()
         matches: list[TurnitinMatch] = []
 
         for ref in reference_corpus:
@@ -174,7 +173,7 @@ class CopyleaksClone:
 
         lengths = [len(s.split()) for s in sentences]
         mean_len = sum(lengths) / len(lengths)
-        variance = sum((l - mean_len) ** 2 for l in lengths) / max(1, len(lengths))
+        variance = sum((val - mean_len) ** 2 for val in lengths) / max(1, len(lengths))
         std_dev = math.sqrt(variance)
         burstiness = round(std_dev / max(1.0, mean_len), 2)
 

@@ -2,10 +2,8 @@
 
 from __future__ import annotations
 
-import pytest
 from core.citations.international_bibliography import (
     INTERNATIONAL_BIBLIOGRAPHY_35,
-    format_apa7,
     get_all_apa7_references,
     verify_bibliography_standards,
 )

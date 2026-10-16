@@ -1,6 +1,7 @@
 """Unit tests for Observability, MLOps, Data Quality & Metadata Clones (Tools 43–50)."""
 
 import pytest
+
 from core.clones.observability_mlops import (
     CrossrefClone,
     DVCClone,
@@ -37,7 +38,7 @@ def test_logfire_clone_tracing_spans_and_logs():
     logfire = LogfireClone()
     logfire.info("System initializing", component="test_suite")
 
-    with logfire.span("evaluate_thesis_chapter", chapter=1, word_count=2500) as sp:
+    with logfire.span("evaluate_thesis_chapter", chapter=1, word_count=2500):
         # simulate work
         res = 40 + 2
 

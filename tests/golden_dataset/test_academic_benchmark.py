@@ -9,13 +9,9 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-import pytest
-
 from core.evaluation.benchmark_runner import AcademicBenchmarkRunner
 from core.evaluation.schema import EvaluatorConfig
 from engines.audit_engine import audit_thesis
-from engines.citation_auditor import CitationAuditor
-from engines.cross_document_auditor import CrossDocumentAuditor
 from engines.document_parser import parse_document
 from golden_dataset.generator import generate_golden_dataset
 

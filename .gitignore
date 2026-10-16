@@ -62,3 +62,4 @@ BIT*.sh
 
 # Local configuration backups
 .gitignore.backup.*
+.env

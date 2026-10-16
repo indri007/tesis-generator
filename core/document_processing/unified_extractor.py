@@ -73,8 +73,8 @@ class UnifiedDocumentExtractor:
         if suffix == ".pdf":
             try:
                 doc = fitz.open(str(p))
-                is_encrypted = doc.is_encrypted
-                page_count = doc.page_count
+                is_encrypted = getattr(doc, "is_encrypted", False)
+                page_count = getattr(doc, "page_count", 0)
                 doc.close()
                 if is_encrypted:
                     raise DocumentValidationError("Dokumen PDF terenkripsi/diproteksi kata sandi. Harap buka kunci terlebih dahulu.")

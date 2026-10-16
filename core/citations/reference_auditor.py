@@ -3,13 +3,12 @@
 from __future__ import annotations
 
 import json
-from pathlib import Path
 import re
 import urllib.request
+from pathlib import Path
 from typing import Any
 
 from models.document_model import ParsedDocument
-
 
 _LOCAL_CACHE: dict[str, dict[str, Any]] | None = None
 
@@ -100,7 +99,7 @@ class ReferenceAuditor:
             return findings
 
         bib_text = bib_match.group(1).strip()
-        lines = [l.strip() for l in bib_text.splitlines() if len(l.strip()) > 15]
+        lines = [entry_line.strip() for entry_line in bib_text.splitlines() if len(entry_line.strip()) > 15]
 
         for line in lines:
             # Check year: (2020) or (1998)

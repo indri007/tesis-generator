@@ -1,7 +1,7 @@
 """Document conversion module for transforming academic files across formats."""
 
 from pathlib import Path
-from typing import Union
+
 from docx import Document
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas

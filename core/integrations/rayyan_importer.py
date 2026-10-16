@@ -96,7 +96,7 @@ def parse_rayyan_csv(content: str) -> list[RayyanRecord]:
         abstract = row_lower.get("abstract", "")
 
         labels_raw = row_lower.get("rayyan_labels") or row_lower.get("labels", "")
-        labels = [l.strip() for l in labels_raw.split(";") if l.strip()]
+        labels = [token.strip() for token in labels_raw.split(";") if token.strip()]
 
         status = "Unscreened"
         if "included" in labels_raw.lower() or "included" in row_lower.get("decisions", "").lower():
@@ -131,7 +131,7 @@ def parse_rayyan_ris(content: str) -> list[RayyanRecord]:
     entries = content.strip().split("ER  -")
 
     for idx, entry in enumerate(entries):
-        lines = [l.strip() for l in entry.strip().splitlines() if l.strip()]
+        lines = [line_item.strip() for line_item in entry.strip().splitlines() if line_item.strip()]
         if not lines:
             continue
 

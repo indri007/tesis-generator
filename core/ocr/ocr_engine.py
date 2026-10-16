@@ -3,8 +3,9 @@
 import logging
 import shutil
 from pathlib import Path
-from typing import Optional, Any
-from PIL import Image, ImageOps, ImageFilter
+from typing import Any, Optional
+
+from PIL import Image, ImageFilter, ImageOps
 
 logger = logging.getLogger(__name__)
 

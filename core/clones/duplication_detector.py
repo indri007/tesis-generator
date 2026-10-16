@@ -13,8 +13,8 @@ from __future__ import annotations
 import difflib
 import hashlib
 import re
-from dataclasses import asdict, dataclass, field
-from typing import Any, Callable, Dict, List, Optional, Set, Tuple
+from dataclasses import dataclass
+from typing import Any, Optional
 
 
 # ==============================================================================
@@ -45,11 +45,11 @@ class JscpdClone:
 
         for i in range(len(file_items)):
             name_a, content_a = file_items[i]
-            lines_a = [l.strip() for l in content_a.splitlines() if l.strip() and not l.strip().startswith("#")]
+            lines_a = [line.strip() for line in content_a.splitlines() if line.strip() and not line.strip().startswith("#")]
 
             for j in range(i, len(file_items)):
                 name_b, content_b = file_items[j]
-                lines_b = [l.strip() for l in content_b.splitlines() if l.strip() and not l.strip().startswith("#")]
+                lines_b = [line.strip() for line in content_b.splitlines() if line.strip() and not line.strip().startswith("#")]
 
                 # Sliding window of min_lines
                 for idx_a in range(len(lines_a) - self.min_lines + 1):
@@ -233,7 +233,7 @@ class PandasDuplicationClone:
                 key_items = [str(rec.get(c, "")) for c in subset]
             else:
                 key_items = [f"{k}:{v}" for k, v in sorted(rec.items())]
-            key_hash = hashlib.md5("||".join(key_items).encode("utf-8")).hexdigest()
+            key_hash = hashlib.sha256("||".join(key_items).encode("utf-8")).hexdigest()
 
             is_dup = key_hash in seen_keys
             seen_keys.add(key_hash)

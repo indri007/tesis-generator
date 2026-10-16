@@ -1,8 +1,9 @@
 """Unit tests for DatabaseManager: SQLite foreign key enforcement, limits, and audit tracking."""
 
-from pathlib import Path
-import pytest
 import sqlite3
+from pathlib import Path
+
+import pytest
 
 from core.database.db_manager import DatabaseManager
 

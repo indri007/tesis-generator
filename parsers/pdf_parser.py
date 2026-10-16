@@ -49,7 +49,7 @@ class PdfParser:
             words = text.split()
 
             # Inspect header / footer lines for page numbers
-            lines = [l.strip() for l in text.split("\n") if l.strip()]
+            lines = [line.strip() for line in text.split("\n") if line.strip()]
             header_line = lines[0] if lines else ""
             footer_line = lines[-1] if lines else ""
 

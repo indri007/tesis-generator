@@ -1,9 +1,11 @@
 """Unit tests for DocxAutoFixer engine in accordance with MIKOM 2026 guidelines."""
 
 from pathlib import Path
+
 from docx import Document
-from docx.shared import Cm, Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.shared import Pt
+
 from engines.revision_engine import DocxAutoFixer
 
 
@@ -11,8 +13,8 @@ def test_docx_auto_fixer_applies_mikom_2026_formatting(tmp_path: Path):
     # 1. Create a dummy docx with default/wrong formatting
     in_file = tmp_path / "thesis_draft_wrong_format.docx"
     doc = Document()
-    p1 = doc.add_paragraph("Ini adalah contoh paragraf pertama dengan format bawaan.")
-    p2 = doc.add_paragraph("Ini adalah contoh paragraf kedua yang perlu dirapikan.")
+    doc.add_paragraph("Ini adalah contoh paragraf pertama dengan format bawaan.")
+    doc.add_paragraph("Ini adalah contoh paragraf kedua yang perlu dirapikan.")
     doc.save(str(in_file))
 
     orig_bytes = in_file.read_bytes()
@@ -159,6 +161,7 @@ def test_revision_engine_status_normalization_and_unknowns():
 def test_revision_engine_score_bounds_and_no_nan():
     """Verify score clamping between [0.0, 100.0] and exclusion of NaN / Inf."""
     import math
+
     from engines.revision_engine import RevisionEngine
 
     many_errors = [{"rule_id": f"E_{i}", "status": "ERROR"} for i in range(10)]
@@ -172,8 +175,8 @@ def test_revision_engine_score_bounds_and_no_nan():
 
 def test_revision_engine_with_base_summary_and_reporting():
     """Verify integration with base_summary and downstream ReportEngine."""
-    from engines.revision_engine import RevisionEngine
     from engines.report_engine import ReportEngine
+    from engines.revision_engine import RevisionEngine
 
     findings = [{"rule_id": "WARN_1", "status": "WARNING", "category": "Format"}]
     base_summary = {"PASS": 12, "ERROR": 0, "WARNING": 0, "UNVERIFIED": 0}

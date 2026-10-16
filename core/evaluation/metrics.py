@@ -7,7 +7,7 @@ handling of zero denominators (displaying undefined / None instead of deceptive 
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Any
 
 from core.evaluation.matcher import MatchResult, MatchVerdict, normalize_category

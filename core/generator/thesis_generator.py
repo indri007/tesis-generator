@@ -12,9 +12,8 @@ Complies strictly with PEDOMAN PENULISAN TESIS MIKOM 2026:
 from __future__ import annotations
 
 import io
-from pathlib import Path
-from typing import Any, Dict, List, Optional
-import docx
+from typing import Any, Dict
+
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.shared import Cm, Pt
@@ -65,7 +64,6 @@ class ThesisGenerator:
 
     def generate_chapter_1(self, params: Dict[str, Any]) -> str:
         """Generates Bab I: Pendahuluan."""
-        title = params.get("title", "Pengaruh Komunikasi Pemasaran Digital terhadap Loyalitas Audiens")
         var_x = params.get("var_x", "Kualitas Konten Komunikasi Digital")
         var_y = params.get("var_y", "Loyalitas Audiens")
 

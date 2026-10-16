@@ -1,19 +1,18 @@
 """Unit tests for Academic Similarity, Plagiarism & Duplication Clones."""
 
-import pytest
-from core.clones.similarity_plagiarism import (
-    CopyleaksClone,
-    GrammarlyClone,
-    OuriginalClone,
-    TurnitinClone,
-    iThenticateClone,
-)
 from core.clones.duplication_detector import (
     DataComPyClone,
     DedupeClone,
     JscpdClone,
     PandasDuplicationClone,
     SonarQubeClone,
+)
+from core.clones.similarity_plagiarism import (
+    CopyleaksClone,
+    GrammarlyClone,
+    OuriginalClone,
+    TurnitinClone,
+    iThenticateClone,
 )
 
 

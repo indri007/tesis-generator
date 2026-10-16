@@ -8,8 +8,6 @@ from __future__ import annotations
 
 import ast
 import json
-import math
-import os
 import re
 import sys
 import time
@@ -31,7 +29,7 @@ class GateResult:
         return asdict(self)
 
 
-RAYYAN_CONSENSUS_50_GATES_SPECS: list[dict[str, str]] = [
+RAYYAN_CONSENSUS_50_GATES_SPECS: list[dict[str, Any]] = [
     {"gate_no": 1, "name": "Requirements Validation", "purpose": "Memastikan kebutuhan sistem MIKOM 2026 jelas"},
     {"gate_no": 2, "name": "Repository Audit", "purpose": "Memeriksa struktur seluruh repository"},
     {"gate_no": 3, "name": "Dependency Audit", "purpose": "Memeriksa dependensi Python"},
@@ -174,7 +172,7 @@ class RayyanConsensus50GatesAuditor:
         """3. Dependency Audit."""
         req = self.root / "requirements.txt"
         assert req.exists()
-        lines = [l.strip() for l in req.read_text().splitlines() if l.strip() and not l.startswith("#")]
+        lines = [line.strip() for line in req.read_text().splitlines() if line.strip() and not line.startswith("#")]
         return len(lines) >= 15, f"{len(lines)} core Python dependencies tracked."
 
     def gate_04(self) -> tuple[bool, str]:
@@ -243,9 +241,10 @@ class RayyanConsensus50GatesAuditor:
     def gate_13(self) -> tuple[bool, str]:
         """13. Boundary Testing."""
         import tempfile
+
         from core.database.db_manager import DatabaseManager
         with tempfile.NamedTemporaryFile(suffix=".db") as tmp:
-            db = DatabaseManager(tmp.name)
+            db = DatabaseManager(Path(tmp.name))
             db.register_guideline_profile(
                 profile_id="TEST_MIKOM_2026",
                 university="UPN Veteran Jawa Timur",
@@ -372,7 +371,7 @@ class RayyanConsensus50GatesAuditor:
         from models.document_model import ParsedDocument, ParsedParagraph
         text = "Smith (2022) menguji data.\nDAFTAR PUSTAKA\nSmith, J. (2022). Book."
         doc = ParsedDocument(filename="clean.docx", file_type="docx")
-        doc.paragraphs = [ParsedParagraph(text=l) for l in text.splitlines()]
+        doc.paragraphs = [ParsedParagraph(text=line) for line in text.splitlines()]
         aud = CitationAuditor(doc)
         findings = [f for f in aud.audit() if f["rule_id"] == "CITATION_ORPHAN_001"]
         return len(findings) == 0, "Zero false positives on clean matched citation."
@@ -383,7 +382,7 @@ class RayyanConsensus50GatesAuditor:
         from models.document_model import ParsedDocument, ParsedParagraph
         text = "OrphanAuthor (2024) menguji data.\nDAFTAR PUSTAKA\nSmith, J. (2022). Book."
         doc = ParsedDocument(filename="orphan.docx", file_type="docx")
-        doc.paragraphs = [ParsedParagraph(text=l) for l in text.splitlines()]
+        doc.paragraphs = [ParsedParagraph(text=line) for line in text.splitlines()]
         aud = CitationAuditor(doc)
         findings = [f for f in aud.audit() if f["rule_id"] == "CITATION_ORPHAN_001"]
         return len(findings) >= 1, "Detected real orphan citation (Zero False Negatives)."
@@ -572,8 +571,8 @@ class RayyanConsensus50GatesAuditor:
 
     def gate_50(self) -> tuple[bool, str]:
         """50. Final Release Gate (Crossref Authoritative DOI Deposit Verification)."""
-        from core.clones.observability_mlops import CrossrefClone
         from core.citations.international_bibliography import verify_bibliography_standards
+        from core.clones.observability_mlops import CrossrefClone
         res = verify_bibliography_standards(min_count=35, min_year=2021, max_year=2026)
         crossref_doi_valid = CrossrefClone.validate_doi("10.1016/j.tele.2023.102045")
         deposit_verified = CrossrefClone.verify_deposit(

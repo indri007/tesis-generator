@@ -1,16 +1,17 @@
 """Unit tests for UnifiedDocumentExtractor, OCREngine, and DocumentConverter."""
 
 from pathlib import Path
+
 import pytest
 from docx import Document
 from PIL import Image, ImageDraw
 
+from core.conversion.document_converter import DocumentConverter
 from core.document_processing.unified_extractor import (
-    UnifiedDocumentExtractor,
     DocumentValidationError,
+    UnifiedDocumentExtractor,
 )
 from core.ocr.ocr_engine import OCREngine
-from core.conversion.document_converter import DocumentConverter
 
 try:
     import pymupdf as fitz
@@ -241,8 +242,8 @@ def test_boundary_word_counts_and_invalid_types():
 
 def test_map_finding_to_evidence_handles_lists_and_cross_document_auditor():
     """Test 12: Memastikan map_finding_to_evidence tidak melempar AttributeError saat menerima list atau output tuple."""
-    from engines.evidence_mapper import map_finding_to_evidence
     from engines.cross_document_auditor import CrossDocumentAuditor
+    from engines.evidence_mapper import map_finding_to_evidence
     from models.document_model import ParsedDocument, ParsedParagraph
 
     doc_t = ParsedDocument(filename="tesis.docx", file_type="docx")

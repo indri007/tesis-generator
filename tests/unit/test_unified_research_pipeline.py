@@ -7,23 +7,18 @@ Validates:
 - Gate 5: Unified QA orchestration, separation of duplicate vs plagiarism findings, CitationAuditor parity.
 """
 
-import pytest
 from core.integrations.consensus_importer import (
     ConsensusClient,
-    ConsensusPaper,
     parse_consensus_csv,
 )
 from core.integrations.pico_extractor import extract_pico_from_text
 from core.integrations.rayyan_importer import (
     deduplicate_records,
-    normalize_doi,
-    normalize_title,
     parse_rayyan_csv,
     parse_rayyan_ris,
 )
 from core.integrations.unified_research_pipeline import UnifiedResearchPipeline
 from models.document_model import ParsedDocument, ParsedParagraph
-
 
 # ==============================================================================
 # GATE 2: RAYYAN TESTS

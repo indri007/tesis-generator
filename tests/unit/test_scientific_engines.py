@@ -2,15 +2,14 @@
 
 from __future__ import annotations
 
-import pytest
 from core.integrations.scientific_engines import (
     CrossrefEngine,
     ElicitEngine,
     OpenAlexEngine,
     PerplexityEngine,
     ResearchRabbitEngine,
-    SciSpaceEngine,
     ScientificPaper,
+    SciSpaceEngine,
     SemanticScholarEngine,
 )
 

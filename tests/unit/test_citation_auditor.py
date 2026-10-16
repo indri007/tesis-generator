@@ -1,9 +1,7 @@
 """Unit tests for CitationAuditor and citation extraction edge cases (APA 7)."""
 
-import pytest
-from models.document_model import ParsedDocument, ParsedParagraph
 from engines.citation_auditor import CitationAuditor
-from engines.audit_engine import audit_thesis
+from models.document_model import ParsedDocument, ParsedParagraph
 
 
 def make_doc_from_text(text: str) -> ParsedDocument:

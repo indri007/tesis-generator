@@ -8,22 +8,20 @@ Strictly separates reference deduplication from plagiarism and citation mismatch
 
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass, field
+from dataclasses import dataclass, field
 from typing import Any
 
 from core.integrations.consensus_importer import (
-    ConsensusPaper,
     ConsensusSearchResult,
     parse_consensus_csv,
 )
 from core.integrations.elsevier_client import (
-    ElsevierArticle,
     ElsevierClient,
     ElsevierSearchResult,
     parse_elsevier_ris,
     parse_scopus_csv,
 )
-from core.integrations.pico_extractor import PICOResult, extract_pico_from_text
+from core.integrations.pico_extractor import extract_pico_from_text
 from core.integrations.rayyan_importer import (
     RayyanRecord,
     deduplicate_records,

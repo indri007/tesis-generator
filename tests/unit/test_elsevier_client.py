@@ -2,11 +2,8 @@
 
 from __future__ import annotations
 
-import pytest
 from core.integrations.elsevier_client import (
-    ElsevierArticle,
     ElsevierClient,
-    ElsevierSearchResult,
     normalize_doi,
     parse_elsevier_ris,
     parse_scopus_csv,

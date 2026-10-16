@@ -28,9 +28,9 @@ def parse_pdf(path: str) -> ParsedDocument:
                 "PDF memerlukan kata sandi."
             )
 
-        result.page_count = pdf.page_count
+        result.page_count = getattr(pdf, "page_count", 0)
 
-        metadata = pdf.metadata or {}
+        metadata = getattr(pdf, "metadata", {}) or {}
         result.metadata = {
             "title": metadata.get("title") or "",
             "author": metadata.get("author") or "",

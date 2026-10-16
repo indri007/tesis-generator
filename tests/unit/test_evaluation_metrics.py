@@ -6,15 +6,11 @@ computes Cohen's Kappa against exact manual derivations, and classifies all 8 er
 
 from __future__ import annotations
 
-import pytest
-
 from core.evaluation.error_analysis import ErrorAnalyzer, ErrorCategory
 from core.evaluation.matcher import FindingMatcher, MatchVerdict
 from core.evaluation.metrics import (
     CategoryMetrics,
-    compute_category_metrics,
     compute_cohens_kappa,
-    compute_micro_macro_metrics,
 )
 from core.evaluation.schema import BenchmarkAnnotation, EvidenceLocation
 

@@ -46,9 +46,10 @@ class PICOResult:
 
 def extract_pico_from_text(text: str) -> PICOResult:
     """Extracts PICO components with exact quote ground-truth verification."""
-    empty_comp = lambda name: PICOComponent(
-        name=name, value=None, source_quote="", confidence=0.0, is_present=False
-    )
+    def empty_comp(name: str) -> PICOComponent:
+        return PICOComponent(
+            name=name, value=None, source_quote="", confidence=0.0, is_present=False
+        )
     if not text or not text.strip():
         return PICOResult(
             population=empty_comp("Population"),

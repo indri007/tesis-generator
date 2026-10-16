@@ -1,7 +1,9 @@
 """Unit tests for ThesisGenerator: page allocation, chapter generation, and DOCX styling."""
 
 import io
+
 from docx import Document
+
 from core.generator.thesis_generator import ThesisGenerator
 
 
