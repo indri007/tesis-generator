@@ -9,7 +9,7 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.shared import Cm, Pt
 
 BASE_DIR = Path(__file__).resolve().parent
-DOCS_DIR = BASE_DIR / "documents"
+DOCS_DIR = BASE_DIR.parent / "workspace" / "generated_golden_dataset"
 DOCS_DIR.mkdir(parents=True, exist_ok=True)
 
 
@@ -67,7 +67,8 @@ def create_base_thesis_text(
     b2 = chap2 or (
         "BAB II TINJAUAN PUSTAKA\n"
         "2.1 Penelitian Terdahulu\n"
-        "Kajian terdahulu oleh Smith (2022) mengemukakan pentingnya infrastruktur digital dalam menunjang interaksi pengguna.\n"
+        "Kajian terdahulu oleh Smith (2022) mengemukakan pentingnya infrastruktur digital dalam menunjang interaksi pengguna. "
+        "Rahmawati (2023) membuktikan bahwa komunikasi digital memperkuat loyalitas audiens.\n"
         "2.2 Tinjauan Pustaka\n"
         f"Variabel penelitian terdiri dari X1 adalah {var_x1_b2}. Konstruk ini mencakup kemudahan, keandalan, dan stabilitas operasional sistem dalam menunjang transmisi pesan.\n"
         "2.3 Kerangka Berpikir\n"
@@ -119,8 +120,8 @@ def create_base_thesis_text(
         dummy_par = (
             "Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan dengan respon kognitif audiens sasaran. "
             "Secara metodologis setiap indikator konstruk diuji melalui parameter reliabilitas komposit yang memenuhi batas keterandalan statistik secara optimal. "
-        ) * 15
-        # Repeat paragraphs to distribute ~41.000 words across chapters
+        ) * 12
+        # Repeat paragraphs to distribute ~42.000 words across chapters
         b1 += "\n" + (dummy_par + "\n\n") * 15
         b2 += "\n" + (dummy_par + "\n\n") * 25
         if b3:
@@ -170,13 +171,15 @@ def save_test_docx(
     doc.save(str(path))
 
 
-def generate_golden_dataset() -> dict[str, dict]:
+def generate_golden_dataset(output_dir=None) -> dict[str, dict]:
     """Generates the 10 golden test cases."""
+    docs_dir = Path(output_dir) if output_dir is not None else DOCS_DIR
+    docs_dir.mkdir(parents=True, exist_ok=True)
     dataset = {}
 
     # TEST-001: Tesis Normal (Semua valid)
     t1_text = create_base_thesis_text(pad_to_40k=True)
-    t1_path = DOCS_DIR / "TEST-001_normal.docx"
+    t1_path = docs_dir / "TEST-001_normal.docx"
     save_test_docx(t1_text, t1_path)
     dataset["TEST-001"] = {
         "file": str(t1_path),
@@ -185,7 +188,7 @@ def generate_golden_dataset() -> dict[str, dict]:
     }
 
     # TEST-002: Margin Salah (Left margin 3.0 cm bukannya 4.0 cm)
-    t2_path = DOCS_DIR / "TEST-002_margin_salah.docx"
+    t2_path = docs_dir / "TEST-002_margin_salah.docx"
     save_test_docx(t1_text, t2_path, left_cm=3.0)
     dataset["TEST-002"] = {
         "file": str(t2_path),
@@ -194,7 +197,7 @@ def generate_golden_dataset() -> dict[str, dict]:
     }
 
     # TEST-003: Font Salah (Arial bukannya Times New Roman)
-    t3_path = DOCS_DIR / "TEST-003_font_salah.docx"
+    t3_path = docs_dir / "TEST-003_font_salah.docx"
     save_test_docx(t1_text, t3_path, font_name="Arial")
     dataset["TEST-003"] = {
         "file": str(t3_path),
@@ -204,7 +207,7 @@ def generate_golden_dataset() -> dict[str, dict]:
 
     # TEST-004: BAB III Hilang
     t4_text = create_base_thesis_text(chap3="", pad_to_40k=True)
-    t4_path = DOCS_DIR / "TEST-004_bab3_hilang.docx"
+    t4_path = docs_dir / "TEST-004_bab3_hilang.docx"
     save_test_docx(t4_text, t4_path)
     dataset["TEST-004"] = {
         "file": str(t4_path),
@@ -217,7 +220,7 @@ def generate_golden_dataset() -> dict[str, dict]:
         bib_entries=["Rahmawati, A. (2023). Strategic Marketing in Communication Age. Media Nusantara."],
         pad_to_40k=True
     )
-    t5_path = DOCS_DIR / "TEST-005_citation_missing_bib.docx"
+    t5_path = docs_dir / "TEST-005_citation_missing_bib.docx"
     save_test_docx(t5_text, t5_path)
     dataset["TEST-005"] = {
         "file": str(t5_path),
@@ -231,7 +234,7 @@ def generate_golden_dataset() -> dict[str, dict]:
         var_x1_b3="Kualitas Informasi",
         pad_to_40k=True
     )
-    t6_path = DOCS_DIR / "TEST-006_variable_mutation.docx"
+    t6_path = docs_dir / "TEST-006_variable_mutation.docx"
     save_test_docx(t6_text, t6_path)
     dataset["TEST-006"] = {
         "file": str(t6_path),
@@ -241,7 +244,7 @@ def generate_golden_dataset() -> dict[str, dict]:
 
     # TEST-007: Rumus Salah Hitung (Y = 2,5 + 0,4X pada X=10 menghasilkan 7,5 bukannya 6,5)
     t7_text = create_base_thesis_text(formula_claim=7.5, pad_to_40k=True)
-    t7_path = DOCS_DIR / "TEST-007_formula_error.docx"
+    t7_path = docs_dir / "TEST-007_formula_error.docx"
     save_test_docx(t7_text, t7_path)
     dataset["TEST-007"] = {
         "file": str(t7_path),
@@ -251,7 +254,7 @@ def generate_golden_dataset() -> dict[str, dict]:
 
     # TEST-008: p-value Bertentangan dengan Kesimpulan (p=0.032 tetapi dinyatakan tidak signifikan)
     t8_text = create_base_thesis_text(p_val=0.032, p_conclusion="tidak signifikan", pad_to_40k=True)
-    t8_path = DOCS_DIR / "TEST-008_stat_contradiction.docx"
+    t8_path = docs_dir / "TEST-008_stat_contradiction.docx"
     save_test_docx(t8_text, t8_path)
     dataset["TEST-008"] = {
         "file": str(t8_path),
@@ -261,7 +264,7 @@ def generate_golden_dataset() -> dict[str, dict]:
 
     # TEST-009: Jumlah Responden Berbeda (Bab III: 120, Bab IV: 118)
     t9_text = create_base_thesis_text(sample_b3=120, sample_b4=118, pad_to_40k=True)
-    t9_path = DOCS_DIR / "TEST-009_sample_mismatch.docx"
+    t9_path = docs_dir / "TEST-009_sample_mismatch.docx"
     save_test_docx(t9_text, t9_path)
     dataset["TEST-009"] = {
         "file": str(t9_path),
@@ -278,8 +281,8 @@ def generate_golden_dataset() -> dict[str, dict]:
         "Penelitian ini menguji model komunikasi dengan jumlah sampel sebanyak 100 responden terpilih.\n"
         "Metode: Survei dengan sampel sebanyak 100 responden.\n"
     )
-    t10_thesis_path = DOCS_DIR / "TEST-010_thesis.docx"
-    t10_journal_path = DOCS_DIR / "TEST-010_journal.docx"
+    t10_thesis_path = docs_dir / "TEST-010_thesis.docx"
+    t10_journal_path = docs_dir / "TEST-010_journal.docx"
 
     save_test_docx(t10_thesis_text, t10_thesis_path)
     save_test_docx(t10_journal_text, t10_journal_path)

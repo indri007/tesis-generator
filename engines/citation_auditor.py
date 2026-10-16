@@ -20,7 +20,7 @@ class CitationAuditor:
 
         # 1. Extract in-text citations: (Author, Year) or Author (Year)
         in_text_pattern = re.compile(
-            r"(?:\((?P<cit_paren>[A-Z][a-zA-Z\s\-–]+(?:,\s*(?:19|20)\d{2}|[a-zA-Z\s]+,\s*(?:19|20)\d{2}))\)|(?P<cit_narrative>[A-Z][a-zA-Z\s\-–]+)\s*\((?P<cit_year>(?:19|20)\d{2})\))"
+            r"(?:\((?P<cit_paren>[A-Z][a-zA-Z\s\-–]+(?:,\s*(?:19|20)\d{2}|[a-zA-Z\s]+,\s*(?:19|20)\d{2}))\)|(?P<cit_narrative>[A-Z][a-zA-Z\-–]+(?:\s+[A-Z][a-zA-Z\-–]+){0,2})\s*\((?P<cit_year>(?:19|20)\d{2})\))"
         )
         citations = []
         for match in in_text_pattern.finditer(self.text):

@@ -54,3 +54,11 @@ workspace/projects/*/input/*
 workspace/projects/*/extracted/*
 workspace/projects/*/revisions/*
 workspace/projects/*/exports/*
+
+# Local test environments and audit artifacts
+.venv-test/
+workspace/
+BIT*.sh
+
+# Local configuration backups
+.gitignore.backup.*

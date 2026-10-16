@@ -102,12 +102,13 @@ class ParsedDocument:
         # 2. Extract citations
         # e.g., (Smith, 2022) or Smith (2022)
         citation_pattern = re.compile(
-            r"(?:\((?P<cit_paren>[A-Z][a-zA-Z\s\-–]+(?:,\s*(?:19|20)\d{2}|[a-zA-Z\s]+,\s*(?:19|20)\d{2}))\)|(?P<cit_narrative>[A-Z][a-zA-Z\s\-–]+)\s*\((?P<cit_year>(?:19|20)\d{2})\))"
+            r"(?:\((?P<cit_paren>[A-Z][a-zA-Z\s\-–]+(?:,\s*(?:19|20)\d{2}|[a-zA-Z\s]+,\s*(?:19|20)\d{2}))\)|(?P<cit_narrative>[A-Z][a-zA-Z\-–]+(?:\s+[A-Z][a-zA-Z\-–]+){0,2})\s*\((?P<cit_year>(?:19|20)\d{2})\))"
         )
         found_citations = []
         for m in citation_pattern.finditer(full_text):
             cit_text = m.group("cit_paren") or f"{m.group('cit_narrative')}, {m.group('cit_year')}"
             author = cit_text.split(",")[0].strip()
+            author = re.sub(r"^(?:menurut|berdasarkan|kajian|studi|oleh)\s+", "", author, flags=re.IGNORECASE).strip()
             found_citations.append({"raw": cit_text, "author": author})
 
         # 3. Extract bibliography entries
@@ -242,7 +243,7 @@ class ParsedDocument:
                 "line_spacing": fmt.get("line_spacing", 2.0),
                 "alignment": fmt.get("alignment", "JUSTIFY"),
             },
-            "page_count": self.page_count,
+            "page_count": self.get_effective_page_count(),
             "word_count": {
                 "total_body_words": struct.total_body_words,
                 "bab_1_words": struct.chapters.get("BAB I", {}).get("word_count", 0),

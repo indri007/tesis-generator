@@ -1,0 +1,99 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AcademicThesisAuditBenchmarkSchema",
+  "description": "Standardized schema for anonymized academic thesis audit ground-truth annotations.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "split",
+    "dataset_id",
+    "items"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "enum": ["2026.1"]
+    },
+    "split": {
+      "type": "string",
+      "enum": ["development", "evaluation"]
+    },
+    "dataset_id": {
+      "type": "string"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "document_id",
+          "reference_annotations"
+        ],
+        "properties": {
+          "document_id": {
+            "type": "string",
+            "pattern": "^DOC-ANON-[A-Z0-9-]+$"
+          },
+          "description": {
+            "type": "string"
+          },
+          "reviewer_1_labels": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "reviewer_2_labels": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "reference_annotations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "document_id",
+                "audit_category",
+                "rule_id",
+                "reference_finding",
+                "expected_severity",
+                "expected_verification_status",
+                "reviewer_id",
+                "adjudication_status"
+              ],
+              "properties": {
+                "document_id": { "type": "string" },
+                "audit_category": {
+                  "type": "string",
+                  "enum": ["format", "structure", "citations", "formula", "statistics", "journal_alignment"]
+                },
+                "rule_id": { "type": "string" },
+                "reference_finding": { "type": "string" },
+                "evidence_location": {
+                  "type": "object",
+                  "properties": {
+                    "page": { "type": ["integer", "null"] },
+                    "section": { "type": ["string", "null"] },
+                    "excerpt_query": { "type": ["string", "null"] }
+                  }
+                },
+                "expected_severity": {
+                  "type": "string",
+                  "enum": ["ERROR", "WARNING", "INFO"]
+                },
+                "expected_verification_status": {
+                  "type": "string",
+                  "enum": ["VERIFIED", "UNVERIFIED", "AMBIGUOUS"]
+                },
+                "reviewer_id": { "type": "string" },
+                "adjudication_status": {
+                  "type": "string",
+                  "enum": ["CONSENSUS", "ADJUDICATED", "DISPUTED"]
+                },
+                "notes": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
