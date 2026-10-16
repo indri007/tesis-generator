@@ -1,4 +1,4 @@
-"""TesisCheck MIKOM 2026 — AI Thesis Compliance & Consistency Auditor.
+"""TesisCheck MIKOM 2026 — AI Thesis Compliance Auditor & Generator.
 
 Online Web Application based on PEDOMAN PENULISAN TESIS MIKOM 2026.
 Built with Material Design 3 (M3) design tokens, WCAG 2.2 AA accessibility, and SQLite WAL storage.
@@ -13,6 +13,7 @@ from pathlib import Path
 import streamlit as st
 
 from core.database.db_manager import DatabaseManager
+from core.generator.thesis_generator import ThesisGenerator
 from engines.audit_engine import audit_thesis
 from engines.citation_auditor import CitationAuditor
 from engines.cross_document_auditor import CrossDocumentAuditor
@@ -22,18 +23,34 @@ from engines.format_auditor import FormatAuditor
 from engines.formula_auditor import FormulaAuditor
 from engines.reference_auditor import ReferenceAuditor
 from engines.report_engine import ReportEngine
-from engines.revision_engine import RevisionEngine
+from engines.revision_engine import DocxAutoFixer, RevisionEngine
 from engines.statistical_auditor import StatisticalAuditor
 from engines.structure_auditor import StructureAuditor
 from utils.number_utils import check_formula_recalculation
 
 # Page configuration
 st.set_page_config(
-    page_title="TesisCheck MIKOM 2026 — AI Thesis Auditor",
+    page_title="TesisCheck MIKOM 2026 — AI Thesis Auditor & Generator",
     page_icon="🎓",
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+def btn_w(stretch: bool = True) -> dict[str, Any]:
+    """Forward and backward compatible width parameter for st.button and st.download_button."""
+    import inspect
+    sig = inspect.signature(st.button).parameters
+    if "width" in sig:
+        return {"width": "stretch" if stretch else "content"}
+    return {"use_container_width": stretch}
+
+def df_w(stretch: bool = True) -> dict[str, Any]:
+    """Forward and backward compatible width parameter for st.dataframe."""
+    import inspect
+    sig = inspect.signature(st.dataframe).parameters
+    if "width" in sig:
+        return {"width": "stretch" if stretch else "content"}
+    return {"use_container_width": stretch}
 
 # Material Design 3 CSS Design Tokens & Styles
 st.markdown("""
@@ -88,7 +105,7 @@ st.markdown("""
 with st.sidebar:
     st.image("https://img.icons8.com/fluency/96/graduation-cap.png", width=64)
     st.title("TesisCheck")
-    st.markdown("**MIKOM 2026 Auditor**")
+    st.markdown("**MIKOM 2026 Auditor & Generator**")
     st.caption("UPN Veteran Jawa Timur • S2 Ilmu Komunikasi")
     st.divider()
 
@@ -120,20 +137,128 @@ db.register_guideline_profile(
 )
 
 # Top Navigation Tabs
-tab_audit, tab_landing, tab_reviser, tab_history = st.tabs([
+tab_generator, tab_audit, tab_reviser, tab_landing, tab_history = st.tabs([
+    "⚡ AI Thesis Generator (Bab 1–5)",
     "🔍 Audit & Analisis Naskah",
-    "🌐 Beranda & Standar (M3)",
     "🛠️ Auto-Revisi Dokumen",
+    "🌐 Beranda & Standar (M3)",
     "📊 Basis Data Riwayat Audit"
 ])
 
 # ==============================================================================
-# TAB 1: AUDIT & ANALISIS NASKAH
+# TAB 1: AI THESIS GENERATOR (BAB 1–5)
+# ==============================================================================
+with tab_generator:
+    st.title("⚡ AI Thesis Generator (Bab 1–5)")
+    st.markdown("Penyusunan naskah draf tesis akademik berstandar resmi **PEDOMAN PENULISAN TESIS MIKOM 2026** berbasis bukti ilmiah dan nol halusinasi.")
+
+    gen = ThesisGenerator()
+
+    # Form Parameter Tesis
+    with st.expander("📝 Parameter Rancangan Riset Tesis (Klik untuk Menyesuaikan)", expanded=True):
+        col_g1, col_g2 = st.columns(2)
+        with col_g1:
+            g_title = st.text_input(
+                "Judul Tesis",
+                value="PENGARUH KOMUNIKASI PEMASARAN DIGITAL TERHADAP LOYALITAS AUDIENS PADA MEDIA SOSIAL"
+            )
+            g_author = st.text_input("Nama Peneliti / Mahasiswa", value="Indri Kartika")
+            g_nim = st.text_input("NPM / NIM", value="2401234567")
+            g_theory = st.text_input(
+                "Landasan Teori Utama",
+                value="Media Richness Theory dan Uses and Gratifications Theory"
+            )
+
+        with col_g2:
+            g_var_x = st.text_input("Variabel Bebas (X)", value="Kualitas Konten Komunikasi Digital")
+            g_var_y = st.text_input("Variabel Terikat (Y)", value="Loyalitas Audiens")
+            g_sample_n = st.number_input("Jumlah Sampel Responden (N)", value=120, min_value=30, max_value=1000)
+            g_target_pages = st.slider("Target Tebal Halaman (Maksimal 175)", min_value=50, max_value=175, value=100)
+
+        col_m1, col_m2, col_m3 = st.columns(3)
+        with col_m1:
+            g_formula_a = st.number_input("Konstanta Regresi (a)", value=2.5)
+        with col_m2:
+            g_formula_b = st.number_input("Koefisien Regresi (b)", value=0.4)
+        with col_m3:
+            g_p_val = st.number_input("Nilai Signifikansi p-value", value=0.032, format="%.3f")
+
+    # Budgeting Halaman & Proporsi MIKOM 2026
+    st.markdown("#### 📊 Alokasi & Anggaran Halaman Naskah (Standar Proporsi MIKOM)")
+    budget = gen.calculate_page_budget(g_target_pages)
+    b_cols = st.columns(5)
+    for idx, (ch_key, ch_data) in enumerate(budget.items()):
+        with b_cols[idx]:
+            st.markdown(f"""
+            <div class="card-metric" style="padding: 12px;">
+                <div style="font-weight: 700; color: #38BDF8;">{ch_key}</div>
+                <div style="font-size: 20px; font-weight: bold; color: white;">{ch_data['target_pages']} Hal</div>
+                <div class="metric-label">{ch_data['proportion']} • ~{ch_data['target_words']} kata</div>
+            </div>
+            """, unsafe_allow_html=True)
+
+    params = {
+        "title": g_title,
+        "author": g_author,
+        "nim": g_nim,
+        "var_x": g_var_x,
+        "var_y": g_var_y,
+        "theory": g_theory,
+        "sample_n": int(g_sample_n),
+        "formula_a": float(g_formula_a),
+        "formula_b": float(g_formula_b),
+        "eval_x": 10.0,
+        "p_value": float(g_p_val),
+    }
+
+    st.write("")
+    btn_generate = st.button("🚀 GENERATE NASKAH TESIS LENGKAP (BAB 1–5)", type="primary", **btn_w())
+
+    if btn_generate or "generated_docx_bytes" in st.session_state:
+        if btn_generate:
+            with st.spinner("⚡ Menyusun naskah tesis lengkap Bab 1–5 dan memformat DOCX sesuai pedoman MIKOM 2026..."):
+                docx_bytes = gen.compile_full_thesis_docx(params)
+                st.session_state["generated_docx_bytes"] = docx_bytes.getvalue()
+                st.session_state["generated_params"] = params
+
+        st.success("✓ Naskah tesis lengkap Bab 1–5 berhasil disusun dengan format resmi MIKOM 2026!")
+
+        # Download Button
+        st.download_button(
+            "📥 UNDUH DRAF LENGKAP TESIS (.DOCX SIAP SIDANG)",
+            data=st.session_state["generated_docx_bytes"],
+            file_name=f"TESIS_MIKOM_2026_{g_author.replace(' ', '_')}.docx",
+            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            type="primary",
+            **btn_w()
+        )
+
+        # Tabbed Chapter Preview
+        st.markdown("#### 📖 Pratinjau Naskah Per Bab")
+        p_ch1, p_ch2, p_ch3, p_ch4, p_ch5 = st.tabs([
+            "Bab I: Pendahuluan",
+            "Bab II: Tinjauan Pustaka",
+            "Bab III: Metode Penelitian",
+            "Bab IV: Hasil & Pembahasan",
+            "Bab V: Simpulan & Saran"
+        ])
+        with p_ch1:
+            st.text_area("Isi Bab I", value=gen.generate_chapter_1(params), height=300)
+        with p_ch2:
+            st.text_area("Isi Bab II", value=gen.generate_chapter_2(params), height=300)
+        with p_ch3:
+            st.text_area("Isi Bab III", value=gen.generate_chapter_3(params), height=300)
+        with p_ch4:
+            st.text_area("Isi Bab IV", value=gen.generate_chapter_4(params), height=300)
+        with p_ch5:
+            st.text_area("Isi Bab V", value=gen.generate_chapter_5(params), height=300)
+
+# ==============================================================================
+# TAB 2: AUDIT & ANALISIS NASKAH
 # ==============================================================================
 with tab_audit:
-    st.title("🎓 TesisCheck MIKOM 2026")
-    st.markdown("### *AI Thesis Compliance & Consistency Auditor*")
-    st.markdown("Audit otomatis kepatuhan format, sistematika struktur 5 BAB, validitas matematis, dan konsistensi naskah tesis.")
+    st.title("🎓 Audit & Analisis Kepatuhan Tesis")
+    st.markdown("Pemeriksaan otomatis 10 pilar kepatuhan format, sistematika struktur 5 BAB, validitas matematis, dan konsistensi naskah.")
 
     col_upload_1, col_upload_2 = st.columns(2)
     with col_upload_1:
@@ -161,7 +286,7 @@ with tab_audit:
     with col_cfg2:
         st.write("")
         st.write("")
-        start_btn = st.button("🚀 MULAI AUDIT LENGKAP", type="primary", use_container_width=True)
+        start_btn = st.button("🚀 MULAI AUDIT LENGKAP", type="primary", **btn_w())
 
     if start_btn:
         if not uploaded_thesis:
@@ -381,7 +506,7 @@ with tab_audit:
                 data=rep_engine.to_html(),
                 file_name=f"audit_{uploaded_thesis.name}.html",
                 mime="text/html",
-                use_container_width=True
+                **btn_w()
             )
         with d2:
             st.download_button(
@@ -389,7 +514,7 @@ with tab_audit:
                 data=rep_engine.to_docx_bytes(),
                 file_name=f"audit_{uploaded_thesis.name}.docx",
                 mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                use_container_width=True
+                **btn_w()
             )
         with d3:
             st.download_button(
@@ -397,7 +522,7 @@ with tab_audit:
                 data=rep_engine.to_json(),
                 file_name=f"audit_{uploaded_thesis.name}.json",
                 mime="application/json",
-                use_container_width=True
+                **btn_w()
             )
         with d4:
             st.download_button(
@@ -405,11 +530,60 @@ with tab_audit:
                 data=rep_engine.to_pdf_bytes(),
                 file_name=f"audit_{uploaded_thesis.name}.pdf",
                 mime="application/pdf",
-                use_container_width=True
+                **btn_w()
             )
 
 # ==============================================================================
-# TAB 2: BERANDA & STANDAR (LANDING PAGE M3)
+# TAB 3: AUTO-REVISI DOKUMEN
+# ==============================================================================
+with tab_reviser:
+    st.title("🛠️ Multi-Tier Revision Engine")
+    st.markdown("Perbaiki layout margin dan format secara otomatis, serta telaah rekomendasi perbaikan substantif.")
+
+    st.info("Pilih dokumen Word (.docx) yang ingin diperbaiki format tata letaknya sesuai standar MIKOM 2026.")
+    docx_file = st.file_uploader("Unggah naskah Word (.docx) untuk auto-revisi", type=["docx"], key="auto_fix_uploader")
+
+    if docx_file:
+        col_fx1, col_fx2 = st.columns(2)
+        with col_fx1:
+            st.markdown("#### Parameter Layout Otomatis")
+            st.markdown("""
+            - **Margin:** 4.0 cm (Kiri/Atas), 3.0 cm (Kanan/Bawah)
+            - **Font:** Times New Roman 12 pt
+            - **Spasi Paragraf:** 2.0 (Double)
+            - **Perataan:** Justify (Rata Kiri-Kanan)
+            """)
+        with col_fx2:
+            st.markdown("#### Kebijakan Keamanan Dokumen")
+            st.caption("AutoFixer hanya menyesuaikan style dan layout tanpa mengubah kata atau isi argumen.")
+
+        if st.button("✨ Terapkan Perbaikan Layout (.docx)", **btn_w()):
+            with tempfile.TemporaryDirectory() as td:
+                in_p = Path(td) / "input.docx"
+                out_p = Path(td) / "output_revised.docx"
+                in_p.write_bytes(docx_file.getvalue())
+
+                try:
+                    fixer = DocxAutoFixer(str(in_p))
+                    log = fixer.fix_all(str(out_p))
+
+                    st.success("✓ Perbaikan format berhasil diterapkan sesuai pedoman MIKOM 2026!")
+                    st.download_button(
+                        "📥 Unduh Dokumen Hasil Revisi (.docx)",
+                        data=out_p.read_bytes(),
+                        file_name=f"revised_{docx_file.name}",
+                        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                        type="primary",
+                        **btn_w()
+                    )
+                    with st.expander("🔍 Log Aksi Perbaikan Layout Otomatis"):
+                        for item in log:
+                            st.markdown(f"- **{item['action']}**: {item.get('detail', item.get('status'))}")
+                except Exception as err:
+                    st.error(f"⚠️ Gagal merevisi dokumen Word: {err}")
+
+# ==============================================================================
+# TAB 4: BERANDA & STANDAR (LANDING PAGE M3)
 # ==============================================================================
 with tab_landing:
     st.markdown("""
@@ -445,7 +619,7 @@ with tab_landing:
     with s1:
         st.markdown("""
         - 🎨 **[Material Design 3 (M3)](https://m3.material.io/):** Sistem token antarmuka semantik, tipografi berjenjang, dan palet dinamis.
-        - ♿ **[W3C WCAG 2.2 Level AA](https://www.w3.org/TR/WCAG22/):** Menjamin rasio kontras visual $\ge 4.5:1$ untuk teks dan $3:1$ untuk grafis aktif.
+        - ♿ **[W3C WCAG 2.2 Level AA](https://www.w3.org/TR/WCAG22/):** Menjamin rasio kontras visual $\\ge 4.5:1$ untuk teks dan $3:1$ untuk grafis aktif.
         - 🧠 **[Ollama Local Runtime](https://docs.ollama.com/):** Integrasi lokal model `qwen2.5:7b` dan embedding `nomic-embed-text`.
         """)
     with s2:
@@ -456,49 +630,7 @@ with tab_landing:
         """)
 
 # ==============================================================================
-# TAB 3: AUTO-REVISI DOKUMEN
-# ==============================================================================
-with tab_reviser:
-    st.title("🛠️ Multi-Tier Revision Engine")
-    st.markdown("Perbaiki layout margin dan format secara otomatis, serta telaah rekomendasi perbaikan substantif.")
-
-    st.info("Pilih dokumen Word (.docx) yang ingin diperbaiki format tata letaknya sesuai standar MIKOM 2026.")
-    docx_file = st.file_uploader("Unggah naskah Word (.docx) untuk auto-revisi", type=["docx"], key="auto_fix_uploader")
-
-    if docx_file:
-        col_fx1, col_fx2 = st.columns(2)
-        with col_fx1:
-            st.markdown("#### Parameter Layout Otomatis")
-            st.markdown("""
-            - **Margin:** 4.0 cm (Kiri/Atas), 3.0 cm (Kanan/Bawah)
-            - **Font:** Times New Roman 12 pt
-            - **Spasi Paragraf:** 2.0 (Double)
-            - **Perataan:** Justify (Rata Kiri-Kanan)
-            """)
-        with col_fx2:
-            st.markdown("#### Kebijakan Keamanan Dokumen")
-            st.caption("AutoFixer hanya menyesuaikan style dan layout tanpa mengubah kata atau isi argumen.")
-
-        if st.button("✨ Terapkan Perbaikan Layout (.docx)"):
-            with tempfile.TemporaryDirectory() as td:
-                in_p = Path(td) / "input.docx"
-                out_p = Path(td) / "output_revised.docx"
-                in_p.write_bytes(docx_file.getvalue())
-
-                from engines.revision_engine import DocxAutoFixer
-                fixer = DocxAutoFixer(str(in_p))
-                log = fixer.fix_all(str(out_p))
-
-                st.success("✓ Perbaikan format berhasil diterapkan!")
-                st.download_button(
-                    "📥 Unduh Dokumen Hasil Revisi (.docx)",
-                    data=out_p.read_bytes(),
-                    file_name=f"revised_{docx_file.name}",
-                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                )
-
-# ==============================================================================
-# TAB 4: BASIS DATA RIWAYAT AUDIT
+# TAB 5: BASIS DATA RIWAYAT AUDIT
 # ==============================================================================
 with tab_history:
     st.title("📊 Basis Data Sesi Audit (SQLite)")
@@ -525,7 +657,7 @@ with tab_history:
                 "warnings_count": "Peringatan",
                 "executed_at": "Waktu Audit"
             },
-            use_container_width=True
+            **df_w()
         )
     else:
         st.info("Belum ada riwayat audit yang tersimpan di basis data lokal.")

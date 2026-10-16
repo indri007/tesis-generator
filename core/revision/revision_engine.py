@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from pathlib import Path
 from typing import Any
 
 from docx import Document
@@ -68,3 +69,108 @@ class RevisionEngine:
             return True
         except Exception:
             return False
+
+
+class DocxAutoFixer:
+    """Automates mechanical formatting corrections according to MIKOM 2026 standards.
+    
+    Standards enforced:
+    - Page Margins: Top 4.0 cm, Left 4.0 cm, Bottom 3.0 cm, Right 3.0 cm.
+    - Typography: Times New Roman, 12 pt for body text.
+    - Spacing: Double (2.0) line spacing for academic body paragraphs.
+    - Alignment: Justified (Rata Kiri-Kanan) while preserving centered headings.
+    - Table formatting: Cleans and preserves table cell text.
+    """
+
+    def __init__(self, docx_path: str):
+        self.docx_path = Path(docx_path)
+        if not self.docx_path.exists():
+            raise FileNotFoundError(f"Berkas DOCX sumber tidak ditemukan: {docx_path}")
+
+    def fix_all(self, output_path: str) -> list[dict[str, Any]]:
+        """Applies 4-4-3-3 cm margins, Times New Roman 12pt, double spacing, and justification.
+        
+        Raises:
+            ValueError: If the DOCX file is corrupt or cannot be parsed.
+            IOError: If saving to the destination path fails.
+        """
+        try:
+            doc = Document(str(self.docx_path))
+        except Exception as e:
+            raise ValueError(f"Berkas DOCX rusak atau tidak dapat diuraikan: {e}") from e
+
+        log: list[dict[str, Any]] = []
+
+        # 1. Apply Margins: 4.0 cm (Top, Left) and 3.0 cm (Bottom, Right)
+        section_count = 0
+        for section in doc.sections:
+            section.top_margin = Cm(4.0)
+            section.left_margin = Cm(4.0)
+            section.bottom_margin = Cm(3.0)
+            section.right_margin = Cm(3.0)
+            section_count += 1
+        log.append({
+            "action": "SET_MARGINS_4_4_3_3_CM",
+            "sections_affected": section_count,
+            "status": "APPLIED",
+            "detail": "Margin disesuaikan ke Kiri: 4cm, Atas: 4cm, Kanan: 3cm, Bawah: 3cm",
+        })
+
+        # 2. Format Paragraphs & Preserve Headings
+        body_p_count = 0
+        heading_count = 0
+        for p in doc.paragraphs:
+            style_name = p.style.name.lower() if p.style and p.style.name else ""
+            is_heading = "heading" in style_name or "judul" in style_name or p.alignment == WD_ALIGN_PARAGRAPH.CENTER
+
+            if is_heading:
+                heading_count += 1
+                # Preserve alignment for headings, but ensure Times New Roman font
+                for r in p.runs:
+                    r.font.name = "Times New Roman"
+            else:
+                body_p_count += 1
+                p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+                p.paragraph_format.line_spacing = 2.0
+                for r in p.runs:
+                    r.font.name = "Times New Roman"
+                    r.font.size = Pt(12)
+
+        log.append({
+            "action": "SET_FONT_AND_SPACING",
+            "body_paragraphs": body_p_count,
+            "headings_preserved": heading_count,
+            "status": "APPLIED",
+            "detail": "Font Times New Roman 12pt, spasi 2.0, dan perataan justify berhasil diterapkan.",
+        })
+
+        # 3. Format Tables safely without corrupting XML
+        table_cells_count = 0
+        for table in doc.tables:
+            for row in table.rows:
+                for cell in row.cells:
+                    table_cells_count += 1
+                    for cp in cell.paragraphs:
+                        for cr in cp.runs:
+                            cr.font.name = "Times New Roman"
+
+        if doc.tables:
+            log.append({
+                "action": "FORMAT_TABLE_CELLS",
+                "tables_count": len(doc.tables),
+                "cells_affected": table_cells_count,
+                "status": "APPLIED",
+                "detail": "Tipografi sel tabel disinkronkan ke Times New Roman.",
+            })
+
+        # 4. Save to output path safely
+        out_p = Path(output_path)
+        out_p.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            doc.save(str(out_p))
+        except Exception as e:
+            raise IOError(f"Gagal menyimpan dokumen DOCX hasil perbaikan ke {output_path}: {e}") from e
+
+        return log
+
+

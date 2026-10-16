@@ -180,12 +180,10 @@ class DatabaseManager:
             conn.executescript(DDL_SCHEMA)
             # Record initial migration if empty
             cur = conn.cursor()
-            cur.execute("SELECT COUNT(*) FROM schema_migrations WHERE version = 1")
-            if cur.fetchone()[0] == 0:
-                cur.execute(
-                    "INSERT INTO schema_migrations (version, description) VALUES (?, ?)",
-                    (1, "Baseline schema for AI Thesis Generator & Reviewer"),
-                )
+            cur.execute(
+                "INSERT OR IGNORE INTO schema_migrations (version, description) VALUES (?, ?)",
+                (1, "Baseline schema for AI Thesis Generator & Reviewer"),
+            )
             conn.commit()
 
     def register_guideline_profile(

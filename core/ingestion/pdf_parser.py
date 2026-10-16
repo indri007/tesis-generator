@@ -1,6 +1,9 @@
 from pathlib import Path
 
-import fitz
+try:
+    import pymupdf as fitz
+except ImportError:
+    import fitz
 
 from models.document_model import (
     ParsedDocument,

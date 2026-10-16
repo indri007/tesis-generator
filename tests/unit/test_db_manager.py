@@ -146,3 +146,25 @@ def test_audit_session_and_findings_persistence(temp_db: DatabaseManager):
     assert summary["latest_audit"]["compliance_score"] == 85.5
     assert summary["latest_audit"]["errors_count"] == 1
     assert summary["latest_audit"]["warnings_count"] == 1
+
+
+def test_init_db_idempotency_and_migration_integrity(tmp_path: Path):
+    """Verify that init_db() can be called repeatedly without throwing UNIQUE constraint errors."""
+    db_file = tmp_path / "idempotent_test.db"
+    mgr1 = DatabaseManager(db_path=db_file)
+    # Subsequent calls (such as on Streamlit app re-runs) must be safe and idempotent
+    mgr1.init_db()
+    mgr1.init_db()
+
+    # Re-instantiating another manager pointing to the same DB must succeed
+    mgr2 = DatabaseManager(db_path=db_file)
+    mgr2.init_db()
+
+    with mgr2.get_connection() as conn:
+        cur = conn.cursor()
+        cur.execute("SELECT version, description FROM schema_migrations WHERE version = 1")
+        row = cur.fetchone()
+        assert row is not None
+        assert row[0] == 1
+        assert "Baseline" in row[1]
+
