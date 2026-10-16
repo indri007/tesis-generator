@@ -253,6 +253,31 @@ class VOSviewerClone:
             })
         return self.build_from_documents(docs, min_occurrences=min_occurrences)
 
+    def build_from_canonical_records(
+        self,
+        records: list[Any],
+        min_occurrences: int = 1,
+    ) -> dict[str, Any]:
+        """Ingests CanonicalPaperRecord objects directly from CoreDataEngine."""
+        docs = []
+        for r in records:
+            title = getattr(r, "title", "") if hasattr(r, "title") else r.get("title", "")
+            abstract = getattr(r, "abstract", "") if hasattr(r, "abstract") else r.get("abstract", "")
+            year = getattr(r, "year", 2024) if hasattr(r, "year") else r.get("year", 2024)
+            citations = getattr(r, "cited_by_count", 0) if hasattr(r, "cited_by_count") else r.get("cited_by_count", 0)
+
+            combined_text = f"{title} {abstract or ''}".strip()
+            extracted_kws = self.extract_keywords_from_text(combined_text)
+
+            docs.append({
+                "title": title,
+                "keywords": extracted_kws,
+                "year": year or 2024,
+                "citations": citations or 0,
+            })
+        return self.build_from_documents(docs, min_occurrences=min_occurrences)
+
+
     # ==========================================================================
     # 3. VOS MAPPING LAYOUT & DIMENSIONALITY REDUCTION
     # ==========================================================================
