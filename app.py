@@ -265,71 +265,254 @@ with tab_vector:
     from core.clones.doclaynet_layout import DocLayNetClone
     from core.vector_studio.academic_templates import AcademicTemplateFactory
     from core.vector_studio.canvas_component import CanvasComponent
+    from core.vector_studio.document_schema import (
+        VectorObject,
+        VectorProjectSchema,
+        VectorShapeType,
+        VectorStyle,
+    )
     from core.vector_studio.figure_bridge import FigureBridge
 
-    # Selection for Diagram Type
+    # 1. State Initialization & History Management
+    if "vector_project" not in st.session_state:
+        st.session_state["vector_project"] = AcademicTemplateFactory.create_prisma_2020_flowchart()
+        st.session_state["vector_history"] = [st.session_state["vector_project"].to_json()]
+        st.session_state["vector_history_idx"] = 0
+        st.session_state["vector_selected_id"] = None
+
+    def push_history_state(proj: VectorProjectSchema) -> None:
+        """Pushes new project snapshot to undo/redo stack."""
+        hist = st.session_state["vector_history"]
+        idx = st.session_state["vector_history_idx"]
+        hist = hist[: idx + 1]
+        hist.append(proj.to_json())
+        st.session_state["vector_history"] = hist
+        st.session_state["vector_history_idx"] = len(hist) - 1
+
+    # Selection for Diagram Type or Custom Project
     col_v1, col_v2 = st.columns([1, 2])
     with col_v1:
-        st.subheader("🛠️ Pengaturan Diagram")
-        diagram_type = st.selectbox(
-            "Pilih Template Diagram Akademik",
-            [
-                "PRISMA 2020 Flowchart (Systematic Review)",
-                "Kerangka Konseptual (X -> M -> Y)",
-                "Metodologi Penelitian (5 Tahapan)",
-            ],
-            key="vstudio_diagram_type"
-        )
+        st.subheader("🛠️ Panel Alat & Desain Vektor")
 
-        if "PRISMA 2020" in diagram_type:
-            p_ident = st.number_input("Catatan Teridentifikasi (n)", value=1250, step=50)
-            p_dup = st.number_input("Duplikasi Dihapus (n)", value=340, step=10)
-            p_screen = st.number_input("Catatan Diskrining (n)", value=910, step=10)
-            p_ex_scr = st.number_input("Eksklusi Skrining (n)", value=725, step=10)
-            p_elig = st.number_input("Dinilai Kelayakan (n)", value=185, step=5)
-            p_ex_elig = st.number_input("Eksklusi Kelayakan (n)", value=135, step=5)
-            p_inc = st.number_input("Studi Akhir Diterima (n)", value=50, step=5)
-            ch_num = st.number_input("Nomor Bab Tesis", value=3, min_value=1, max_value=5)
-            fig_num = st.number_input("Nomor Urut Gambar", value=1, min_value=1, max_value=20)
+        # Undo / Redo / Reset Action Bar
+        col_act1, col_act2, col_act3 = st.columns(3)
+        with col_act1:
+            can_undo = st.session_state["vector_history_idx"] > 0
+            if st.button("↩️ Undo", disabled=not can_undo, use_container_width=True):
+                st.session_state["vector_history_idx"] -= 1
+                st.session_state["vector_project"] = VectorProjectSchema.from_json(
+                    st.session_state["vector_history"][st.session_state["vector_history_idx"]]
+                )
+                st.rerun()
+        with col_act2:
+            can_redo = st.session_state["vector_history_idx"] < (len(st.session_state["vector_history"]) - 1)
+            if st.button("↪️ Redo", disabled=not can_redo, use_container_width=True):
+                st.session_state["vector_history_idx"] += 1
+                st.session_state["vector_project"] = VectorProjectSchema.from_json(
+                    st.session_state["vector_history"][st.session_state["vector_history_idx"]]
+                )
+                st.rerun()
+        with col_act3:
+            if st.button("🔄 Muat Ulang", use_container_width=True):
+                st.session_state["vector_project"] = AcademicTemplateFactory.create_prisma_2020_flowchart()
+                push_history_state(st.session_state["vector_project"])
+                st.rerun()
 
-            project_obj = AcademicTemplateFactory.create_prisma_2020_flowchart(
-                identification_count=int(p_ident),
-                duplicates_removed=int(p_dup),
-                screened_count=int(p_screen),
-                excluded_screening=int(p_ex_scr),
-                eligibility_assessed=int(p_elig),
-                excluded_eligibility=int(p_ex_elig),
-                included_count=int(p_inc),
-                chapter=int(ch_num),
-                figure_idx=int(fig_num),
+        # Template Generator Selector
+        with st.expander("📑 Muat Template Diagram Standar", expanded=False):
+            diagram_type = st.selectbox(
+                "Pilih Template",
+                [
+                    "PRISMA 2020 Flowchart (Systematic Review)",
+                    "Kerangka Konseptual (X -> M -> Y)",
+                    "Metodologi Penelitian (5 Tahapan)",
+                ],
+                key="vstudio_diagram_type"
             )
-        elif "Kerangka Konseptual" in diagram_type:
-            v_x = st.text_input("Variabel Bebas (X)", value="Kualitas Komunikasi Digital (X)")
-            v_m = st.text_input("Variabel Mediasi (M)", value="Kepercayaan Merek / Brand Trust (M)")
-            v_y = st.text_input("Variabel Terikat (Y)", value="Loyalitas Audiens (Y)")
-            ch_num = st.number_input("Nomor Bab Tesis", value=2, min_value=1, max_value=5)
-            fig_num = st.number_input("Nomor Urut Gambar", value=1, min_value=1, max_value=20)
 
-            project_obj = AcademicTemplateFactory.create_conceptual_framework(
-                var_x=v_x,
-                var_m=v_m,
-                var_y=v_y,
-                chapter=int(ch_num),
-                figure_idx=int(fig_num),
+            if "PRISMA 2020" in diagram_type:
+                p_ident = st.number_input("Catatan Teridentifikasi (n)", value=1250, step=50)
+                p_dup = st.number_input("Duplikasi Dihapus (n)", value=340, step=10)
+                p_screen = st.number_input("Catatan Diskrining (n)", value=910, step=10)
+                p_ex_scr = st.number_input("Eksklusi Skrining (n)", value=725, step=10)
+                p_elig = st.number_input("Dinilai Kelayakan (n)", value=185, step=5)
+                p_ex_elig = st.number_input("Eksklusi Kelayakan (n)", value=135, step=5)
+                p_inc = st.number_input("Studi Akhir Diterima (n)", value=50, step=5)
+                ch_num = st.number_input("Nomor Bab Tesis", value=3, min_value=1, max_value=5, key="ch_num_prisma")
+                fig_num = st.number_input("Nomor Urut Gambar", value=1, min_value=1, max_value=20, key="fig_num_prisma")
+
+                if st.button("Terapkan Template PRISMA", use_container_width=True):
+                    st.session_state["vector_project"] = AcademicTemplateFactory.create_prisma_2020_flowchart(
+                        identification_count=int(p_ident),
+                        duplicates_removed=int(p_dup),
+                        screened_count=int(p_screen),
+                        excluded_screening=int(p_ex_scr),
+                        eligibility_assessed=int(p_elig),
+                        excluded_eligibility=int(p_ex_elig),
+                        included_count=int(p_inc),
+                        chapter=int(ch_num),
+                        figure_idx=int(fig_num),
+                    )
+                    push_history_state(st.session_state["vector_project"])
+                    st.rerun()
+
+            elif "Kerangka Konseptual" in diagram_type:
+                v_x = st.text_input("Variabel Bebas (X)", value="Kualitas Komunikasi Digital (X)")
+                v_m = st.text_input("Variabel Mediasi (M)", value="Kepercayaan Merek / Brand Trust (M)")
+                v_y = st.text_input("Variabel Terikat (Y)", value="Loyalitas Audiens (Y)")
+                ch_num = st.number_input("Nomor Bab Tesis", value=2, min_value=1, max_value=5, key="ch_num_framework")
+                fig_num = st.number_input("Nomor Urut Gambar", value=1, min_value=1, max_value=20, key="fig_num_framework")
+
+                if st.button("Terapkan Kerangka Konseptual", use_container_width=True):
+                    st.session_state["vector_project"] = AcademicTemplateFactory.create_conceptual_framework(
+                        var_x=v_x,
+                        var_m=v_m,
+                        var_y=v_y,
+                        chapter=int(ch_num),
+                        figure_idx=int(fig_num),
+                    )
+                    push_history_state(st.session_state["vector_project"])
+                    st.rerun()
+            else:
+                ch_num = st.number_input("Nomor Bab Tesis", value=3, min_value=1, max_value=5, key="ch_num_method")
+                fig_num = st.number_input("Nomor Urut Gambar", value=1, min_value=1, max_value=20, key="fig_num_method")
+                if st.button("Terapkan Metodologi", use_container_width=True):
+                    st.session_state["vector_project"] = AcademicTemplateFactory.create_methodology_flowchart(
+                        chapter=int(ch_num),
+                        figure_idx=int(fig_num),
+                    )
+                    push_history_state(st.session_state["vector_project"])
+                    st.rerun()
+
+        # Active Project Object Reference
+        project_obj: VectorProjectSchema = st.session_state["vector_project"]
+        all_objs = project_obj.all_objects()
+        obj_names = {o.object_id: f"{o.name} ({o.shape_type.value}) - '{o.text_content[:20] if o.text_content else ''}'" for o in all_objs}
+
+        # 2. Interactive Object Selector & Properties Editor
+        st.markdown("#### 🎯 Seleksi & Properti Objek")
+        if obj_names:
+            selected_id = st.selectbox(
+                "Pilih Objek pada Kanvas",
+                options=list(obj_names.keys()),
+                format_func=lambda x: obj_names.get(x, x),
+                key="vstudio_selected_obj_id"
             )
-        else:
-            ch_num = st.number_input("Nomor Bab Tesis", value=3, min_value=1, max_value=5)
-            fig_num = st.number_input("Nomor Urut Gambar", value=1, min_value=1, max_value=20)
-            project_obj = AcademicTemplateFactory.create_methodology_flowchart(
-                chapter=int(ch_num),
-                figure_idx=int(fig_num),
+            st.session_state["vector_selected_id"] = selected_id
+            sel_obj = project_obj.find_object(selected_id)
+
+            if sel_obj:
+                with st.container():
+                    st.caption(f"ID: `{sel_obj.object_id}` | Tipe: **{sel_obj.shape_type.value}**")
+
+                    # Geometric Transformations (Position & Dimensions)
+                    col_pos1, col_pos2 = st.columns(2)
+                    with col_pos1:
+                        new_x = st.number_input("Posisi X (pt)", value=float(sel_obj.x), step=5.0)
+                        new_w = st.number_input("Lebar W (pt)", value=float(sel_obj.width), min_value=10.0, step=5.0)
+                    with col_pos2:
+                        new_y = st.number_input("Posisi Y (pt)", value=float(sel_obj.y), step=5.0)
+                        new_h = st.number_input("Tinggi H (pt)", value=float(sel_obj.height), min_value=10.0, step=5.0)
+
+                    # Text & Styling
+                    new_text = st.text_area("Teks Objek", value=sel_obj.text_content or "", height=70)
+                    col_clr1, col_clr2, col_clr3 = st.columns(3)
+                    with col_clr1:
+                        fill_val = sel_obj.style.fill if sel_obj.style.fill.startswith("#") and len(sel_obj.style.fill) == 7 else "#ffffff"
+                        new_fill = st.color_picker("Warna Isi (Fill)", value=fill_val)
+                    with col_clr2:
+                        stroke_val = sel_obj.style.stroke if sel_obj.style.stroke.startswith("#") and len(sel_obj.style.stroke) == 7 else "#1e40af"
+                        new_stroke = st.color_picker("Garis (Stroke)", value=stroke_val)
+                    with col_clr3:
+                        new_stroke_w = st.number_input("Tebal Garis", value=float(sel_obj.style.stroke_width), min_value=0.5, max_value=10.0, step=0.5)
+
+                    col_btn_mod1, col_btn_mod2 = st.columns(2)
+                    with col_btn_mod1:
+                        if st.button("💾 Perbarui Objek", type="primary", use_container_width=True):
+                            project_obj.update_object(
+                                object_id=selected_id,
+                                x=new_x,
+                                y=new_y,
+                                width=new_w,
+                                height=new_h,
+                                text_content=new_text,
+                                fill=new_fill,
+                                stroke=new_stroke,
+                                stroke_width=new_stroke_w,
+                            )
+                            push_history_state(project_obj)
+                            st.success("✓ Objek berhasil diperbarui!")
+                            st.rerun()
+
+                    with col_btn_mod2:
+                        if st.button("🗑️ Hapus Objek", use_container_width=True):
+                            project_obj.remove_object(selected_id)
+                            push_history_state(project_obj)
+                            st.warning(f"Objek `{selected_id}` telah dihapus.")
+                            st.rerun()
+
+        # 3. Add New Objects Tool
+        with st.expander("➕ Tambah Elemen Objek Baru", expanded=False):
+            new_shape_type = st.selectbox("Bentuk", ["Kotak (Rectangle)", "Kotak Melengkung (Rounded)", "Lingkaran/Elips (Ellipse)", "Teks Mandiri (Text)"])
+            add_txt = st.text_input("Teks Isi Objek", value="Node Baru")
+            col_add_x, col_add_y = st.columns(2)
+            with col_add_x:
+                add_x = st.number_input("Posisi Awal X", value=100.0, step=20.0)
+            with col_add_y:
+                add_y = st.number_input("Posisi Awal Y", value=100.0, step=20.0)
+
+            if st.button("➕ Tambahkan ke Kanvas", use_container_width=True):
+                stype = VectorShapeType.RECTANGLE
+                if "Rounded" in new_shape_type:
+                    stype = VectorShapeType.ROUNDED_RECT
+                elif "Ellipse" in new_shape_type:
+                    stype = VectorShapeType.ELLIPSE
+                elif "Text" in new_shape_type:
+                    stype = VectorShapeType.TEXT
+
+                new_obj = VectorObject(
+                    shape_type=stype,
+                    name=f"Custom_{add_txt[:10]}",
+                    x=add_x,
+                    y=add_y,
+                    width=160.0 if stype != VectorShapeType.TEXT else 120.0,
+                    height=80.0 if stype != VectorShapeType.TEXT else 40.0,
+                    text_content=add_txt,
+                    style=VectorStyle(fill="#EFF6FF", stroke="#1D4ED8", stroke_width=1.5),
+                )
+                project_obj.add_object(new_obj)
+                push_history_state(project_obj)
+                st.success("✓ Objek baru berhasil ditambahkan ke kanvas!")
+                st.rerun()
+
+        # 4. Project Save & Load (JSON State)
+        with st.expander("💾 Simpan & Buka File Proyek (.atg.json)", expanded=False):
+            st.download_button(
+                "📥 Simpan Proyek (.atg.json)",
+                data=project_obj.to_json(indent=2),
+                file_name=f"{project_obj.title.replace(' ', '_')}.atg.json",
+                mime="application/json",
+                use_container_width=True,
             )
+            uploaded_proj_file = st.file_uploader("📂 Buka File Proyek (.atg.json)", type=["json"], key="uploader_atg_json")
+            if uploaded_proj_file is not None:
+                try:
+                    loaded_content = uploaded_proj_file.read().decode("utf-8")
+                    st.session_state["vector_project"] = VectorProjectSchema.from_json(loaded_content)
+                    push_history_state(st.session_state["vector_project"])
+                    st.success("✓ Proyek vektor berhasil dimuat!")
+                    st.rerun()
+                except Exception as exc:
+                    st.error(f"Format berkas proyek tidak valid: {exc}")
 
         st.divider()
         st.subheader("📥 Ekspor Format Publikasi")
         svg_code = FigureBridge.project_to_svg(project_obj)
         png_data = FigureBridge.svg_to_png_bytes(svg_code, dpi=300)
         pdf_data = FigureBridge.svg_to_pdf_bytes(svg_code)
+
+        ch_num = project_obj.attribution.chapter_number if project_obj.attribution else 3
+        fig_num = project_obj.attribution.figure_index if project_obj.attribution else 1
 
         st.download_button(
             "🖼️ Unduh High-Res PNG (300 DPI)",
@@ -355,7 +538,8 @@ with tab_vector:
 
     with col_v2:
         st.subheader(f"👁️ Pratinjau Kanvas: {project_obj.attribution.full_heading}")
-        canvas_html = CanvasComponent.render_canvas_html(project_obj, height=620)
+        selected_target = st.session_state.get("vector_selected_id")
+        canvas_html = CanvasComponent.render_canvas_html(project_obj, selected_id=selected_target, height=620)
         st.components.v1.html(canvas_html, height=630, scrolling=False)
 
         st.caption(f"📐 {project_obj.attribution.full_source_line} | Resolusi Standar: 300 DPI")

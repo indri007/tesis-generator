@@ -213,11 +213,79 @@ def test_figure_bridge_docx_injection() -> None:
 
 
 def test_canvas_component_html_generation() -> None:
-    """Verifies CanvasComponent produces valid HTML markup with pan/zoom buttons."""
+    """Verifies CanvasComponent produces valid HTML markup with pan/zoom buttons and selection badge."""
     project = AcademicTemplateFactory.create_prisma_2020_flowchart()
-    html_output = CanvasComponent.render_canvas_html(project, height=600)
+    html_output = CanvasComponent.render_canvas_html(project, selected_id="obj_box_test", height=600)
 
     assert "<!DOCTYPE html>" in html_output
     assert "Zoom +" in html_output
+    assert "Pan Mode" in html_output
     assert "Pedoman MIKOM 2026" in html_output
+    assert "obj_box_test" in html_output
     assert "<svg" in html_output
+
+
+def test_vector_project_schema_mutation_and_history() -> None:
+    """Verifies object additions, updates, deletions, and snapshot history management."""
+    project = VectorProjectSchema(title="Eksperimen Interaktif")
+    new_obj = VectorObject(
+        object_id="custom_node_1",
+        shape_type=VectorShapeType.ROUNDED_RECT,
+        name="Node Kustom",
+        x=100.0,
+        y=150.0,
+        width=120.0,
+        height=60.0,
+        text_content="Variabel X",
+    )
+    project.add_object(new_obj)
+    assert project.find_object("custom_node_1") is not None
+
+    # Snapshot 1 for Undo/Redo stack
+    snapshot_1 = project.to_json()
+
+    # Mutation: Update coordinates, text, and styling
+    success = project.update_object(
+        object_id="custom_node_1",
+        x=200.0,
+        y=250.0,
+        width=180.0,
+        height=90.0,
+        text_content="Variabel X Diperbarui",
+        fill="#FEF08A",
+        stroke="#CA8A04",
+        stroke_width=2.5,
+    )
+    assert success is True
+    updated_obj = project.find_object("custom_node_1")
+    assert updated_obj is not None
+    assert updated_obj.x == 200.0
+    assert updated_obj.text_content == "Variabel X Diperbarui"
+    assert updated_obj.style.fill == "#FEF08A"
+
+    # Snapshot 2
+    snapshot_2 = project.to_json()
+
+    # Mutation: Remove object
+    removed = project.remove_object("custom_node_1")
+    assert removed is True
+    assert project.find_object("custom_node_1") is None
+
+    # Simulate Undo to Snapshot 2
+    restored_proj_2 = VectorProjectSchema.from_json(snapshot_2)
+    assert restored_proj_2.find_object("custom_node_1") is not None
+    assert restored_proj_2.find_object("custom_node_1").text_content == "Variabel X Diperbarui"
+
+    # Simulate Undo to Snapshot 1
+    restored_proj_1 = VectorProjectSchema.from_json(snapshot_1)
+    assert restored_proj_1.find_object("custom_node_1").text_content == "Variabel X"
+    assert restored_proj_1.find_object("custom_node_1").x == 100.0
+
+
+def test_vector_project_invalid_mutation_payload_safety() -> None:
+    """Verifies that invalid object ids or illegal dimensions fail safely without mutating project."""
+    project = VectorProjectSchema()
+    # Non-existent ID returns False
+    assert project.update_object("non_existent_id", x=50.0) is False
+    assert project.remove_object("non_existent_id") is False
+
