@@ -24,3 +24,7 @@ bandit>=1.7.8
 pip-audit>=2.7.3
 pre-commit>=3.7.0
 pytest-playwright>=0.5.0
+jsonschema>=4.23.0
+requests>=2.32.0
+beautifulsoup4>=4.12.0
+pydantic>=2.0.0
