@@ -29,6 +29,8 @@ class ParsedDocument:
     filename: str
     file_type: str
     page_count: int | None = None
+    is_page_count_estimated: bool = False
+    estimated_page_count: int | None = None
 
     paragraphs: list[ParsedParagraph] = field(
         default_factory=list
@@ -54,13 +56,42 @@ class ParsedDocument:
         )
 
     def get_effective_page_count(self) -> int:
-        """Returns a guaranteed positive integer page count, calculating academic word density for DOCX if missing."""
-        if isinstance(self.page_count, int) and self.page_count > 0:
+        """Returns a guaranteed positive integer page count.
+
+        For PDF files: returns the actual physical page count from the PDF structure.
+        For DOCX files: calculates an estimated page count based on academic word density
+        (~275 words per double-spaced page), marking `is_page_count_estimated = True`
+        to ensure transparent reporting without unwarranted physical guarantees.
+
+        Boundary cases handled:
+        - 0 words -> 1 page (minimum draft container)
+        - 1 word -> 1 page
+        - 48,125 words -> 175 pages (ceil of 48,125 / 275)
+        - 48,126 words -> 176 pages (ceil of 48,126 / 275)
+        - Invalid/negative page_count -> corrected to positive estimate
+        """
+        import math
+
+        # Return cached estimate if already computed
+        if self.is_page_count_estimated and isinstance(self.estimated_page_count, int) and self.estimated_page_count > 0:
+            return self.estimated_page_count
+
+        # PDF files have fixed physical pages
+        if self.file_type.lower() == "pdf" and isinstance(self.page_count, int) and self.page_count > 0:
+            self.is_page_count_estimated = False
             return self.page_count
+
+        # DOCX or reflowable formats: word-density estimation
+        self.is_page_count_estimated = True
         words = len(self.get_text().split())
-        estimated = max(1, round(words / 275)) if words > 0 else 1
-        self.page_count = estimated
-        return estimated
+        if words <= 0:
+            est = 1
+        else:
+            est = max(1, math.ceil(words / 275))
+
+        self.estimated_page_count = est
+        self.page_count = est
+        return est
 
     def to_rule_input(self) -> dict:
         full_text = self.get_text()

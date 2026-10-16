@@ -47,7 +47,7 @@ def find_evidence_locations(
 
 
 def map_finding_to_evidence(
-    finding: dict,
+    finding: Any,
     document,
 ) -> dict:
     """Memetakan temuan ke bukti dokumen.
@@ -55,6 +55,17 @@ def map_finding_to_evidence(
     evidence_query harus berisi teks yang memang diharapkan
     ditemukan dalam dokumen, bukan nilai aktual hasil audit.
     """
+    if not isinstance(finding, dict):
+        return {
+            "rule_id": "GENERIC_FINDING",
+            "finding_status": "INFO",
+            "page": None,
+            "section": None,
+            "excerpt": str(finding),
+            "mapping_status": "UNVERIFIED",
+            "source": {},
+        }
+
     query = finding.get("evidence_query", "")
     locations = find_evidence_locations(document, query)
 

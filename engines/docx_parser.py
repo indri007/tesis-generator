@@ -77,9 +77,8 @@ def parse_docx(path: str) -> ParsedDocument:
 
         result.tables.append(ParsedTable(rows=rows))
 
-    # Estimasi jumlah halaman berbasis densitas kata akademik (~275 kata/halaman)
-    total_words = sum(len(p.text.split()) for p in result.paragraphs)
-    result.page_count = max(1, round(total_words / 275)) if total_words > 0 else 1
+    # Estimasi halaman berbasis densitas kata akademik (~275 kata/halaman)
+    result.get_effective_page_count()
 
     result.warnings.append(
         "DOCX: nomor halaman dan pemetaan posisi paragraf "

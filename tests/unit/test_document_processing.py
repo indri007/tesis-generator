@@ -195,3 +195,74 @@ def test_docx_page_count_never_none(tmp_path: Path):
     # Memastikan tidak pernah memicu TypeError saat dibandingkan dengan bilangan bulat
     assert not (effective_count > 175)
 
+
+def test_boundary_word_counts_and_invalid_types():
+    """Test 11: Uji kasus batas 0 kata, 1 kata, 48.125 kata, 48.126 kata, None, negatif, dan tipe invalid."""
+    from models.document_model import ParsedDocument, ParsedParagraph
+
+    # 1. 0 kata (dokumen kosong)
+    doc_0 = ParsedDocument(filename="kosong.docx", file_type="docx", page_count=None)
+    assert doc_0.get_effective_page_count() == 1
+    assert doc_0.is_page_count_estimated is True
+
+    # 2. 1 kata
+    doc_1 = ParsedDocument(filename="satu.docx", file_type="docx", page_count=None)
+    doc_1.paragraphs.append(ParsedParagraph(text="Pendahuluan"))
+    assert doc_1.get_effective_page_count() == 1
+    assert doc_1.is_page_count_estimated is True
+
+    # 3. Tepat 48.125 kata -> 175 halaman (48.125 / 275 = 175.0)
+    doc_175 = ParsedDocument(filename="batas_175.docx", file_type="docx", page_count=None)
+    doc_175.paragraphs.append(ParsedParagraph(text="kata " * 48125))
+    assert doc_175.get_effective_page_count() == 175
+    assert not (doc_175.get_effective_page_count() > 175)
+    assert doc_175.is_page_count_estimated is True
+
+    # 4. 48.126 kata -> 176 halaman (ceil(48.126 / 275) = 176)
+    doc_176 = ParsedDocument(filename="lebih_176.docx", file_type="docx", page_count=None)
+    doc_176.paragraphs.append(ParsedParagraph(text="kata " * 48126))
+    assert doc_176.get_effective_page_count() == 176
+    assert doc_176.get_effective_page_count() > 175
+    assert doc_176.is_page_count_estimated is True
+
+    # 5. page_count = nilai negatif (-10)
+    doc_neg = ParsedDocument(filename="negatif.docx", file_type="docx", page_count=-10)
+    doc_neg.paragraphs.append(ParsedParagraph(text="kata " * 550))
+    # Otomatis dikoreksi ke estimasi positif (550 / 275 = 2 halaman)
+    assert doc_neg.get_effective_page_count() == 2
+    assert doc_neg.is_page_count_estimated is True
+
+    # 6. page_count = tipe tidak valid (string "invalid")
+    doc_inv = ParsedDocument(filename="invalid.docx", file_type="docx", page_count="invalid")  # type: ignore
+    doc_inv.paragraphs.append(ParsedParagraph(text="kata " * 275))
+    assert doc_inv.get_effective_page_count() == 1
+    assert doc_inv.is_page_count_estimated is True
+
+
+def test_map_finding_to_evidence_handles_lists_and_cross_document_auditor():
+    """Test 12: Memastikan map_finding_to_evidence tidak melempar AttributeError saat menerima list atau output tuple."""
+    from engines.evidence_mapper import map_finding_to_evidence
+    from engines.cross_document_auditor import CrossDocumentAuditor
+    from models.document_model import ParsedDocument, ParsedParagraph
+
+    doc_t = ParsedDocument(filename="tesis.docx", file_type="docx")
+    doc_t.paragraphs.append(ParsedParagraph(text="Penelitian ini menggunakan pendekatan kuantitatif regresi."))
+
+    doc_j = ParsedDocument(filename="jurnal.docx", file_type="docx")
+    doc_j.paragraphs.append(ParsedParagraph(text="Artikel ini menggunakan pendekatan kualitatif naratif."))
+
+    # CrossDocumentAuditor returns a 3-tuple: (findings, table, score)
+    j_res = CrossDocumentAuditor(doc_t, doc_j).audit()
+    assert isinstance(j_res, tuple)
+    j_findings, j_table, j_score = j_res
+
+    # Unpacked findings must map cleanly without error
+    mapped = [map_finding_to_evidence(f, doc_t) for f in j_findings]
+    assert len(mapped) == len(j_findings)
+
+    # Defensive check: non-dict inputs (like an accidental list) must not crash
+    raw_list_input = ["item_1", "item_2"]
+    safe_mapped = map_finding_to_evidence(raw_list_input, doc_t)
+    assert safe_mapped["rule_id"] == "GENERIC_FINDING"
+    assert safe_mapped["mapping_status"] == "UNVERIFIED"
+

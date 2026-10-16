@@ -314,10 +314,15 @@ with tab_audit:
                     st.error(f"Gagal mem-parsing berkas tesis: {e}")
                     st.stop()
 
-                # Cek Batas 175 Halaman
-                page_count = doc.page_count if doc.page_count is not None else 1
+                # Cek Batas 175 Halaman (PDF Fisik & Estimasi DOCX)
+                page_count = doc.get_effective_page_count()
+                if doc.is_page_count_estimated:
+                    st.info(f"ℹ️ Estimasi Format DOCX: Terdeteksi sekitar ~{page_count} halaman (berdasarkan densitas ~275 kata/halaman spasi ganda MIKOM 2026). Jumlah cetak aktual dapat sedikit berbeda tergantung tabel dan margin.")
                 if page_count > 175:
-                    st.error(f"❌ FATAL ERROR: Naskah melebihi batas 175 halaman (Terdeteksi: {page_count} halaman).")
+                    if doc.is_page_count_estimated:
+                        st.error(f"❌ FATAL ERROR: Naskah Word (.docx) diperkirakan mencapai ~{page_count} halaman, melampaui batas maksimal 175 halaman. Harap kurangi volume naskah.")
+                    else:
+                        st.error(f"❌ FATAL ERROR: Naskah PDF fisik melebihi batas 175 halaman (Terdeteksi pasti: {page_count} halaman).")
                     st.stop()
 
                 # Parsing Dokumen Jurnal Pembanding
@@ -335,6 +340,8 @@ with tab_audit:
 
                 # Specialized Auditors
                 findings = list(results.findings)
+                journal_table = []
+                journal_score = None
                 try:
                     findings.extend(FormatAuditor(doc).audit())
                     findings.extend(StructureAuditor(doc).audit())
@@ -343,12 +350,27 @@ with tab_audit:
                     findings.extend(FormulaAuditor(doc).audit())
                     findings.extend(StatisticalAuditor(doc).audit())
                     if doc_journal:
-                        findings.extend(CrossDocumentAuditor(doc, doc_journal).audit())
+                        j_res = CrossDocumentAuditor(doc, doc_journal).audit()
+                        if isinstance(j_res, tuple) and len(j_res) == 3:
+                            j_findings, journal_table, journal_score = j_res
+                            findings.extend(j_findings)
+                        elif isinstance(j_res, list):
+                            findings.extend(j_res)
                 except Exception as e:
                     st.warning(f"Sebagian auditor mengalami error internal: {e}")
 
+                # Flatten and sanitize findings (guarantee each element is a dict)
+                sanitized_findings: list[dict[str, Any]] = []
+                for item in findings:
+                    if isinstance(item, list):
+                        for sub in item:
+                            if isinstance(sub, dict):
+                                sanitized_findings.append(sub)
+                    elif isinstance(item, dict):
+                        sanitized_findings.append(item)
+
                 # Map Evidence
-                mapped_findings = [map_finding_to_evidence(f, doc) for f in findings]
+                mapped_findings = [map_finding_to_evidence(f, doc) for f in sanitized_findings]
 
                 # Revision Engine
                 rev_engine = RevisionEngine(mapped_findings)
