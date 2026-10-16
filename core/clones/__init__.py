@@ -1,0 +1,100 @@
+"""Core Clones & Reverse-Engineered Platform Modules.
+
+Includes pure-Python deterministic implementations of:
+- Academic Similarity & Plagiarism (Turnitin, iThenticate, Copyleaks, Ouriginal, Grammarly)
+- Duplication Detectors (jscpd, Simian, SonarQube, DataComPy, Dedupe, pandas)
+- Quality & Testing (pytest, Hypothesis, mutmut, Coverage.py, Ruff/Bandit, Mypy/Pyright, pre-commit)
+- Observability & MLOps (Sentry, Logfire, DVC, MLflow, Weights & Biases, Pandera, Pydantic, Crossref)
+- Bibliometric Mapping (VOSviewer)
+"""
+
+from core.clones.duplication_detector import (
+    DataComPyClone,
+    DedupeClone,
+    DuplicateCloneBlock,
+    JscpdClone,
+    PandasDuplicationClone,
+    SimianClone,
+    SonarQubeClone,
+)
+from core.clones.observability_mlops import (
+    CrossrefClone,
+    DVCClone,
+    LogfireClone,
+    MLflowClone,
+    PanderaClone,
+    PydanticModel,
+    SentryClone,
+    WandBClone,
+)
+from core.clones.quality_and_testing import (
+    CoverageClone,
+    HypothesisClone,
+    LintIssue,
+    Mutant,
+    MutmutClone,
+    MypyPyrightClone,
+    PreCommitClone,
+    PytestClone,
+    RuffBanditClone,
+    TestResult,
+)
+from core.clones.similarity_plagiarism import (
+    CopyleaksClone,
+    GrammarlyClone,
+    OuriginalClone,
+    TurnitinClone,
+    TurnitinMatch,
+    TurnitinReport,
+    iThenticateClone,
+)
+from core.clones.vosviewer_bibliometrics import (
+    BibliometricCluster,
+    BibliometricItem,
+    BibliometricLink,
+    VOSviewerClone,
+)
+
+__all__ = [
+    # Similarity
+    "TurnitinClone",
+    "iThenticateClone",
+    "CopyleaksClone",
+    "OuriginalClone",
+    "GrammarlyClone",
+    "TurnitinMatch",
+    "TurnitinReport",
+    # Duplication
+    "JscpdClone",
+    "SimianClone",
+    "SonarQubeClone",
+    "DataComPyClone",
+    "DedupeClone",
+    "PandasDuplicationClone",
+    "DuplicateCloneBlock",
+    # Quality & Testing
+    "PytestClone",
+    "HypothesisClone",
+    "MutmutClone",
+    "CoverageClone",
+    "RuffBanditClone",
+    "MypyPyrightClone",
+    "PreCommitClone",
+    "TestResult",
+    "Mutant",
+    "LintIssue",
+    # Observability & MLOps
+    "SentryClone",
+    "LogfireClone",
+    "DVCClone",
+    "MLflowClone",
+    "WandBClone",
+    "PanderaClone",
+    "PydanticModel",
+    "CrossrefClone",
+    # Bibliometric
+    "VOSviewerClone",
+    "BibliometricItem",
+    "BibliometricLink",
+    "BibliometricCluster",
+]

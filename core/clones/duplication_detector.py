@@ -75,6 +75,10 @@ class JscpdClone:
         return duplicates
 
 
+# Simian duplicate detector alias
+SimianClone = JscpdClone
+
+
 # ==============================================================================
 # 2. SONARQUBE CLONE (Quality, Complexity & Duplication Metrics)
 # ==============================================================================
