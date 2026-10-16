@@ -8,6 +8,14 @@ Includes pure-Python deterministic implementations of:
 - Bibliometric Mapping (VOSviewer)
 """
 
+from core.clones.consensus_ai import (
+    ConsensusAIClone,
+    ConsensusClaim,
+    ConsensusMeter,
+    ConsensusSynthesisResult,
+    ConsensusVerdict,
+    StudyDesign,
+)
 from core.clones.duplication_detector import (
     DataComPyClone,
     DedupeClone,
@@ -97,4 +105,11 @@ __all__ = [
     "BibliometricItem",
     "BibliometricLink",
     "BibliometricCluster",
+    # Consensus AI Scientific Synthesizer
+    "ConsensusAIClone",
+    "ConsensusVerdict",
+    "StudyDesign",
+    "ConsensusClaim",
+    "ConsensusMeter",
+    "ConsensusSynthesisResult",
 ]

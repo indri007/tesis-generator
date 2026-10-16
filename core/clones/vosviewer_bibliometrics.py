@@ -479,6 +479,10 @@ class VOSviewerClone:
             Path(filepath).write_text(content, encoding="utf-8")
         return content
 
+    def get_vosviewer_online_json(self) -> dict[str, Any]:
+        """Returns JSON dictionary payload 100% compatible with VOSviewer Online."""
+        return json.loads(self.export_vosviewer_online_json())
+
     # ==========================================================================
     # 6. SUMMARY & ASCII VISUALIZATION
     # ==========================================================================
