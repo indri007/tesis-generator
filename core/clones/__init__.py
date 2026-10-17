@@ -58,9 +58,11 @@ from core.clones.similarity_plagiarism import (
     CopyleaksClone,
     GrammarlyClone,
     OuriginalClone,
+    SentenceTransformersAdapter,
     TurnitinClone,
     TurnitinMatch,
     TurnitinReport,
+    compute_cosine_similarity,
     iThenticateClone,
 )
 from core.clones.vosviewer_bibliometrics import (
@@ -72,6 +74,8 @@ from core.clones.vosviewer_bibliometrics import (
 
 __all__ = [
     # Similarity
+    "compute_cosine_similarity",
+    "SentenceTransformersAdapter",
     "TurnitinClone",
     "iThenticateClone",
     "CopyleaksClone",

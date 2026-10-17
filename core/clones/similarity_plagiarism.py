@@ -13,8 +13,134 @@ from __future__ import annotations
 
 import math
 import re
+import unicodedata
+from collections import Counter
 from dataclasses import asdict, dataclass, field
 from typing import Any
+
+
+# ==============================================================================
+# 0. PURE-PYTHON LEXICAL COSINE SIMILARITY (Open Standard)
+# ==============================================================================
+def normalize_and_tokenize(text: str) -> list[str]:
+    """Normalizes Unicode (NFKC), lowercases, and extracts word tokens.
+
+    Supports Indonesian, English, Latin diacritics, and non-Latin scripts (Cyrillic, Arabic, CJK).
+    Does not rely on external NLP tokenizers or heavy weights.
+
+    Validation:
+        - If text is None, returns empty list [].
+        - If text is not a string, raises TypeError.
+    """
+    if text is None:
+        return []
+    if not isinstance(text, str):
+        raise TypeError(f"Expected string input, got {type(text).__name__}")
+    if not text.strip():
+        return []
+    normalized = unicodedata.normalize("NFKC", text)
+    # Match alphanumeric sequences across all Unicode scripts including hyphen
+    return re.findall(r"\b[\w-]+\b", normalized.lower(), flags=re.UNICODE)
+
+
+def compute_cosine_similarity(text_a: str, text_b: str) -> float:
+    """Computes pure-Python lexical cosine similarity based on word-frequency (Term Frequency) vectors.
+
+    Scientific & Methodological Constraints:
+    - Measures lexical overlap in bag-of-words vector space, NOT semantic comprehension.
+    - Score is strictly finite and bounded in [0.0, 1.0] for all text inputs.
+    - Symmetric: compute_cosine_similarity(a, b) == compute_cosine_similarity(b, a).
+    - Policy for Empty / Whitespace Inputs:
+        * If both strings are empty, whitespace-only, or None: returns 0.0 (no lexical evidence).
+        * If either string is empty: returns 0.0.
+    - Input Validation:
+        * Accepts `str`. `None` is safely treated as empty text (yielding 0.0).
+        * Non-string types (e.g. int, list, dict) raise `TypeError`.
+    - Division by zero is protected against zero-magnitude vectors.
+    - Does NOT equate to plagiarism evidence, plagiarism percentage, or AI-generated probability.
+    """
+    tokens_a = normalize_and_tokenize(text_a)
+    tokens_b = normalize_and_tokenize(text_b)
+
+    # Empty policy: zero lexical overlap evidence
+    if not tokens_a or not tokens_b:
+        return 0.0
+
+    # Fast path: exact token match
+    if tokens_a == tokens_b:
+        return 1.0
+
+    vec_a = Counter(tokens_a)
+    vec_b = Counter(tokens_b)
+
+    common_keys = set(vec_a.keys()) & set(vec_b.keys())
+    if not common_keys:
+        return 0.0
+
+    dot_product = sum(vec_a[k] * vec_b[k] for k in common_keys)
+    sum_a = sum(v * v for v in vec_a.values())
+    sum_b = sum(v * v for v in vec_b.values())
+
+    denom = math.sqrt(sum_a) * math.sqrt(sum_b)
+    if denom <= 0.0 or not math.isfinite(denom):
+        return 0.0
+
+    score = dot_product / denom
+    if not math.isfinite(score):
+        return 0.0
+    # Clamp to [0.0, 1.0] against precision artifacts
+    return max(0.0, min(1.0, float(score)))
+
+
+class SentenceTransformersAdapter:
+    """Opt-in, lazy adapter for Sentence-Transformers neural embeddings.
+
+    CRITICAL RULE:
+    - Never imports sentence_transformers or downloads model weights automatically.
+    - Raises ImportError with informative guidance if user has not explicitly installed it.
+    """
+
+    def __init__(self, model_name: str = "paraphrase-multilingual-MiniLM-L12-v2") -> None:
+        self.model_name = model_name
+        self._model = None
+
+    def _ensure_dependencies(self) -> None:
+        try:
+            import sentence_transformers  # noqa: F401
+            import sklearn  # noqa: F401
+        except ImportError as err:
+            raise ImportError(
+                "sentence-transformers and scikit-learn are required for semantic embeddings. "
+                "Install them explicitly via 'pip install sentence-transformers scikit-learn'. "
+                "Otherwise, use the built-in compute_cosine_similarity() pure-Python function."
+            ) from err
+
+    def is_available(self) -> bool:
+        """Checks if sentence_transformers and scikit-learn are installed without importing model weights."""
+        import importlib.util
+
+        return (
+            importlib.util.find_spec("sentence_transformers") is not None
+            and importlib.util.find_spec("sklearn") is not None
+        )
+
+    def compute_similarity(self, text_a: str, text_b: str) -> float:
+        """Computes dense vector semantic cosine similarity via sentence-transformers."""
+        self._ensure_dependencies()
+        from sentence_transformers import SentenceTransformer
+        from sklearn.metrics.pairwise import cosine_similarity
+
+        if self._model is None:
+            self._model = SentenceTransformer(self.model_name)
+
+        emb = self._model.encode([text_a, text_b])
+        res = float(cosine_similarity([emb[0]], [emb[1]])[0][0])
+        return max(0.0, min(1.0, res))
+
+    def similarity(self, text_a: str, text_b: str) -> float:
+        """Alias for compute_similarity to match interface convention."""
+        return self.compute_similarity(text_a, text_b)
+
 
 
 # ==============================================================================

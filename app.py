@@ -26,6 +26,7 @@ from engines.formula_auditor import FormulaAuditor
 from engines.reference_auditor import ReferenceAuditor
 from engines.report_engine import ReportEngine
 from engines.revision_engine import DocxAutoFixer, RevisionEngine
+from engines.similarity_auditor import render_similarity_tab
 from engines.statistical_auditor import StatisticalAuditor
 from engines.structure_auditor import StructureAuditor
 from utils.number_utils import check_formula_recalculation
@@ -139,10 +140,11 @@ db.register_guideline_profile(
 )
 
 # Top Navigation Tabs
-tab_generator, tab_vector, tab_audit, tab_reviser, tab_landing, tab_history = st.tabs([
+tab_generator, tab_vector, tab_audit, tab_similarity, tab_reviser, tab_landing, tab_history = st.tabs([
     "⚡ AI Thesis Generator (Bab 1–5)",
     "🎨 Vector Studio & Diagram",
     "🔍 Audit & Analisis Naskah",
+    "📑 Similarity Checker",
     "🛠️ Auto-Revisi Dokumen",
     "🌐 Beranda & Standar (M3)",
     "📊 Basis Data Riwayat Audit"
@@ -922,7 +924,13 @@ with tab_audit:
             )
 
 # ==============================================================================
-# TAB 3: AUTO-REVISI DOKUMEN
+# TAB 4: SIMILARITY CHECKER (PURE-PYTHON LEXICAL)
+# ==============================================================================
+with tab_similarity:
+    render_similarity_tab()
+
+# ==============================================================================
+# TAB 5: AUTO-REVISI DOKUMEN
 # ==============================================================================
 with tab_reviser:
     st.title("🛠️ Multi-Tier Revision Engine")

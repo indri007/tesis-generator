@@ -63,3 +63,11 @@ BIT*.sh
 # Local configuration backups
 .gitignore.backup.*
 .env
+
+# Large model artifacts & linter caches
+*.pt
+*.bin
+*.onnx
+*.safetensors
+.ruff_cache/
+.mypy_cache/

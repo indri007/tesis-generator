@@ -1,0 +1,16 @@
+# AI Thesis Generator Configuration
+seed: 42
+
+llm:
+  provider: ollama
+  model: llama3.1:8b
+  temperature: 0.2
+  base_url: "http://localhost:11434"
+
+similarity:
+  method: lexical_cosine
+  # PENTING: Nilai 0.85 di bawah ini hanyalah nilai konfigurasi awal (uncalibrated heuristic),
+  # BELUM tervalidasi pada dataset berlabel, dan TIDAK boleh disamakan dengan batas plagiarisme.
+  initial_uncalibrated_threshold: 0.85
+  ngram_range: [1, 1]
+  disclaimer: "Kemiripan leksikal semata-mata mengukur tumpang-tindih token kata, bukan pemahaman makna semantik, bukan bukti plagiarisme, dan bukan probabilitas buatan AI."
