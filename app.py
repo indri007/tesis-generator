@@ -14,6 +14,7 @@ from typing import Any
 import streamlit as st
 
 from core.database.db_manager import DatabaseManager
+from core.evaluation.manuscript_quality_gate import ManuscriptQualityGate, QualityGateDecision
 from core.generator.thesis_generator import ThesisGenerator
 from core.integrations.thisiseconomy_bridge import ThisIsEconomyBridge
 from engines.audit_engine import audit_thesis
@@ -26,7 +27,7 @@ from engines.formula_auditor import FormulaAuditor
 from engines.reference_auditor import ReferenceAuditor
 from engines.report_engine import ReportEngine
 from engines.revision_engine import DocxAutoFixer, RevisionEngine
-from engines.similarity_auditor import render_similarity_tab
+from engines.similarity_auditor import extract_text_from_uploaded_bytes, render_similarity_tab
 from engines.statistical_auditor import StatisticalAuditor
 from engines.structure_auditor import StructureAuditor
 from utils.number_utils import check_formula_recalculation
@@ -964,6 +965,39 @@ with tab_reviser:
                     log = fixer.fix_all(str(out_p))
 
                     st.success("✓ Perbaikan format berhasil diterapkan sesuai pedoman MIKOM 2026!")
+
+                    # Pre-Export Manuscript Quality Gate Validation
+                    try:
+                        revised_text = extract_text_from_uploaded_bytes(out_p.read_bytes(), "revised.docx")
+                        qg_report = ManuscriptQualityGate.evaluate(revised_text)
+                        qg_title = f"🛡️ Manuscript Quality Gate: {qg_report.decision.value} (Skor: {qg_report.score}/100)"
+                        with st.expander(qg_title, expanded=(qg_report.decision == QualityGateDecision.FAIL)):
+                            if qg_report.decision == QualityGateDecision.PASS:
+                                st.success(f"✓ {qg_report.summary_message}")
+                            elif qg_report.decision == QualityGateDecision.PASS_WITH_WARNINGS:
+                                st.warning(f"⚠️ {qg_report.summary_message}")
+                            else:
+                                st.error(f"❌ {qg_report.summary_message}")
+
+                            col_qg_a, col_qg_b = st.columns(2)
+                            with col_qg_a:
+                                st.markdown("**Sistematika Bab Wajib:**")
+                                for ch in qg_report.checklist_items:
+                                    icon = "✅" if ch["status"] == "PASS" else "❌"
+                                    st.write(f"{icon} **{ch['item']}**: {ch['detail']}")
+                            with col_qg_b:
+                                st.markdown("**Integritas Konten & Draft Placeholders:**")
+                                if qg_report.placeholders_found:
+                                    st.warning(f"Ditemukan {len(qg_report.placeholders_found)} placeholder draf:")
+                                    for p in qg_report.placeholders_found[:5]:
+                                        st.caption(f"• Baris {p.line_number or '-'}: `{p.raw}` ({p.preview})")
+                                else:
+                                    st.success("✅ Bersih dari placeholder draf (TODO, TBD, XXX, dummy text).")
+                                if qg_report.unpaired_captions:
+                                    st.warning(f"Keterangan tabel/gambar tanpa caption: {', '.join(qg_report.unpaired_captions)}")
+                    except Exception:
+                        pass
+
                     st.download_button(
                         "📥 Unduh Dokumen Hasil Revisi (.docx)",
                         data=out_p.read_bytes(),

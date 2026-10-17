@@ -9,26 +9,35 @@ import tempfile
 from pathlib import Path
 from typing import Any, BinaryIO
 
-from typing_extensions import Self
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
-ALLOWED_EXTENSIONS = {".docx", ".pdf"}
+ALLOWED_EXTENSIONS = {".docx", ".pdf", ".txt"}
 MAX_FILE_SIZE_BYTES = 200 * 1024 * 1024  # 200 MB safe limit
 MAX_PAGES_LIMIT = 175
 
 
 def validate_file_extension(filename: str) -> tuple[bool, str]:
-    """Validate that uploaded file is DOCX or PDF."""
+    """Validate that uploaded file is DOCX, PDF, or TXT."""
     if not filename:
         return False, "Nama file tidak valid."
     ext = Path(filename).suffix.lower()
     if ext not in ALLOWED_EXTENSIONS:
-        return False, f"Format {ext} tidak didukung. Harap unggah file .docx atau .pdf."
+        return False, f"Format {ext} tidak didukung. Harap unggah file .docx, .pdf, atau .txt."
     return True, ext
 
 
 def sanitize_filename(filename: str) -> str:
-    """Sanitize filename to prevent directory traversal."""
-    cleaned = re.sub(r"[^\w\s\.-]", "_", filename).strip()
+    """Sanitize filename to prevent directory traversal and injection."""
+    if not filename:
+        return "uploaded_thesis"
+    # Normalize separators and extract pure basename
+    name = Path(filename.replace("\\", "/")).name
+    # Strip any consecutive dots (..) that could signify parent traversal
+    name = re.sub(r"\.{2,}", "_", name)
+    cleaned = re.sub(r"[^\w\s\.-]", "_", name).strip(". ")
     return cleaned or "uploaded_thesis"
 
 

@@ -116,3 +116,36 @@ class TestSimilarityAuditorEngine:
         shared_res2 = [t[0] for t in res2.top_shared_terms]
         assert "alfa" not in shared_res2
         assert "komunikasi" in shared_res2
+
+    def test_section_exclusion_in_similarity_analysis(self):
+        """Excluding bibliography prevents bibliography terms from inflating the score."""
+        doc_a = (
+            "BAB I PENDAHULUAN\nStudi komunikasi publik di era modern.\n\n"
+            "DAFTAR PUSTAKA\nHabermas, J. (1984). Theory of action.\n"
+        )
+        doc_b = (
+            "BAB I PENDAHULUAN\nTeknik optimasi throughput jaringan komputer.\n\n"
+            "DAFTAR PUSTAKA\nHabermas, J. (1984). Theory of action.\n"
+        )
+        res_with = run_similarity_analysis(doc_a, doc_b, exclude_bib=False)
+        res_without = run_similarity_analysis(doc_a, doc_b, exclude_bib=True)
+
+        assert res_without.cosine_similarity < res_with.cosine_similarity
+        assert len(res_without.excluded_sections) >= 1
+
+    def test_shingle_jaccard_in_similarity_analysis(self):
+        """Similarity analysis returns shingle Jaccard percentage."""
+        text = "analisis wacana kritis komunikasi massa di era digital kontemporer"
+        res = run_similarity_analysis(text, text)
+        assert res.shingle_percentage == pytest.approx(100.0, rel=1e-3)
+
+    def test_citation_reconciliation_in_similarity_analysis(self):
+        """Citation reconciliation matches in-text citations with bibliography entries."""
+        doc = (
+            "BAB I PENDAHULUAN\nMenurut Susanto (2020), komunikasi publik penting.\n\n"
+            "DAFTAR PUSTAKA\nSusanto, B. (2020). Buku Komunikasi Publik.\n"
+        )
+        res = run_similarity_analysis(doc, "dummy text pembanding", exclude_bib=True)
+        assert len(res.citations_reconciliation) >= 1
+        matched = [c for c in res.citations_reconciliation if c.status == "MATCHED"]
+        assert len(matched) >= 1

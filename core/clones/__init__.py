@@ -64,6 +64,7 @@ from core.clones.similarity_plagiarism import (
     TurnitinReport,
     compute_cosine_similarity,
     iThenticateClone,
+    normalize_and_tokenize,
 )
 from core.clones.vosviewer_bibliometrics import (
     BibliometricCluster,
@@ -75,6 +76,7 @@ from core.clones.vosviewer_bibliometrics import (
 __all__ = [
     # Similarity
     "compute_cosine_similarity",
+    "normalize_and_tokenize",
     "SentenceTransformersAdapter",
     "TurnitinClone",
     "iThenticateClone",
