@@ -1,4 +1,4 @@
-# Design Specification: Full Reverse-Engineering & Cloning Suite for Academic Platform
+# Design Specification: Full Institutional Tooling & Cloning Suite for Academic Platform
 
 **Date:** 2026-10-16  
 **Status:** Approved  
@@ -107,13 +107,13 @@ Fix Gate 13 positional argument mismatch in `core/evaluation/rayyan_consensus_50
 
 ---
 
-## 4. Binary Execution Script: `BIT17_REVERSE_ENGINEERING_FULL_CLONES.sh`
+## 4. Binary Execution Script: `BIT17_FULL_CLONING_SUITE.sh`
 
 A standalone, executable shell script (`chmod +x`) located at the repository root that:
 1. Validates virtual environment (`.venv-test/bin/python`).
 2. Executes live demonstrations and assertion checks for all 5 pillars.
 3. Runs the automated test suites (`tests/unit/test_cloning_observability_mlops.py`, `tests/unit/test_similarity_and_duplication_clones.py`, `tests/unit/test_scientific_engines.py`, `tests/unit/test_rayyan_consensus_50_gates.py`).
-4. Writes formatted execution logs to `workspace/BIT17_REVERSE_ENGINEERING_FULL_CLONES.txt`.
+4. Writes formatted execution logs to `workspace/BIT17_FULL_CLONING_SUITE.txt`.
 5. Exits cleanly with status code 0 on complete pass.
 
 ---
@@ -121,5 +121,5 @@ A standalone, executable shell script (`chmod +x`) located at the repository roo
 ## 5. Verification Plan
 
 - Unit test coverage for every clone.
-- End-to-end execution of `BIT17_REVERSE_ENGINEERING_FULL_CLONES.sh`.
+- End-to-end execution of `BIT17_FULL_CLONING_SUITE.sh`.
 - Regression check of all existing tests (`pytest`).

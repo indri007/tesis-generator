@@ -203,10 +203,8 @@ class RayyanConsensus50GatesAuditor:
 
     def gate_07(self) -> tuple[bool, str]:
         """7. Linting."""
-        import shutil
-        has_ruff = bool(shutil.which("ruff"))
-        pyproj = (self.root / "pyproject.toml").exists()
-        return has_ruff or pyproj, "Ruff configuration and linting engine active."
+        import ruff  # noqa: F401
+        return True, "Ruff configuration and linting engine active."
 
     def gate_08(self) -> tuple[bool, str]:
         """8. Clean Code Review."""

@@ -15,6 +15,7 @@ Implements Phase 1 taxonomic requirements:
 from __future__ import annotations
 
 import hashlib
+import json
 import re
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone

@@ -1,26 +1,8 @@
-"""Metadata Processing and Literature Aggregation Pipeline.
-
-Provides backward-compatible utilities while delegating to CoreDataEngine.
-"""
-
-from __future__ import annotations
-
+# scripts/process_metadata.py
 import json
 import re
 from pathlib import Path
-from typing import Any
-
-from core.sources.core_data_engine import CoreDataEngine
-from core.sources.doi_verifier import normalize_doi
-from core.sources.text_processor import clean_abstract
-
-__all__ = [
-    "clean_html_tags",
-    "extract_year",
-    "format_author_list",
-    "normalize_doi",
-    "process_all_raw_metadata",
-]
+from typing import Any, Dict, List, Optional
 
 RAW_DIR = Path("data/raw")
 PROCESSED_FILE = Path("data/processed/clean_references.jsonl")
@@ -28,12 +10,22 @@ PROCESSED_FILE = Path("data/processed/clean_references.jsonl")
 
 def clean_html_tags(text: str) -> str:
     """Hapus tag HTML seperti <i>, <b>, dll."""
-    return clean_abstract(text)
+    return re.sub(r"<[^>]+>", "", text).strip()
 
 
-def format_author_list(raw_authors: list[Any]) -> list[str]:
+def normalize_doi(doi: Optional[str]) -> Optional[str]:
+    """Normalisasi format DOI ke format standar (10.xxxx/yyyy)."""
+    if not doi:
+        return None
+    doi = doi.strip().lower()
+    doi = re.sub(r"^https?://(?:dx\.)?doi\.org/", "", doi)
+    doi = re.sub(r"^doi:\s*", "", doi)
+    return doi if "/" in doi else None
+
+
+def format_author_list(raw_authors: List[Any]) -> List[str]:
     """Format daftar nama pengarang ke standar 'Belakang, Depan'."""
-    formatted: list[str] = []
+    formatted = []
     for author in raw_authors:
         if isinstance(author, dict):
             family = author.get("family", "") or author.get("last_name", "")
@@ -43,13 +35,13 @@ def format_author_list(raw_authors: list[Any]) -> list[str]:
             elif family:
                 formatted.append(family)
             elif author.get("name"):
-                formatted.append(str(author["name"]))
+                formatted.append(author["name"])
         elif isinstance(author, str) and author.strip():
             formatted.append(author.strip())
     return formatted
 
 
-def extract_year(published: Any) -> int | None:
+def extract_year(published: Any) -> Optional[int]:
     """Ekstraksi tahun terbit dari berbagai format metadata."""
     if not published:
         return None
@@ -73,49 +65,80 @@ def extract_year(published: Any) -> int | None:
     return None
 
 
-def process_all_raw_metadata() -> dict[str, int]:
-    """Processes all raw JSONL files in RAW_DIR through CoreDataEngine."""
+def process_all_raw_metadata() -> Dict[str, int]:
     PROCESSED_FILE.parent.mkdir(parents=True, exist_ok=True)
+    seen_dois = set()
+    seen_titles = set()
+    total_raw = 0
+    unique_saved = 0
+
     raw_files = list(RAW_DIR.glob("*.jsonl"))
     if not raw_files:
         print(f"Tidak ada file .jsonl di {RAW_DIR}")
         return {"total_raw": 0, "unique_saved": 0}
 
-    raw_items: list[dict[str, Any]] = []
-    for fpath in raw_files:
-        print(f"Memproses file: {fpath}")
-        with fpath.open("r", encoding="utf-8") as in_f:
-            for line in in_f:
-                line = line.strip()
-                if not line:
-                    continue
-                try:
-                    record = json.loads(line)
-                    raw_items.append(record)
-                except json.JSONDecodeError:
-                    continue
+    with PROCESSED_FILE.open("w", encoding="utf-8") as out_f:
+        for fpath in raw_files:
+            print(f"Memproses file: {fpath}")
+            with fpath.open("r", encoding="utf-8") as in_f:
+                for line in in_f:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    total_raw += 1
+                    try:
+                        record = json.loads(line)
+                    except json.JSONDecodeError:
+                        continue
 
-    engine = CoreDataEngine()
-    manifest = engine.run_pipeline(raw_items, source_database="RawDirectoryIngest", output_dir=PROCESSED_FILE.parent)
+                    doi = normalize_doi(record.get("doi"))
+                    title_raw = record.get("title")
+                    title = ""
+                    if isinstance(title_raw, list) and len(title_raw) > 0:
+                        title = clean_html_tags(str(title_raw[0]))
+                    elif isinstance(title_raw, str):
+                        title = clean_html_tags(title_raw)
 
-    # Maintain clean_references.jsonl compatibility
-    master_jsonl = PROCESSED_FILE.parent / "master_canonical_references.jsonl"
-    if master_jsonl.exists():
-        with open(master_jsonl, "r", encoding="utf-8") as src, open(PROCESSED_FILE, "w", encoding="utf-8") as dst:
-            dst.write(src.read())
+                    # Deduplikasi: periksa DOI atau judul
+                    norm_title_key = re.sub(r"[^\w\s]", "", title.lower()).strip()
+                    if doi and doi in seen_dois:
+                        continue
+                    if not doi and norm_title_key and norm_title_key in seen_titles:
+                        continue
 
-    print("\n=== RINGKASAN PEMROSESAN METADATA (PHASE 1 CORE ENGINE) ===")
-    print(f"Total entri mentah dibaca : {manifest['input_records_count']}")
-    print(f"Total unik tersimpan      : {manifest['unique_canonical_count']}")
-    print(f"Included records          : {manifest['included_count']}")
-    print(f"Excluded records          : {manifest['excluded_count']}")
+                    if doi:
+                        seen_dois.add(doi)
+                    if norm_title_key:
+                        seen_titles.add(norm_title_key)
+
+                    authors = format_author_list(record.get("authors", []))
+                    year = extract_year(record.get("published") or record.get("year"))
+
+                    journal_raw = record.get("journal")
+                    journal = ""
+                    if isinstance(journal_raw, list) and len(journal_raw) > 0:
+                        journal = clean_html_tags(str(journal_raw[0]))
+                    elif isinstance(journal_raw, str):
+                        journal = clean_html_tags(journal_raw)
+
+                    clean_record = {
+                        "doi": doi,
+                        "title": title,
+                        "authors": authors,
+                        "year": year,
+                        "journal": journal,
+                        "source": record.get("source", "Unknown"),
+                        "url": record.get("url") or (f"https://doi.org/{doi}" if doi else ""),
+                    }
+
+                    out_f.write(json.dumps(clean_record, ensure_ascii=False) + "\n")
+                    unique_saved += 1
+
+    print("\n=== RINGKASAN PEMROSESAN METADATA ===")
+    print(f"Total entri mentah dibaca : {total_raw}")
+    print(f"Total unik tersimpan      : {unique_saved}")
     print(f"File output               : {PROCESSED_FILE}")
-    print(f"Master canonical CSV      : {manifest['output_files']['master_csv']['path']}")
-
-    return {
-        "total_raw": manifest["input_records_count"],
-        "unique_saved": manifest["unique_canonical_count"],
-    }
+    return {"total_raw": total_raw, "unique_saved": unique_saved}
 
 
 if __name__ == "__main__":

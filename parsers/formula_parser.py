@@ -64,7 +64,7 @@ class FormulaParser:
         Y = 7,5 (or claimed Y = 6,5)
         """
         cases = []
-        text_lines = [line.strip() for line in self.raw_text.splitlines() if line.strip()]
+        text_lines = [l.strip() for l in self.raw_text.splitlines() if l.strip()]
 
         for i in range(len(text_lines) - 2):
             l1, l2, l3 = text_lines[i], text_lines[i + 1], text_lines[i + 2]

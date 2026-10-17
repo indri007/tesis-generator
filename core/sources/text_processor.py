@@ -41,12 +41,12 @@ def clean_abstract(text: str | None) -> str:
     if not text:
         return ""
 
-    # 1. Strip HTML tags first (e.g., <p>, <i>)
-    no_html = re.sub(r"<[^>]+>", " ", text)
-    # 2. Unescape HTML entities second (&lt; -> <, &amp; -> &)
-    unescaped = html.unescape(no_html)
+    # Unescape HTML entities
+    unescaped = html.unescape(text)
+    # Strip HTML tags
+    no_html = re.sub(r"<[^>]+>", " ", unescaped)
     # Remove control characters
-    no_ctrl = "".join(ch for ch in unescaped if unicodedata.category(ch)[0] != "C" or ch in "\n\t")
+    no_ctrl = "".join(ch for ch in no_html if unicodedata.category(ch)[0] != "C" or ch in "\n\t")
     # Normalize multiple whitespace
     normalized = re.sub(r"\s+", " ", no_ctrl).strip()
     return normalized

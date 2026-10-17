@@ -1,0 +1,63 @@
+{
+  "generated_utc": "2026-10-17T14:21:52.577768+00:00",
+  "metadata": {
+    "valid_records": 800,
+    "malformed_json_lines": 0,
+    "unique_identifiers": 800,
+    "duplicate_identifiers": 0,
+    "https_document_urls": 0,
+    "communication_candidates_indicative": 129
+  },
+  "candidates": {
+    "csv_rows": 322,
+    "unique_urls": 322
+  },
+  "downloads": {
+    "historical_manifest_entries": 50,
+    "manifest_malformed_lines": 0,
+    "unique_urls": 44,
+    "historical_status_counts": {
+      "failed": 43,
+      "downloaded": 7
+    },
+    "latest_status_counts": {
+      "failed": 39,
+      "downloaded": 5
+    },
+    "valid_downloaded_files": 5,
+    "partial_files": 6,
+    "zero_byte_files": 6,
+    "nonempty_pdfs": 6
+  },
+  "harvest": {
+    "checkpoint": {
+      "page": 8,
+      "token": "metadataPrefix%3Doai_dc%26offset%3D946",
+      "done": false,
+      "count": 800
+    },
+    "xml_page_count": 8,
+    "xml_total_bytes": 2691216,
+    "process_output": ""
+  },
+  "git": {
+    "branch": "main",
+    "head": "e1bf2157f99409f3b1ee27963f197597e1044be6",
+    "status": "?? reports/\n?? scripts/bit_final_audit.py"
+  },
+  "reports": [
+    "reports/bit_final_summary.json",
+    "reports/metadata_inventory.csv",
+    "reports/communication_candidates.csv",
+    "reports/download_integrity_audit.csv",
+    "reports/local_file_inventory.csv",
+    "reports/xml_page_inventory.csv"
+  ],
+  "download_final_classification": {
+    "FAILED_OTHER": 7,
+    "DOWNLOADED_FILE_PRESENT": 5,
+    "HTTP_468_SERVER_OR_INTERMEDIARY_REJECTION": 48
+  },
+  "download_classification_report": "reports/final_download_classification.csv",
+  "finality_note": "Metadata dan laporan lokal dapat diaudit; arsip dokumen tidak lengkap selama ada kegagalan unduhan. HTTP 468 dicatat, bukan diakali."
+}

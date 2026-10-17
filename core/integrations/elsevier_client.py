@@ -1,6 +1,5 @@
 """Elsevier & Scopus Integration Module.
-
-Reverse-engineers and integrates Elsevier ScienceDirect, Scopus API, and Mendeley export pipelines.
+Integrates Elsevier ScienceDirect, Scopus API, and Mendeley export pipelines.
 Supports Scopus CSV exports, ScienceDirect RIS exports, offline bibliometric lookup,
 and authenticated Elsevier Developer API connectivity (Scopus Search & ScienceDirect Article Retrieval).
 Strictly adheres to reproducible, zero-hallucination academic standards.
@@ -254,7 +253,7 @@ def _estimate_quartile(journal_name: str) -> str:
 class ElsevierClient:
     """Client for querying Elsevier ScienceDirect and Scopus APIs.
     
-    Operates in offline reverse-engineered simulation mode when no API key is present.
+    Operates in offline simulated test mode when no API key is present.
     Connects to live Elsevier developer endpoints when ELSEVIER_API_KEY is available.
     """
 

@@ -1,0 +1,45 @@
+url,latest_status,file,bytes,sha256_actual,sha256_manifest,integrity,error
+https://repository.upnjatim.ac.id/5/4/Remediasi.pdf,failed,,0,,,NOT_CHECKED,TimeoutError: The read operation timed out
+https://repository.upnjatim.ac.id/5/2/remediasi_logam.pdf,downloaded,data/upn_repository_clone/public_files/ba8fb950bbcc_remediasi_logam.pdf,264637,bf912759334a304a019ea18d20c2b1f1768c924bd2134581972c4b8d6e8713a0,bf912759334a304a019ea18d20c2b1f1768c924bd2134581972c4b8d6e8713a0,VALID,
+https://repository.upnjatim.ac.id/5/5/Remediasi_sim.pdf,failed,,0,,,NOT_CHECKED,HTTPError: HTTP Error 468: 
+https://repository.upnjatim.ac.id/6/1/jendela_cendekia.pdf,failed,,0,,,NOT_CHECKED,HTTPError: HTTP Error 468: 
+https://repository.upnjatim.ac.id/7/1/pengemas_botol.pdf,failed,data/upn_repository_clone/public_files/a636b16a401d_pengemas_botol.pdf,333459,,,NOT_CHECKED,HTTPError: HTTP Error 468: 
+https://repository.upnjatim.ac.id/7/7/pengemas%20botol.pdf,failed,data/upn_repository_clone/public_files/a636b16a401d_pengemas_botol.pdf,333459,,,NOT_CHECKED,HTTPError: HTTP Error 468: 
+https://repository.upnjatim.ac.id/8/1/cover.pdf,failed,data/upn_repository_clone/public_files/8632ff67a2a1_cover.pdf,310241,,,NOT_CHECKED,HTTPError: HTTP Error 468: 
+https://repository.upnjatim.ac.id/8/2/manajemen.pdf,failed,,0,,,NOT_CHECKED,The read operation timed out
+https://repository.upnjatim.ac.id/8/3/Akuntansi.pdf,failed,data/upn_repository_clone/public_files/eb71b149151b_Akuntansi.pdf.part,0,,,NOT_CHECKED,[Errno 54] Connection reset by peer
+https://repository.upnjatim.ac.id/9/3/DPN%20baru.jpg,downloaded,data/upn_repository_clone/public_files/68982e69f63d_DPN_baru.jpg,39004,8ce131e94c96d33aed0f0f1eea62c7b642118007fc47afbf2b49ca02a51ae215,8ce131e94c96d33aed0f0f1eea62c7b642118007fc47afbf2b49ca02a51ae215,VALID,
+https://repository.upnjatim.ac.id/9/1/PROC_A4PFM.pdf,downloaded,data/upn_repository_clone/public_files/1fb36e60529f_PROC_A4PFM.pdf,297778,6d9697e9c123c907749c6717226b7f668fa4e6af97639424ec5f1a994fd94d31,6d9697e9c123c907749c6717226b7f668fa4e6af97639424ec5f1a994fd94d31,VALID,
+https://repository.upnjatim.ac.id/9/2/The_roles_of_trigger.pdf,downloaded,data/upn_repository_clone/public_files/873a8ed341e1_The_roles_of_trigger.pdf,224702,00bceca1c49ae73bee2510c803a2af9c6d0e14f0e936ba9a0eb33abe137aa072,00bceca1c49ae73bee2510c803a2af9c6d0e14f0e936ba9a0eb33abe137aa072,VALID,
+https://repository.upnjatim.ac.id/10/1/jendela%20cendekia_2019.pdf,failed,data/upn_repository_clone/public_files/fa0e681c615a_jendela_cendekia_2019.pdf.part,0,,,NOT_CHECKED,[Errno 54] Connection reset by peer
+https://repository.upnjatim.ac.id/11/1/cvr_biskuit_buah.pdf,failed,data/upn_repository_clone/public_files/18abef77472a_cvr_biskuit_buah.pdf.part,0,,,NOT_CHECKED,[Errno 54] Connection reset by peer
+https://repository.upnjatim.ac.id/11/2/biskuit_buah_mangrove.pdf,failed,data/upn_repository_clone/public_files/4c5a7672c69d_biskuit_buah_mangrove.pdf.part,0,,,NOT_CHECKED,[Errno 54] Connection reset by peer
+https://repository.upnjatim.ac.id/12/1/es_puter_icsrm.pdf,failed,data/upn_repository_clone/public_files/ea9bdbf4d911_es_puter_icsrm.pdf.part,0,,,NOT_CHECKED,[Errno 54] Connection reset by peer
+https://repository.upnjatim.ac.id/14/1/abu_sekam_%20patpi.pdf,failed,data/upn_repository_clone/public_files/39ffa0b739c8_abu_sekam__patpi.pdf.part,0,,,NOT_CHECKED,[Errno 54] Connection reset by peer
+https://repository.upnjatim.ac.id/15/1/jambu_biji_merah.pdf,downloaded,data/upn_repository_clone/public_files/199be8f932a7_jambu_biji_merah.pdf,1278087,f2b26d9f364c364e9216199026dc2747dccec9032692d34df7c800176047da15,f2b26d9f364c364e9216199026dc2747dccec9032692d34df7c800176047da15,VALID,
+https://repository.upnjatim.ac.id/16/1/buah_pedada.pdf,failed,,0,,,NOT_CHECKED,HTTP Error 468: 
+https://repository.upnjatim.ac.id/18/1/model_of_hydro.pdf,failed,,0,,,NOT_CHECKED,HTTP Error 468: 
+https://repository.upnjatim.ac.id/18/6/JMT_Model_of_Hydrodynamics_For-Settling.pdf,failed,,0,,,NOT_CHECKED,HTTP Error 468: 
+https://repository.upnjatim.ac.id/19/1/pengendapan_flok.pdf,failed,,0,,,NOT_CHECKED,HTTP Error 468: 
+https://repository.upnjatim.ac.id/20/1/assessing_natural.pdf,failed,,0,,,NOT_CHECKED,HTTP Error 468: 
+https://repository.upnjatim.ac.id/21/1/besi_sulfat.pdf,failed,,0,,,NOT_CHECKED,HTTP Error 468: 
+https://repository.upnjatim.ac.id/22/1/hydro_water.pdf,failed,,0,,,NOT_CHECKED,HTTP Error 468: 
+https://repository.upnjatim.ac.id/23/1/hydro_model.pdf,failed,,0,,,NOT_CHECKED,HTTP Error 468: 
+https://repository.upnjatim.ac.id/24/1/sensory.pdf,failed,,0,,,NOT_CHECKED,HTTP Error 468: 
+https://repository.upnjatim.ac.id/25/1/anchovy_flour.pdf,failed,,0,,,NOT_CHECKED,HTTP Error 468: 
+https://repository.upnjatim.ac.id/26/1/teh_mengkudu.pdf,failed,,0,,,NOT_CHECKED,HTTP Error 468: 
+https://repository.upnjatim.ac.id/27/1/sosis-ayam-jamur.pdf,failed,,0,,,NOT_CHECKED,HTTP Error 468: 
+https://repository.upnjatim.ac.id/28/1/risk_taking_inv.pdf,failed,,0,,,NOT_CHECKED,HTTP Error 468: 
+https://repository.upnjatim.ac.id/28/2/risk_taking.pdf,failed,,0,,,NOT_CHECKED,HTTP Error 468: 
+https://repository.upnjatim.ac.id/29/2/funding_decisions_sim.pdf,failed,,0,,,NOT_CHECKED,HTTP Error 468: 
+https://repository.upnjatim.ac.id/29/3/funding_decisions.pdf,failed,,0,,,NOT_CHECKED,HTTP Error 468: 
+https://repository.upnjatim.ac.id/30/1/fundamental_sim.pdf,failed,,0,,,NOT_CHECKED,HTTP Error 468: 
+https://repository.upnjatim.ac.id/30/2/fundamental_factor.pdf,failed,,0,,,NOT_CHECKED,HTTP Error 468: 
+https://repository.upnjatim.ac.id/31/1/examining.pdf,failed,,0,,,NOT_CHECKED,HTTP Error 468: 
+https://repository.upnjatim.ac.id/31/2/examining_mediating.pdf,failed,,0,,,NOT_CHECKED,HTTP Error 468: 
+https://repository.upnjatim.ac.id/32/1/the_biased.pdf,failed,,0,,,NOT_CHECKED,HTTP Error 468: 
+https://repository.upnjatim.ac.id/32/2/the_biased_factor.pdf,failed,,0,,,NOT_CHECKED,HTTP Error 468: 
+https://repository.upnjatim.ac.id/33/1/investor_behavior.pdf,failed,,0,,,NOT_CHECKED,HTTP Error 468: 
+https://repository.upnjatim.ac.id/33/2/investor_behavior.pdf,failed,,0,,,NOT_CHECKED,HTTP Error 468: 
+https://repository.upnjatim.ac.id/34/1/investigation.pdf,failed,,0,,,NOT_CHECKED,HTTP Error 468: 
+https://repository.upnjatim.ac.id/34/2/investigation.pdf,failed,,0,,,NOT_CHECKED,HTTP Error 468: 

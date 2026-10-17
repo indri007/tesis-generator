@@ -1,10 +1,10 @@
 name: CI Pipeline & Academic Compliance Audit
 
 on:
-  push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+  workflow_dispatch:
+  # Automated runs handled by CircleCI or local BIT runner when GitHub Actions minutes are limited
+  # push:
+  #   branches: [ main, master ]
 
 jobs:
   audit-and-test:

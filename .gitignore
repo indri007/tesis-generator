@@ -34,6 +34,7 @@ htmlcov/
 # Vendor submodules & large clones
 vendor/
 data/raw/
+data/upn_repository_clone/
 *.jsonl
 *.pdf
 *.docx

@@ -1,6 +1,5 @@
 """Consensus AI Scientific Evidence Synthesizer & Consensus Meter Clone.
-
-Reverse-engineers Consensus.app:
+Pure-Python implementation of Consensus.app capabilities:
 1. Natural language scientific question analysis & hypothesis verification.
 2. Quantitative Consensus Meter (% Yes, % No, % Possibly, % Inconclusive).
 3. Study Snapshot extraction (Study Design, Sample Size n=..., Key Finding Quote).

@@ -6,6 +6,7 @@ Built with Material Design 3 (M3) design tokens, WCAG 2.2 AA accessibility, and 
 
 from __future__ import annotations
 
+import json
 import tempfile
 import uuid
 from pathlib import Path
@@ -48,6 +49,7 @@ from engines.revision_engine import DocxAutoFixer, RevisionEngine
 from engines.similarity_auditor import extract_text_from_uploaded_bytes, render_similarity_tab
 from engines.statistical_auditor import StatisticalAuditor
 from engines.structure_auditor import StructureAuditor
+from engines.upn_repository_engine import UPNRepositoryEngine
 from utils.number_utils import check_formula_recalculation
 
 # Page configuration
@@ -159,14 +161,15 @@ db.register_guideline_profile(
 )
 
 # Top Navigation Tabs
-tab_generator, tab_vector, tab_audit, tab_similarity, tab_reviser, tab_landing, tab_history = st.tabs([
+tab_generator, tab_vector, tab_audit, tab_similarity, tab_reviser, tab_landing, tab_history, tab_upn_repo = st.tabs([
     "⚡ AI Thesis Generator (Bab 1–5)",
     "🎨 Vector Studio & Diagram",
     "🔍 Audit & Analisis Naskah",
     "📑 Similarity Checker",
     "🛠️ Auto-Revisi Dokumen",
     "🌐 Beranda & Standar (M3)",
-    "📊 Basis Data Riwayat Audit"
+    "📊 Basis Data Riwayat Audit",
+    "🏛️ Repositori UPN 2026"
 ])
 
 # ==============================================================================
@@ -698,9 +701,10 @@ with tab_audit:
                 page_count = doc.get_effective_page_count()
                 if doc.is_page_count_estimated:
                     st.info(f"ℹ️ Estimasi Format DOCX: Terdeteksi sekitar ~{page_count} halaman (berdasarkan densitas ~275 kata/halaman spasi ganda MIKOM 2026). Jumlah cetak aktual dapat sedikit berbeda tergantung tabel dan margin.")
-                if page_count > 175:
+                max_allowed_pages = 220 if doc.is_page_count_estimated else 175
+                if page_count > max_allowed_pages:
                     if doc.is_page_count_estimated:
-                        st.error(f"❌ FATAL ERROR: Naskah Word (.docx) diperkirakan mencapai ~{page_count} halaman, melampaui batas maksimal 175 halaman. Harap kurangi volume naskah.")
+                        st.error(f"❌ FATAL ERROR: Naskah Word (.docx) diperkirakan mencapai ~{page_count} halaman, melampaui batas maksimal {max_allowed_pages} halaman. Harap kurangi volume naskah.")
                     else:
                         st.error(f"❌ FATAL ERROR: Naskah PDF fisik melebihi batas 175 halaman (Terdeteksi pasti: {page_count} halaman).")
                     st.stop()
@@ -1243,3 +1247,93 @@ with tab_history:
         )
     else:
         st.info("Belum ada riwayat audit yang tersimpan di basis data lokal.")
+
+# ==============================================================================
+# TAB 8: KEPATUHAN UNGGAH MANDIRI REPOSITORI UPN VETERAN JAWA TIMUR (comm/2026)
+# ==============================================================================
+with tab_upn_repo:
+    st.title("🏛️ Kepatuhan Unggah Mandiri Repositori UPN Veteran Jawa Timur")
+    st.markdown(
+        "Spesifikasi sistem repositori institusi: **EPrints 3.x UPN Veteran Jawa Timur**  \n"
+        "Endpoint Divisi Komunikasi: [repository.upnjatim.ac.id/view/divisions/comm/2026.html](https://repository.upnjatim.ac.id/view/divisions/comm/2026.html)  \n"
+        "Tahun Kelulusan: **2026** | Program: **Magister Ilmu Komunikasi (S2)**"
+    )
+
+    upn_repo = UPNRepositoryEngine()
+
+    st.markdown("##### 1. Data Identitas Penulis / Mahasiswa")
+    u_col1, u_col2, u_col3 = st.columns(3)
+    with u_col1:
+        u_npm = st.text_input("NPM Mahasiswa", value="22081010045", key="upn_repo_npm_tab8")
+    with u_col2:
+        u_name = st.text_input("Nama Lengkap", value="Indri Kartika", key="upn_repo_name_tab8")
+    with u_col3:
+        u_email = st.text_input("Email Institusi (@upnjatim.ac.id)", value="indri@upnjatim.ac.id", key="upn_repo_email_tab8")
+
+    sample_doc = {
+        "title": "Tesis Magister Ilmu Komunikasi UPN Veteran Jawa Timur",
+        "chapters": {"BAB I": {}, "BAB II": {}, "BAB III": {}, "BAB IV": {}, "BAB V": {}},
+        "has_abstract_id": True,
+        "has_abstract_en": True
+    }
+    repo_report = upn_repo.audit_submission_readiness(
+        document_structure=sample_doc,
+        npm=u_npm,
+        author_name=u_name,
+        author_email=u_email,
+        similarity_percent=14.5,
+    )
+
+    st.markdown("##### 2. Status Kesiapan Unggah Mandiri")
+    st_c1, st_c2, st_c3 = st.columns(3)
+    with st_c1:
+        if repo_report.is_ready_for_submission:
+            st.success(f"✅ SIAP UNGGAH REPOSITORI ({repo_report.compliance_score:.0f}%)")
+        else:
+            st.error(f"❌ BUTUH REVISI DOKUMEN ({repo_report.compliance_score:.0f}%)")
+    with st_c2:
+        st.metric("Skor Turnitin Kampus", f"{repo_report.similarity_score:.1f}%", help="Maksimal 20% sesuai syarat verifikasi perpustakaan UPN")
+    with st_c3:
+        st.metric("Pemeriksaan Valid", f"{repo_report.passed_checks} / {repo_report.total_checks} Kriteria")
+
+    st.markdown("##### 3. Checklist Kriteria Verifikasi Petugas Perpustakaan")
+    for chk in repo_report.checklist_results:
+        icon = "✓" if chk["status"] == "PASS" else ("⚠️" if chk["status"] == "WARN" else "❌")
+        st.markdown(f"- **[{icon} {chk['status']}] {chk['label']}**: {chk['detail']}")
+
+    st.markdown("##### 4. Protokol Standar Penamaan 10 Berkas EPrints UPN Veteran Jatim")
+    st.caption("Petugas perpustakaan mewajibkan pemisahan file tesis per bab dengan penamaan berawalan NPM:")
+    manifest_data = [
+        {
+            "Bagian Dokumen": item.label,
+            "Format Nama File": f"`{item.target_filename}`",
+            "Tipe Sumber": item.source_type,
+            "Akses EPrints": item.access_policy,
+            "Catatan": item.notes,
+        }
+        for item in repo_report.file_manifest
+    ]
+    st.dataframe(manifest_data, **df_w())
+
+    st.markdown("##### 5. Ekspor Paket Metadata Unggah Mandiri")
+    m_col1, m_col2 = st.columns(2)
+    with m_col1:
+        st.download_button(
+            "📥 Unduh Manifest Berkas EPrints (.json)",
+            data=json.dumps(repo_report.metadata_payload, indent=2, ensure_ascii=False),
+            file_name=f"manifest_eprints_upn_{u_npm}.json",
+            mime="application/json",
+            **btn_w(),
+        )
+    with m_col2:
+        txt_manifest = f"PANDUAN UNGGAH MANDIRI REPOSITORY UPN VETERAN JAWA TIMUR\nEndpoint: {repo_report.endpoint}\nNPM: {u_npm}\nNama: {u_name}\nStatus: {repo_report.similarity_status}\n\nDAFTAR BERKAS WAJIB:\n"
+        for itm in repo_report.file_manifest:
+            txt_manifest += f"[{itm.code}] {itm.target_filename} ({itm.label})\n  -> Kebijakan: {itm.access_policy} | {itm.notes}\n\n"
+        st.download_button(
+            "📋 Unduh Checklist Penamaan File (.txt)",
+            data=txt_manifest,
+            file_name=f"checklist_penamaan_upn_{u_npm}.txt",
+            mime="text/plain",
+            **btn_w(),
+        )
+

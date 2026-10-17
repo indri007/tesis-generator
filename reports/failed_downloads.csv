@@ -1,0 +1,50 @@
+url,status,error
+https://repository.upnjatim.ac.id/5/4/Remediasi.pdf,failed,TimeoutError: The read operation timed out
+https://repository.upnjatim.ac.id/5/5/Remediasi_sim.pdf,failed,HTTPError: HTTP Error 468: 
+https://repository.upnjatim.ac.id/6/1/jendela_cendekia.pdf,failed,HTTPError: HTTP Error 468: 
+https://repository.upnjatim.ac.id/7/1/pengemas_botol.pdf,failed,HTTPError: HTTP Error 468: 
+https://repository.upnjatim.ac.id/7/7/pengemas%20botol.pdf,failed,HTTPError: HTTP Error 468: 
+https://repository.upnjatim.ac.id/8/1/cover.pdf,failed,HTTPError: HTTP Error 468: 
+https://repository.upnjatim.ac.id/8/2/manajemen.pdf,failed,HTTPError: HTTP Error 468: 
+https://repository.upnjatim.ac.id/8/3/Akuntansi.pdf,failed,[Errno 54] Connection reset by peer
+https://repository.upnjatim.ac.id/10/1/jendela%20cendekia_2019.pdf,failed,[Errno 54] Connection reset by peer
+https://repository.upnjatim.ac.id/11/1/cvr_biskuit_buah.pdf,failed,[Errno 54] Connection reset by peer
+https://repository.upnjatim.ac.id/11/2/biskuit_buah_mangrove.pdf,failed,[Errno 54] Connection reset by peer
+https://repository.upnjatim.ac.id/12/1/es_puter_icsrm.pdf,failed,[Errno 54] Connection reset by peer
+https://repository.upnjatim.ac.id/14/1/abu_sekam_%20patpi.pdf,failed,[Errno 54] Connection reset by peer
+https://repository.upnjatim.ac.id/16/1/buah_pedada.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/18/1/model_of_hydro.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/18/6/JMT_Model_of_Hydrodynamics_For-Settling.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/19/1/pengendapan_flok.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/20/1/assessing_natural.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/21/1/besi_sulfat.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/22/1/hydro_water.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/23/1/hydro_model.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/24/1/sensory.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/25/1/anchovy_flour.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/26/1/teh_mengkudu.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/27/1/sosis-ayam-jamur.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/28/1/risk_taking_inv.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/28/2/risk_taking.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/29/2/funding_decisions_sim.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/29/3/funding_decisions.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/30/1/fundamental_sim.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/30/2/fundamental_factor.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/31/1/examining.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/31/2/examining_mediating.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/32/1/the_biased.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/32/2/the_biased_factor.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/33/1/investor_behavior.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/33/2/investor_behavior.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/34/1/investigation.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/34/2/investigation.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/35/1/supply_chain.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/35/2/Supply%20chain.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/36/2/decision_making.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/36/1/decision_making.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/36/3/analysis_decision_making.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/37/1/two_stage_least.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/37/2/two_stage.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/38/1/analysis_of_government.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/38/2/ANALYSIS%20OF%20GOVERNMENT_PROCEEDING.pdf,failed,HTTP Error 468: 
+https://repository.upnjatim.ac.id/39/1/trading_activity.pdf,failed,HTTP Error 468: 

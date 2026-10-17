@@ -1,4 +1,4 @@
-"""Core Clones & Reverse-Engineered Platform Modules.
+"""Core Academic Tooling & Integration Platform Modules.
 
 Includes pure-Python deterministic implementations of:
 - Academic Similarity & Plagiarism (Turnitin, iThenticate, Copyleaks, Ouriginal, Grammarly)

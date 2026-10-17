@@ -1,8 +1,8 @@
-# Full Reverse-Engineering & Cloning Suite Implementation Plan
+# Full Institutional Tooling & Cloning Suite Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Build and integrate pure-Python, deterministic clones for 8 observability/MLOps tools, 5 academic similarity platforms, 6 duplication detectors, 8 scientific AI engines, and testing frameworks under a master executable binary script (`BIT17_REVERSE_ENGINEERING_FULL_CLONES.sh`).
+**Goal:** Build and integrate pure-Python, deterministic clones for 8 observability/MLOps tools, 5 academic similarity platforms, 6 duplication detectors, 8 scientific AI engines, and testing frameworks under a master executable binary script (`BIT17_FULL_CLONING_SUITE.sh`).
 
 **Architecture:** Create dedicated clone modules under `core/clones/` with zero-cloud dependencies. Wire them into `core/evaluation/rayyan_consensus_50_gates.py` for comprehensive 50-gate verification. Provide an executable bash script that runs tests, outputs execution metrics to `workspace/BIT17_...txt`, and executes automated pytests.
 
@@ -67,11 +67,11 @@
 
 ---
 
-### Task 6: Master Binary Command Runner (`BIT17_REVERSE_ENGINEERING_FULL_CLONES.sh`)
-**Files to create:** `BIT17_REVERSE_ENGINEERING_FULL_CLONES.sh`
+### Task 6: Master Binary Command Runner (`BIT17_FULL_CLONING_SUITE.sh`)
+**Files to create:** `BIT17_FULL_CLONING_SUITE.sh`
 
-- [ ] Write standalone executable bash script `BIT17_REVERSE_ENGINEERING_FULL_CLONES.sh`.
-- [ ] Set executable permission (`chmod +x BIT17_REVERSE_ENGINEERING_FULL_CLONES.sh`).
-- [ ] Execute the binary script and verify execution in `workspace/BIT17_REVERSE_ENGINEERING_FULL_CLONES.txt`.
+- [ ] Write standalone executable bash script `BIT17_FULL_CLONING_SUITE.sh`.
+- [ ] Set executable permission (`chmod +x BIT17_FULL_CLONING_SUITE.sh`).
+- [ ] Execute the binary script and verify execution in `workspace/BIT17_FULL_CLONING_SUITE.txt`.
 - [ ] Verify full test suite passes without regressions.
 - [ ] Commit changes.
