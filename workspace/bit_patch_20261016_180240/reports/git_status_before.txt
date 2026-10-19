@@ -1,0 +1,27 @@
+ M engines/citation_auditor.py
+ M golden_dataset/documents/TEST-001_normal.docx
+ M golden_dataset/documents/TEST-002_margin_salah.docx
+ M golden_dataset/documents/TEST-003_font_salah.docx
+ M golden_dataset/documents/TEST-004_bab3_hilang.docx
+ M golden_dataset/documents/TEST-005_citation_missing_bib.docx
+ M golden_dataset/documents/TEST-006_variable_mutation.docx
+ M golden_dataset/documents/TEST-007_formula_error.docx
+ M golden_dataset/documents/TEST-008_stat_contradiction.docx
+ M golden_dataset/documents/TEST-009_sample_mismatch.docx
+ M golden_dataset/documents/TEST-010_journal.docx
+ M golden_dataset/documents/TEST-010_thesis.docx
+ M golden_dataset/generator.py
+ M models/document_model.py
+ M tests/test_docx_parser.py
+?? BIT_TESIS_CHECK_FINAL.sh
+?? BIT_TESIS_PATCH_ISOLATION.sh
+?? core/evaluation/benchmark_runner.py
+?? core/evaluation/error_analysis.py
+?? core/evaluation/matcher.py
+?? core/evaluation/metrics.py
+?? core/evaluation/schema.py
+?? data/
+?? golden_dataset/documents/TEST-011_unused_reference.docx
+?? tests/golden_dataset/test_academic_benchmark.py
+?? tests/unit/test_evaluation_metrics.py
+?? workspace/

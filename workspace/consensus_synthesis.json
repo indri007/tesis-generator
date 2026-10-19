@@ -1,0 +1,138 @@
+{
+  "query": "Apakah integrasi IndoBERT dan SNA efektif meningkatkan deteksi misinformasi kebijakan MBG?",
+  "meter": {
+    "total_studies": 4,
+    "yes_count": 2,
+    "no_count": 1,
+    "possibly_count": 1,
+    "inconclusive_count": 0,
+    "yes_percentage": 50.0,
+    "no_percentage": 25.0,
+    "possibly_percentage": 25.0,
+    "weighted_consensus_score": 0.58,
+    "summary_headline": "Literatur cenderung positif dengan variasi bersyarat (50.0% Yes, 25.0% Possibly)."
+  },
+  "claims": [
+    {
+      "paper_id": "paper_1",
+      "title": "Deteksi Opini dan Misinformasi Kebijakan MBG Berbasis IndoBERT dan Social Network Analysis",
+      "authors": [
+        "Utomo, Indri",
+        "Santoso, Budi"
+      ],
+      "year": 2024,
+      "journal": "Jurnal Komunikasi Indonesia",
+      "doi": "10.1016/j.jki.2024.101",
+      "verdict": "Yes",
+      "confidence": 0.81,
+      "study_design": "Empirical Quantitative (SNA / ML / Experiment)",
+      "sample_size": 28500,
+      "key_quote": "Hasil pengujian empiris membuktikan bahwa integrasi model berhasil meningkatkan akurasi deteksi polaritas dan misinformasi hingga 93.8% dengan F1-score superior.",
+      "takeaway": "Studi memberikan bukti empiris positif yang mendukung pertanyaan penelitian.",
+      "rigor_stars": 5,
+      "citation_count": 42
+    },
+    {
+      "paper_id": "paper_2",
+      "title": "Evaluasi Algoritma Komunitas Jaringan pada Kanal Telegram Indonesia",
+      "authors": [
+        "Pratama, Agus",
+        "Wijaya, Hendra"
+      ],
+      "year": 2023,
+      "journal": "Telematics and Informatics",
+      "doi": "10.1016/j.tele.2023.202",
+      "verdict": "Yes",
+      "confidence": 0.81,
+      "study_design": "Empirical Quantitative (SNA / ML / Experiment)",
+      "sample_size": null,
+      "key_quote": "Studi kuantitatif membuktikan SNA terbukti efektif memetakan klaster polarisasi dan mempercepat identifikasi aktor sentral penyebar narasi manipulatif secara signifikan.",
+      "takeaway": "Studi memberikan bukti empiris positif yang mendukung pertanyaan penelitian.",
+      "rigor_stars": 4,
+      "citation_count": 35
+    },
+    {
+      "paper_id": "paper_3",
+      "title": "Tantangan Analisis Sentimen Aspek (ABSA) pada Komunikasi Kebijakan Publik",
+      "authors": [
+        "Kusuma, Dian"
+      ],
+      "year": 2024,
+      "journal": "Asian Journal of Communication",
+      "doi": "10.1080/ajc.2024.303",
+      "verdict": "Possibly",
+      "confidence": 0.76,
+      "study_design": "Other Empirical Study",
+      "sample_size": null,
+      "key_quote": "Hasil penelitian menunjukkan pengaruh bersyarat (mixed results): deteksi aspek berhasil tinggi pada teks deskriptif, namun efektivitas tergantung pada penanganan sarkasme dan emoji kontekstual.",
+      "takeaway": "Temuan menunjukkan pengaruh bersyarat yang bervariasi bergantung pada konteks penerapan.",
+      "rigor_stars": 2,
+      "citation_count": 18
+    },
+    {
+      "paper_id": "paper_4",
+      "title": "Kelemahan Model Ekstraksi Lexicon Konvensional pada Media Daring",
+      "authors": [
+        "Rahmawati, Siti"
+      ],
+      "year": 2022,
+      "journal": "Media dan Masyarakat",
+      "doi": "10.1000/mdm.2022.404",
+      "verdict": "No",
+      "confidence": 0.81,
+      "study_design": "Other Empirical Study",
+      "sample_size": null,
+      "key_quote": "Metode pencocokan kamus konvensional tidak berpengaruh nyata terhadap ketepatan klasifikasi dan gagal membedakan nuansa emosi pengguna.",
+      "takeaway": "Studi menemukan ketiadaan dampak signifikan atau membantah hipotesis.",
+      "rigor_stars": 2,
+      "citation_count": 9
+    }
+  ],
+  "synthesis_narrative": "Berdasarkan telaah sintesis ilmiah terhadap pertanyaan penelitian *'Apakah integrasi IndoBERT dan SNA efektif meningkatkan deteksi misinformasi kebijakan MBG?'*, literatur peer-reviewed menunjukkan bahwa literatur cenderung positif dengan variasi bersyarat (50.0% yes, 25.0% possibly). dengan skor konsensus terbobot +0.58. Secara konsisten, bukti empiris dari studi berbobot tinggi (Utomo et al., 2024; Pratama et al., 2023) membuktikan bahwa variabel yang diteliti memberikan pengaruh signifikan, seperti ditegaskan oleh temuan kunci: \"Hasil pengujian empiris membuktikan bahwa integrasi model berhasil meningkatkan akurasi deteksi polaritas dan misinformasi hingga 93.8% dengan F1-score superior.\". Di sisi lain, sebagian riset mengidentifikasi adanya batasan kontekstual (Kusuma, 2024), di mana efektivitas bergantung pada karakteristik audiens dan platform komunikasi digital. Adapun penelitian yang mencatat ketiadaan dampak signifikan (Rahmawati, 2022) menggarisbawahi perlunya pengawasan ketat terhadap anomali metodologis. Temuan sintesis ini memberikan landasan teoretis dan justifikasi empiris yang kokoh bagi pengembangan kerangka konseptual serta perumusan hipotesis pada tesis ini.",
+  "evidence_matrix": [
+    {
+      "paper_id": "paper_1",
+      "title": "Deteksi Opini dan Misinformasi Kebijakan MBG Berbasis IndoBERT dan Social Network Analysis",
+      "citation": "Utomo, Indri (2024)",
+      "verdict": "Yes",
+      "confidence": 0.81,
+      "study_design": "Empirical Quantitative (SNA / ML / Experiment)",
+      "sample_size": 28500,
+      "rigor_stars": 5,
+      "key_quote": "Hasil pengujian empiris membuktikan bahwa integrasi model berhasil meningkatkan akurasi deteksi polaritas dan misinformasi hingga 93.8% dengan F1-score superior."
+    },
+    {
+      "paper_id": "paper_2",
+      "title": "Evaluasi Algoritma Komunitas Jaringan pada Kanal Telegram Indonesia",
+      "citation": "Pratama, Agus (2023)",
+      "verdict": "Yes",
+      "confidence": 0.81,
+      "study_design": "Empirical Quantitative (SNA / ML / Experiment)",
+      "sample_size": null,
+      "rigor_stars": 4,
+      "key_quote": "Studi kuantitatif membuktikan SNA terbukti efektif memetakan klaster polarisasi dan mempercepat identifikasi aktor sentral penyebar narasi manipulatif secara signifikan."
+    },
+    {
+      "paper_id": "paper_3",
+      "title": "Tantangan Analisis Sentimen Aspek (ABSA) pada Komunikasi Kebijakan Publik",
+      "citation": "Kusuma, Dian (2024)",
+      "verdict": "Possibly",
+      "confidence": 0.76,
+      "study_design": "Other Empirical Study",
+      "sample_size": null,
+      "rigor_stars": 2,
+      "key_quote": "Hasil penelitian menunjukkan pengaruh bersyarat (mixed results): deteksi aspek berhasil tinggi pada teks deskriptif, namun efektivitas tergantung pada penanganan sarkasme dan emoji kontekstual."
+    },
+    {
+      "paper_id": "paper_4",
+      "title": "Kelemahan Model Ekstraksi Lexicon Konvensional pada Media Daring",
+      "citation": "Rahmawati, Siti (2022)",
+      "verdict": "No",
+      "confidence": 0.81,
+      "study_design": "Other Empirical Study",
+      "sample_size": null,
+      "rigor_stars": 2,
+      "key_quote": "Metode pencocokan kamus konvensional tidak berpengaruh nyata terhadap ketepatan klasifikasi dan gagal membedakan nuansa emosi pengguna."
+    }
+  ]
+}

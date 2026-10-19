@@ -1,0 +1,2763 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet type='text/xsl' href='/oai2.xsl' ?>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+  <responseDate>2026-10-17T14:03:07Z</responseDate>
+  <request verb="ListRecords" metadataPrefix="oai_dc">https://repository.upnjatim.ac.id/cgi/oai2</request>
+  <ListRecords>
+    <record>
+    <header>
+      <identifier>oai::77</identifier>
+      <datestamp>2020-06-23T13:02:23Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/77/</dc:relation>
+        <dc:title>Similarity dan Peer Review : Burial Service Quality Analysis Study in The Cemetery of Keputih Surabaya</dc:title>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2018</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:identifier>  UNSPECIFIED  (2018) Similarity dan Peer Review : Burial Service Quality Analysis Study in The Cemetery of Keputih Surabaya.  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::5</identifier>
+      <datestamp>2020-04-29T06:48:48Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D53:5331</setSpec>
+      <setSpec>74797065733D626F6F6B</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/5/</dc:relation>
+        <dc:title>Remediasi Tanah Tercemar Logam Berat</dc:title>
+        <dc:creator>Hamzah, Amir</dc:creator>
+        <dc:creator>Priyadarshini, Rossyda</dc:creator>
+        <dc:subject>S Agriculture (General)</dc:subject>
+        <dc:publisher>UNITRI Press</dc:publisher>
+        <dc:date>2019</dc:date>
+        <dc:type>Book</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/5/4/Remediasi.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/5/2/remediasi_logam.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/5/5/Remediasi_sim.pdf</dc:identifier>
+        <dc:identifier>  Hamzah, Amir and Priyadarshini, Rossyda  (2019) Remediasi Tanah Tercemar Logam Berat.    UNITRI Press, Malang.  ISBN 978-602-61153-7-9     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::6</identifier>
+      <datestamp>2020-03-27T07:31:08Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D53:5331</setSpec>
+      <setSpec>74797065733D61727469636C65</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/6/</dc:relation>
+        <dc:title>Urban Agriculture : Strategi Mewujudkan Kampung Bersih, sehat dan Ramah anak</dc:title>
+        <dc:creator>Priyadarshini, Rossyda</dc:creator>
+        <dc:subject>S Agriculture (General)</dc:subject>
+        <dc:date>2016-07</dc:date>
+        <dc:type>Article</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/6/1/jendela_cendekia.pdf</dc:identifier>
+        <dc:identifier>  Priyadarshini, Rossyda  (2016) Urban Agriculture : Strategi Mewujudkan Kampung Bersih, sehat dan Ramah anak.  Jendela Cendikia, 1.       </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::7</identifier>
+      <datestamp>2020-06-29T10:02:21Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D54:5431</setSpec>
+      <setSpec>74797065733D706174656E74</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/7/</dc:relation>
+        <dc:title>Pengemas Botol Hemat Energi</dc:title>
+        <dc:creator>Mulyadi, Edi</dc:creator>
+        <dc:creator>Priyadarshini, Rossyda</dc:creator>
+        <dc:creator>Sutiyono, Sutiyono</dc:creator>
+        <dc:creator>Triana, Nurul Widji</dc:creator>
+        <dc:subject>T Technology (General)</dc:subject>
+        <dc:date>2020-01-02</dc:date>
+        <dc:type>Patent</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/7/1/pengemas_botol.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/7/7/pengemas%20botol.pdf</dc:identifier>
+        <dc:identifier>  LPPM UPN Veteran Jawa Timur  (2020) Pengemas Botol Hemat Energi.  A00202000001.   </dc:identifier>
+        <dc:relation>A00202000001</dc:relation></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::8</identifier>
+      <datestamp>2020-03-27T11:03:12Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4842</setSpec>
+      <setSpec>74797065733D636F6E666572656E63655F6974656D</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/8/</dc:relation>
+        <dc:title>Proceeding Simposium Riset Ekonomi V : Memacu Pertumbuhan Ekonomi Menuju Kemandirian Bangsa</dc:title>
+        <dc:creator>Kusreni, Sri</dc:creator>
+        <dc:creator>Martha, Ignatia</dc:creator>
+        <dc:subject>HB Economic Theory</dc:subject>
+        <dc:date>2011-10-06</dc:date>
+        <dc:type>Conference or Workshop Item</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/8/1/cover.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/8/2/manajemen.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/8/3/Akuntansi.pdf</dc:identifier>
+        <dc:identifier>  Kusreni, Sri and Martha, Ignatia  (2011) Proceeding Simposium Riset Ekonomi V : Memacu Pertumbuhan Ekonomi Menuju Kemandirian Bangsa.  In: Memacu Pertumbuhan Ekonomi Menuju Kemandirian Bangsa, 6 Oktober 2011, Surabaya.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::9</identifier>
+      <datestamp>2020-06-17T23:20:33Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4842</setSpec>
+      <setSpec>74797065733D636F6E666572656E63655F6974656D</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/9/</dc:relation>
+        <dc:title>The Role Of Trigger And Condition As A Moderator Of Satisfactory Effect On Word Of Mouth (StudyOn Restaurants In Surabaya)</dc:title>
+        <dc:creator>Setyawati, Endang</dc:creator>
+        <dc:subject>HB Economic Theory</dc:subject>
+        <dc:date>2012-11-13</dc:date>
+        <dc:type>Conference or Workshop Item</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>image</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/9/3/DPN%20baru.jpg</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/9/1/PROC_A4PFM.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/9/2/The_roles_of_trigger.pdf</dc:identifier>
+        <dc:identifier>  Setyawati, Endang  (2012) The Role Of Trigger And Condition As A Moderator Of Satisfactory Effect On Word Of Mouth (StudyOn Restaurants In Surabaya).  In: Public Reform for Good Government governance, 13-14 November 2012, Surabaya.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::10</identifier>
+      <datestamp>2020-03-28T12:31:10Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D53:5331</setSpec>
+      <setSpec>74797065733D61727469636C65</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/10/</dc:relation>
+        <dc:title>Desa Tamansari Kabupaten Banyuwangi :  Berbenah Menuju desa Mandiri Berbasis Wisata</dc:title>
+        <dc:creator>Priyadarshini, Rossyda</dc:creator>
+        <dc:creator>Maroeto, Maroeto</dc:creator>
+        <dc:creator>Santoso, Wahyu</dc:creator>
+        <dc:subject>S Agriculture (General)</dc:subject>
+        <dc:publisher>LPPM UPN Veteran Jawa Timur</dc:publisher>
+        <dc:date>2019-07</dc:date>
+        <dc:type>Article</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/10/1/jendela%20cendekia_2019.pdf</dc:identifier>
+        <dc:identifier>  Priyadarshini, Rossyda and Maroeto, Maroeto and Santoso, Wahyu  (2019) Desa Tamansari Kabupaten Banyuwangi : Berbenah Menuju desa Mandiri Berbasis Wisata.  Jendela Cendikia, 3.       </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::11</identifier>
+      <datestamp>2020-04-06T03:45:01Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D53:5331</setSpec>
+      <setSpec>74797065733D626F6F6B</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/11/</dc:relation>
+        <dc:title>Biskuit Buah Manggrove Dengan Nilai Indeks Glikemik Rendah</dc:title>
+        <dc:creator>Jariyah, Jariyah</dc:creator>
+        <dc:subject>S Agriculture (General)</dc:subject>
+        <dc:publisher>Indomedia Pustaka</dc:publisher>
+        <dc:date>2019</dc:date>
+        <dc:type>Book</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/11/1/cvr_biskuit_buah.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/11/2/biskuit_buah_mangrove.pdf</dc:identifier>
+        <dc:identifier>  Jariyah, Jariyah  (2019) Biskuit Buah Manggrove Dengan Nilai Indeks Glikemik Rendah.    Indomedia Pustaka.  ISBN 978-623-7137-03-0     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::12</identifier>
+      <datestamp>2020-04-09T03:21:50Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D54:5450</setSpec>
+      <setSpec>74797065733D636F6E666572656E63655F6974656D</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/12/</dc:relation>
+        <dc:title>ANALYSIS PHYSICAL CHEMISTRY FORMULATION “ES PUTER”&#13;
+FROM THE FRUIT OF MANGROVE (Sonneratia caseolaris)</dc:title>
+        <dc:creator>Djajati, Sri</dc:creator>
+        <dc:creator>Nurismanto, Rudi</dc:creator>
+        <dc:creator>Jariyah, Jariyah</dc:creator>
+        <dc:subject>TP Chemical technology</dc:subject>
+        <dc:description>Es puter is one frozen food product and is often identified with the ice cream. Fat sources used in es &#13;
+puter derived from coconut milk. Utilization of fruit mangrove applied into es puter aims to increase the &#13;
+economic value and diversified fruits mangrove. In addition, fruits contain antioxidants that mangrove high &#13;
+enough so that enough potential to be developed as es puter functional. The purpose of this research is &#13;
+to know the influence of formulation of coconut milk and pasta fruit mangrove against physico chemical es &#13;
+puter fruit mangrove. This study used a Randomized Complete Desi gn method (RAL) with 1 factors, &#13;
+namely the formulation of coconut milk : fruit pasta mangrove (62:10), (56:14), (18:54), (50:22), (46:26), &#13;
+(42:30), (39:34) and repeated as much as 3 times. Data were analyzed with ANOVA, Tukey Test using &#13;
+advanced test (α =  5%). to know or no influence of physico-chemical treatment on es puter fruit &#13;
+mangrove. Es puter fruit mangrove 42% coconut milk formulations: 30% fruit paste mangrove is the best &#13;
+treatment with the value of the overrun 8,89%, melting speed 5.59 minute, vis cosity 1.55 dPa'S, fat &#13;
+content3.54% , antioxidant activity 30.2%, and total phenol 18.88 ppm.&#13;
+Keywords: Es puter, fruit mangrove</dc:description>
+        <dc:date>2016-11-15</dc:date>
+        <dc:type>Conference or Workshop Item</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/12/1/es_puter_icsrm.pdf</dc:identifier>
+        <dc:identifier>  Djajati, Sri and Nurismanto, Rudi and Jariyah, Jariyah  (2016) ANALYSIS PHYSICAL CHEMISTRY FORMULATION “ES PUTER” FROM THE FRUIT OF MANGROVE (Sonneratia caseolaris).  In: ISRM 2016, 15 Nov 2016, Surabaya.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::14</identifier>
+      <datestamp>2020-04-09T03:39:52Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D53:5331</setSpec>
+      <setSpec>7375626A656374733D54:5431</setSpec>
+      <setSpec>7375626A656374733D54:5450</setSpec>
+      <setSpec>74797065733D636F6E666572656E63655F6974656D</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/14/</dc:relation>
+        <dc:title>PERANAN ABU SEKAM DALAM PENURUNAN KADAR SIANIDA DAN &#13;
+TANNIN PADA TEPUNG MANGROVE (Avicenna marinna)</dc:title>
+        <dc:creator>Sarofa, Ulya</dc:creator>
+        <dc:creator>Jariyah, Jariyah</dc:creator>
+        <dc:creator>Riyadi, Sidharta Rendra</dc:creator>
+        <dc:subject>S Agriculture (General)</dc:subject>
+        <dc:subject>T Technology (General)</dc:subject>
+        <dc:subject>TP Chemical technology</dc:subject>
+        <dc:description>Tanaman mangrove, khususnya Avicenna marinna mempunyai potensi untuk dikembangkan &#13;
+menjadi sumber pangan yang potensial, oleh karena terdapatnya racun yang ada pada &#13;
+bahan perlu dilakukan penelitian untuk dikembangkan menjadi penelitian lebih lanjut. &#13;
+Tanaman mangrove (Avicenna marinna  ) diduga racun yang ada adalah tanin dan sianida. &#13;
+Penggunaan abu sekam padi dapat mengikat racun dengan jalan absorbsi. Absorbsi &#13;
+terhadap zat alkaloid dioskorin sebagai pre-kursor sianida akan sangat menekan &#13;
+terbentuknya racun sianida dan juga tannin.Penelitian ini menggunakan Rancangan Acak &#13;
+Lengkap (RAL) pola factorial yang terdiri dari 2 faktor dengan 3 kali ulangan, faktor I adalah &#13;
+konsentrasi abu sekam padi (25, 50 dan 75 gr v/v) dan faktor II adalah lama pemeraman abu &#13;
+sekam padi (2,5; 5; dan 7,5 menit)Hasil penelitian menunjukkan konsentrasi abu sekam padi &#13;
+75gr (v/v) dengan lama pemeraman 5 menit menghasilkan tepung mangrove  Avicenna, sp&#13;
+dengan kadar sianida 1,313ppm, kadar tannin 0,133%, kadar pati 70,4565%, kadar air &#13;
+5,8115%, rendemen 17,41 %, derajat putih 53,455.&#13;
+Keyword: Avicenna marinna, abu sekam, sianida, tanin,</dc:description>
+        <dc:date>2013-08-26</dc:date>
+        <dc:type>Conference or Workshop Item</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/14/1/abu_sekam_%20patpi.pdf</dc:identifier>
+        <dc:identifier>  Sarofa, Ulya and Jariyah, Jariyah and Riyadi, Sidharta Rendra  (2013) PERANAN ABU SEKAM DALAM PENURUNAN KADAR SIANIDA DAN TANNIN PADA TEPUNG MANGROVE (Avicenna marinna).  In: PATPI 2013, 26-29 Agustus 2013, Jember.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::15</identifier>
+      <datestamp>2020-04-09T03:48:17Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D54:5450</setSpec>
+      <setSpec>74797065733D636F6E666572656E63655F6974656D</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/15/</dc:relation>
+        <dc:title>Penambahan Sorbitol pada Fruit Leather Jambu Biji Merah untuk Memperbaiki &#13;
+Karakteristik dan Daya Simpan</dc:title>
+        <dc:creator>Winarti, Sri</dc:creator>
+        <dc:creator>Jariyah, Jariyah</dc:creator>
+        <dc:creator>Kartini, Ratih Arumsari</dc:creator>
+        <dc:subject>TP Chemical technology</dc:subject>
+        <dc:description>Buah jambu biji merah terkenal sebagai buah yang kaya vitamin C  dan memiliki zat warna alam yang &#13;
+menarik. Kandungan vitamin C jambu biji merah  matang C per 100 gr adalah 150,50 mgdua kali lebih &#13;
+banyak dari jeruk manis  yaitu  49 mg per  100 g. Vitamin C sangat baik sebagai antioksidan,zat warna merah&#13;
+jambu biji merah  adalah  likopen, yaitu karotenoid (pigmen penting dalam tanaman) yang memiliki aktivitas &#13;
+antioksidan  dan  bermanfaat memberikan perlindungan pada tubuh dari berbagai jenis kanker.  Jambu biji &#13;
+merah biasanya hanya dikonsumsi dalam bentuk segar, oleh karena itu perlu diversifikasi produk olahan dari &#13;
+jambu biji merah tersebut. Salah satu produk olahan jambu biji merah adalah  fruit leather.  Penambahan &#13;
+sorbitol pada pengolahan  fruit  leatherjambu biji merah diharapkan dapat memperbaiki kualitas dan daya &#13;
+simpannya.Penelitian ini menggunakan Rancangan Acak Lengkap pola faktorial dengan 2 faktor dan diulang &#13;
+sebanyak 2 kali. Faktor pertama yaitu konsentrasi sorbitol (4%, 8%, 12%) dan fakto r kedua adalah lama &#13;
+penyimpanan (0, 2, 4, 6, 8,  10 minggu) dengan parameter yang diamati adalah Aw, gula reduksi, vitamin C, &#13;
+tekstur, total mikroba dan uji organoleptik warna  dan  tekstur.Hasil penelitian menunjukkan bahwa perlakuan &#13;
+terbaik  adalah  penambahan sorbitol 8%,yang menghasilkan  fruit leatherdengan  karakteristik:  Aw 0,54% , &#13;
+gula reduksi 2,20%, vitamin C 60,68 mg, tekstur 0,393 mm/gr dt, total mikroba  2,18log cfu/gr.  Fruit leather&#13;
+tersebut bisa bertahan sampaidengan lama penyimpanan 6 minggu, sedangk an penambahan sorbitol 12 % &#13;
+dapat memperpanjang masa simpan sampai dengan 8 minggu.&#13;
+Kata kunci : fruit leather, jambu biji merah, gliserol.</dc:description>
+        <dc:date>2015-09-02</dc:date>
+        <dc:type>Conference or Workshop Item</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/15/1/jambu_biji_merah.pdf</dc:identifier>
+        <dc:identifier>  Winarti, Sri and Jariyah, Jariyah and Kartini, Ratih Arumsari  (2015) Penambahan Sorbitol pada Fruit Leather Jambu Biji Merah untuk Memperbaiki Karakteristik dan Daya Simpan.  In: Agroindustri dan Lokakarya Nasional FKPT-TPI Program Studi TIP-UTM, 2-3 Sept 2015, Surabaya.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::16</identifier>
+      <datestamp>2020-04-13T14:22:07Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D54:5450</setSpec>
+      <setSpec>74797065733D636F6E666572656E63655F6974656D</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/16/</dc:relation>
+        <dc:title>EKSTRAKSI PEKTIN BUAH PEDADA (Sonneratia caseolaris) DENGAN ASAM KLORIDA</dc:title>
+        <dc:creator>Jariyah, Jariyah</dc:creator>
+        <dc:creator>Rosida, Dedin F</dc:creator>
+        <dc:creator>Sarofa, Ulya</dc:creator>
+        <dc:creator>Aini, Nurul</dc:creator>
+        <dc:subject>TP Chemical technology</dc:subject>
+        <dc:description>Pedada Fruit (Sonneratia caseolaris) has not been used optimally, although some people have &#13;
+been using its such as syrup, cake and candy. However, basic information of the mangrove resource is &#13;
+very limited. One of the component of pedada fruit is pectin which use in food industry and medicine, This &#13;
+study aimed to determine the effect of volume and extraction timing of pedada pectin (Sonneratia &#13;
+caseolaris). This research used Completely Randomized Design that consists of 2 factors with 2 &#13;
+replications. The first factor were extraction volume (200, 250, and 300 mL)) and the second factor were &#13;
+extraction time (30, 60, and 90 min). The results showed that the extraction volume of 300 mL and &#13;
+extraction time for 30 minutes were produced crude pectin with 13.06% of pectin yield, 5.55% of water; &#13;
+13.12% of ash; 357.98 g/eq of equivalent weight; 9.44% of methoxyl; and 41.63% of anhydrogalacturonat &#13;
+acid. &#13;
+Keywords: anhydrogalacturonat acid, equivalent weight, methoxyl</dc:description>
+        <dc:date>2016-02-12</dc:date>
+        <dc:type>Conference or Workshop Item</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/16/1/buah_pedada.pdf</dc:identifier>
+        <dc:identifier>  Jariyah, Jariyah and Rosida, Dedin F and Sarofa, Ulya and Aini, Nurul  (2016) EKSTRAKSI PEKTIN BUAH PEDADA (Sonneratia caseolaris) DENGAN ASAM KLORIDA.  In: Seminar Nasional Kontribusi Akademisi Dalam Pencapaian Pembangunan Berkelanjutan, 12 Februari 2016, Malang.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::18</identifier>
+      <datestamp>2021-10-08T02:20:23Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D54:5450</setSpec>
+      <setSpec>74797065733D61727469636C65</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/18/</dc:relation>
+        <dc:title>Model of Hydrodynamics for Settling Flocs in rectangular Sedimentation Basin</dc:title>
+        <dc:creator>Karnaningroem, Nieke</dc:creator>
+        <dc:creator>Hidayah, Euis Nurul</dc:creator>
+        <dc:subject>TP Chemical technology</dc:subject>
+        <dc:date>2010-08</dc:date>
+        <dc:type>Article</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/18/1/model_of_hydro.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/18/6/JMT_Model_of_Hydrodynamics_For-Settling.pdf</dc:identifier>
+        <dc:identifier>  Karnaningroem, Nieke and Hidayah, Euis Nurul  (2010) Model of Hydrodynamics for Settling Flocs in rectangular Sedimentation Basin.  Journal of Mathenatics and Technology (3).   ISSN 2078-0257     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::19</identifier>
+      <datestamp>2020-04-14T10:11:46Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D54:5444</setSpec>
+      <setSpec>74797065733D636F6E666572656E63655F6974656D</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/19/</dc:relation>
+        <dc:title>Pengaruh kecepatan aliran terhadap pengendapan flok pada  proses sedimentasi</dc:title>
+        <dc:creator>Hidayah, Euis Nurul</dc:creator>
+        <dc:creator>Karnaningroem, Nieke</dc:creator>
+        <dc:subject>TD Environmental technology. Sanitary engineering</dc:subject>
+        <dc:description>Because of many factors that can influence of performance and efficiency of sedimentation unit and &#13;
+then HP2S Model is one of mathemathical modelling that can be alternatively to observe settling flocs pattern.&#13;
+This research aim to  analysis  influence of velocity flow to  settling floc pattern in sedimentation process with &#13;
+HP2S Model. Scoope of the research are laboratorium  scale for rectangular sedimentation tank, variation of &#13;
+flow and coagulant matter, also width and height of sedimentation tank are constant.  Identification of flow &#13;
+pattern with debit (liter/hour): 54, 36, 18 showed that debit variations have same flow paattern but flow velocity &#13;
+are different in each part along sedimentation tank. Ununiform flow and settling flocs increased at low debit, &#13;
+therefor is obtained limitation for minimum velocity.  This velocity able to remove turbidity 87,5% for coagulat &#13;
+PAC at debit 36 liter/hour. Using HP2S Model to observe settling flocs pattern results that in settling zone from &#13;
+inlet to outlet, the pattern are horisontal velocity (u), NRe and NFr decreased, settling velocity (w) incereased, &#13;
+turbidity decreased.  Besides that along  the height of sedimentation tank has same pattern. Based on HP2S &#13;
+Model is obtained  limitation  for minimum velocity  0,25 cm/s  -  0,52 cm/s  to reach  NFr &gt;10&#13;
+-5&#13;
+and NRe &lt;2000 &#13;
+until outlet with initial removal efficiency for turbidity 40%-80% by alum, 42,5%-85% by PAC and 37,5%-80% &#13;
+for mixed of alum-tawas.&#13;
+Keywords: flow velocity, settling flocs, sedimentation tank, and HP2S Model.</dc:description>
+        <dc:date>2010</dc:date>
+        <dc:type>Conference or Workshop Item</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/19/1/pengendapan_flok.pdf</dc:identifier>
+        <dc:identifier>  Hidayah, Euis Nurul and Karnaningroem, Nieke  (2010) Pengaruh kecepatan aliran terhadap pengendapan flok pada proses sedimentasi.  In: Seminar Nasional Tahunan VI Penelitian Masalah Lingkungan di Indonesia 2010, 2010, Jakarta.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::20</identifier>
+      <datestamp>2020-04-16T02:08:57Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D54:5450</setSpec>
+      <setSpec>74797065733D636F6E666572656E63655F6974656D</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/20/</dc:relation>
+        <dc:title>Assesing Natural Organic Matter Characteristics during coagulation Process</dc:title>
+        <dc:creator>Cahyonugroho, Okik Hendriyanto</dc:creator>
+        <dc:creator>Hidayah, Euis Nurul</dc:creator>
+        <dc:subject>TP Chemical technology</dc:subject>
+        <dc:date>2015-03-21</dc:date>
+        <dc:type>Conference or Workshop Item</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/20/1/assessing_natural.pdf</dc:identifier>
+        <dc:identifier>  Cahyonugroho, Okik Hendriyanto and Hidayah, Euis Nurul  (2015) Assesing Natural Organic Matter Characteristics during coagulation Process.  In: The Hokkaido Indonesia Student Association Scientific Meeting, 21 March 2015, Hokkaido.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::21</identifier>
+      <datestamp>2020-04-17T01:28:23Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D54:5444</setSpec>
+      <setSpec>74797065733D61727469636C65</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/21/</dc:relation>
+        <dc:title>Penggunaan Besi (III) sulfat Sebagai Penapis Logam Berat dalam Lumpur</dc:title>
+        <dc:creator>Hidayah, Euis Nurul</dc:creator>
+        <dc:subject>TD Environmental technology. Sanitary engineering</dc:subject>
+        <dc:date>2008-02</dc:date>
+        <dc:type>Article</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/21/1/besi_sulfat.pdf</dc:identifier>
+        <dc:identifier>  Hidayah, Euis Nurul  (2008) Penggunaan Besi (III) sulfat Sebagai Penapis Logam Berat dalam Lumpur.  Jurnal Kimia Lingkungan, 9 (2).   ISSN 1411-1543     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::22</identifier>
+      <datestamp>2020-04-17T01:42:56Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D54:5444</setSpec>
+      <setSpec>74797065733D636F6E666572656E63655F6974656D</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/22/</dc:relation>
+        <dc:title>Model of Hydrodynamics water treatment in rectangular sedimintation to estimate flocs pattern</dc:title>
+        <dc:creator>Hidayah, Euis Nurul</dc:creator>
+        <dc:creator>Karnaningroem, Nieke</dc:creator>
+        <dc:creator>Cahyonugroho, Okik Hendriyanto</dc:creator>
+        <dc:subject>TD Environmental technology. Sanitary engineering</dc:subject>
+        <dc:date>2013-04-27</dc:date>
+        <dc:type>Conference or Workshop Item</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/22/1/hydro_water.pdf</dc:identifier>
+        <dc:identifier>  Hidayah, Euis Nurul and Karnaningroem, Nieke and Cahyonugroho, Okik Hendriyanto  (2013) Model of Hydrodynamics water treatment in rectangular sedimintation to estimate flocs pattern.  In: The 1st annual International Scholars Conference in Taiwan, 27-29 April 2013, Taiwan.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::23</identifier>
+      <datestamp>2020-04-17T02:22:55Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D54:5444</setSpec>
+      <setSpec>74797065733D61727469636C65</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/23/</dc:relation>
+        <dc:title>The implementation of hydrodynamic model in water treatment &#13;
+to estimate turbidity removal</dc:title>
+        <dc:creator>Hidayah, Euis Nurul</dc:creator>
+        <dc:creator>Karnaningroem, Nieke</dc:creator>
+        <dc:subject>TD Environmental technology. Sanitary engineering</dc:subject>
+        <dc:description>Direct evaluation of the performance and efficiency of sedimentation tanks could more costly and time consuming. &#13;
+Mathematical model can be a good alternative to observe the hydrodynamic in a sedimentation basin. Mathematical model was &#13;
+constructed from two hydrodynamic equations, namely the continuity equation and momentum equation. This research aims to &#13;
+study mathematical models of settling flocs patterns in rectangular sedimentation tanks based on the hydrodynamic model (HPAs &#13;
+Model) mathematical formulation. Research includes the formulation of mathematical models whose results will be visualized &#13;
+with Mathlab, the acquisition of primary data using physical models, testing the model using Mathlab with the primary data input. &#13;
+The result of running the program input data showed variations in settling flocs patterns in the sedimentation basin which &#13;
+explained that the settling zone starting from the inlet to the outlet there is a decrease of flow velocity pattern (u), Reynolds &#13;
+numbers (NRe), Froude numbers (NFr) and turbidity concentration (c). In addition, a decrease also occurred along with the depth&#13;
+of the settling basin zone. As for the pattern of flocs settling velocity (w) there was increasing from the inlet to the outlet and &#13;
+along with the depth of the basin. Formulation of mathematical model of settling flocs patterns can be used through parameter &#13;
+flow velocity pattern, the pattern of settling velocity and concentration patterns of turbidity, NRe and NFr. Simulation showed&#13;
+that turbidity can be removed higher than 80%. Implementation of the HPAs model still in laboratory scale and the research will&#13;
+continue to validate the model by using pilot scale implementation, such as in water works. &#13;
+Keywords: Hydrodynamic model, sedimentation tank, settling flocs</dc:description>
+        <dc:publisher>Global SKope</dc:publisher>
+        <dc:date>2012</dc:date>
+        <dc:type>Article</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/23/1/hydro_model.pdf</dc:identifier>
+        <dc:identifier>  Hidayah, Euis Nurul and Karnaningroem, Nieke  (2012) The implementation of hydrodynamic model in water treatment to estimate turbidity removal.  International Journal of Environmental Sciences and Research, 2 (1).  pp. 129-133.      </dc:identifier>
+        <dc:relation>http://Globalskope.com</dc:relation></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::24</identifier>
+      <datestamp>2020-04-17T06:52:28Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D54:5450</setSpec>
+      <setSpec>74797065733D636F6E666572656E63655F6974656D</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/24/</dc:relation>
+        <dc:title>Sensory evaluation of biscuit produced from wheat and mangrove fruit flour (MFF) mixtures</dc:title>
+        <dc:creator>Jariyah, Jariyah</dc:creator>
+        <dc:creator>Yektiningsih, Endang</dc:creator>
+        <dc:creator>Sarofa, Ulya</dc:creator>
+        <dc:subject>TP Chemical technology</dc:subject>
+        <dc:date>2016-08-02</dc:date>
+        <dc:type>Conference or Workshop Item</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/24/1/sensory.pdf</dc:identifier>
+        <dc:identifier>  Jariyah, Jariyah and Yektiningsih, Endang and Sarofa, Ulya  (2016) Sensory evaluation of biscuit produced from wheat and mangrove fruit flour (MFF) mixtures.  In: The 2nd International Conference on food Agriculture and Natural Resource 2016s, 2-4 Agustus 2016, Malang.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::25</identifier>
+      <datestamp>2020-04-17T07:11:41Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D54:5450</setSpec>
+      <setSpec>74797065733D636F6E666572656E63655F6974656D</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/25/</dc:relation>
+        <dc:title>Addition of Anchovy Flour and Sodium Bicarbonate &#13;
+to Characteristics of High Calcium</dc:title>
+        <dc:creator>Nurani, Fesdila Putri</dc:creator>
+        <dc:creator>Jariyah, Jariyah</dc:creator>
+        <dc:creator>Rosida, Rosida</dc:creator>
+        <dc:creator>Susanti, Risma Ayu</dc:creator>
+        <dc:subject>TP Chemical technology</dc:subject>
+        <dc:description>Cracker is one biscuit made from flour, fat and &#13;
+salt, which is fermented with yeast, and the dough is made in &#13;
+layers, then cut and roasted. A cracker is generally made from &#13;
+flour and salt or sugar. Addition other ingredient is one of the &#13;
+effort to do some diversification of product to improve the taste &#13;
+or to improve the value of product. Anchovy is one of the marine &#13;
+products that is easy to find and its known has high calcium &#13;
+content. Anchovy should be processed into fish flour before its &#13;
+being used as ingredient in making crackers. The addition of &#13;
+anchovy flour is improving calcium content in crackers. In &#13;
+another side, the addition of Sodium Bicarbonate (NaHCO3) as &#13;
+proofer will improve the texture and make the cracker crunchier. &#13;
+The aim of the study is to determine the combination of addition &#13;
+of anchovy flour (9, 18, and 27%) and the concentration of &#13;
+sodium bicarbonate (NaHCO3) (0.3, 0.5, and 0.7%) on the &#13;
+characteristics and content of calcium crackers. The results &#13;
+obtained by adding anchovy flour showed an increased in &#13;
+calcium contents in crackers, while NaHCO3 increased the &#13;
+crunchiness of the crackers.&#13;
+Keywords— crackers; anchovy; anchovy flour; calciu; broken &#13;
+power.</dc:description>
+        <dc:date>2018-10-18</dc:date>
+        <dc:type>Conference or Workshop Item</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/25/1/anchovy_flour.pdf</dc:identifier>
+        <dc:identifier>  Nurani, Fesdila Putri and Jariyah, Jariyah and Rosida, Rosida and Susanti, Risma Ayu  (2018) Addition of Anchovy Flour and Sodium Bicarbonate to Characteristics of High Calcium.  In: ICST 2018, 18-19 October 2018, Bali.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::26</identifier>
+      <datestamp>2020-04-17T07:26:32Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D54:5450</setSpec>
+      <setSpec>74797065733D636F6E666572656E63655F6974656D</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/26/</dc:relation>
+        <dc:title>Kajian Konsentrasi Maltodekstrin dan Tween 80 terhadap Kualtas Teh Mengkudu Instant</dc:title>
+        <dc:creator>Jariyah, Jariyah</dc:creator>
+        <dc:creator>Yulistiani, Ratna</dc:creator>
+        <dc:creator>Setyawan, Dwi</dc:creator>
+        <dc:subject>TP Chemical technology</dc:subject>
+        <dc:date>2013-12-18</dc:date>
+        <dc:type>Conference or Workshop Item</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/26/1/teh_mengkudu.pdf</dc:identifier>
+        <dc:identifier>  Jariyah, Jariyah and Yulistiani, Ratna and Setyawan, Dwi  (2013) Kajian Konsentrasi Maltodekstrin dan Tween 80 terhadap Kualtas Teh Mengkudu Instant.  In: Seminar Nasional : Pengembangan Sumber Daya Lokal untuk Mendorong Ketahanan Pangan dan Ekonomi, 18 Desember 2013, Surabaya.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::27</identifier>
+      <datestamp>2020-08-05T04:34:28Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D54:5450</setSpec>
+      <setSpec>74797065733D636F6E666572656E63655F6974656D</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/27/</dc:relation>
+        <dc:title>Sosis Ayam Jamur (Kajian Proposi Jamur Tiram Putih) (Pleurotus Florida) dan Penambahan Tepung Maizena</dc:title>
+        <dc:creator>Jariyah, Jariyah</dc:creator>
+        <dc:creator>Sarofa, Ulya</dc:creator>
+        <dc:creator>Noralitya, Dyna</dc:creator>
+        <dc:subject>TP Chemical technology</dc:subject>
+        <dc:date>2016-05-25</dc:date>
+        <dc:type>Conference or Workshop Item</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/27/1/sosis-ayam-jamur.pdf</dc:identifier>
+        <dc:identifier>  Jariyah, Jariyah and Sarofa, Ulya and Noralitya, Dyna  (2016) Sosis Ayam Jamur (Kajian Proposi Jamur Tiram Putih) (Pleurotus Florida) dan Penambahan Tepung Maizena.  In: Seminar Nasional : Pengembangan Industri Pangan dalam Mendukung Ketahanan dan Kemandirian Pangan Nasional, 25 Mei 2016, Surabaya.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::28</identifier>
+      <datestamp>2020-05-10T04:30:53Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4842</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/28/</dc:relation>
+        <dc:title>Similarity dan Peer Review:  Risk Taking Investment as The Interaction Effect of Loss aversion and Information  (Pilot Test)</dc:title>
+        <dc:creator>Yuniningsih, Yuniningsih</dc:creator>
+        <dc:subject>HB Economic Theory</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2020-04</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/28/1/risk_taking_inv.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/28/2/risk_taking.pdf</dc:identifier>
+        <dc:identifier>  Yuniningsih, Yuniningsih  (2020) Similarity dan Peer Review: Risk Taking Investment as The Interaction Effect of Loss aversion and Information (Pilot Test).  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::29</identifier>
+      <datestamp>2020-05-10T04:17:33Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4842</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/29/</dc:relation>
+        <dc:title>Simialarity dan Peer Review: Funding Decisions in Determining&#13;
+Capital Structure in the Indonesian&#13;
+Stock Exchange, from a Pecking&#13;
+Order Theory Perspective</dc:title>
+        <dc:creator>Yuniningsih, Yuniningsih</dc:creator>
+        <dc:creator>Muchran, Muchran</dc:creator>
+        <dc:creator>Amiruddin, Amiruddin</dc:creator>
+        <dc:creator>Yapid, Bunyamin M</dc:creator>
+        <dc:creator>Putri, Suci Ayu Kurniah</dc:creator>
+        <dc:subject>HB Economic Theory</dc:subject>
+        <dc:description>This study purposed to determine the influence of funding decisions on&#13;
+capital structure, in terms of its amount. Funding decisions in this&#13;
+study include firm’s growth (X1) and active structure (X2). The&#13;
+method used is multiple linear regressions. It sees effect from a firm’s&#13;
+growth (X1) and active structure (X2) variables for capital structure&#13;
+(Y). This research qualifies as research that is free from&#13;
+autocorrelation, heteroscedasticity and multicollinearity. The results of&#13;
+this study indicate that firms’ growth has no significant effect on&#13;
+capital structure. However, the asset structure variable has a significant&#13;
+positive effect on the capital structure, in accordance with the&#13;
+proposed hypothesis. This study is limited to two independent&#13;
+variables. It needs to be developed with many independent variables,&#13;
+and to use the firm grouped by type of stock index. This study has&#13;
+value is finding that a high firm’s growth is largely funded from&#13;
+internal equity. This is in accordance with pecking order theory, that&#13;
+funding should be from internal equity, external finance and external&#13;
+equity.&#13;
+Key words: Funding, Growth, Active Structure, Capital Structure</dc:description>
+        <dc:publisher>UPN Veteran Jawa Timur</dc:publisher>
+        <dc:date>2019</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/29/2/funding_decisions_sim.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/29/3/funding_decisions.pdf</dc:identifier>
+        <dc:identifier>  Yuniningsih, Yuniningsih and Muchran, Muchran and Amiruddin, Amiruddin and Yapid, Bunyamin M and Putri, Suci Ayu Kurniah  (2019) Simialarity dan Peer Review: Funding Decisions in Determining Capital Structure in the Indonesian Stock Exchange, from a Pecking Order Theory Perspective.  UPN Veteran Jawa Timur, Surabaya.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::30</identifier>
+      <datestamp>2020-05-08T14:03:30Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4842</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/30/</dc:relation>
+        <dc:title>Similarity dan Peer Review : Fundamental factor of financial&#13;
+management in determining company values</dc:title>
+        <dc:creator>Yuniningsih, Yuniningsih</dc:creator>
+        <dc:subject>HB Economic Theory</dc:subject>
+        <dc:publisher>UPN Veteran Jawa Timur</dc:publisher>
+        <dc:date>2019</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/30/1/fundamental_sim.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/30/2/fundamental_factor.pdf</dc:identifier>
+        <dc:identifier>  Yuniningsih, Yuniningsih  (2019) Similarity dan Peer Review : Fundamental factor of financial management in determining company values.  UPN Veteran Jawa Timur.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::31</identifier>
+      <datestamp>2020-05-10T04:14:52Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4842</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/31/</dc:relation>
+        <dc:title>Similarity dan Peer Review: Examining mediating role of&#13;
+Environmental Performance and&#13;
+Green Purchasing between&#13;
+Green Eco Design and Green&#13;
+Information Systems with&#13;
+Performance, Supported&#13;
+Renewable Energy</dc:title>
+        <dc:creator>Yuniningsih, Yuniningsih</dc:creator>
+        <dc:subject>HB Economic Theory</dc:subject>
+        <dc:publisher>UPN Veteran Jawa Timur</dc:publisher>
+        <dc:date>2019</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/31/1/examining.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/31/2/examining_mediating.pdf</dc:identifier>
+        <dc:identifier>  Yuniningsih, Yuniningsih  (2019) Similarity dan Peer Review: Examining mediating role of Environmental Performance and Green Purchasing between Green Eco Design and Green Information Systems with Performance, Supported Renewable Energy.  UPN Veteran Jawa Timur.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::32</identifier>
+      <datestamp>2020-05-10T04:11:43Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4842</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/32/</dc:relation>
+        <dc:title>Similarity dan Peer Review : The biased factors of investor’s&#13;
+behavior in stock exchange&#13;
+trading</dc:title>
+        <dc:creator>Yuniningsih, Yuniningsih</dc:creator>
+        <dc:subject>HB Economic Theory</dc:subject>
+        <dc:publisher>UPN Veteran Jawa Timur</dc:publisher>
+        <dc:date>2019</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/32/1/the_biased.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/32/2/the_biased_factor.pdf</dc:identifier>
+        <dc:identifier>  Yuniningsih, Yuniningsih  (2019) Similarity dan Peer Review : The biased factors of investor’s behavior in stock exchange trading.  UPN Veteran Jawa Timur.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::33</identifier>
+      <datestamp>2020-05-10T04:23:36Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4842</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/33/</dc:relation>
+        <dc:title>Similarity dan Peer Review : Investor Behavior In Determining Investmen On Real Asset</dc:title>
+        <dc:creator>Yuniningsih, Yuniningsih</dc:creator>
+        <dc:subject>HB Economic Theory</dc:subject>
+        <dc:publisher>UPN Veteran Jawa Timur</dc:publisher>
+        <dc:date>2019</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/33/1/investor_behavior.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/33/2/investor_behavior.pdf</dc:identifier>
+        <dc:identifier>  Yuniningsih, Yuniningsih  (2019) Similarity dan Peer Review : Investor Behavior In Determining Investmen On Real Asset.  UPN Veteran Jawa Timur.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::34</identifier>
+      <datestamp>2020-05-10T04:35:23Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4842</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/34/</dc:relation>
+        <dc:title>Similarity dan Peer Review : Investigation Of The LQ&#13;
+-45 Stock Price Index&#13;
+Based On Influential&#13;
+Macroeconomic Factors&#13;
+In The Period 2013 – 2018</dc:title>
+        <dc:creator>Yuniningsih, Yuniningsih</dc:creator>
+        <dc:subject>HB Economic Theory</dc:subject>
+        <dc:publisher>UPN Veteran Jawa Timur</dc:publisher>
+        <dc:date>2019</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/34/1/investigation.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/34/2/investigation.pdf</dc:identifier>
+        <dc:identifier>  Yuniningsih, Yuniningsih  (2019) Similarity dan Peer Review : Investigation Of The LQ -45 Stock Price Index Based On Influential Macroeconomic Factors In The Period 2013 – 2018.  UPN Veteran Jawa Timur.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::35</identifier>
+      <datestamp>2020-06-16T04:35:26Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4842</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/35/</dc:relation>
+        <dc:title>Similarity dan Peer Review: Supply Chain and Sustainable&#13;
+Fisheries Development of&#13;
+Portable Inflated Solar Power&#13;
+Cold Storage House Technology&#13;
+in Indonesia, Bibliometric&#13;
+Analysis</dc:title>
+        <dc:creator>Yuniningsih, Yuniningsih</dc:creator>
+        <dc:subject>HB Economic Theory</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2019</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/35/1/supply_chain.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/35/2/Supply%20chain.pdf</dc:identifier>
+        <dc:identifier>  Yuniningsih, Yuniningsih  (2019) Similarity dan Peer Review: Supply Chain and Sustainable Fisheries Development of Portable Inflated Solar Power Cold Storage House Technology in Indonesia, Bibliometric Analysis.  UPN Veteran Jatim, Surabaya.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::36</identifier>
+      <datestamp>2020-05-08T12:24:41Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4844:48443238</setSpec>
+      <setSpec>74797065733D61727469636C65</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/36/</dc:relation>
+        <dc:title>An analysis of Decision Making&#13;
+in the Stock Investment</dc:title>
+        <dc:creator>Yuniningsih, Yuniningsih</dc:creator>
+        <dc:creator>Widodo, Sugeng</dc:creator>
+        <dc:creator>Wajdi, Barid Nizarudin</dc:creator>
+        <dc:subject>HD28 Management. Industrial Management</dc:subject>
+        <dc:description>The research objective  is  to test how much  risk  investors are  willing to  take when making &#13;
+their investment  associated with  the  loss aversion,  in terms  of  the risk taking behavior in relation &#13;
+with that of the  loss aversion.  The later, the loss  aversion is treated  as  the  independent variable &#13;
+reviewed from the  two sides of the gain and loss domain. When investors are in  loss aversion within &#13;
+the gain domain,  they tend  to have a lower risk taking  behavior  than that  of the loss domain.  Such&#13;
+tendency of  investor’s  behavior differences in  those  two different domains is described in  a &#13;
+hypothetical value function (Kahneman and Tversky, 1979).  ANOVA Test is applied  t o determine &#13;
+the  risk taking behavioral  differences in  the two domains toward the  loss aversion. Hypothesis test &#13;
+results  with  the alpha index indicate that investors,  when in  the  loss aversion of  the gain domain,&#13;
+have a lower risk taking than  that of the  loss aversion in the loss domain.  Meanwhile, using post &#13;
+hoc for significant test results in that the loss aversion has a signifi cant influence for the risk taking&#13;
+decision making in invest ment, particularly in that of the stocks.&#13;
+Keywords: decision making, investment, loss aversion, risk taking.</dc:description>
+        <dc:publisher>Program Studi Ekonomi Slam STAI Darul Ulum Banyuwangi</dc:publisher>
+        <dc:date>2017</dc:date>
+        <dc:type>Article</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/36/2/decision_making.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/36/1/decision_making.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/36/3/analysis_decision_making.pdf</dc:identifier>
+        <dc:identifier>  Yuniningsih, Yuniningsih and Widodo, Sugeng and Wajdi, Barid Nizarudin  (2017) An analysis of Decision Making in the Stock Investment.  Economic : Jurnal Ekonomi dan Hukum Islam, 8 (2).  pp. 122-129.  ISSN 2088-6365     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::37</identifier>
+      <datestamp>2020-05-09T14:14:46Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4844:48443238</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/37/</dc:relation>
+        <dc:title>Similarity dan Peer Review: Two stage least square method&#13;
+for prediction financial investment&#13;
+and dividend</dc:title>
+        <dc:creator>Yuniningsih, Yuniningsih</dc:creator>
+        <dc:subject>HD28 Management. Industrial Management</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2019</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/37/1/two_stage_least.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/37/2/two_stage.pdf</dc:identifier>
+        <dc:identifier>  Yuniningsih, Yuniningsih  (2019) Similarity dan Peer Review: Two stage least square method for prediction financial investment and dividend.  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::38</identifier>
+      <datestamp>2020-05-08T12:09:46Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4844:48443238</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/38/</dc:relation>
+        <dc:title>Similarity dan Peer Review : Analysis of Government Financial Performance : allocation of capital costs</dc:title>
+        <dc:creator>Yuniningsih, Yuniningsih</dc:creator>
+        <dc:subject>HD28 Management. Industrial Management</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2019</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/38/1/analysis_of_government.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/38/2/ANALYSIS%20OF%20GOVERNMENT_PROCEEDING.pdf</dc:identifier>
+        <dc:identifier>  Yuniningsih, Yuniningsih  (2019) Similarity dan Peer Review : Analysis of Government Financial Performance : allocation of capital costs.  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::39</identifier>
+      <datestamp>2020-05-09T14:09:39Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4844:48443238</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/39/</dc:relation>
+        <dc:title>Similarity dan Peer Review :Trading Activity Against Political&#13;
+Event (Event Study of the So-Called 212 Peaceful&#13;
+Demonstration)</dc:title>
+        <dc:creator>Yuniningsih, Yuniningsih</dc:creator>
+        <dc:subject>HD28 Management. Industrial Management</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2018</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/39/1/trading_activity.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/39/2/trading_activity.pdf</dc:identifier>
+        <dc:identifier>  Yuniningsih, Yuniningsih  (2018) Similarity dan Peer Review :Trading Activity Against Political Event (Event Study of the So-Called 212 Peaceful Demonstration).  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::40</identifier>
+      <datestamp>2020-05-28T12:48:34Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4844:48443238</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/40/</dc:relation>
+        <dc:title>Similarity dan Peer Review : Assesing Financial Performance Based on Fundamental Factors from the perspective of the signaling Hypothesis</dc:title>
+        <dc:creator>Yuniningsih, Yuniningsih</dc:creator>
+        <dc:subject>HD28 Management. Industrial Management</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2018</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/40/1/assesing_finsncial.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/40/2/Assesing%20Financial%20Performance.pdf</dc:identifier>
+        <dc:identifier>  Yuniningsih, Yuniningsih  (2018) Similarity dan Peer Review : Assesing Financial Performance Based on Fundamental Factors from the perspective of the signaling Hypothesis.  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::41</identifier>
+      <datestamp>2020-06-16T03:32:17Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4844:48443238</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/41/</dc:relation>
+        <dc:title>Similarity dan Peer Review : Feasibility of Investment in te area affected by Construction of the East ring road Surabaya Indonesian</dc:title>
+        <dc:creator>Yuniningsih, Yuniningsih</dc:creator>
+        <dc:subject>HD28 Management. Industrial Management</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2018</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/41/1/feasibility_of_investment.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/41/2/Feasibility%20of%20Investment.pdf</dc:identifier>
+        <dc:identifier>  Yuniningsih, Yuniningsih  (2018) Similarity dan Peer Review : Feasibility of Investment in te area affected by Construction of the East ring road Surabaya Indonesian.  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::42</identifier>
+      <datestamp>2020-06-16T06:47:11Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4844:48443238</setSpec>
+      <setSpec>74797065733D636F6E666572656E63655F6974656D</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/42/</dc:relation>
+        <dc:title>Identifikasi Potensi Pertumbuhan Ekonomi dengan Pendekatan Multiplier Effect (Studi Kasus di Surabaya, Indonesia)</dc:title>
+        <dc:creator>Yuniningsih, Yuniningsih</dc:creator>
+        <dc:subject>HD28 Management. Industrial Management</dc:subject>
+        <dc:description>The purpose of this research is to identify the economic growth potential of 5 affected sub-districts due to the&#13;
+development of East Ring Road in Surabaya. Identification is used to find out how big base non base sector&#13;
+has multiplier effect to the increase of PDRB (Product Domestic Regional Bruto) from each sub-district. The&#13;
+data used are PDRB Surabaya city and sub-district, income per capita of Surabaya city and sub-district.&#13;
+Analyzer in this research using Multiplier Effect (RPM). The results showed that the multiplier effect (RPM)&#13;
+of each is sub-district more than 1. RPM &gt; 1 indicates is have the base criterion has a multiplier effect of&#13;
+development PDRB together with the service sector (non bases) on the long-term. Sukolilo Sub-district has&#13;
+the highest multiplier effect compared to other sub-districts.&#13;
+Keywords : Bases Non Bases, Multiplier Effect, Economic Growth, And PDRB</dc:description>
+        <dc:date>2017-11</dc:date>
+        <dc:type>Conference or Workshop Item</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>image</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/42/1/1-cdb5520d5c.jpg</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/42/5/Proceding_nasional_FMI_2017.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/42/4/Identifikasi%20pertumbuhan%20ekonomi.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/42/3/identifikasi_sim.pdf</dc:identifier>
+        <dc:identifier>  Yuniningsih, Yuniningsih  (2017) Identifikasi Potensi Pertumbuhan Ekonomi dengan Pendekatan Multiplier Effect (Studi Kasus di Surabaya, Indonesia).  In: Seminar Nasional dan Konferensi Forum Manajemen Indonesia (FMI) ke 9, 8 November 2017, Semarang.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::43</identifier>
+      <datestamp>2020-06-01T02:53:41Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4844:48443238</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/43/</dc:relation>
+        <dc:title>Similarity dan Peer Review : Financial Performance Measurement of with Signaling Theory Review  on Automotive Companies Listed in Indonesia Stock Exchange</dc:title>
+        <dc:creator>Yuniningsih, Yuniningsih</dc:creator>
+        <dc:subject>HD28 Management. Industrial Management</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2018</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/43/1/financial_performance.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/43/2/financial_performance_per.pdf</dc:identifier>
+        <dc:identifier>  Yuniningsih, Yuniningsih  (2018) Similarity dan Peer Review : Financial Performance Measurement of with Signaling Theory Review on Automotive Companies Listed in Indonesia Stock Exchange.  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::44</identifier>
+      <datestamp>2020-05-09T13:51:02Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4844:48443238</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/44/</dc:relation>
+        <dc:title>Similarity dan Peer Review: Measuring Automotive Company's Capabilities in Indonesia in Producing Profits Regarding Working Capital</dc:title>
+        <dc:creator>Yuniningsih, Yuniningsih</dc:creator>
+        <dc:subject>HD28 Management. Industrial Management</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2018</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/44/1/measuring_automotive.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/44/2/Measuring_automotive.pdf</dc:identifier>
+        <dc:identifier>  Yuniningsih, Yuniningsih  (2018) Similarity dan Peer Review: Measuring Automotive Company's Capabilities in Indonesia in Producing Profits Regarding Working Capital.  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::46</identifier>
+      <datestamp>2020-05-10T04:05:48Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4844:48443238</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/46/</dc:relation>
+        <dc:title>Similarity dan Peer Review : Pemberdayaan Perempuan Nelayan Melalui Pelatihan Pengolahan Hasil Ikan Menjadi Krupuk Bernilai Ekonomis di desa Gisikcemandi Kecamatan Sedati Kabupaten Sidoarjo</dc:title>
+        <dc:creator>Yuniningsih, Yuniningsih</dc:creator>
+        <dc:subject>HD28 Management. Industrial Management</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2018</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/46/1/pemberdayaan_perempuan.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/46/2/pemberdayaan_perempuan.pdf</dc:identifier>
+        <dc:identifier>  Yuniningsih, Yuniningsih  (2018) Similarity dan Peer Review : Pemberdayaan Perempuan Nelayan Melalui Pelatihan Pengolahan Hasil Ikan Menjadi Krupuk Bernilai Ekonomis di desa Gisikcemandi Kecamatan Sedati Kabupaten Sidoarjo.  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::47</identifier>
+      <datestamp>2020-05-10T04:32:51Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4844:48443238</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/47/</dc:relation>
+        <dc:title>Similarity dan Peer Review :Seberapa Besar Kepemilikan Saham Berperan dalam Penentuan Nilai Perusahaan dengan Tinjauan agency Theory</dc:title>
+        <dc:creator>Yuniningsih, Yuniningsih</dc:creator>
+        <dc:subject>HD28 Management. Industrial Management</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2018</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/47/1/seberapa_besar.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/47/2/seberapa_besar.pdf</dc:identifier>
+        <dc:identifier>  Yuniningsih, Yuniningsih  (2018) Similarity dan Peer Review :Seberapa Besar Kepemilikan Saham Berperan dalam Penentuan Nilai Perusahaan dengan Tinjauan agency Theory.  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::48</identifier>
+      <datestamp>2020-05-28T13:33:39Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4844:48443238</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/48/</dc:relation>
+        <dc:title>Similarity dan Peer Review : Pelatihan Pengemasan Dan&#13;
+Pelabelan Bandeng Sapit Di UD.&#13;
+Barokah Gunung Anyar Tambak</dc:title>
+        <dc:creator>Yuniningsih, Yuniningsih</dc:creator>
+        <dc:subject>HD28 Management. Industrial Management</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2018</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/48/1/pelatihan_pengemasan.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/48/2/Pelatihan%20Pengemasan%20dan%20Pelabelan.pdf</dc:identifier>
+        <dc:identifier>  Yuniningsih, Yuniningsih  (2018) Similarity dan Peer Review : Pelatihan Pengemasan Dan Pelabelan Bandeng Sapit Di UD. Barokah Gunung Anyar Tambak.  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::49</identifier>
+      <datestamp>2020-05-02T03:47:04Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4844:48443238</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/49/</dc:relation>
+        <dc:title>PERTIMBANGAN INTERDEPENDENSI FAKTOR FUNDAMENTAL &#13;
+DALAM PENILAIAN PERUSAHAAN</dc:title>
+        <dc:creator>Yuniningsih, Yuniningsih</dc:creator>
+        <dc:creator>Taufiq, M</dc:creator>
+        <dc:subject>HD28 Management. Industrial Management</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2019-10</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/49/1/pertimbangan_inter.pdf</dc:identifier>
+        <dc:identifier>  Yuniningsih, Yuniningsih and Taufiq, M  (2019) PERTIMBANGAN INTERDEPENDENSI FAKTOR FUNDAMENTAL DALAM PENILAIAN PERUSAHAAN.  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::50</identifier>
+      <datestamp>2020-06-16T04:32:51Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4844:48443238</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/50/</dc:relation>
+        <dc:title>Laporan Hasil Penelitian Unggulan Perguruan Tinggi : KAJIAN PERTUMBUHAN EKONOMI BERBASIS AKSELERASI HARGA TANAH &#13;
+SEBAGAI MODEL PENILAIAN KELAYAKAN INVESTASI PEMBANGUNAN &#13;
+INFRASTRUKTUR JALAN LINGKAR TIMUR SURABAYA&#13;
+(Pemetaan Potensi Pertumbuhan Ekonomi Wilayah Lingkar Timur Surabaya</dc:title>
+        <dc:creator>Yuniningsih, Yuniningsih</dc:creator>
+        <dc:creator>Taufiq, M</dc:creator>
+        <dc:creator>Marseto, Marseto</dc:creator>
+        <dc:creator>Mashudi, Djohan</dc:creator>
+        <dc:subject>HD28 Management. Industrial Management</dc:subject>
+        <dc:publisher>LPPM UPN Veteran Jatim</dc:publisher>
+        <dc:date>2016</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/50/3/laporan_hasil_PUPT_2_2016.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/50/2/spp_pupt_2016.pdf</dc:identifier>
+        <dc:identifier>  Yuniningsih, Yuniningsih and Taufiq, M and Marseto, Marseto and Mashudi, Djohan  (2016) Laporan Hasil Penelitian Unggulan Perguruan Tinggi : KAJIAN PERTUMBUHAN EKONOMI BERBASIS AKSELERASI HARGA TANAH SEBAGAI MODEL PENILAIAN KELAYAKAN INVESTASI PEMBANGUNAN INFRASTRUKTUR JALAN LINGKAR TIMUR SURABAYA (Pemetaan Potensi Pertumbuhan Ekonomi Wilayah Lingkar Timur Surabaya.  LPPM UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::52</identifier>
+      <datestamp>2020-06-16T04:57:22Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4844:48443238</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/52/</dc:relation>
+        <dc:title>LAPORAN HASIL&#13;
+RISET UNGGULAN KEILMUAN (RUK)&#13;
+PERTIMBANGAN INTERDEPENDENSI FAKTOR &#13;
+FUNDAMENTAL DALAM PENILAIAN PERUSAHAAN</dc:title>
+        <dc:creator>Yuniningsih, Yuniningsih</dc:creator>
+        <dc:creator>Taufiq, M</dc:creator>
+        <dc:subject>HD28 Management. Industrial Management</dc:subject>
+        <dc:description>Tujuan  penelitian ini adalah untuk mengetahui dan menganalisis interdepensi dari &#13;
+faktor leverage, investasi dan dividen dengan nilai perusahaan. Faktor fundamental yang &#13;
+digunakan dalam penelitian ini bersumber pada laporan keuangan perusahaan. Faktor &#13;
+fundamental tersebut levegage, investasi, dividen yang berperan sebagai variable &#13;
+eksogen dan endogen. Faktor Kinerja perusahaan berperan sebagai variabel endogen. &#13;
+Sedangkan faktor profitabilitas, manager ownership, ukuran perusahaan, pertumbuhan &#13;
+perusahaan, likuiditas bertindak sebagai variabel eksogen. .  Metodelogi  yang digunakan &#13;
+dalam penelitian ini menggunakan two stage regression. Dasar teori yang digunakan &#13;
+adalah pecking order theory yang merumuskan tentang hierarki pendanaan baik dari &#13;
+ketiga keputusan keuangan yaitu leverage, investasi dan dividen yang berdampak pada &#13;
+kinerja perusahaan. Hasil  penelitian pada persamaan leverage menunjukkan bahwa &#13;
+investasi berpengaruh sedangkan dividen tidak berpengaruh terhadap leverage. &#13;
+Persamaan investasi menunjukkan bahwa leverage dan dividen tidak berpengaruh &#13;
+terhadap investasi. Persamaan dividen menunjuk kan bahwa leverage dan investasi tidak &#13;
+berpengaruh terhadap dividen. Pada persamaan nilai perusahaan menunjukkan bahwa &#13;
+variabel investasi dan dividen berpengaruh secara signifikan sedangan leverage tidak &#13;
+berpengaruh terhadap nilai perusahaan.  Value  dari penelitian ini diharapkan sebagai &#13;
+pengembangan analisis two stage regression dan sebagai referensi dalam penulisan &#13;
+artikel internasional.. &#13;
+Keywords : pecking order theory, nilai perusahaan, leverage, investasi, dividen.</dc:description>
+        <dc:publisher>LPPM UPN Veteran Jatim</dc:publisher>
+        <dc:date>2019-09</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/52/3/laporan_penelitian_RUK_2019.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/52/2/spp_ruk_2019.pdf</dc:identifier>
+        <dc:identifier>  Yuniningsih, Yuniningsih and Taufiq, M  (2019) LAPORAN HASIL RISET UNGGULAN KEILMUAN (RUK) PERTIMBANGAN INTERDEPENDENSI FAKTOR FUNDAMENTAL DALAM PENILAIAN PERUSAHAAN.  LPPM UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::53</identifier>
+      <datestamp>2020-06-16T06:17:39Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4844:48443238</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/53/</dc:relation>
+        <dc:title>LAPORAN HASIL&#13;
+RISET UNGGULAN KEILMUAN (RUK)&#13;
+PERTIMBANGAN INTERDEPENDENSI FAKTOR &#13;
+FUNDAMENTAL DALAM PENILAIAN PERUSAHAAN</dc:title>
+        <dc:creator>Yuniningsih, Yuniningsih</dc:creator>
+        <dc:creator>Taufiq, M</dc:creator>
+        <dc:subject>HD28 Management. Industrial Management</dc:subject>
+        <dc:publisher>LPPM UPN Veteran Jatim</dc:publisher>
+        <dc:date>2018-09</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/53/3/laporan_penelitian_RUK_2018.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/53/2/spp_ruk_2018.pdf</dc:identifier>
+        <dc:identifier>  Yuniningsih, Yuniningsih and Taufiq, M  (2018) LAPORAN HASIL RISET UNGGULAN KEILMUAN (RUK) PERTIMBANGAN INTERDEPENDENSI FAKTOR FUNDAMENTAL DALAM PENILAIAN PERUSAHAAN.  LPPM UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::54</identifier>
+      <datestamp>2020-06-16T03:56:13Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4844:48443238</setSpec>
+      <setSpec>74797065733D626F6F6B</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/54/</dc:relation>
+        <dc:title>Perilaku Keuangan dalam Berinvestasi (Laboratorium Experiment dan Field Experiment)</dc:title>
+        <dc:creator>Yuniningsih, Yuniningsih</dc:creator>
+        <dc:subject>HD28 Management. Industrial Management</dc:subject>
+        <dc:publisher>Indomedia Pustaka</dc:publisher>
+        <dc:date>2020</dc:date>
+        <dc:type>Book</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/54/4/perilaku_keuangan_berinvestasi_full.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/54/1/perilaku_keuangan.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/54/3/perilaku_keuangan.pdf</dc:identifier>
+        <dc:identifier>  Yuniningsih, Yuniningsih  (2020) Perilaku Keuangan dalam Berinvestasi (Laboratorium Experiment dan Field Experiment).    Indomedia Pustaka, Sidoarjo.  ISBN 978-623-7137-90-0     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::55</identifier>
+      <datestamp>2020-06-16T04:03:58Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4844:48443238</setSpec>
+      <setSpec>74797065733D626F6F6B</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/55/</dc:relation>
+        <dc:title>Monograp Penelitian : Evaluasi Penilaian Kelayakan Investasi Jalan Lingkar Timur Surabaya</dc:title>
+        <dc:creator>Yuniningsih, Yuniningsih</dc:creator>
+        <dc:creator>Taufiq, M</dc:creator>
+        <dc:creator>Marseto, Marseto</dc:creator>
+        <dc:subject>HD28 Management. Industrial Management</dc:subject>
+        <dc:publisher>Indomedia Pustaka</dc:publisher>
+        <dc:date>2019</dc:date>
+        <dc:type>Book</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/55/4/monograf_penelitian_2019.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/55/1/monograf_penelitian.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/55/3/Evaluasi%20penilaian%20kelayakan%20investasi.pdf</dc:identifier>
+        <dc:identifier>  Yuniningsih, Yuniningsih and Taufiq, M and Marseto, Marseto  (2019) Monograp Penelitian : Evaluasi Penilaian Kelayakan Investasi Jalan Lingkar Timur Surabaya.    Indomedia Pustaka.      </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::57</identifier>
+      <datestamp>2020-06-24T00:42:25Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/57/</dc:relation>
+        <dc:title>Similarity dan Peer Review Strategi Pemberdayaan Pedagang Kaki Lima (PKL) di Sentra &#13;
+PKL Taman Prestasi Kota Surabaya</dc:title>
+        <dc:creator>Nawangsari, Ertien Rining</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2019</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/57/1/strategi_pemberdayaan_pedagang.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/57/7/Peer_Review-Strategi_PKL-JN.pdf</dc:identifier>
+        <dc:identifier>  Nawangsari, Ertien Rining  (2019) Similarity dan Peer Review Strategi Pemberdayaan Pedagang Kaki Lima (PKL) di Sentra PKL Taman Prestasi Kota Surabaya.  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::59</identifier>
+      <datestamp>2020-06-23T23:26:59Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/59/</dc:relation>
+        <dc:title>Similarity dan Peer Review : Implementasi Program Keluarga Harapan dalam upaya mengentaskan Kemiskinan di Kota Batu</dc:title>
+        <dc:creator>Nawangsari, Ertien Rining</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2019</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/59/1/implementasi_program.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/59/7/Peer_Review-Implementasi_PKH-JNA.pdf</dc:identifier>
+        <dc:identifier>  Nawangsari, Ertien Rining  (2019) Similarity dan Peer Review : Implementasi Program Keluarga Harapan dalam upaya mengentaskan Kemiskinan di Kota Batu.  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::60</identifier>
+      <datestamp>2020-06-24T00:54:30Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D51:5141:51413735</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/60/</dc:relation>
+        <dc:title>Similarity dan Peer Review : Data Spatial pada Pembuatan Peta Tematik  dengan API Maps Google</dc:title>
+        <dc:creator>Nawangsari, Ertien Rining</dc:creator>
+        <dc:subject>QA75 Electronic computers. Computer science</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2019</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/60/1/peta_spatial.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/60/7/Peer_Review-Data_Spatial-Prosemnas.pdf</dc:identifier>
+        <dc:identifier>  Nawangsari, Ertien Rining  (2019) Similarity dan Peer Review : Data Spatial pada Pembuatan Peta Tematik dengan API Maps Google.  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::61</identifier>
+      <datestamp>2020-06-24T00:00:27Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/61/</dc:relation>
+        <dc:title>Similarity dan Peer Review : Implementasi Kebijakan Keterbukaan Informasi Publik di Dinas Komunikasi dan Informatika Provinsi Jawa Timur Sebagai Upaya Mewujudkan Good Governance</dc:title>
+        <dc:creator>Nawangsari, Ertien Rining</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2019</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/61/1/implementasi_kebijakan.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/61/7/Peer_Review-Keterbukaan_Informasi-JN.pdf</dc:identifier>
+        <dc:identifier>  Nawangsari, Ertien Rining  (2019) Similarity dan Peer Review : Implementasi Kebijakan Keterbukaan Informasi Publik di Dinas Komunikasi dan Informatika Provinsi Jawa Timur Sebagai Upaya Mewujudkan Good Governance.  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::65</identifier>
+      <datestamp>2020-06-23T14:01:43Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/65/</dc:relation>
+        <dc:title>Similarity dan Peer Review : Analisis Kepuasan &#13;
+Masyarakat Riset Pada &#13;
+Pengguna Layanan &#13;
+Fakultas Ilmu Sosial Dan &#13;
+Ilmu Politik Universitas &#13;
+Pembangunan Nasional &#13;
+“Veteran” Jawa Timur</dc:title>
+        <dc:creator>Nawangsari, Ertien Rining</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2018</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/65/1/analisis_kepuasan_masyarakat.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/65/7/Analisa_Kepuasan_Masyarakat.pdf</dc:identifier>
+        <dc:identifier>  Nawangsari, Ertien Rining  (2018) Similarity dan Peer Review : Analisis Kepuasan Masyarakat Riset Pada Pengguna Layanan Fakultas Ilmu Sosial Dan Ilmu Politik Universitas Pembangunan Nasional “Veteran” Jawa Timur.  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::66</identifier>
+      <datestamp>2020-06-24T00:43:59Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/66/</dc:relation>
+        <dc:title>Similarity dan Peer Review :Tingkat Kepatuhan Upn&#13;
+“Veteran” Jawa Timur&#13;
+ Terhadap Pelaksanaan&#13;
+Undang-Undang Nomor 25&#13;
+Tahun 2009 Tentang&#13;
+Pelayanan Publik</dc:title>
+        <dc:creator>Nawangsari, Ertien Rining</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:publisher>UPN Veteran Jawa Timur</dc:publisher>
+        <dc:date>2017</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/66/1/tingkat_kepatuhan.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/66/7/Peer_Review-Tingkat_Kepatuhan-JN.pdf</dc:identifier>
+        <dc:identifier>  Nawangsari, Ertien Rining  (2017) Similarity dan Peer Review :Tingkat Kepatuhan Upn “Veteran” Jawa Timur Terhadap Pelaksanaan Undang-Undang Nomor 25 Tahun 2009 Tentang Pelayanan Publik.  UPN Veteran Jawa Timur.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::67</identifier>
+      <datestamp>2020-06-24T00:56:41Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/67/</dc:relation>
+        <dc:title>Similarity dan Peer Review : Implementasi Kebijakan&#13;
+Pengembangan Obyek Wisata&#13;
+Pasir Putih Panceng Kabupaten&#13;
+Gresik</dc:title>
+        <dc:creator>Nawangsari, Ertien Rining</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:publisher>UPN Veteran Jawa Timur</dc:publisher>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/67/1/implementasi_kebijakan_pengembangan.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/67/7/Peer_Review-Implementasi_Pancen_Gresik-Prosemnas%20%281%29.pdf</dc:identifier>
+        <dc:identifier>  Nawangsari, Ertien Rining   Similarity dan Peer Review : Implementasi Kebijakan Pengembangan Obyek Wisata Pasir Putih Panceng Kabupaten Gresik.  UPN Veteran Jawa Timur.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::68</identifier>
+      <datestamp>2020-06-24T00:47:15Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/68/</dc:relation>
+        <dc:title>Similarity dan Peer Review : City Branding Policy and Regional Marketing in Indonesia</dc:title>
+        <dc:creator>Nawangsari, Ertien Rining</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2019</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/68/1/city_branding.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/68/7/Peer_Review-City_Branding_Market_Indonesia.pdf</dc:identifier>
+        <dc:identifier>  Nawangsari, Ertien Rining  (2019) Similarity dan Peer Review : City Branding Policy and Regional Marketing in Indonesia.  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::69</identifier>
+      <datestamp>2020-06-24T00:12:49Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/69/</dc:relation>
+        <dc:title>Similarity dan Peer Review : Peran Puskesmas Medokan Ayu Kota Surabaya dalam Pengendalian Penyakit Demam Berdaraah Dengue (DBD)</dc:title>
+        <dc:creator>Nawangsari, Ertien Rining</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2016</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/69/1/peran_puskesmas.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/69/7/Peer_Review-Peran_Puskesmas_Medokan-JN%20%281%29.pdf</dc:identifier>
+        <dc:identifier>  Nawangsari, Ertien Rining  (2016) Similarity dan Peer Review : Peran Puskesmas Medokan Ayu Kota Surabaya dalam Pengendalian Penyakit Demam Berdaraah Dengue (DBD).  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::70</identifier>
+      <datestamp>2020-05-08T15:24:39Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/70/</dc:relation>
+        <dc:title>Peran Badan Usaha Milik Desa (BUMDES) "Usaha Mandiri sejahtera" dalam Pengelolaan Himpunan Penduduk Pemakai Air Minum (HIPPAM) di desa Kesamben Wetan Kecamatan Driyorejo Kabupaten Gresik</dc:title>
+        <dc:creator>Nawangsari, Ertien Rining</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2018</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/70/1/peran_badan_usaha.pdf</dc:identifier>
+        <dc:identifier>  Nawangsari, Ertien Rining  (2018) Peran Badan Usaha Milik Desa (BUMDES) "Usaha Mandiri sejahtera" dalam Pengelolaan Himpunan Penduduk Pemakai Air Minum (HIPPAM) di desa Kesamben Wetan Kecamatan Driyorejo Kabupaten Gresik.  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::71</identifier>
+      <datestamp>2020-06-24T00:58:04Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/71/</dc:relation>
+        <dc:title>Similarity dan Peer Review : Pemberdayaan Petani Sebagai Upaya Meningkatkan Ketahanan Pangan (Studi tentang program Gabungan Kelompok Tani di desa Menganti, Kecamatan Menganti Gresik</dc:title>
+        <dc:creator>Nawangsari, Ertien Rining</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/71/1/penberdayaan_petani.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/71/7/Peer_Review-Pemberdayaan_Petani-Prosemnas%20%281%29.pdf</dc:identifier>
+        <dc:identifier>  Nawangsari, Ertien Rining   Similarity dan Peer Review : Pemberdayaan Petani Sebagai Upaya Meningkatkan Ketahanan Pangan (Studi tentang program Gabungan Kelompok Tani di desa Menganti, Kecamatan Menganti Gresik.  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::72</identifier>
+      <datestamp>2020-06-24T00:06:18Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/72/</dc:relation>
+        <dc:title>Similarity dan Peer Review : Peleyanan Kesehatan dari perspektif Participatory Governance (Studi tentang Partisipasi Masyarakt dalam Pelayanan dasar Kesehatan di Kota Surabaya</dc:title>
+        <dc:creator>Nawangsari, Ertien Rining</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2016</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/72/1/pelayanan_kesehatan.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/72/7/Peer_Review-Pelayanan_Kesehatan-JN.pdf</dc:identifier>
+        <dc:identifier>  Nawangsari, Ertien Rining  (2016) Similarity dan Peer Review : Peleyanan Kesehatan dari perspektif Participatory Governance (Studi tentang Partisipasi Masyarakt dalam Pelayanan dasar Kesehatan di Kota Surabaya.  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::73</identifier>
+      <datestamp>2020-05-10T06:00:53Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/73/</dc:relation>
+        <dc:title>Similarity dan Peer Review : Model Pelayanan Kesehatan Berbasis Pelanggan (Studi Evaluasi di Bagian Unit Rawat Inap Rumah Sakit Umum Daerah Sidoarjo Jawa Timur)</dc:title>
+        <dc:creator>Nawangsari, Ertien Rining</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/73/1/model_pelayanan.pdf</dc:identifier>
+        <dc:identifier>  Nawangsari, Ertien Rining   Similarity dan Peer Review : Model Pelayanan Kesehatan Berbasis Pelanggan (Studi Evaluasi di Bagian Unit Rawat Inap Rumah Sakit Umum Daerah Sidoarjo Jawa Timur).  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::74</identifier>
+      <datestamp>2020-06-24T00:08:39Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/74/</dc:relation>
+        <dc:title>Similarity dan Peer Review : Implementasi Pendidikan Inklusif di SMA Negeri 1 Gedangan Sidoarjo</dc:title>
+        <dc:creator>Nawangsari, Ertien Rining</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2017</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/74/1/implementasi_pendidikan.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/74/7/Peer_Review-Pendidikan_Inklusif-JN.pdf</dc:identifier>
+        <dc:identifier>  Nawangsari, Ertien Rining  (2017) Similarity dan Peer Review : Implementasi Pendidikan Inklusif di SMA Negeri 1 Gedangan Sidoarjo.  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::75</identifier>
+      <datestamp>2020-06-23T23:41:03Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/75/</dc:relation>
+        <dc:title>Similarity dan Peer Review : Inovas Pelayanan  simPADU-PMI dalam Meningkatkan Pelayanan (Unit Pelaksana Teknis Pelayanan Dan Perlindungan Tenaga Kerja Indonesia (UPT P2TK) Provinsi Jawa Timur)</dc:title>
+        <dc:creator>Nawangsari, Ertien Rining</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2019</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/75/1/inovasi_pelayanan.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/75/7/Peer_Review-Inovasi_SIMPADU-JN.pdf</dc:identifier>
+        <dc:identifier>  Nawangsari, Ertien Rining  (2019) Similarity dan Peer Review : Inovas Pelayanan simPADU-PMI dalam Meningkatkan Pelayanan (Unit Pelaksana Teknis Pelayanan Dan Perlindungan Tenaga Kerja Indonesia (UPT P2TK) Provinsi Jawa Timur).  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::76</identifier>
+      <datestamp>2020-06-23T23:37:48Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/76/</dc:relation>
+        <dc:title>Similarity dan Peer Review :Implementasi Ujian &#13;
+Nasional Berbasis &#13;
+Komputer (Computer &#13;
+Based Test, CBT) Di SMP&#13;
+Negeri 1 Sidoarjo &#13;
+Kabupaten Sidoarjo</dc:title>
+        <dc:creator>Nawangsari, Ertien Rining</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2017</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/76/1/implementasi_unas.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/76/7/Peer_Review-Ujian_CBT-JN.pdf</dc:identifier>
+        <dc:identifier>  Nawangsari, Ertien Rining  (2017) Similarity dan Peer Review :Implementasi Ujian Nasional Berbasis Komputer (Computer Based Test, CBT) Di SMP Negeri 1 Sidoarjo Kabupaten Sidoarjo.  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::78</identifier>
+      <datestamp>2020-06-24T00:48:40Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/78/</dc:relation>
+        <dc:title>Similarity dan Peer Review :Evaluation of Public City Branding Policies "Sparkling Surabaya"</dc:title>
+        <dc:creator>Nawangsari, Ertien Rining</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2019</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/78/1/evaluation_of_publc.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/78/7/Peer_Review-Evaluation_Sparkling_Surabaya.pdf</dc:identifier>
+        <dc:identifier>  Nawangsari, Ertien Rining  (2019) Similarity dan Peer Review :Evaluation of Public City Branding Policies "Sparkling Surabaya".  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::79</identifier>
+      <datestamp>2020-06-24T00:52:30Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/79/</dc:relation>
+        <dc:title>Similarity dan Peer Review : The Role of Social Capital at Disaster Risk Management, A Public Administration Perspective: Study on Kebon Agung Imogiri Bantul</dc:title>
+        <dc:creator>Nawangsari, Ertien Rining</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2018</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/79/1/the_role_of_social.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/79/7/Peer_Review-Role_Social_Capital-Proseminter.pdf</dc:identifier>
+        <dc:identifier>  Nawangsari, Ertien Rining  (2018) Similarity dan Peer Review : The Role of Social Capital at Disaster Risk Management, A Public Administration Perspective: Study on Kebon Agung Imogiri Bantul.  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::80</identifier>
+      <datestamp>2020-06-23T23:24:00Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/80/</dc:relation>
+        <dc:title>Similarity dan Peer Review : Evaluasi Dampak &#13;
+Pembangunan Rumah &#13;
+Majapahit Bagi &#13;
+Masyarakat Desa &#13;
+Bejijong Kecamatan &#13;
+Trowulan Kabupaten &#13;
+Mojokerto</dc:title>
+        <dc:creator>Nawangsari, Ertien Rining</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2018</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/80/1/evaluasi_dampak.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/80/7/Peer_Review-Evaluasi_Trowulan-JNA.pdf</dc:identifier>
+        <dc:identifier>  Nawangsari, Ertien Rining  (2018) Similarity dan Peer Review : Evaluasi Dampak Pembangunan Rumah Majapahit Bagi Masyarakat Desa Bejijong Kecamatan Trowulan Kabupaten Mojokerto.  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::81</identifier>
+      <datestamp>2020-06-23T23:31:32Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/81/</dc:relation>
+        <dc:title>Similarity dan  Peer Review : Analisis Kualitas Pelayanan Administrasi Kecamatan di Kabupaten Sidoarjo</dc:title>
+        <dc:creator>Nawangsari, Ertien Rining</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:publisher>UPN Veteran Jatim</dc:publisher>
+        <dc:date>2016</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/81/1/analisis_kualitas.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/81/7/Peer_Review-Analisa_Kualitas_Pelayanan_Kecamatan-JN.pdf</dc:identifier>
+        <dc:identifier>  Nawangsari, Ertien Rining  (2016) Similarity dan Peer Review : Analisis Kualitas Pelayanan Administrasi Kecamatan di Kabupaten Sidoarjo.  UPN Veteran Jatim.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::82</identifier>
+      <datestamp>2021-05-27T03:22:40Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4844:48443238</setSpec>
+      <setSpec>74797065733D626F6F6B</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/82/</dc:relation>
+        <dc:title>Pengantar Bisnis : Era Revolusi Industri 4.0</dc:title>
+        <dc:creator>Purwanto, Eko</dc:creator>
+        <dc:subject>HD28 Management. Industrial Management</dc:subject>
+        <dc:publisher>Sasanti Press</dc:publisher>
+        <dc:date>2020</dc:date>
+        <dc:type>Book</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/82/7/BUKU%20PENGANTAR%20BISNIS.pdf</dc:identifier>
+        <dc:identifier>  Purwanto, Eko  (2020) Pengantar Bisnis : Era Revolusi Industri 4.0.    Sasanti Press.  ISBN 978-623-7893-14-1     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::83</identifier>
+      <datestamp>2020-10-05T15:15:34Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4842</setSpec>
+      <setSpec>74797065733D626F6F6B</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/83/</dc:relation>
+        <dc:title>Analisis Fundamental dan  dalam Cognitive Dissonance dalam Melakukan Keputusan Investasi saham</dc:title>
+        <dc:creator>Purwanto, Eko</dc:creator>
+        <dc:subject>HB Economic Theory</dc:subject>
+        <dc:publisher>Sasanti institute</dc:publisher>
+        <dc:date>2020-04</dc:date>
+        <dc:type>Book</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/83/1/buku%20monograf%20analisis%20fundamental.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/83/8/Dokumen%20Analisis%20Fundamental%20dan%20Cognitive%20Dissonance%20Terhadap%20Keputusan%20Investasi.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/83/7/analisis%20fundamental%20dan%20cognitive.pdf</dc:identifier>
+        <dc:identifier>  Purwanto, Eko  (2020) Analisis Fundamental dan dalam Cognitive Dissonance dalam Melakukan Keputusan Investasi saham.    Sasanti institute.  ISBN 978-623-7893-18-9     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::84</identifier>
+      <datestamp>2021-05-27T03:04:40Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4842</setSpec>
+      <setSpec>74797065733D626F6F6B</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/84/</dc:relation>
+        <dc:title>Analisis Literasi Keuangan, faktor demografi, dan pendapatan terhadap perilaku konsumtif mahasiswa</dc:title>
+        <dc:creator>Purwanto, Eko</dc:creator>
+        <dc:subject>HB Economic Theory</dc:subject>
+        <dc:publisher>Sasanti Institute</dc:publisher>
+        <dc:date>2019-12</dc:date>
+        <dc:type>Book</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/84/12/BUKU%20LITERASI%20KUANGAN.pdf</dc:identifier>
+        <dc:identifier>  Purwanto, Eko  (2019) Analisis Literasi Keuangan, faktor demografi, dan pendapatan terhadap perilaku konsumtif mahasiswa.    Sasanti Institute.  ISBN 978-623-7893-16-5     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::86</identifier>
+      <datestamp>2021-10-18T01:56:19Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4844:48443238</setSpec>
+      <setSpec>74797065733D626F6F6B</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/86/</dc:relation>
+        <dc:title>Manajemen Strategik : Daya saing dan globalisasi</dc:title>
+        <dc:creator>Anwar, Muhadjir</dc:creator>
+        <dc:subject>HD28 Management. Industrial Management</dc:subject>
+        <dc:publisher>Sasanti Institute</dc:publisher>
+        <dc:date>2020-04</dc:date>
+        <dc:type>Book</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/86/24/1a.URL%20DOKUMEN%20Buku%20Manajemen%20Strategi.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/86/13/1.PR_Manajemen_Strategi.pdf</dc:identifier>
+        <dc:identifier>  Anwar, Muhadjir  (2020) Manajemen Strategik : Daya saing dan globalisasi.    Sasanti Institute.      </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::87</identifier>
+      <datestamp>2021-05-27T08:45:45Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D626F6F6B</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/87/</dc:relation>
+        <dc:title>Metode Penelitian Manajemen</dc:title>
+        <dc:creator>Anwar, Muhadjir</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:publisher>Sasanti Institute</dc:publisher>
+        <dc:date>2019-12</dc:date>
+        <dc:type>Book</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/87/12/METODE%20PENELITIAN%20OK.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/87/7/metodologi%20penelitian.pdf</dc:identifier>
+        <dc:identifier>  Anwar, Muhadjir  (2019) Metode Penelitian Manajemen.    Sasanti Institute.      </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::88</identifier>
+      <datestamp>2021-05-28T00:55:37Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D626F6F6B</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/88/</dc:relation>
+        <dc:title>Model Kemitraan Bisnis antar usaha Mikro, Kecil dan Menengah (UMKM)</dc:title>
+        <dc:creator>Anwar, Muhadjir</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:publisher>Sasanti Institute</dc:publisher>
+        <dc:date>2020-04</dc:date>
+        <dc:type>Book</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/88/18/4.PR.%20MODEL%20KEMITRAAN%20Monograf.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/88/19/UKM%20Kerajinan%20Tas%20Sda%20OK.pdf</dc:identifier>
+        <dc:identifier>  Anwar, Muhadjir  (2020) Model Kemitraan Bisnis antar usaha Mikro, Kecil dan Menengah (UMKM).    Sasanti Institute.  ISBN 978-623-7893-20-2     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::89</identifier>
+      <datestamp>2021-10-18T02:00:09Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D626F6F6B</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/89/</dc:relation>
+        <dc:title>Peran knowledge sharing, knowledge absorption, market orentation terhadap kinerja usaha mikro kecil peternak sapi</dc:title>
+        <dc:creator>Anwar, Muhadjir</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:publisher>Sasanti Institute</dc:publisher>
+        <dc:date>2019-12</dc:date>
+        <dc:type>Book</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/89/22/2a.%20URL%20DOKUMEN%20UKM%20Peternak%20Sapi.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/89/7/2.PR_UKM_Peternak_Sapi.pdf</dc:identifier>
+        <dc:identifier>  Anwar, Muhadjir  (2019) Peran knowledge sharing, knowledge absorption, market orentation terhadap kinerja usaha mikro kecil peternak sapi.    Sasanti Institute.  ISBN 978-623-7893-21-9     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::90</identifier>
+      <datestamp>2020-07-16T09:06:33Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D636F6E666572656E63655F6974656D</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/90/</dc:relation>
+        <dc:title>Inclusive Finance and Financial Literacy (Study On Small Medium Enterprises (SMES) In East Java)</dc:title>
+        <dc:creator>Anwar, Muhadjir</dc:creator>
+        <dc:creator>Purwanto, Eko</dc:creator>
+        <dc:creator>Suwaidi, R. A.</dc:creator>
+        <dc:creator>Anienda, Mas T. F.</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:date>2016-11-15</dc:date>
+        <dc:type>Conference or Workshop Item</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/90/1/inclusive%20finance.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/90/12/INCLUSIVEFINANCE%20AND%20FINANCIAL%20LITERACY.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/90/18/1.PROSID.INTERNAS%20INCLUSIF.pdf</dc:identifier>
+        <dc:identifier>  Anwar, Muhadjir and Purwanto, Eko and Suwaidi, R. A. and Anienda, Mas T. F.  (2016) Inclusive Finance and Financial Literacy (Study On Small Medium Enterprises (SMES) In East Java).  In: Internasional Seminar For Research Month (ISRM) UPN Veteran Jawa Timur, 15 Desember 2016, Surabaya.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::91</identifier>
+      <datestamp>2020-10-06T02:29:41Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D636F6E666572656E63655F6974656D</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/91/</dc:relation>
+        <dc:title>DETERMINANT BUSINESS PARTNERSHIP &#13;
+(Study at The Centre of  Bag and Suitcase Tanggulangin - Sidoarjo Regency)</dc:title>
+        <dc:creator>Anwar, Muhadjir</dc:creator>
+        <dc:creator>Purwanto, Eko</dc:creator>
+        <dc:creator>Fitriyah, Zumrotul</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:date>2019-10-09</dc:date>
+        <dc:type>Conference or Workshop Item</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/91/1/determinant%20business.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/91/7/determinant%20business.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/91/12/17.DETERMINANT%20BUSINESS.pdf</dc:identifier>
+        <dc:identifier>  Anwar, Muhadjir and Purwanto, Eko and Fitriyah, Zumrotul  (2019) DETERMINANT BUSINESS PARTNERSHIP (Study at The Centre of Bag and Suitcase Tanggulangin - Sidoarjo Regency).  In: Internasional Seminar Of Research Month (ISRM) UPN Veteran Jawa Timur 2019, 9 Oktober 2019, Surabaya.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::92</identifier>
+      <datestamp>2021-02-24T04:30:27Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D6F74686572</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/92/</dc:relation>
+        <dc:title>Surat Pencatatan Ciptaan : Berwirausaha Menuju Kemandirian</dc:title>
+        <dc:creator>Kustini, Kustini</dc:creator>
+        <dc:creator>Yuniningsih, Yuniningsih</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:date>2019-05-22</dc:date>
+        <dc:type>Other</dc:type>
+        <dc:type>NonPeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/92/1/HKI_%20KEWIRAUSAHAAN.pdf</dc:identifier>
+        <dc:identifier>  Kustini, Kustini and Yuniningsih, Yuniningsih  (2019) Surat Pencatatan Ciptaan : Berwirausaha Menuju Kemandirian.  UNSPECIFIED.     </dc:identifier>
+        <dc:relation>EC00201941035</dc:relation></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::93</identifier>
+      <datestamp>2020-07-03T06:19:05Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4842</setSpec>
+      <setSpec>74797065733D61727469636C65</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/93/</dc:relation>
+        <dc:title>Pengaruh Investasi, Profitabilitas, Risiko Keuangan Terhadap Kebijakan Dividen pada Perusahaan Consumer Goods yang Go Public di Bursa Efek Jakarta</dc:title>
+        <dc:creator>Anwar, Muhadjir</dc:creator>
+        <dc:subject>HB Economic Theory</dc:subject>
+        <dc:publisher>LPPM UPN Veteran Jatim</dc:publisher>
+        <dc:date>2007</dc:date>
+        <dc:type>Article</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/93/2/Cvr_jpiie_2007.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/93/1/pengaruh%20investasi.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/93/13/pengaruh%20investasi.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/93/14/PENGARUH%20INVESTASI%2C%20PROFITABILITAS.pdf</dc:identifier>
+        <dc:identifier>  Anwar, Muhadjir  (2007) Pengaruh Investasi, Profitabilitas, Risiko Keuangan Terhadap Kebijakan Dividen pada Perusahaan Consumer Goods yang Go Public di Bursa Efek Jakarta.  Jurnal Penelitian Ilmu-Ilmu Ekonomi, 7 (2).   ISSN 1411-9080     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::94</identifier>
+      <datestamp>2020-07-03T04:07:55Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4842</setSpec>
+      <setSpec>74797065733D61727469636C65</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/94/</dc:relation>
+        <dc:title>Dampak Implementasi Good Corporate Governance Terhadap Praktik Manajemen Laba Perusahaan Perbankan di Indonesia</dc:title>
+        <dc:creator>Anwar, Muhadjir</dc:creator>
+        <dc:subject>HB Economic Theory</dc:subject>
+        <dc:publisher>Fakultas Ekonomi Uniyos</dc:publisher>
+        <dc:date>2010-04</dc:date>
+        <dc:type>Article</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/94/2/daftar%20isi_image.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/94/1/dampak%20implementasi.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/94/13/DAMPAK%20IMPLEMENTASI%20GOOD%20CORPORAT.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/94/19/dampak%20implementasi.pdf</dc:identifier>
+        <dc:identifier>  Anwar, Muhadjir  (2010) Dampak Implementasi Good Corporate Governance Terhadap Praktik Manajemen Laba Perusahaan Perbankan di Indonesia.  Jurnal Emage, 1 (1).   ISSN 977-2008-0677     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::95</identifier>
+      <datestamp>2020-07-07T06:38:45Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4844</setSpec>
+      <setSpec>7375626A656374733D48:4844:48443238</setSpec>
+      <setSpec>74797065733D61727469636C65</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/95/</dc:relation>
+        <dc:title>Pengaruh Konflik Peran, Stres Kerja dan Komitmen Organisasi Terhadap Kinerja Karyawan Bagian Produksi di PT. Bumi Karya Sentosa Surabaya</dc:title>
+        <dc:creator>Anwar, Muhadjir</dc:creator>
+        <dc:subject>HD Industries. Land use. Labor</dc:subject>
+        <dc:subject>HD28 Management. Industrial Management</dc:subject>
+        <dc:publisher>STIEKN Jaya Negara</dc:publisher>
+        <dc:date>2019-07</dc:date>
+        <dc:type>Article</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/95/2/cov_jmj_2019.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/95/3/Daftar%20isi%20Kata%20Pengantar_stikn_2019.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/95/1/pengaruh%20konflik%20peran.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/95/18/pengaruh%20konflik%20peran.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/95/23/PENGARUH%20KONFLIK%20PERAN%2CSTRES%20KERJA.pdf</dc:identifier>
+        <dc:identifier>  Anwar, Muhadjir  (2019) Pengaruh Konflik Peran, Stres Kerja dan Komitmen Organisasi Terhadap Kinerja Karyawan Bagian Produksi di PT. Bumi Karya Sentosa Surabaya.  Jurnal Manajemen Jaya Negara, 11 (2).       </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::96</identifier>
+      <datestamp>2020-07-07T07:08:03Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4843</setSpec>
+      <setSpec>74797065733D61727469636C65</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/96/</dc:relation>
+        <dc:title>Peran Mekanisme Corporate Governance Terhadap Kinerja Saham Perusahaan</dc:title>
+        <dc:creator>Anwar, Muhadjir</dc:creator>
+        <dc:subject>HC Economics</dc:subject>
+        <dc:publisher>LPPM UPN Veteran Jatim</dc:publisher>
+        <dc:date>2011</dc:date>
+        <dc:type>Article</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/96/2/Cvr%20Vol.%205%2C%20No.1_emagri_2012.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/96/1/peran%20mekanisme.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/96/13/peran%20mekanisme.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/96/18/PERAN%20MEKANISME%20CORPORATE.pdf</dc:identifier>
+        <dc:identifier>  Anwar, Muhadjir  (2011) Peran Mekanisme Corporate Governance Terhadap Kinerja Saham Perusahaan.  Jurnal Penelitian Ilmu-ilmu Ekonomi, 11 (1).   ISSN 1411-9080     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::97</identifier>
+      <datestamp>2020-05-15T06:29:14Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4844:48443238</setSpec>
+      <setSpec>74797065733D626F6F6B</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/97/</dc:relation>
+        <dc:title>Manajemen Kinerja</dc:title>
+        <dc:creator>Fauzi, Akhmad</dc:creator>
+        <dc:creator>Hidayat N.A., Rusdi</dc:creator>
+        <dc:subject>HD28 Management. Industrial Management</dc:subject>
+        <dc:publisher>Airlangga University Press</dc:publisher>
+        <dc:date>2020</dc:date>
+        <dc:type>Book</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>image</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/97/1/cover%20manajemen%20kinerja.jpeg</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/97/2/manajemen%20kinerja_2.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/97/3/manajemen%20kinerja.pdf</dc:identifier>
+        <dc:identifier>  Fauzi, Akhmad and Hidayat N.A., Rusdi  (2020) Manajemen Kinerja.    Airlangga University Press.  ISBN 978-602-473-375-9     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::98</identifier>
+      <datestamp>2020-06-23T13:04:40Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4844:48443238</setSpec>
+      <setSpec>74797065733D636F6E666572656E63655F6974656D</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/98/</dc:relation>
+        <dc:title>Internal Factors Affecting Islamic Banking Financing for&#13;
+Micro, Small, and Medium Enterprises</dc:title>
+        <dc:creator>Hidayat N.A., Rusdi</dc:creator>
+        <dc:creator>Andarini, Sonja</dc:creator>
+        <dc:creator>Nasution, Franky</dc:creator>
+        <dc:creator>Izzah, Nurul Aqidatul</dc:creator>
+        <dc:subject>HD28 Management. Industrial Management</dc:subject>
+        <dc:date>2019-10-21</dc:date>
+        <dc:type>Conference or Workshop Item</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/98/1/cover%20%26%20%20daftar%20isi%20ICISPE%202019.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/98/2/Internal%20Factors%20Affecting%20Islamic%20Banking%20Financing.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/98/3/internal%20factor.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/98/4/Internal%20Factors%20Affecting%20Islamic%20Banking%20Financing.pdf</dc:identifier>
+        <dc:identifier>  Hidayat N.A., Rusdi and Andarini, Sonja and Nasution, Franky and Izzah, Nurul Aqidatul  (2019) Internal Factors Affecting Islamic Banking Financing for Micro, Small, and Medium Enterprises.  In: ICISP 2019, 21-22 October 2019, Semarang.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::99</identifier>
+      <datestamp>2020-06-14T10:32:26Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D636F6E666572656E63655F6974656D</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/99/</dc:relation>
+        <dc:title>Comparison of Abnormal Returns Before and After The 18th&#13;
+Asian Games in Indonesia (Event study of companies included&#13;
+in the LQ-45 Stock Index)</dc:title>
+        <dc:creator>Andarini, Sonja</dc:creator>
+        <dc:creator>Hidayat N.A., Rusdi</dc:creator>
+        <dc:creator>Izzah, Nurul Aqidatul</dc:creator>
+        <dc:creator>Nasution, Franky</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:date>2019-10-21</dc:date>
+        <dc:type>Conference or Workshop Item</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/99/1/cover%20%26%20%20daftar%20isi%20ICISPE%202019.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/99/2/Comparison%20of%20Abnormal%20Return%20Before%20and%20After%20Asian%20Games%202018.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/99/3/comparison.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/99/4/Comparison%20of%20Abnormal%20Returns%20Before%20and%20After.pdf</dc:identifier>
+        <dc:identifier>  Andarini, Sonja and Hidayat N.A., Rusdi and Izzah, Nurul Aqidatul and Nasution, Franky  (2019) Comparison of Abnormal Returns Before and After The 18th Asian Games in Indonesia (Event study of companies included in the LQ-45 Stock Index).  In: ICISP 2019, 21-22 October 2019, Semarang.     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::100</identifier>
+      <datestamp>2021-07-13T10:16:01Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4842</setSpec>
+      <setSpec>74797065733D61727469636C65</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/100/</dc:relation>
+        <dc:title>Pengukuran Kinerja Usaha Peternkan dengan menggunakan metode Balanced Scorecard di Cv. Bumi Ayu Farm</dc:title>
+        <dc:creator>Purwanto, Eko</dc:creator>
+        <dc:subject>HB Economic Theory</dc:subject>
+        <dc:date>2011-03</dc:date>
+        <dc:type>Article</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/100/2/Cvr_jpiie_2011.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/100/1/pengukuran_kinerja.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/100/13/PENGUKURAN%20KINERJA%20USAHA%20PETERNAKAN.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/100/19/Pengukuran%20Kinerja%20perusahaan.pdf</dc:identifier>
+        <dc:identifier>  Purwanto, Eko  (2011) Pengukuran Kinerja Usaha Peternkan dengan menggunakan metode Balanced Scorecard di Cv. Bumi Ayu Farm.  Jurnal Penelitian Ilmu- ilmu Ekonomi, 11 (1).   ISSN 1411-9080     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::102</identifier>
+      <datestamp>2020-07-03T12:53:08Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4844:48443238</setSpec>
+      <setSpec>74797065733D61727469636C65</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/102/</dc:relation>
+        <dc:title>Analisis Pengaruh Net Profit Margin, Return On Assets, dan&#13;
+Return On Equity Terhadap Harga Saham Perusahaan&#13;
+Pertambangan Indeks LQ 45</dc:title>
+        <dc:creator>Purwanto, Eko</dc:creator>
+        <dc:subject>HD28 Management. Industrial Management</dc:subject>
+        <dc:date>2011-07</dc:date>
+        <dc:type>Article</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/102/2/Cover%20Vol.4%2C%20No%202_emagri_2011.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/102/3/Kata%20Pengantar%20Daftar%20Isi_emagri_2011.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/102/1/analisis%20pengaruh%20net%20profit.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/102/18/ANALISIS%20PENGARUH%20NET%20PROFIT%20MARGIN.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/102/24/analisis%20pengaruh%20net%20profit.pdf</dc:identifier>
+        <dc:identifier>  Purwanto, Eko  (2011) Analisis Pengaruh Net Profit Margin, Return On Assets, dan Return On Equity Terhadap Harga Saham Perusahaan Pertambangan Indeks LQ 45.  E-Magri : Jurnal Ilmu Ekonomi Manajemen dan Agribisnis, 4 (2).   ISSN 1411-9080     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::105</identifier>
+      <datestamp>2020-07-07T06:45:35Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4844:48443238</setSpec>
+      <setSpec>74797065733D61727469636C65</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/105/</dc:relation>
+        <dc:title>Determinan niat nasabah menggunakan internet  Banking di surabaya</dc:title>
+        <dc:creator>Soenaryo, Bimo</dc:creator>
+        <dc:creator>Anwar, Muhadjir</dc:creator>
+        <dc:subject>HD28 Management. Industrial Management</dc:subject>
+        <dc:date>2012-07</dc:date>
+        <dc:type>Article</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/105/2/Cvr%20Vol.%205%2C%20No.1_emagri_2012.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/105/1/determinan%20niat%20nasabah.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/105/13/determinan%20%20niat%20nasabah.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/105/18/DETERMINAN%20NIAT%20NASABAH.pdf</dc:identifier>
+        <dc:identifier>  Soenaryo, Bimo and Anwar, Muhadjir  (2012) Determinan niat nasabah menggunakan internet Banking di surabaya.  Emagri : Jurnal Ilmu Ekonomi Manajemen dan Agribisnis, 4 (2).   ISSN 2085-5788     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::106</identifier>
+      <datestamp>2020-06-04T23:49:47Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4842</setSpec>
+      <setSpec>74797065733D61727469636C65</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/106/</dc:relation>
+        <dc:title>Mekanisme Suku Bunga Sbi Sebagai Sasaran Operasional &#13;
+Kebijakan Moneter Dan Variabel Makro Ekonomi &#13;
+Indonesia: 1990 - 2007</dc:title>
+        <dc:creator>Muljaningsih, Sri</dc:creator>
+        <dc:subject>HB Economic Theory</dc:subject>
+        <dc:publisher>Program Studi Ilmu Ekonomi Pembangunan</dc:publisher>
+        <dc:date>2013</dc:date>
+        <dc:type>Article</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>image</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/106/1/Cover%20vol%204%20no%201%202013.jpg</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/106/2/daftar%20isi%202013.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/106/3/sri%20mul%202013.pdf</dc:identifier>
+        <dc:identifier>  Muljaningsih, Sri  (2013) Mekanisme Suku Bunga Sbi Sebagai Sasaran Operasional Kebijakan Moneter Dan Variabel Makro Ekonomi Indonesia: 1990 - 2007.  Jurnal Ilmu Ekonomi Pembangunan, 4 (1).   ISSN 2086-7565     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::107</identifier>
+      <datestamp>2020-08-05T08:03:35Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4842</setSpec>
+      <setSpec>74797065733D61727469636C65</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/107/</dc:relation>
+        <dc:title>Faktor-Faktor Yang Mempengaruhi Penyaluran Kredit Umum &#13;
+Pedesaan Bagi Usaha Kecil Oleh PT. Bank BRI (Persero) &#13;
+Di Kabupaten Bojonegoro</dc:title>
+        <dc:creator>Muljaningsih, Sri</dc:creator>
+        <dc:subject>HB Economic Theory</dc:subject>
+        <dc:publisher>Program Studi Ilmu Ekonomi Pembangunan</dc:publisher>
+        <dc:date>2011-01</dc:date>
+        <dc:type>Article</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/107/13/cover%2C%20daftar%20isi%2C%20Vol2%2C%20n-01.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/107/1/sri%20mul%202011.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/107/7/FAKTOR-FAKTOR%20YANG%20MEMPENGARUHI%20PENYALURAN%20KREDIT%20UMUM.pdf</dc:identifier>
+        <dc:identifier>  Muljaningsih, Sri  (2011) Faktor-Faktor Yang Mempengaruhi Penyaluran Kredit Umum Pedesaan Bagi Usaha Kecil Oleh PT. Bank BRI (Persero) Di Kabupaten Bojonegoro.  Jurnal Ilmu Ekonomi Pembangunan, 2 (1).   ISSN 977- 2008-0677     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::108</identifier>
+      <datestamp>2020-06-29T08:44:04Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D61727469636C65</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/108/</dc:relation>
+        <dc:title>Analisis Beberapa Faktor yang Mempengaruhi tingkat suku Bunga Deposito Bank Umum di Indonesia</dc:title>
+        <dc:creator>Muchtolifah, Muchtolifah</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:date>2015-01</dc:date>
+        <dc:type>Article</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>image</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/108/1/Cvr%20vol%206%20no%201%20%202015.jpg</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/108/2/Mitrabestari%2C%20Kata%20Pengt.%20Daftar%20Isi.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/108/3/deposito%20bank%20umum%20di%20Indonesia.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/108/18/TINGKAT%20SUKU%20BUNGA%20DEPOSITO%20BANK%20UMUM.pdf</dc:identifier>
+        <dc:identifier>  Muchtolifah, Muchtolifah  (2015) Analisis Beberapa Faktor yang Mempengaruhi tingkat suku Bunga Deposito Bank Umum di Indonesia.  Jurnal Ilmu Ekonomi Pembangunan, 6 (1).   ISSN 977- 2008-0677     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::109</identifier>
+      <datestamp>2020-07-03T12:47:55Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4842</setSpec>
+      <setSpec>74797065733D61727469636C65</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/109/</dc:relation>
+        <dc:title>Analisa Faktor -Faktor Motivasi Yang Mempengaruhi&#13;
+Prestasi Kerja Karyawan Pada Perusahaan Tepung Tapioka&#13;
+PT. “ Tegak Jaya” Kediri</dc:title>
+        <dc:creator>Purwanto, Eko</dc:creator>
+        <dc:subject>HB Economic Theory</dc:subject>
+        <dc:publisher>STIEKN Jaya Negara</dc:publisher>
+        <dc:date>2019-07</dc:date>
+        <dc:type>Article</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/109/1/analisa%20faktor-faktor%20motivasi.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/109/7/ANALISA%20FAKTOR%20-FAKTOR%20MOTIVASI.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/109/13/analisis%20faktor-faktor%20motivasi.pdf</dc:identifier>
+        <dc:identifier>  Purwanto, Eko  (2019) Analisa Faktor -Faktor Motivasi Yang Mempengaruhi Prestasi Kerja Karyawan Pada Perusahaan Tepung Tapioka PT. “ Tegak Jaya” Kediri.  Jurnal Manajemen Jayanegera (JMJ), 11 (2).  pp. 151-160.      </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::110</identifier>
+      <datestamp>2020-07-03T13:12:42Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4842</setSpec>
+      <setSpec>74797065733D61727469636C65</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/110/</dc:relation>
+        <dc:title>Pendekatan Linear Programing Dari Perbedaan Saluran&#13;
+Distribusi Dalam Mengoptimalkan Laba&#13;
+Perusahaan Air Minum Aqua</dc:title>
+        <dc:creator>Purwanto, Eko</dc:creator>
+        <dc:subject>HB Economic Theory</dc:subject>
+        <dc:publisher>Fakultas Ekonomi Uniyos</dc:publisher>
+        <dc:date>2010-10</dc:date>
+        <dc:type>Article</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/110/1/pendekatan%20linear%20programming.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/110/7/PENDEKATAN%20LINEAR%20PROGRAMING.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/110/8/pendekatan%20linear%20programming.pdf</dc:identifier>
+        <dc:identifier>  Purwanto, Eko  (2010) Pendekatan Linear Programing Dari Perbedaan Saluran Distribusi Dalam Mengoptimalkan Laba Perusahaan Air Minum Aqua.  Jurnal Image, 1 (2).  pp. 102-109.  ISSN 1411 - 9102     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::111</identifier>
+      <datestamp>2021-05-31T08:33:17Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D61727469636C65</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/111/</dc:relation>
+        <dc:title>Sikap Masyarakat Surabaya Terhadap Pemberitaan &#13;
+Larangan Penggunaan Jilboobs Oleh MUI Di Media Online</dc:title>
+        <dc:creator>Suratnoaji, Catur</dc:creator>
+        <dc:creator>Tranggono, Didiek</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:publisher>Program Studi Ilmu Komunikasi</dc:publisher>
+        <dc:date>2014-10</dc:date>
+        <dc:type>Article</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/111/1/cov%20%20jikom%206%20no%202.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/111/2/sikap%20masyarakat%20surabaya.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/111/13/4.%20Sikap%20Masy.Sby.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/111/19/Sikap%20Masyarakat%20Surabaya.pdf</dc:identifier>
+        <dc:identifier>  Suratnoaji, Catur and Tranggono, Didiek  (2014) Sikap Masyarakat Surabaya Terhadap Pemberitaan Larangan Penggunaan Jilboobs Oleh MUI Di Media Online.  Jurnal Ilmu Komunikasi, 6 (2).   ISSN 127164-9644     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::112</identifier>
+      <datestamp>2020-07-05T12:22:59Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D61727469636C65</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/112/</dc:relation>
+        <dc:title>Peluang dan Tantangan Citizen Journalism di Indonesia</dc:title>
+        <dc:creator>Tranggono, Didiek</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:date>2015-10</dc:date>
+        <dc:type>Article</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/112/1/cov%20jikom%207%20no%202.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/112/2/peluang%20dan%20tantangan%20citizen.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/112/13/5.%20peluang%20dan%20tantangan%20citizen.pdf</dc:identifier>
+        <dc:identifier>  Tranggono, Didiek  (2015) Peluang dan Tantangan Citizen Journalism di Indonesia.  Jurnal Ilmu Komunikasi, 7 (2).   ISSN 127164-9644     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::113</identifier>
+      <datestamp>2020-07-22T04:04:16Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D61727469636C65</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/113/</dc:relation>
+        <dc:title>Pembingkaian Berita Hilang Kontak Pesawat Air Asia Qz8501 &#13;
+Pada Surat Kabar Jawa Pos dan Seputar Indonesia &#13;
+Bulan Januari 2015</dc:title>
+        <dc:creator>Tranggono, Didiek</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:date>2016-04</dc:date>
+        <dc:type>Article</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/113/1/cov%20jikom%208%20no%201.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/113/2/Pembingkain%20Berita%20Jatuhnya%20Pesawat.pdf</dc:identifier>
+        <dc:identifier>  Tranggono, Didiek  (2016) Pembingkaian Berita Hilang Kontak Pesawat Air Asia Qz8501 Pada Surat Kabar Jawa Pos dan Seputar Indonesia Bulan Januari 2015.  Jurnal Ilmu Komunikasi, 8 (1).   ISSN 127164-9644     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::114</identifier>
+      <datestamp>2020-08-12T10:00:13Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D61727469636C65</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/114/</dc:relation>
+        <dc:title>Analisis Isi Kekerasan Dalam Tayangan  &#13;
+Talk Show “ Rumah Uya” Di Trans7</dc:title>
+        <dc:creator>Tranggono, Didiek</dc:creator>
+        <dc:creator>Suratnoaji, Catur</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:date>2016-10</dc:date>
+        <dc:type>Article</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/114/1/cov%20jikom%208%20no%202.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/114/2/Kekerasan%20Dalam%20Tayangan.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/114/18/Anlisis%20Isi%20Kekerasan%20dalam%20Tayangan%20Talkshow%20_Rumah%20Uya_%20di%20Trans%207.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/114/24/11.%20Kekerasan%20dlm%20tayangan.pdf</dc:identifier>
+        <dc:identifier>  Tranggono, Didiek and Suratnoaji, Catur  (2016) Analisis Isi Kekerasan Dalam Tayangan Talk Show “ Rumah Uya” Di Trans7.  Jurnal Ilmu Komunikasi, 8 (2).   ISSN 127164-9644     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::115</identifier>
+      <datestamp>2020-08-12T09:51:14Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D61727469636C65</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/115/</dc:relation>
+        <dc:title>Sikap Masyarakat Sidoarjo Terhadap Iklan Suncity Waterpark Di Radar Sidoarjo&#13;
+(Studi Deskriptif Kuantitatif Sikap Masyarakat Sidoarjo Terhadap Iklan Suncity Waterpark di Radar Sidoarjo)</dc:title>
+        <dc:creator>Suratnoaji, Catur</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:date>2014-04</dc:date>
+        <dc:type>Article</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/115/1/sikap%20masyarakat%20Sidoarjo.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/115/12/Sika%20Masyarakat%20Sidoarjo%20terhadap%20Iklan%20Suncity%20Waterpark%20di%20Radar%20Sidoarjo.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/115/18/8.%20Sikap%20Masyarakat%20Sda.pdf</dc:identifier>
+        <dc:identifier>  Suratnoaji, Catur  (2014) Sikap Masyarakat Sidoarjo Terhadap Iklan Suncity Waterpark Di Radar Sidoarjo (Studi Deskriptif Kuantitatif Sikap Masyarakat Sidoarjo Terhadap Iklan Suncity Waterpark di Radar Sidoarjo).  Jurnal Ilmu Komunikasi, 6 (1).   ISSN 127164-9644     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::116</identifier>
+      <datestamp>2020-10-19T04:40:14Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setSpec>74797065733D626F6F6B</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/116/</dc:relation>
+        <dc:title>Analisis Faktor yang Mempengaruhi impor beras di Indonesia</dc:title>
+        <dc:creator>Muchtolifah, Muchtolifah</dc:creator>
+        <dc:subject>H Social Sciences (General)</dc:subject>
+        <dc:publisher>Sasanti Institute</dc:publisher>
+        <dc:date>2019</dc:date>
+        <dc:type>Book</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/116/1/analisis%20faktor-muchtolifah.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/116/7/BUKU%20IMPOR%20BERAS.pdf</dc:identifier>
+        <dc:identifier>  Muchtolifah, Muchtolifah  (2019) Analisis Faktor yang Mempengaruhi impor beras di Indonesia.    Sasanti Institute.  ISBN 978-623-7893-19-6     </dc:identifier></oai_dc:dc></metadata></record>
+    <record>
+    <header>
+      <identifier>oai::117</identifier>
+      <datestamp>2020-10-19T10:46:44Z</datestamp>
+      <setSpec>7374617475733D707562</setSpec>
+      <setSpec>7375626A656374733D48:4842</setSpec>
+      <setSpec>74797065733D626F6F6B</setSpec></header>
+    <metadata>
+      <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dc:relation>https://repository.upnjatim.ac.id/117/</dc:relation>
+        <dc:title>Analisis Harga Saham Perusahaan Food and Beverages yang Go Public di Bursa Efek Indonesia</dc:title>
+        <dc:creator>Muljaningsih, Sri</dc:creator>
+        <dc:subject>HB Economic Theory</dc:subject>
+        <dc:publisher>CV. Mitra Abisatya</dc:publisher>
+        <dc:date>2020-04</dc:date>
+        <dc:type>Book</dc:type>
+        <dc:type>PeerReviewed</dc:type>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/117/8/Web%20%20Harga%20Saham.pdf</dc:identifier>
+        <dc:format>text</dc:format>
+        <dc:language>en</dc:language>
+        <dc:identifier>https://repository.upnjatim.ac.id/117/7/Buku%20Harga%20Saham%20Sri%20Mul.pdf</dc:identifier>
+        <dc:identifier>  Muljaningsih, Sri  (2020) Analisis Harga Saham Perusahaan Food and Beverages yang Go Public di Bursa Efek Indonesia.    CV. Mitra Abisatya, Surabaya.  ISBN 978-623-93703-8-1     </dc:identifier></oai_dc:dc></metadata></record>
+    <resumptionToken expirationDate="2026-10-18T14:03:07Z">metadataPrefix%3Doai_dc%26offset%3D118</resumptionToken>
+  </ListRecords>
+</OAI-PMH>

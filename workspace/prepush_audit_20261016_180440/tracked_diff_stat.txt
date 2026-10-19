@@ -1,0 +1,16 @@
+ engines/citation_auditor.py                        |   2 +-
+ golden_dataset/documents/TEST-001_normal.docx      | Bin 41892 -> 41360 bytes
+ .../documents/TEST-002_margin_salah.docx           | Bin 41891 -> 41359 bytes
+ golden_dataset/documents/TEST-003_font_salah.docx  | Bin 41875 -> 41290 bytes
+ golden_dataset/documents/TEST-004_bab3_hilang.docx | Bin 41194 -> 40733 bytes
+ .../documents/TEST-005_citation_missing_bib.docx   | Bin 41843 -> 41315 bytes
+ .../documents/TEST-006_variable_mutation.docx      | Bin 41895 -> 41363 bytes
+ .../documents/TEST-007_formula_error.docx          | Bin 41892 -> 41360 bytes
+ .../documents/TEST-008_stat_contradiction.docx     | Bin 41887 -> 41356 bytes
+ .../documents/TEST-009_sample_mismatch.docx        | Bin 41892 -> 41360 bytes
+ golden_dataset/documents/TEST-010_journal.docx     | Bin 36817 -> 36817 bytes
+ golden_dataset/documents/TEST-010_thesis.docx      | Bin 41892 -> 41360 bytes
+ golden_dataset/generator.py                        |  35 +++++++++++----------
+ models/document_model.py                           |   5 +--
+ tests/test_docx_parser.py                          |   2 +-
+ 15 files changed, 24 insertions(+), 20 deletions(-)

@@ -1,0 +1,9 @@
+FOUND  requirements.txt
+FOUND  pyproject.toml
+MISSING pytest.ini
+FOUND  .streamlit/config.toml
+FOUND  .gitignore
+FOUND  golden_dataset/generator.py
+FOUND  tests/golden_dataset/test_academic_benchmark.py
+FOUND  core/evaluation/schema.py
+FOUND  core/evaluation/benchmark_runner.py

@@ -1,0 +1,349 @@
+requirements.txt:2:python-docx>=1.1.0
+requirements.txt:3:pypdf>=4.2.0
+requirements.txt:4:pdfplumber>=0.11.0
+requirements.txt:5:pymupdf>=1.24.0
+requirements.txt:7:pdf2image>=1.17.0
+app.py:26:from engines.revision_engine import DocxAutoFixer, RevisionEngine
+app.py:117:    - **Maksimal:** 175 Halaman (Hard Limit)
+app.py:136:    config={"max_pages": 175, "margins_cm": {"top": 4.0, "left": 4.0, "bottom": 3.0, "right": 3.0}}
+app.py:176:            g_target_pages = st.slider("Target Tebal Halaman (Maksimal 175)", min_value=50, max_value=175, value=100)
+app.py:188:    budget = gen.calculate_page_budget(g_target_pages)
+app.py:195:                <div style="font-size: 20px; font-weight: bold; color: white;">{ch_data['target_pages']} Hal</div>
+app.py:217:    if btn_generate or "generated_docx_bytes" in st.session_state:
+app.py:219:            with st.spinner("⚡ Menyusun naskah tesis lengkap Bab 1–5 dan memformat DOCX sesuai pedoman MIKOM 2026..."):
+app.py:220:                docx_bytes = gen.compile_full_thesis_docx(params)
+app.py:221:                st.session_state["generated_docx_bytes"] = docx_bytes.getvalue()
+app.py:228:            "📥 UNDUH DRAF LENGKAP TESIS (.DOCX SIAP SIDANG)",
+app.py:229:            data=st.session_state["generated_docx_bytes"],
+app.py:230:            file_name=f"TESIS_MIKOM_2026_{g_author.replace(' ', '_')}.docx",
+app.py:263:    col_upload_1, col_upload_2 = st.columns(2)
+app.py:264:    with col_upload_1:
+app.py:266:        uploaded_thesis = st.file_uploader(
+app.py:267:            "Unggah naskah tesis lengkap (.docx atau .pdf, maks. 175 halaman)",
+app.py:268:            type=["docx", "pdf"],
+app.py:269:            key="thesis_uploader"
+app.py:271:    with col_upload_2:
+app.py:273:        uploaded_journal = st.file_uploader(
+app.py:275:            type=["docx", "pdf"],
+app.py:276:            key="journal_uploader"
+app.py:292:        if not uploaded_thesis:
+app.py:296:        suffix_thesis = Path(uploaded_thesis.name).suffix.lower()
+app.py:297:        suffix_journal = Path(uploaded_journal.name).suffix.lower() if uploaded_journal else None
+app.py:302:                thesis_path.write_bytes(uploaded_thesis.getvalue())
+app.py:305:                if uploaded_journal:
+app.py:307:                    journal_path.write_bytes(uploaded_journal.getvalue())
+app.py:312:                    doc.filename = uploaded_thesis.name
+app.py:317:                # Cek Batas 175 Halaman (PDF Fisik & Estimasi DOCX)
+app.py:318:                page_count = doc.get_effective_page_count()
+app.py:319:                if doc.is_page_count_estimated:
+app.py:320:                    st.info(f"ℹ️ Estimasi Format DOCX: Terdeteksi sekitar ~{page_count} halaman (berdasarkan densitas ~275 kata/halaman spasi ganda MIKOM 2026). Jumlah cetak aktual dapat sedikit berbeda tergantung tabel dan margin.")
+app.py:321:                if page_count > 175:
+app.py:322:                    if doc.is_page_count_estimated:
+app.py:323:                        st.error(f"❌ FATAL ERROR: Naskah Word (.docx) diperkirakan mencapai ~{page_count} halaman, melampaui batas maksimal 175 halaman. Harap kurangi volume naskah.")
+app.py:325:                        st.error(f"❌ FATAL ERROR: Naskah PDF fisik melebihi batas 175 halaman (Terdeteksi pasti: {page_count} halaman).")
+app.py:333:                        doc_journal.filename = uploaded_journal.name
+app.py:385:                    db.create_project(proj_id, uploaded_thesis.name, "Mahasiswa MIKOM", None, "UPN_MIKOM_2026")
+app.py:522:        doc_info = {"filename": uploaded_thesis.name, "page_count": doc.page_count}
+app.py:530:                file_name=f"audit_{uploaded_thesis.name}.html",
+app.py:536:                "📑 Unduh DOCX Catatan",
+app.py:537:                data=rep_engine.to_docx_bytes(),
+app.py:538:                file_name=f"audit_{uploaded_thesis.name}.docx",
+app.py:546:                file_name=f"audit_{uploaded_thesis.name}.json",
+app.py:552:                "📕 Unduh PDF Eksekutif",
+app.py:553:                data=rep_engine.to_pdf_bytes(),
+app.py:554:                file_name=f"audit_{uploaded_thesis.name}.pdf",
+app.py:555:                mime="application/pdf",
+app.py:566:    st.info("Pilih dokumen Word (.docx) yang ingin diperbaiki format tata letaknya sesuai standar MIKOM 2026.")
+app.py:567:    docx_file = st.file_uploader("Unggah naskah Word (.docx) untuk auto-revisi", type=["docx"], key="auto_fix_uploader")
+app.py:569:    if docx_file:
+app.py:583:        if st.button("✨ Terapkan Perbaikan Layout (.docx)", **btn_w()):
+app.py:585:                in_p = Path(td) / "input.docx"
+app.py:586:                out_p = Path(td) / "output_revised.docx"
+app.py:587:                in_p.write_bytes(docx_file.getvalue())
+app.py:590:                    fixer = DocxAutoFixer(str(in_p))
+app.py:595:                        "📥 Unduh Dokumen Hasil Revisi (.docx)",
+app.py:597:                        file_name=f"revised_{docx_file.name}",
+app.py:628:        st.markdown("**1. Ingest Naskah**\nUpload berkas `.docx` atau `.pdf` (maks. 175 halaman).")
+models/document_model.py:31:    page_count: int | None = None
+models/document_model.py:32:    is_page_count_estimated: bool = False
+models/document_model.py:33:    estimated_page_count: int | None = None
+models/document_model.py:58:    def get_effective_page_count(self) -> int:
+models/document_model.py:61:        For PDF files: returns the actual physical page count from the PDF structure.
+models/document_model.py:62:        For DOCX files: calculates an estimated page count based on academic word density
+models/document_model.py:63:        (~275 words per double-spaced page), marking `is_page_count_estimated = True`
+models/document_model.py:69:        - 48,125 words -> 175 pages (ceil of 48,125 / 275)
+models/document_model.py:70:        - 48,126 words -> 176 pages (ceil of 48,126 / 275)
+models/document_model.py:71:        - Invalid/negative page_count -> corrected to positive estimate
+models/document_model.py:76:        if self.is_page_count_estimated and isinstance(self.estimated_page_count, int) and self.estimated_page_count > 0:
+models/document_model.py:77:            return self.estimated_page_count
+models/document_model.py:79:        # PDF files have fixed physical pages
+models/document_model.py:80:        if self.file_type.lower() == "pdf" and isinstance(self.page_count, int) and self.page_count > 0:
+models/document_model.py:81:            self.is_page_count_estimated = False
+models/document_model.py:82:            return self.page_count
+models/document_model.py:84:        # DOCX or reflowable formats: word-density estimation
+models/document_model.py:85:        self.is_page_count_estimated = True
+models/document_model.py:92:        self.estimated_page_count = est
+models/document_model.py:93:        self.page_count = est
+models/document_model.py:246:            "page_count": self.get_effective_page_count(),
+models/document_model.py:303:                "page_count": self.page_count,
+core/revision/revision_engine.py:8:from docx import Document
+core/revision/revision_engine.py:9:from docx.enum.text import WD_ALIGN_PARAGRAPH
+core/revision/revision_engine.py:10:from docx.shared import Cm, Pt
+core/revision/revision_engine.py:125:    def apply_docx_formatting_fixes(self, input_path: str, output_path: str) -> bool:
+core/revision/revision_engine.py:126:        """Applies safe mechanical formatting corrections to a DOCX document:
+core/revision/revision_engine.py:153:class DocxAutoFixer:
+core/revision/revision_engine.py:164:    def __init__(self, docx_path: str):
+core/revision/revision_engine.py:165:        self.docx_path = Path(docx_path)
+core/revision/revision_engine.py:166:        if not self.docx_path.exists():
+core/revision/revision_engine.py:167:            raise FileNotFoundError(f"Berkas DOCX sumber tidak ditemukan: {docx_path}")
+core/revision/revision_engine.py:173:            ValueError: If the DOCX file is corrupt or cannot be parsed.
+core/revision/revision_engine.py:177:            doc = Document(str(self.docx_path))
+core/revision/revision_engine.py:179:            raise ValueError(f"Berkas DOCX rusak atau tidak dapat diuraikan: {e}") from e
+core/revision/revision_engine.py:251:            raise IOError(f"Gagal menyimpan dokumen DOCX hasil perbaikan ke {output_path}: {e}") from e
+core/export/report_engine.py:1:"""Report Engine: Generates multi-format audit reports (HTML, PDF, DOCX, JSON)."""
+core/export/report_engine.py:9:from docx import Document
+core/export/report_engine.py:11:from reportlab.lib.pagesizes import A4
+core/export/report_engine.py:86:            <p><b>Dokumen:</b> {self.doc_info.get('filename')} | <b>Halaman:</b> {self.doc_info.get('page_count')} | <b>Total Temuan:</b> {len(self.findings)}</p>
+core/export/report_engine.py:111:    def to_docx_bytes(self) -> io.BytesIO:
+core/export/report_engine.py:112:        """Exports audit report as a DOCX document."""
+core/export/report_engine.py:136:    def to_pdf_bytes(self) -> io.BytesIO:
+core/export/report_engine.py:137:        """Exports audit report as PDF using ReportLab."""
+core/export/report_engine.py:139:        pdf = SimpleDocTemplate(bio, pagesize=A4)
+core/export/report_engine.py:175:        pdf.build(elements)
+core/generator/thesis_generator.py:17:import docx
+core/generator/thesis_generator.py:18:from docx import Document
+core/generator/thesis_generator.py:19:from docx.enum.text import WD_ALIGN_PARAGRAPH
+core/generator/thesis_generator.py:20:from docx.shared import Cm, Pt
+core/generator/thesis_generator.py:24:    """Generates outline, modular chapters, and fully formatted DOCX thesis documents."""
+core/generator/thesis_generator.py:30:    def calculate_page_budget(target_pages: int = 100) -> Dict[str, Dict[str, Any]]:
+core/generator/thesis_generator.py:32:        target_pages = min(target_pages, 175)  # Enforce 175 hard limit
+core/generator/thesis_generator.py:37:                "target_pages": round(target_pages * 0.15),
+core/generator/thesis_generator.py:38:                "target_words": round(target_pages * 0.15 * 250),
+core/generator/thesis_generator.py:43:                "target_pages": round(target_pages * 0.25),
+core/generator/thesis_generator.py:44:                "target_words": round(target_pages * 0.25 * 250),
+core/generator/thesis_generator.py:49:                "target_pages": round(target_pages * 0.15),
+core/generator/thesis_generator.py:50:                "target_words": round(target_pages * 0.15 * 250),
+core/generator/thesis_generator.py:55:                "target_pages": round(target_pages * 0.35),
+core/generator/thesis_generator.py:56:                "target_words": round(target_pages * 0.35 * 250),
+core/generator/thesis_generator.py:61:                "target_pages": round(target_pages * 0.10),
+core/generator/thesis_generator.py:62:                "target_words": round(target_pages * 0.10 * 250),
+core/generator/thesis_generator.py:213:    def compile_full_thesis_docx(self, params: Dict[str, Any]) -> io.BytesIO:
+core/generator/thesis_generator.py:214:        """Compiles complete 5-chapter thesis DOCX formatted strictly to MIKOM 2026 guidelines."""
+engines/report_engine.py:1:"""Report Engine: Generates multi-format audit reports (HTML, PDF, DOCX, JSON)."""
+engines/report_engine.py:9:from docx import Document
+engines/report_engine.py:11:from reportlab.lib.pagesizes import A4
+engines/report_engine.py:86:            <p><b>Dokumen:</b> {self.doc_info.get('filename')} | <b>Halaman:</b> {self.doc_info.get('page_count')} | <b>Total Temuan:</b> {len(self.findings)}</p>
+engines/report_engine.py:111:    def to_docx_bytes(self) -> io.BytesIO:
+engines/report_engine.py:112:        """Exports audit report as a DOCX document."""
+engines/report_engine.py:136:    def to_pdf_bytes(self) -> io.BytesIO:
+engines/report_engine.py:137:        """Exports audit report as PDF using ReportLab."""
+engines/report_engine.py:139:        pdf = SimpleDocTemplate(bio, pagesize=A4)
+engines/report_engine.py:175:        pdf.build(elements)
+core/document_processing/unified_extractor.py:1:"""Unified Document Processing & Extraction Engine for PDF, DOCX, and Images with OCR fallback."""
+core/document_processing/unified_extractor.py:8:    import pymupdf as fitz
+core/document_processing/unified_extractor.py:12:from docx import Document
+core/document_processing/unified_extractor.py:19:# Magic byte signatures
+core/document_processing/unified_extractor.py:20:MAGIC_SIGNATURES = {
+core/document_processing/unified_extractor.py:21:    ".pdf": b"%PDF-",
+core/document_processing/unified_extractor.py:22:    ".docx": b"PK\x03\x04",
+core/document_processing/unified_extractor.py:30:    """Raised when an uploaded document fails security or format validation."""
+core/document_processing/unified_extractor.py:48:        file_size = p.stat().st_size
+core/document_processing/unified_extractor.py:49:        if file_size == 0:
+core/document_processing/unified_extractor.py:51:        if file_size > self.max_bytes:
+core/document_processing/unified_extractor.py:53:                f"Ukuran berkas ({file_size / (1024 * 1024):.1f} MB) melampaui batas maksimal {self.max_size_mb} MB"
+core/document_processing/unified_extractor.py:57:        if suffix not in MAGIC_SIGNATURES and suffix not in [".txt"]:
+core/document_processing/unified_extractor.py:60:        # Validate Magic Bytes
+core/document_processing/unified_extractor.py:61:        if suffix in MAGIC_SIGNATURES:
+core/document_processing/unified_extractor.py:62:            expected_magic = MAGIC_SIGNATURES[suffix]
+core/document_processing/unified_extractor.py:64:                header = f.read(len(expected_magic))
+core/document_processing/unified_extractor.py:65:                if not header.startswith(expected_magic):
+core/document_processing/unified_extractor.py:70:        # Check PDF Encryption
+core/document_processing/unified_extractor.py:72:        page_count = 0
+core/document_processing/unified_extractor.py:73:        if suffix == ".pdf":
+core/document_processing/unified_extractor.py:77:                page_count = doc.page_count
+core/document_processing/unified_extractor.py:80:                    raise DocumentValidationError("Dokumen PDF terenkripsi/diproteksi kata sandi. Harap buka kunci terlebih dahulu.")
+core/document_processing/unified_extractor.py:84:                raise DocumentValidationError(f"Dokumen PDF rusak atau tidak dapat dibaca: {e}")
+core/document_processing/unified_extractor.py:90:            "size_bytes": file_size,
+core/document_processing/unified_extractor.py:92:            "page_count": page_count,
+core/document_processing/unified_extractor.py:95:    def extract_pdf_text(self, file_path: str | Path, fallback_to_ocr: bool = True) -> str:
+core/document_processing/unified_extractor.py:96:        """Extracts text from PDF page by page, with automated OCR fallback for scanned pages."""
+core/document_processing/unified_extractor.py:100:        pages_content = []
+core/document_processing/unified_extractor.py:114:                pages_content.append(text)
+core/document_processing/unified_extractor.py:118:        return "\n\n".join(pages_content)
+core/document_processing/unified_extractor.py:120:    def extract_docx_text(self, file_path: str | Path) -> str:
+core/document_processing/unified_extractor.py:121:        """Extracts all text from Word DOCX including paragraphs and tables."""
+core/document_processing/unified_extractor.py:143:        if suffix == ".pdf":
+core/document_processing/unified_extractor.py:144:            return self.extract_pdf_text(p)
+core/document_processing/unified_extractor.py:145:        elif suffix == ".docx":
+core/document_processing/unified_extractor.py:146:            return self.extract_docx_text(p)
+core/parsing/structure_parser.py:12:    def __init__(self, raw_text: str, pages_data: list[dict[str, Any]] | None = None):
+core/parsing/structure_parser.py:14:        self.pages_data = pages_data or []
+engines/document_parser.py:3:from engines.docx_parser import parse_docx
+engines/document_parser.py:4:from engines.pdf_parser import parse_pdf
+engines/document_parser.py:11:    if extension == ".docx":
+engines/document_parser.py:12:        return parse_docx(str(file_path))
+engines/document_parser.py:14:    if extension == ".pdf":
+engines/document_parser.py:15:        return parse_pdf(str(file_path))
+engines/document_parser.py:20:            "Konversi ke DOCX atau PDF terlebih dahulu."
+engines/document_parser.py:24:        "Format tidak didukung. Gunakan DOCX atau PDF."
+core/utils/security.py:14:ALLOWED_EXTENSIONS = {".docx", ".pdf"}
+core/utils/security.py:15:MAX_FILE_SIZE_BYTES = 200 * 1024 * 1024  # 200 MB safe limit
+core/utils/security.py:16:MAX_PAGES_LIMIT = 175
+core/utils/security.py:20:    """Validate that uploaded file is DOCX or PDF."""
+core/utils/security.py:25:        return False, f"Format {ext} tidak didukung. Harap unggah file .docx atau .pdf."
+core/utils/security.py:32:    return cleaned or "uploaded_thesis"
+core/utils/security.py:36:    """Context manager for temporary uploaded file persistence with guaranteed cleanup."""
+core/utils/security.py:46:    def save_uploaded_stream(self, file_stream: BinaryIO, original_filename: str) -> str:
+core/parsing/docx_parser.py:1:"""DOCX parser for extracting typographic, geometric, and structural properties."""
+core/parsing/docx_parser.py:7:import docx
+core/parsing/docx_parser.py:8:from docx.enum.text import WD_ALIGN_PARAGRAPH
+core/parsing/docx_parser.py:11:class DocxParser:
+core/parsing/docx_parser.py:12:    """Extracts typography, layout, formatting, tables, and text from .docx files."""
+core/parsing/docx_parser.py:15:        self.doc = docx.Document(file_path_or_stream)
+core/parsing/docx_parser.py:129:    def estimate_page_count(self) -> int:
+core/parsing/docx_parser.py:130:        """Estimates or extracts total page count for DOCX."""
+core/parsing/docx_parser.py:149:        estimated_pages = self.estimate_page_count()
+core/parsing/docx_parser.py:153:            "format": "docx",
+core/parsing/docx_parser.py:154:            "page_count": estimated_pages,
+core/citations/reference_auditor.py:40:def verify_doi_crossref(doi: str, timeout: float = 3.0) -> dict[str, Any]:
+core/citations/reference_auditor.py:63:        with urllib.request.urlopen(req, timeout=timeout) as response:
+core/citations/reference_auditor.py:127:                res = verify_doi_crossref(doi_str, timeout=1.5)
+engines/format_auditor.py:99:        if self.doc.page_count is not None and self.doc.page_count > 175:
+engines/format_auditor.py:104:                "field": "page_count",
+engines/format_auditor.py:105:                "actual": f"{self.doc.page_count} halaman",
+engines/format_auditor.py:106:                "expected": "Maksimal 175 halaman",
+engines/format_auditor.py:107:                "message": f"Dokumen melebihi batas maksimum ({self.doc.page_count} > 175).",
+engines/format_auditor.py:108:                "recommendation": "Kurangi panjang naskah agar tidak melampaui batas maksimum 175 halaman.",
+engines/format_auditor.py:109:                "page": self.doc.page_count,
+core/conversion/document_converter.py:5:from docx import Document
+core/conversion/document_converter.py:6:from reportlab.lib.pagesizes import A4
+core/conversion/document_converter.py:7:from reportlab.pdfgen import canvas
+core/conversion/document_converter.py:19:        """Converts an input document (PDF, DOCX, TXT) into the specified output format."""
+core/conversion/document_converter.py:36:        elif out_fmt == "docx":
+core/conversion/document_converter.py:43:        elif out_fmt == "pdf":
+core/conversion/document_converter.py:44:            c = canvas.Canvas(str(out_p), pagesize=A4)
+core/conversion/document_converter.py:61:            raise ValueError(f"Format output '{output_format}' tidak didukung. Pilihan: txt, html, docx, pdf.")
+core/parsing/pdf_parser.py:1:"""PDF parser for extracting page count, text per page, scan detection, and layout."""
+core/parsing/pdf_parser.py:8:import pymupdf  # PyMuPDF
+core/parsing/pdf_parser.py:11:class PdfParser:
+core/parsing/pdf_parser.py:12:    """Parses PDF documents, extracting pages, text layers, scan indicators, and coordinates."""
+core/parsing/pdf_parser.py:16:            self.doc = pymupdf.open(file_path_or_bytes)
+core/parsing/pdf_parser.py:18:            self.doc = pymupdf.open(stream=file_path_or_bytes, filetype="pdf")
+core/parsing/pdf_parser.py:20:            self.doc = pymupdf.open(stream=file_path_or_bytes.getvalue(), filetype="pdf")
+core/parsing/pdf_parser.py:23:            self.doc = pymupdf.open(file_path_or_bytes)
+core/parsing/pdf_parser.py:26:    def page_count(self) -> int:
+core/parsing/pdf_parser.py:30:        """Determines if the PDF appears to be a scanned image without an embedded text layer."""
+core/parsing/pdf_parser.py:34:        pages_to_check = min(10, len(self.doc))
+core/parsing/pdf_parser.py:35:        for i in range(pages_to_check):
+core/parsing/pdf_parser.py:39:        avg_words = total_words / pages_to_check
+core/parsing/pdf_parser.py:42:    def extract_pages_data(self) -> list[dict[str, Any]]:
+core/parsing/pdf_parser.py:44:        pages = []
+core/parsing/pdf_parser.py:56:            pages.append({
+core/parsing/pdf_parser.py:67:        return pages
+core/parsing/pdf_parser.py:70:        """Aggregate full PDF data."""
+core/parsing/pdf_parser.py:71:        pages_data = self.extract_pages_data()
+core/parsing/pdf_parser.py:73:        full_text = "\n\n".join([p["text"] for p in pages_data])
+core/parsing/pdf_parser.py:74:        total_words = sum([p["word_count"] for p in pages_data])
+core/parsing/pdf_parser.py:77:            "format": "pdf",
+core/parsing/pdf_parser.py:78:            "page_count": self.page_count,
+core/parsing/pdf_parser.py:80:            "scan_warning": "PDF terdeteksi sebagai scan/image tanpa lapisan teks. Gunakan OCR untuk akurasi maksimal." if scanned else None,
+core/parsing/pdf_parser.py:81:            "pages": pages_data,
+core/ingestion/document_parser.py:3:from engines.docx_parser import parse_docx
+core/ingestion/document_parser.py:4:from engines.pdf_parser import parse_pdf
+core/ingestion/document_parser.py:11:    if extension == ".docx":
+core/ingestion/document_parser.py:12:        return parse_docx(str(file_path))
+core/ingestion/document_parser.py:14:    if extension == ".pdf":
+core/ingestion/document_parser.py:15:        return parse_pdf(str(file_path))
+core/ingestion/document_parser.py:20:            "Konversi ke DOCX atau PDF terlebih dahulu."
+core/ingestion/document_parser.py:24:        "Format tidak didukung. Gunakan DOCX atau PDF."
+core/ocr/ocr_engine.py:13:POPPLER_AVAILABLE = shutil.which("pdftoppm") is not None
+core/ocr/ocr_engine.py:73:    def run_pdf_ocr(self, pdf_path: str | Path, max_pages: int = 50, lang: Optional[str] = None) -> str:
+core/ocr/ocr_engine.py:74:        """Renders PDF pages to images via pdf2image/poppler and executes OCR."""
+core/ocr/ocr_engine.py:76:            logger.info("Poppler (pdftoppm) not found on system PATH. Cannot render PDF to images.")
+core/ocr/ocr_engine.py:77:            return "[OCR PDF tidak dapat dijalankan: poppler-utils belum terpasang di sistem]"
+core/ocr/ocr_engine.py:80:            from pdf2image import convert_from_path
+core/ocr/ocr_engine.py:81:            pages = convert_from_path(str(pdf_path), first_page=1, last_page=max_pages)
+core/ocr/ocr_engine.py:82:            extracted_pages = []
+core/ocr/ocr_engine.py:83:            for idx, page in enumerate(pages, 1):
+core/ocr/ocr_engine.py:85:                extracted_pages.append(f"--- Halaman {idx} (OCR) ---\n{page_text}")
+core/ocr/ocr_engine.py:86:            return "\n\n".join(extracted_pages)
+core/ocr/ocr_engine.py:88:            logger.error("PDF OCR conversion failed: %s", e)
+core/ocr/ocr_engine.py:89:            return f"[Gagal memproses OCR PDF: {e}]"
+engines/pdf_parser.py:4:    import pymupdf as fitz
+engines/pdf_parser.py:14:def parse_pdf(path: str) -> ParsedDocument:
+engines/pdf_parser.py:22:        file_type="pdf",
+engines/pdf_parser.py:25:    with fitz.open(str(file_path)) as pdf:
+engines/pdf_parser.py:26:        if pdf.needs_pass:
+engines/pdf_parser.py:28:                "PDF memerlukan kata sandi."
+engines/pdf_parser.py:31:        result.page_count = pdf.page_count
+engines/pdf_parser.py:33:        metadata = pdf.metadata or {}
+engines/pdf_parser.py:40:        pages_without_text = []
+engines/pdf_parser.py:42:        for page_index, page in enumerate(pdf):
+engines/pdf_parser.py:47:                pages_without_text.append(page_number)
+engines/pdf_parser.py:54:                    source_type="pdf_page_text",
+engines/pdf_parser.py:58:        if pages_without_text:
+engines/pdf_parser.py:61:                + ", ".join(map(str, pages_without_text))
+engines/pdf_parser.py:62:                + ". Periksa kemungkinan PDF hasil scan."
+engines/pdf_parser.py:66:            "pages": [
+engines/pdf_parser.py:73:                for page in pdf
+engines/revision_engine.py:8:from docx import Document
+engines/revision_engine.py:9:from docx.enum.text import WD_ALIGN_PARAGRAPH
+engines/revision_engine.py:10:from docx.shared import Cm, Pt
+engines/revision_engine.py:125:    def apply_docx_formatting_fixes(self, input_path: str, output_path: str) -> bool:
+engines/revision_engine.py:126:        """Applies safe mechanical formatting corrections to a DOCX document:
+engines/revision_engine.py:153:class DocxAutoFixer:
+engines/revision_engine.py:164:    def __init__(self, docx_path: str):
+engines/revision_engine.py:165:        self.docx_path = Path(docx_path)
+engines/revision_engine.py:166:        if not self.docx_path.exists():
+engines/revision_engine.py:167:            raise FileNotFoundError(f"Berkas DOCX sumber tidak ditemukan: {docx_path}")
+engines/revision_engine.py:173:            ValueError: If the DOCX file is corrupt or cannot be parsed.
+engines/revision_engine.py:177:            doc = Document(str(self.docx_path))
+engines/revision_engine.py:179:            raise ValueError(f"Berkas DOCX rusak atau tidak dapat diuraikan: {e}") from e
+engines/revision_engine.py:251:            raise IOError(f"Gagal menyimpan dokumen DOCX hasil perbaikan ke {output_path}: {e}") from e
+core/ingestion/docx_parser.py:3:from docx import Document
+core/ingestion/docx_parser.py:16:def parse_docx(path: str) -> ParsedDocument:
+core/ingestion/docx_parser.py:26:        file_type="docx",
+core/ingestion/docx_parser.py:81:    result.get_effective_page_count()
+core/ingestion/docx_parser.py:84:        "DOCX: nomor halaman dan pemetaan posisi paragraf "
+engines/docx_parser.py:3:from docx import Document
+engines/docx_parser.py:16:def parse_docx(path: str) -> ParsedDocument:
+engines/docx_parser.py:26:        file_type="docx",
+engines/docx_parser.py:81:    result.get_effective_page_count()
+engines/docx_parser.py:84:        "DOCX: nomor halaman dan pemetaan posisi paragraf "
+core/ingestion/pdf_parser.py:4:    import pymupdf as fitz
+core/ingestion/pdf_parser.py:14:def parse_pdf(path: str) -> ParsedDocument:
+core/ingestion/pdf_parser.py:22:        file_type="pdf",
+core/ingestion/pdf_parser.py:25:    with fitz.open(str(file_path)) as pdf:
+core/ingestion/pdf_parser.py:26:        if pdf.needs_pass:
+core/ingestion/pdf_parser.py:28:                "PDF memerlukan kata sandi."
+core/ingestion/pdf_parser.py:31:        result.page_count = pdf.page_count
+core/ingestion/pdf_parser.py:33:        metadata = pdf.metadata or {}
+core/ingestion/pdf_parser.py:40:        pages_without_text = []
+core/ingestion/pdf_parser.py:42:        for page_index, page in enumerate(pdf):
+core/ingestion/pdf_parser.py:47:                pages_without_text.append(page_number)
+core/ingestion/pdf_parser.py:54:                    source_type="pdf_page_text",
+core/ingestion/pdf_parser.py:58:        if pages_without_text:
+core/ingestion/pdf_parser.py:61:                + ", ".join(map(str, pages_without_text))
+core/ingestion/pdf_parser.py:62:                + ". Periksa kemungkinan PDF hasil scan."
+core/ingestion/pdf_parser.py:66:            "pages": [
+core/ingestion/pdf_parser.py:73:                for page in pdf
+core/review/format_auditor.py:99:        if self.doc.page_count is not None and self.doc.page_count > 175:
+core/review/format_auditor.py:104:                "field": "page_count",
+core/review/format_auditor.py:105:                "actual": f"{self.doc.page_count} halaman",
+core/review/format_auditor.py:106:                "expected": "Maksimal 175 halaman",
+core/review/format_auditor.py:107:                "message": f"Dokumen melebihi batas maksimum ({self.doc.page_count} > 175).",
+core/review/format_auditor.py:108:                "recommendation": "Kurangi panjang naskah agar tidak melampaui batas maksimum 175 halaman.",
+core/review/format_auditor.py:109:                "page": self.doc.page_count,
+core/database/db_manager.py:61:    file_type TEXT NOT NULL CHECK(file_type IN ('DOCX', 'PDF')),
+core/database/db_manager.py:62:    total_pages INTEGER NOT NULL CHECK(total_pages <= 175),
+core/database/db_manager.py:236:        total_pages: int,
+core/database/db_manager.py:242:        """Register a thesis document. Fails if total_pages > 175."""
+core/database/db_manager.py:243:        if total_pages > 175:
+core/database/db_manager.py:244:            raise ValueError(f"Document exceeds 175 pages hard limit ({total_pages} pages)")
+core/database/db_manager.py:250:                (document_id, project_id, version_number, file_name, file_type, total_pages, word_count, storage_path, sha256_hash)
+core/database/db_manager.py:253:                (document_id, project_id, version_number, file_name, file_type, total_pages, word_count, storage_path, sha256_hash),
+core/sources/collect_crossref.py:46:                    timeout=30,
+core/sources/collect_openalex.py:42:                    timeout=30,
+engines/reference_auditor.py:40:def verify_doi_crossref(doi: str, timeout: float = 3.0) -> dict[str, Any]:
+engines/reference_auditor.py:63:        with urllib.request.urlopen(req, timeout=timeout) as response:
+engines/reference_auditor.py:127:                res = verify_doi_crossref(doi_str, timeout=1.5)

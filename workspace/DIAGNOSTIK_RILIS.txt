@@ -1,0 +1,124 @@
+=== GITIGNORE ===
+# Python & Environments
+.venv/
+env/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.hypothesis/
+
+# Vendor submodules & large clones
+vendor/
+data/raw/
+*.jsonl
+*.pdf
+*.docx
+!golden_dataset/documents/*.docx
+!golden_dataset/documents/*.pdf
+
+# System & IDE files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Project logs & workspace runtime artifacts
+logs/
+output/
+workspace/projects/*/input/*
+workspace/projects/*/extracted/*
+workspace/projects/*/revisions/*
+workspace/projects/*/exports/*
+
+=== IMPORT APP ===
+7:from __future__ import annotations
+9:import tempfile
+10:import uuid
+11:from pathlib import Path
+13:import streamlit as st
+15:from core.database.db_manager import DatabaseManager
+16:from core.generator.thesis_generator import ThesisGenerator
+17:from engines.audit_engine import audit_thesis
+18:from engines.citation_auditor import CitationAuditor
+19:from engines.cross_document_auditor import CrossDocumentAuditor
+20:from engines.document_parser import parse_document
+21:from engines.evidence_mapper import map_finding_to_evidence
+22:from engines.format_auditor import FormatAuditor
+23:from engines.formula_auditor import FormulaAuditor
+24:from engines.reference_auditor import ReferenceAuditor
+25:from engines.report_engine import ReportEngine
+26:from engines.revision_engine import DocxAutoFixer, RevisionEngine
+27:from engines.statistical_auditor import StatisticalAuditor
+28:from engines.structure_auditor import StructureAuditor
+29:from utils.number_utils import check_formula_recalculation
+
+=== UKURAN DATA BENCHMARK ===
+4.0K	data/benchmark/annotated_schema.json
+4.0K	data/benchmark/development_set.json
+8.0K	data/benchmark/evaluation_set.json
+
+=== STRUKTUR JSON ===
+data/benchmark/annotated_schema.json: type=dict
+ keys = ['$schema', 'title', 'description', 'type', 'required', 'properties']
+data/benchmark/development_set.json: type=dict
+ keys = ['schema_version', 'split', 'dataset_id', 'items']
+data/benchmark/evaluation_set.json: type=dict
+ keys = ['schema_version', 'split', 'dataset_id', 'items']
+
+=== GIT STATUS ===
+## main...origin/main
+ M engines/citation_auditor.py
+ M golden_dataset/documents/TEST-001_normal.docx
+ M golden_dataset/documents/TEST-002_margin_salah.docx
+ M golden_dataset/documents/TEST-003_font_salah.docx
+ M golden_dataset/documents/TEST-004_bab3_hilang.docx
+ M golden_dataset/documents/TEST-005_citation_missing_bib.docx
+ M golden_dataset/documents/TEST-006_variable_mutation.docx
+ M golden_dataset/documents/TEST-007_formula_error.docx
+ M golden_dataset/documents/TEST-008_stat_contradiction.docx
+ M golden_dataset/documents/TEST-009_sample_mismatch.docx
+ M golden_dataset/documents/TEST-010_journal.docx
+ M golden_dataset/documents/TEST-010_thesis.docx
+ M golden_dataset/generator.py
+ M models/document_model.py
+ M tests/test_docx_parser.py
+?? .venv-test/
+?? BIT_TESIS_CHECK_FINAL.sh
+?? BIT_TESIS_PATCH_ISOLATION.sh
+?? core/evaluation/benchmark_runner.py
+?? core/evaluation/error_analysis.py
+?? core/evaluation/matcher.py
+?? core/evaluation/metrics.py
+?? core/evaluation/schema.py
+?? data/
+?? golden_dataset/documents/TEST-011_unused_reference.docx
+?? tests/golden_dataset/test_academic_benchmark.py
+?? tests/unit/test_evaluation_metrics.py
+?? tests/unit/test_generator_isolation.py
+?? workspace/

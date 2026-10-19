@@ -1,0 +1,145 @@
+==================================================
+AI-THESIS-GENERATOR — FINAL RELEASE AUDIT
+Fri Oct 16 18:14:27 WIB 2026
+==================================================
+
+=== 1. FILE WAJIB ===
+PASS: app.py
+PASS: requirements.txt
+PASS: .gitignore
+PASS: .streamlit/config.toml
+
+=== 2. SYNTAX PYTHON ===
+compileall_exit=0
+
+=== 3. TES OTOMATIS ===
+..................................................                       [100%]
+=============================== warnings summary ===============================
+<frozen importlib._bootstrap>:241
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute
+
+<frozen importlib._bootstrap>:241
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute
+
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+50 passed, 5 warnings in 4.01s
+pytest_exit=0
+
+=== 4. KONFIGURASI STREAMLIT ===
+config TOML valid
+server: {'maxUploadSize': 200, 'enableCORS': False, 'enableXsrfProtection': True}
+theme: {'primaryColor': '#2563EB', 'backgroundColor': '#0F172A', 'secondaryBackgroundColor': '#1E293B', 'textColor': '#F8FAFC', 'font': 'sans serif'}
+
+=== 5. BATAS HALAMAN DAN UPLOAD ===
+app.py:117:    - **Maksimal:** 175 Halaman (Hard Limit)
+app.py:136:    config={"max_pages": 175, "margins_cm": {"top": 4.0, "left": 4.0, "bottom": 3.0, "right": 3.0}}
+app.py:176:            g_target_pages = st.slider("Target Tebal Halaman (Maksimal 175)", min_value=50, max_value=175, value=100)
+app.py:266:        uploaded_thesis = st.file_uploader(
+app.py:267:            "Unggah naskah tesis lengkap (.docx atau .pdf, maks. 175 halaman)",
+app.py:273:        uploaded_journal = st.file_uploader(
+app.py:317:                # Cek Batas 175 Halaman (PDF Fisik & Estimasi DOCX)
+app.py:318:                page_count = doc.get_effective_page_count()
+app.py:319:                if doc.is_page_count_estimated:
+app.py:320:                    st.info(f"ℹ️ Estimasi Format DOCX: Terdeteksi sekitar ~{page_count} halaman (berdasarkan densitas ~275 kata/halaman spasi ganda MIKOM 2026). Jumlah cetak aktual dapat sedikit berbeda tergantung tabel dan margin.")
+app.py:321:                if page_count > 175:
+app.py:322:                    if doc.is_page_count_estimated:
+app.py:323:                        st.error(f"❌ FATAL ERROR: Naskah Word (.docx) diperkirakan mencapai ~{page_count} halaman, melampaui batas maksimal 175 halaman. Harap kurangi volume naskah.")
+app.py:325:                        st.error(f"❌ FATAL ERROR: Naskah PDF fisik melebihi batas 175 halaman (Terdeteksi pasti: {page_count} halaman).")
+app.py:522:        doc_info = {"filename": uploaded_thesis.name, "page_count": doc.page_count}
+app.py:567:    docx_file = st.file_uploader("Unggah naskah Word (.docx) untuk auto-revisi", type=["docx"], key="auto_fix_uploader")
+app.py:628:        st.markdown("**1. Ingest Naskah**\nUpload berkas `.docx` atau `.pdf` (maks. 175 halaman).")
+engines/pdf_parser.py:31:        result.page_count = pdf.page_count
+engines/format_auditor.py:99:        if self.doc.page_count is not None and self.doc.page_count > 175:
+engines/format_auditor.py:104:                "field": "page_count",
+engines/format_auditor.py:105:                "actual": f"{self.doc.page_count} halaman",
+engines/format_auditor.py:106:                "expected": "Maksimal 175 halaman",
+engines/format_auditor.py:107:                "message": f"Dokumen melebihi batas maksimum ({self.doc.page_count} > 175).",
+engines/format_auditor.py:108:                "recommendation": "Kurangi panjang naskah agar tidak melampaui batas maksimum 175 halaman.",
+engines/format_auditor.py:109:                "page": self.doc.page_count,
+engines/docx_parser.py:81:    result.get_effective_page_count()
+engines/report_engine.py:86:            <p><b>Dokumen:</b> {self.doc_info.get('filename')} | <b>Halaman:</b> {self.doc_info.get('page_count')} | <b>Total Temuan:</b> {len(self.findings)}</p>
+models/document_model.py:31:    page_count: int | None = None
+models/document_model.py:32:    is_page_count_estimated: bool = False
+models/document_model.py:33:    estimated_page_count: int | None = None
+models/document_model.py:58:    def get_effective_page_count(self) -> int:
+models/document_model.py:63:        (~275 words per double-spaced page), marking `is_page_count_estimated = True`
+models/document_model.py:69:        - 48,125 words -> 175 pages (ceil of 48,125 / 275)
+models/document_model.py:71:        - Invalid/negative page_count -> corrected to positive estimate
+models/document_model.py:76:        if self.is_page_count_estimated and isinstance(self.estimated_page_count, int) and self.estimated_page_count > 0:
+models/document_model.py:77:            return self.estimated_page_count
+models/document_model.py:80:        if self.file_type.lower() == "pdf" and isinstance(self.page_count, int) and self.page_count > 0:
+models/document_model.py:81:            self.is_page_count_estimated = False
+models/document_model.py:82:            return self.page_count
+models/document_model.py:85:        self.is_page_count_estimated = True
+models/document_model.py:92:        self.estimated_page_count = est
+models/document_model.py:93:        self.page_count = est
+models/document_model.py:246:            "page_count": self.get_effective_page_count(),
+models/document_model.py:303:                "page_count": self.page_count,
+core/database/db_manager.py:62:    total_pages INTEGER NOT NULL CHECK(total_pages <= 175),
+core/database/db_manager.py:242:        """Register a thesis document. Fails if total_pages > 175."""
+core/database/db_manager.py:243:        if total_pages > 175:
+core/database/db_manager.py:244:            raise ValueError(f"Document exceeds 175 pages hard limit ({total_pages} pages)")
+core/ingestion/pdf_parser.py:31:        result.page_count = pdf.page_count
+core/ingestion/docx_parser.py:81:    result.get_effective_page_count()
+core/utils/security.py:16:MAX_PAGES_LIMIT = 175
+core/document_processing/unified_extractor.py:72:        page_count = 0
+core/document_processing/unified_extractor.py:77:                page_count = doc.page_count
+core/document_processing/unified_extractor.py:92:            "page_count": page_count,
+core/generator/thesis_generator.py:32:        target_pages = min(target_pages, 175)  # Enforce 175 hard limit
+core/review/format_auditor.py:99:        if self.doc.page_count is not None and self.doc.page_count > 175:
+core/review/format_auditor.py:104:                "field": "page_count",
+core/review/format_auditor.py:105:                "actual": f"{self.doc.page_count} halaman",
+core/review/format_auditor.py:106:                "expected": "Maksimal 175 halaman",
+core/review/format_auditor.py:107:                "message": f"Dokumen melebihi batas maksimum ({self.doc.page_count} > 175).",
+core/review/format_auditor.py:108:                "recommendation": "Kurangi panjang naskah agar tidak melampaui batas maksimum 175 halaman.",
+core/review/format_auditor.py:109:                "page": self.doc.page_count,
+core/parsing/pdf_parser.py:26:    def page_count(self) -> int:
+core/parsing/pdf_parser.py:78:            "page_count": self.page_count,
+core/parsing/docx_parser.py:129:    def estimate_page_count(self) -> int:
+core/parsing/docx_parser.py:149:        estimated_pages = self.estimate_page_count()
+core/parsing/docx_parser.py:154:            "page_count": estimated_pages,
+core/export/report_engine.py:86:            <p><b>Dokumen:</b> {self.doc_info.get('filename')} | <b>Halaman:</b> {self.doc_info.get('page_count')} | <b>Total Temuan:</b> {len(self.findings)}</p>
+utils/security.py:16:MAX_PAGES_LIMIT = 175
+
+=== 6. PEMERIKSAAN PATCH ===
+diff_check_exit=0
+
+=== 7. STATUS GIT ===
+## main...origin/main
+ M .gitignore
+ M engines/citation_auditor.py
+ M golden_dataset/documents/TEST-001_normal.docx
+ M golden_dataset/documents/TEST-002_margin_salah.docx
+ M golden_dataset/documents/TEST-003_font_salah.docx
+ M golden_dataset/documents/TEST-004_bab3_hilang.docx
+ M golden_dataset/documents/TEST-005_citation_missing_bib.docx
+ M golden_dataset/documents/TEST-006_variable_mutation.docx
+ M golden_dataset/documents/TEST-007_formula_error.docx
+ M golden_dataset/documents/TEST-008_stat_contradiction.docx
+ M golden_dataset/documents/TEST-009_sample_mismatch.docx
+ M golden_dataset/documents/TEST-010_journal.docx
+ M golden_dataset/documents/TEST-010_thesis.docx
+ M golden_dataset/generator.py
+ M models/document_model.py
+ M tests/test_docx_parser.py
+?? BIT_TESIS_CHECK_FINAL.sh
+?? BIT_TESIS_PATCH_ISOLATION.sh
+?? core/evaluation/benchmark_runner.py
+?? core/evaluation/error_analysis.py
+?? core/evaluation/matcher.py
+?? core/evaluation/metrics.py
+?? core/evaluation/schema.py
+?? data/
+?? golden_dataset/documents/TEST-011_unused_reference.docx
+?? tests/golden_dataset/test_academic_benchmark.py
+?? tests/unit/test_evaluation_metrics.py
+?? tests/unit/test_generator_isolation.py
+
+=== 8. KEPUTUSAN ===
+Audit ini tidak otomatis menyatakan validitas ilmiah atau keamanan produksi.
+Belum ada staging, commit, push, atau deployment.

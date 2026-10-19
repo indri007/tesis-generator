@@ -1,0 +1,76 @@
+=== 1. VERSI SETUPTOOLS SEBELUM PERBAIKAN ===
+79.0.1
+
+=== 2. PERBARUI SETUPTOOLS PADA TEST ENV SAJA ===
+Collecting setuptools>=83.0.0
+  Using cached setuptools-84.0.0-py3-none-any.whl.metadata (6.6 kB)
+Using cached setuptools-84.0.0-py3-none-any.whl (818 kB)
+Installing collected packages: setuptools
+  Attempting uninstall: setuptools
+    Found existing installation: setuptools 79.0.1
+    Uninstalling setuptools-79.0.1:
+      Successfully uninstalled setuptools-79.0.1
+Successfully installed setuptools-84.0.0
+install_exit=0
+
+=== 3. VERIFIKASI VERSI ===
+84.0.0
+
+=== 4. KONSISTENSI DEPENDENSI ===
+No broken requirements found.
+pip_check_exit=0
+
+=== 5. AUDIT KERENTANAN ULANG ===
+No known vulnerabilities found
+pip_audit_exit=0
+
+=== 6. REGRESI TES ===
+..................................................                       [100%]
+=============================== warnings summary ===============================
+<frozen importlib._bootstrap>:241
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute
+
+<frozen importlib._bootstrap>:241
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute
+
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+50 passed, 5 warnings in 4.03s
+pytest_exit=0
+
+=== 7. STATUS FILE PROYEK ===
+## main...origin/main
+ M .gitignore
+ M engines/citation_auditor.py
+ M golden_dataset/documents/TEST-001_normal.docx
+ M golden_dataset/documents/TEST-002_margin_salah.docx
+ M golden_dataset/documents/TEST-003_font_salah.docx
+ M golden_dataset/documents/TEST-004_bab3_hilang.docx
+ M golden_dataset/documents/TEST-005_citation_missing_bib.docx
+ M golden_dataset/documents/TEST-006_variable_mutation.docx
+ M golden_dataset/documents/TEST-007_formula_error.docx
+ M golden_dataset/documents/TEST-008_stat_contradiction.docx
+ M golden_dataset/documents/TEST-009_sample_mismatch.docx
+ M golden_dataset/documents/TEST-010_journal.docx
+ M golden_dataset/documents/TEST-010_thesis.docx
+ M golden_dataset/generator.py
+ M models/document_model.py
+ M tests/test_docx_parser.py
+?? BIT_TESIS_CHECK_FINAL.sh
+?? BIT_TESIS_PATCH_ISOLATION.sh
+?? core/evaluation/benchmark_runner.py
+?? core/evaluation/error_analysis.py
+?? core/evaluation/matcher.py
+?? core/evaluation/metrics.py
+?? core/evaluation/schema.py
+?? data/
+?? golden_dataset/documents/TEST-011_unused_reference.docx
+?? tests/golden_dataset/test_academic_benchmark.py
+?? tests/unit/test_evaluation_metrics.py
+?? tests/unit/test_generator_isolation.py
+
+Tidak ada staging, commit, push, atau deployment.

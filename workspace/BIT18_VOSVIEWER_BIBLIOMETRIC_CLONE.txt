@@ -1,0 +1,147 @@
+======================================================================
+BIT 18: VOSVIEWER BIBLIOMETRIC SCIENCE MAPPING & CLUSTER CLONE
+Fri Oct 16 23:17:38 WIB 2026
+======================================================================
+
+=== 1. STATUS REPOSITORY & ARSITEKTUR KLONING VOSVIEWER ===
+## feat/premium-research-landing-page
+ M core/clones/__init__.py
+ M core/clones/vosviewer_bibliometrics.py
+?? core/clones/consensus_ai.py
+?? tests/unit/test_consensus_ai.py
+[OK] core/clones/vosviewer_bibliometrics.py (     529 baris, SHA256: 521be64f89ad2c30900d3b20a028574233ca94f5b8eb24d0f945e2d693a9e825)
+[OK] core/clones/__init__.py (     115 baris, SHA256: 881e73a040d0545fc859ba69783f3abe71e81a1c8a78eb11d91785291a1b524c)
+[OK] tests/unit/test_vosviewer_bibliometrics.py (     140 baris, SHA256: a7ef0431a9ec9141e0ab332a2e3c45bd67d546dfdeecdb0192ec28d1005a34b5)
+
+=== 2. EKSEKUSI PEMETAAN BIBLIOMETRIK & ALGORITMA VOS ===
+VOS Mapping Execution:
+  - Total Node Items (Terms) : 62
+  - Total Network Links       : 530
+  - Detected Modularity Clusters: 9
+  - Max Association Strength  : 1114.0000
+
+[OK] Standard VOSviewer Map File Exported     : workspace/vosviewer_map.txt (3360 bytes)
+[OK] Standard VOSviewer Network File Exported : workspace/vosviewer_network.txt (7950 bytes)
+[OK] VOSviewer Online JSON (app.vosviewer.com): workspace/vosviewer_online.json (74251 bytes)
+
+=== 3. ASCII SCIENCE MAPPING & CLUSTER VISUALIZATION ===
+======================================================================
+VOSVIEWER BIBLIOMETRIC CO-OCCURRENCE MAP (LEIDEN VOS ALGORITHM)
+======================================================================
+Nodes (Items): 62    | Links: 530   | Clusters: 9
+----------------------------------------------------------------------
+
+[● CLUSTER 1: NATURAL LANGUAGE PROCESSING] (Color: #E41A1C)
+  Avg Publication Year: 2023.3
+  Key Term Nodes      : natural language processing, language, language processing, learning
+    - natural language processing (Occurrences: 3 , TLS: 43.0, x: 5.00  , y: 5.00  )
+    - language                  (Occurrences: 2 , TLS: 29.0, x: 5.00  , y: 5.00  )
+    - language processing       (Occurrences: 2 , TLS: 29.0, x: 5.00  , y: 5.00  )
+    - learning                  (Occurrences: 2 , TLS: 28.0, x: 5.00  , y: 5.00  )
+    - machine learning          (Occurrences: 2 , TLS: 29.0, x: 5.00  , y: 5.00  )
+    - natural                   (Occurrences: 2 , TLS: 29.0, x: 5.00  , y: 5.00  )
+    - natural language          (Occurrences: 2 , TLS: 29.0, x: 5.00  , y: 5.00  )
+    - processing                (Occurrences: 2 , TLS: 29.0, x: 5.00  , y: 5.00  )
+
+[● CLUSTER 2: AUTOMATED] (Color: #377EB8)
+  Avg Publication Year: 2023.8
+  Key Term Nodes      : automated, news automation, artificial, automated news
+    - automated                 (Occurrences: 3 , TLS: 42.0, x: 5.00  , y: 5.00  )
+    - news automation           (Occurrences: 2 , TLS: 27.0, x: 5.00  , y: 5.00  )
+    - artificial                (Occurrences: 1 , TLS: 13.0, x: -5.00 , y: 5.00  )
+    - automated news            (Occurrences: 1 , TLS: 13.0, x: -5.00 , y: 5.00  )
+    - digital                   (Occurrences: 1 , TLS: 13.0, x: -5.00 , y: 5.00  )
+    - intelligence              (Occurrences: 1 , TLS: 13.0, x: -5.00 , y: -5.00 )
+    - intelligence digital      (Occurrences: 1 , TLS: 13.0, x: -5.00 , y: -5.00 )
+    - journalism automated      (Occurrences: 1 , TLS: 13.0, x: -5.00 , y: -5.00 )
+
+[● CLUSTER 3: ARTIFICIAL INTELLIGENCE] (Color: #4DAF4A)
+  Avg Publication Year: 2024.4
+  Key Term Nodes      : artificial intelligence, digital journalism, journalism, news
+    - artificial intelligence   (Occurrences: 2 , TLS: 29.0, x: 5.00  , y: 5.00  )
+    - digital journalism        (Occurrences: 2 , TLS: 29.0, x: 5.00  , y: 5.00  )
+    - journalism                (Occurrences: 2 , TLS: 29.0, x: 5.00  , y: 5.00  )
+    - ai-generated              (Occurrences: 1 , TLS: 16.0, x: 5.00  , y: 5.00  )
+    - ai-generated content      (Occurrences: 1 , TLS: 16.0, x: 5.00  , y: 5.00  )
+    - news                      (Occurrences: 1 , TLS: 13.0, x: 5.00  , y: -5.00 )
+    - news production           (Occurrences: 1 , TLS: 13.0, x: 5.00  , y: -5.00 )
+    - production                (Occurrences: 1 , TLS: 13.0, x: 5.00  , y: -5.00 )
+
+[● CLUSTER 4: ALGORITHMIC] (Color: #984EA3)
+  Avg Publication Year: 2025.0
+  Key Term Nodes      : algorithmic, algorithmic bias, bias, bias ai-generated
+    - algorithmic               (Occurrences: 1 , TLS: 16.0, x: 5.00  , y: 5.00  )
+    - algorithmic bias          (Occurrences: 1 , TLS: 16.0, x: 5.00  , y: 5.00  )
+    - bias                      (Occurrences: 1 , TLS: 16.0, x: -5.00 , y: 5.00  )
+    - bias ai-generated         (Occurrences: 1 , TLS: 16.0, x: -5.00 , y: 5.00  )
+    - content                   (Occurrences: 1 , TLS: 16.0, x: -5.00 , y: 5.00  )
+    - content journalism        (Occurrences: 1 , TLS: 16.0, x: -5.00 , y: 5.00  )
+    - ethical                   (Occurrences: 1 , TLS: 16.0, x: -5.00 , y: -5.00 )
+    - ethical implications      (Occurrences: 1 , TLS: 16.0, x: -5.00 , y: -5.00 )
+
+[● CLUSTER 5: ETHICS] (Color: #FF7F00)
+  Avg Publication Year: 2025.0
+  Key Term Nodes      : ethics, generative ai, implications, implications algorithmic
+    - ethics                    (Occurrences: 1 , TLS: 16.0, x: -5.00 , y: -5.00 )
+    - generative ai             (Occurrences: 1 , TLS: 16.0, x: -5.00 , y: -5.00 )
+    - implications              (Occurrences: 1 , TLS: 16.0, x: -5.00 , y: -5.00 )
+    - implications algorithmic  (Occurrences: 1 , TLS: 16.0, x: -5.00 , y: -5.00 )
+
+[● CLUSTER 6: AUTOMATED FACT-CHECKING] (Color: #FFFF33)
+  Avg Publication Year: 2024.0
+  Key Term Nodes      : automated fact-checking, fact-checking, fact-checking natural, graphs
+    - automated fact-checking   (Occurrences: 1 , TLS: 15.0, x: -5.00 , y: 5.00  )
+    - fact-checking             (Occurrences: 1 , TLS: 15.0, x: -5.00 , y: -5.00 )
+    - fact-checking natural     (Occurrences: 1 , TLS: 15.0, x: -5.00 , y: -5.00 )
+    - graphs                    (Occurrences: 1 , TLS: 15.0, x: -5.00 , y: -5.00 )
+    - knowledge                 (Occurrences: 1 , TLS: 15.0, x: -5.00 , y: -5.00 )
+    - knowledge graphs          (Occurrences: 1 , TLS: 15.0, x: -5.00 , y: -5.00 )
+    - processing knowledge      (Occurrences: 1 , TLS: 15.0, x: 5.00  , y: -5.00 )
+    - verification              (Occurrences: 1 , TLS: 15.0, x: 5.00  , y: -5.00 )
+
+[● CLUSTER 7: AUTOMATED HEADLINE] (Color: #A65628)
+  Avg Publication Year: 2022.0
+  Key Term Nodes      : automated headline, deep, deep learning, generation
+    - automated headline        (Occurrences: 1 , TLS: 14.0, x: -5.00 , y: 5.00  )
+    - deep                      (Occurrences: 1 , TLS: 14.0, x: -5.00 , y: 5.00  )
+    - deep learning             (Occurrences: 1 , TLS: 14.0, x: -5.00 , y: 5.00  )
+    - generation                (Occurrences: 1 , TLS: 14.0, x: -5.00 , y: -5.00 )
+    - generation sentiment      (Occurrences: 1 , TLS: 14.0, x: -5.00 , y: -5.00 )
+    - headline                  (Occurrences: 1 , TLS: 14.0, x: -5.00 , y: -5.00 )
+    - headline generation       (Occurrences: 1 , TLS: 14.0, x: -5.00 , y: -5.00 )
+    - learning models           (Occurrences: 1 , TLS: 14.0, x: 5.00  , y: -5.00 )
+
+[● CLUSTER 8: EDITORIAL] (Color: #F781BF)
+  Avg Publication Year: 2023.0
+  Key Term Nodes      : editorial, editorial analytics, editorial newsrooms, learning natural
+    - editorial                 (Occurrences: 1 , TLS: 14.0, x: -5.00 , y: 5.00  )
+    - editorial analytics       (Occurrences: 1 , TLS: 14.0, x: -5.00 , y: 5.00  )
+    - editorial newsrooms       (Occurrences: 1 , TLS: 14.0, x: -5.00 , y: 5.00  )
+    - learning natural          (Occurrences: 1 , TLS: 14.0, x: 5.00  , y: -5.00 )
+    - machine                   (Occurrences: 1 , TLS: 14.0, x: 5.00  , y: -5.00 )
+    - newsrooms                 (Occurrences: 1 , TLS: 14.0, x: 5.00  , y: -5.00 )
+    - processing editorial      (Occurrences: 1 , TLS: 14.0, x: 5.00  , y: -5.00 )
+
+[● CLUSTER 9: MODELS] (Color: #E41A1C)
+  Avg Publication Year: 2022.0
+  Key Term Nodes      : models, models automated, sentiment
+    - models                    (Occurrences: 1 , TLS: 14.0, x: 5.00  , y: -5.00 )
+    - models automated          (Occurrences: 1 , TLS: 14.0, x: 5.00  , y: -5.00 )
+    - sentiment                 (Occurrences: 1 , TLS: 14.0, x: 5.00  , y: -5.00 )
+
+Top Association Strength Links:
+  🔗 artificial <---> automated news (Strength: 1114.000, Freq: 1)
+  🔗 artificial <---> digital (Strength: 1114.000, Freq: 1)
+  🔗 artificial <---> intelligence (Strength: 1114.000, Freq: 1)
+  🔗 artificial <---> intelligence digital (Strength: 1114.000, Freq: 1)
+  🔗 artificial <---> journalism automated (Strength: 1114.000, Freq: 1)
+======================================================================
+
+=== 4. VERIFIKASI PYTEST UNIT REGRESSION SUITE ===
+.......                                                                  [100%]
+7 passed in 0.18s
+pytest_exit=0
+
+=== RINGKASAN BIT 18 ===
+Status: SUKSES PENUH (VOSviewer Bibliometric Science Mapping Selesai)
+Format VOSviewer .map, .net, dan Online JSON siap diintegrasikan.

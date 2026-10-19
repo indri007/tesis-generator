@@ -1,0 +1,63 @@
+id	label	x	y	cluster	weight<Occurrences>	weight<Total link strength>	score<Avg. pub. yr>	score<Citations>
+1	automated	5.0000	5.0000	2	3	42.0	2023.33	128
+2	natural language processing	5.0000	5.0000	1	3	43.0	2023.00	114
+3	artificial intelligence	5.0000	5.0000	3	2	29.0	2024.50	61
+4	digital journalism	5.0000	5.0000	3	2	29.0	2024.50	61
+5	journalism	5.0000	5.0000	3	2	29.0	2024.50	61
+6	language	5.0000	5.0000	1	2	29.0	2023.50	63
+7	language processing	5.0000	5.0000	1	2	29.0	2023.50	63
+8	learning	5.0000	5.0000	1	2	28.0	2022.50	79
+9	machine learning	5.0000	5.0000	1	2	29.0	2023.50	63
+10	natural	5.0000	5.0000	1	2	29.0	2023.50	63
+11	natural language	5.0000	5.0000	1	2	29.0	2023.50	63
+12	news automation	5.0000	5.0000	2	2	27.0	2023.00	93
+13	processing	5.0000	5.0000	1	2	29.0	2023.50	63
+14	ai-generated	5.0000	5.0000	3	1	16.0	2025.00	19
+15	ai-generated content	5.0000	5.0000	3	1	16.0	2025.00	19
+16	algorithmic	5.0000	5.0000	4	1	16.0	2025.00	19
+17	algorithmic bias	5.0000	5.0000	4	1	16.0	2025.00	19
+18	artificial	-5.0000	5.0000	2	1	13.0	2024.00	42
+19	automated fact-checking	-5.0000	5.0000	6	1	15.0	2024.00	35
+20	automated headline	-5.0000	5.0000	7	1	14.0	2022.00	51
+21	automated news	-5.0000	5.0000	2	1	13.0	2024.00	42
+22	bias	-5.0000	5.0000	4	1	16.0	2025.00	19
+23	bias ai-generated	-5.0000	5.0000	4	1	16.0	2025.00	19
+24	content	-5.0000	5.0000	4	1	16.0	2025.00	19
+25	content journalism	-5.0000	5.0000	4	1	16.0	2025.00	19
+26	deep	-5.0000	5.0000	7	1	14.0	2022.00	51
+27	deep learning	-5.0000	5.0000	7	1	14.0	2022.00	51
+28	digital	-5.0000	5.0000	2	1	13.0	2024.00	42
+29	editorial	-5.0000	5.0000	8	1	14.0	2023.00	28
+30	editorial analytics	-5.0000	5.0000	8	1	14.0	2023.00	28
+31	editorial newsrooms	-5.0000	5.0000	8	1	14.0	2023.00	28
+32	ethical	-5.0000	-5.0000	4	1	16.0	2025.00	19
+33	ethical implications	-5.0000	-5.0000	4	1	16.0	2025.00	19
+34	ethics	-5.0000	-5.0000	5	1	16.0	2025.00	19
+35	fact-checking	-5.0000	-5.0000	6	1	15.0	2024.00	35
+36	fact-checking natural	-5.0000	-5.0000	6	1	15.0	2024.00	35
+37	generation	-5.0000	-5.0000	7	1	14.0	2022.00	51
+38	generation sentiment	-5.0000	-5.0000	7	1	14.0	2022.00	51
+39	generative ai	-5.0000	-5.0000	5	1	16.0	2025.00	19
+40	graphs	-5.0000	-5.0000	6	1	15.0	2024.00	35
+41	headline	-5.0000	-5.0000	7	1	14.0	2022.00	51
+42	headline generation	-5.0000	-5.0000	7	1	14.0	2022.00	51
+43	implications	-5.0000	-5.0000	5	1	16.0	2025.00	19
+44	implications algorithmic	-5.0000	-5.0000	5	1	16.0	2025.00	19
+45	intelligence	-5.0000	-5.0000	2	1	13.0	2024.00	42
+46	intelligence digital	-5.0000	-5.0000	2	1	13.0	2024.00	42
+47	journalism automated	-5.0000	-5.0000	2	1	13.0	2024.00	42
+48	knowledge	-5.0000	-5.0000	6	1	15.0	2024.00	35
+49	knowledge graphs	-5.0000	-5.0000	6	1	15.0	2024.00	35
+50	learning models	5.0000	-5.0000	7	1	14.0	2022.00	51
+51	learning natural	5.0000	-5.0000	8	1	14.0	2023.00	28
+52	machine	5.0000	-5.0000	8	1	14.0	2023.00	28
+53	models	5.0000	-5.0000	9	1	14.0	2022.00	51
+54	models automated	5.0000	-5.0000	9	1	14.0	2022.00	51
+55	news	5.0000	-5.0000	3	1	13.0	2024.00	42
+56	news production	5.0000	-5.0000	3	1	13.0	2024.00	42
+57	newsrooms	5.0000	-5.0000	8	1	14.0	2023.00	28
+58	processing editorial	5.0000	-5.0000	8	1	14.0	2023.00	28
+59	processing knowledge	5.0000	-5.0000	6	1	15.0	2024.00	35
+60	production	5.0000	-5.0000	3	1	13.0	2024.00	42
+61	sentiment	5.0000	-5.0000	9	1	14.0	2022.00	51
+62	verification	5.0000	-5.0000	6	1	15.0	2024.00	35

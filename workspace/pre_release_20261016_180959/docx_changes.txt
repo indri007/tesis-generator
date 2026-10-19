@@ -1,0 +1,11 @@
+-	-	golden_dataset/documents/TEST-001_normal.docx
+-	-	golden_dataset/documents/TEST-002_margin_salah.docx
+-	-	golden_dataset/documents/TEST-003_font_salah.docx
+-	-	golden_dataset/documents/TEST-004_bab3_hilang.docx
+-	-	golden_dataset/documents/TEST-005_citation_missing_bib.docx
+-	-	golden_dataset/documents/TEST-006_variable_mutation.docx
+-	-	golden_dataset/documents/TEST-007_formula_error.docx
+-	-	golden_dataset/documents/TEST-008_stat_contradiction.docx
+-	-	golden_dataset/documents/TEST-009_sample_mismatch.docx
+-	-	golden_dataset/documents/TEST-010_journal.docx
+-	-	golden_dataset/documents/TEST-010_thesis.docx

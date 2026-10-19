@@ -1,0 +1,876 @@
+=== BIT 11: BENCHMARK DAN FIXTURE AUDIT ===
+Fri Oct 16 18:22:38 WIB 2026
+
+=== 1. JALANKAN BENCHMARK SECARA LANGSUNG ===
+============================= test session starts ==============================
+platform darwin -- Python 3.11.15, pytest-9.1.1, pluggy-1.7.0 -- /Users/jevin/AI-Thesis-Generator/.venv-test/bin/python
+cachedir: .pytest_cache
+hypothesis profile 'default'
+rootdir: /Users/jevin/AI-Thesis-Generator
+configfile: pyproject.toml
+plugins: cov-7.1.0, hypothesis-6.170.0, playwright-0.10.0, platformdirs-4.13.3, anyio-4.15.1
+collecting ... collected 1 item
+
+tests/golden_dataset/test_academic_benchmark.py::test_reproducible_academic_benchmark 
+============================================================
+BENCHMARK RUN COMPLETED: 7 documents evaluated.
+Micro Precision : 100.0%
+Micro Recall    : 100.0%
+Micro F1-Score  : 100.0%
+Cohen's Kappa   : 0.8333 (Almost perfect agreement)
+Reports saved to:
+  /private/var/folders/7r/x063t3n96rvc1gx4fd84trh80000gn/T/pytest-of-jevin/pytest-74/test_reproducible_academic_ben0/reports/thesis_audit_benchmark_evaluation.json
+  /private/var/folders/7r/x063t3n96rvc1gx4fd84trh80000gn/T/pytest-of-jevin/pytest-74/test_reproducible_academic_ben0/reports/thesis_audit_benchmark_evaluation.md
+============================================================
+PASSED
+
+=============================== warnings summary ===============================
+<frozen importlib._bootstrap>:241
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute
+
+<frozen importlib._bootstrap>:241
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute
+
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================== 1 passed, 5 warnings in 1.15s =========================
+sys:1: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+benchmark_test_exit=0
+
+=== 2. IMPLEMENTASI METRIK ===
+"""Academic Evaluation Metrics & Inter-Annotator Agreement Engine.
+
+Computes precision, recall, F1-score, support, confusion counts per category,
+and inter-annotator agreement (Cohen's Kappa & Percent Agreement) with rigorous
+handling of zero denominators (displaying undefined / None instead of deceptive 0.0).
+"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+from typing import Any
+
+from core.evaluation.matcher import MatchResult, MatchVerdict, normalize_category
+
+
+@dataclass
+class CategoryMetrics:
+    category: str
+    true_positives: int = 0
+    false_positives: int = 0
+    false_negatives: int = 0
+    wrong_locations: int = 0
+    wrong_severities: int = 0
+    support: int = 0  # Number of reference ground truth items
+
+    @property
+    def precision(self) -> float | None:
+        """Precision = TP / (TP + FP). Returns None if denominator is 0."""
+        denom = self.true_positives + self.false_positives
+        if denom == 0:
+            return None
+        return round(self.true_positives / denom, 4)
+
+    @property
+    def recall(self) -> float | None:
+        """Recall = TP / (TP + FN). Returns None if denominator is 0."""
+        denom = self.true_positives + self.false_negatives
+        if denom == 0:
+            return None
+        return round(self.true_positives / denom, 4)
+
+    @property
+    def f1_score(self) -> float | None:
+        """F1 = 2 * (P * R) / (P + R). Returns None if undefined or denominator is 0."""
+        p = self.precision
+        r = self.recall
+        if p is None or r is None or (p + r) == 0:
+            return None
+        return round(2 * (p * r) / (p + r), 4)
+
+    def to_dict(self) -> dict[str, Any]:
+        p = self.precision
+        r = self.recall
+        f1 = self.f1_score
+        return {
+            "category": self.category,
+            "true_positives": self.true_positives,
+            "false_positives": self.false_positives,
+            "false_negatives": self.false_negatives,
+            "wrong_locations": self.wrong_locations,
+            "wrong_severities": self.wrong_severities,
+            "support": self.support,
+            "precision": round(p * 100, 2) if p is not None else None,
+            "recall": round(r * 100, 2) if r is not None else None,
+            "f1_score": round(f1 * 100, 2) if f1 is not None else None,
+            "precision_display": f"{p * 100:.1f}%" if p is not None else "N/A (undefined)",
+            "recall_display": f"{r * 100:.1f}%" if r is not None else "N/A (undefined)",
+            "f1_display": f"{f1 * 100:.1f}%" if f1 is not None else "N/A (undefined)",
+        }
+
+
+@dataclass
+class BenchmarkEvaluationSummary:
+    total_documents: int
+    total_reference_findings: int
+    total_detected_findings: int
+    per_category: dict[str, CategoryMetrics]
+    micro_metrics: dict[str, Any]
+    macro_metrics: dict[str, Any]
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "total_documents": self.total_documents,
+            "total_reference_findings": self.total_reference_findings,
+            "total_detected_findings": self.total_detected_findings,
+            "per_category": {k: v.to_dict() for k, v in self.per_category.items()},
+            "micro_metrics": self.micro_metrics,
+            "macro_metrics": self.macro_metrics,
+        }
+
+
+def compute_category_metrics(match_results: list[MatchResult]) -> dict[str, CategoryMetrics]:
+    """Computes category-wise confusion and performance metrics."""
+    categories: dict[str, CategoryMetrics] = {}
+
+    def get_cat_metrics(cat_name: str) -> CategoryMetrics:
+        c = normalize_category(cat_name)
+        if c not in categories:
+            categories[c] = CategoryMetrics(category=c)
+        return categories[c]
+
+    for m in match_results:
+        cat_str = "general"
+        if m.reference:
+            cat_str = m.reference.audit_category
+        elif m.detected:
+            cat_str = m.detected.get("category", "general")
+
+        metric = get_cat_metrics(cat_str)
+
+        if m.verdict == MatchVerdict.TRUE_POSITIVE:
+            metric.true_positives += 1
+            metric.support += 1
+        elif m.verdict == MatchVerdict.FALSE_POSITIVE:
+            metric.false_positives += 1
+        elif m.verdict == MatchVerdict.FALSE_NEGATIVE:
+            metric.false_negatives += 1
+            metric.support += 1
+        elif m.verdict == MatchVerdict.WRONG_LOCATION:
+            metric.wrong_locations += 1
+            # Wrong location counts as false positive + false negative
+            metric.false_positives += 1
+            metric.false_negatives += 1
+            metric.support += 1
+        elif m.verdict == MatchVerdict.WRONG_SEVERITY:
+            metric.wrong_severities += 1
+            metric.false_positives += 1
+            metric.false_negatives += 1
+            metric.support += 1
+
+    return categories
+
+
+def compute_micro_macro_metrics(category_metrics: dict[str, CategoryMetrics]) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Calculates micro-averaged and macro-averaged metrics across all categories."""
+    total_tp = sum(m.true_positives for m in category_metrics.values())
+    total_fp = sum(m.false_positives for m in category_metrics.values())
+    total_fn = sum(m.false_negatives for m in category_metrics.values())
+    total_support = sum(m.support for m in category_metrics.values())
+
+    # Micro averages
+    micro_p = total_tp / (total_tp + total_fp) if (total_tp + total_fp) > 0 else None
+    micro_r = total_tp / (total_tp + total_fn) if (total_tp + total_fn) > 0 else None
+    micro_f1 = (
+        2 * micro_p * micro_r / (micro_p + micro_r)
+        if (micro_p is not None and micro_r is not None and (micro_p + micro_r) > 0)
+        else None
+    )
+
+    micro = {
+        "true_positives": total_tp,
+        "false_positives": total_fp,
+        "false_negatives": total_fn,
+        "support": total_support,
+        "precision": round(micro_p * 100, 2) if micro_p is not None else None,
+        "recall": round(micro_r * 100, 2) if micro_r is not None else None,
+        "f1_score": round(micro_f1 * 100, 2) if micro_f1 is not None else None,
+        "precision_display": f"{micro_p * 100:.1f}%" if micro_p is not None else "N/A",
+        "recall_display": f"{micro_r * 100:.1f}%" if micro_r is not None else "N/A",
+        "f1_display": f"{micro_f1 * 100:.1f}%" if micro_f1 is not None else "N/A",
+    }
+
+    # Macro averages (average over categories that have defined metrics)
+    defined_p = [m.precision for m in category_metrics.values() if m.precision is not None]
+    defined_r = [m.recall for m in category_metrics.values() if m.recall is not None]
+    defined_f1 = [m.f1_score for m in category_metrics.values() if m.f1_score is not None]
+
+    macro_p = sum(defined_p) / len(defined_p) if defined_p else None
+    macro_r = sum(defined_r) / len(defined_r) if defined_r else None
+    macro_f1 = sum(defined_f1) / len(defined_f1) if defined_f1 else None
+
+    macro = {
+        "categories_evaluated": len(category_metrics),
+        "precision": round(macro_p * 100, 2) if macro_p is not None else None,
+        "recall": round(macro_r * 100, 2) if macro_r is not None else None,
+        "f1_score": round(macro_f1 * 100, 2) if macro_f1 is not None else None,
+        "precision_display": f"{macro_p * 100:.1f}%" if macro_p is not None else "N/A",
+        "recall_display": f"{macro_r * 100:.1f}%" if macro_r is not None else "N/A",
+        "f1_display": f"{macro_f1 * 100:.1f}%" if macro_f1 is not None else "N/A",
+    }
+
+    return micro, macro
+
+
+def compute_cohens_kappa(
+    reviewer_1_labels: list[str],
+    reviewer_2_labels: list[str],
+) -> dict[str, Any]:
+    """Computes Cohen's Kappa coefficient of inter-annotator agreement between two reviewers.
+    
+    Kappa = (Po - Pe) / (1 - Pe)
+    where:
+      Po = relative observed agreement among raters
+      Pe = hypothetical probability of chance agreement
+    """
+    if len(reviewer_1_labels) != len(reviewer_2_labels) or len(reviewer_1_labels) == 0:
+        return {
+            "sample_count": len(reviewer_1_labels),
+            "observed_agreement": None,
+            "chance_agreement": None,
+            "kappa": None,
+            "agreement_strength": "N/A (insufficient or mismatched data)",
+            "disagreements": [],
+        }
+
+    n = len(reviewer_1_labels)
+    agreements = sum(1 for a, b in zip(reviewer_1_labels, reviewer_2_labels) if a == b)
+    po = agreements / n
+
+    # Find unique labels
+    all_labels = sorted(list(set(reviewer_1_labels + reviewer_2_labels)))
+
+    # Compute marginal probabilities
+    pe = 0.0
+    for label in all_labels:
+        p1 = sum(1 for a in reviewer_1_labels if a == label) / n
+        p2 = sum(1 for b in reviewer_2_labels if b == label) / n
+        pe += p1 * p2
+
+    # Kappa tidak terdefinisi jika peluang kesepakatan acak = 1.
+    # Jangan mengubah kondisi matematis ini menjadi skor 0 atau 1.
+    if pe >= 1.0 or (1.0 - pe) <= 1e-12:
+        kappa = None
+        strength = "N/A (kappa undefined: expected agreement is 1)"
+    else:
+        kappa = (po - pe) / (1.0 - pe)
+
+        # Landis & Koch (1977) interpretation; descriptive, not universal.
+        if kappa < 0:
+            strength = "Poor (less than chance agreement)"
+        elif kappa <= 0.20:
+            strength = "Slight agreement"
+        elif kappa <= 0.40:
+            strength = "Fair agreement"
+        elif kappa <= 0.60:
+            strength = "Moderate agreement"
+        elif kappa <= 0.80:
+            strength = "Substantial agreement"
+        else:
+            strength = "Almost perfect agreement"
+
+    disagreements = [
+        {"item_index": idx, "reviewer_1": a, "reviewer_2": b}
+        for idx, (a, b) in enumerate(zip(reviewer_1_labels, reviewer_2_labels))
+        if a != b
+    ]
+
+    return {
+        "sample_count": n,
+        "observed_agreement": round(po * 100, 2),
+        "chance_agreement": round(pe * 100, 2),
+        "kappa": round(kappa, 4) if kappa is not None else None,
+        "agreement_strength": strength,
+        "disagreements_count": len(disagreements),
+        "disagreements": disagreements,
+    }
+
+=== 3. LOGIKA BENCHMARK ===
+"""Reproducible Benchmark Runner and Academic Quality Evaluation Reporter.
+
+Executes deterministic evaluation across annotated thesis datasets, computes comprehensive
+metrics, performs taxonomy error analysis, and exports structured JSON and Markdown reports.
+"""
+
+from __future__ import annotations
+
+import datetime
+import json
+from pathlib import Path
+from typing import Any
+
+from core.evaluation.error_analysis import CategorizedError, ErrorAnalyzer
+from core.evaluation.matcher import FindingMatcher, MatchResult
+from core.evaluation.metrics import (
+    BenchmarkEvaluationSummary,
+    compute_category_metrics,
+    compute_cohens_kappa,
+    compute_micro_macro_metrics,
+)
+from core.evaluation.schema import BenchmarkAnnotation, EvaluatorConfig
+
+
+class AcademicBenchmarkRunner:
+    """Executes evaluation benchmarks and generates quality audit reports."""
+
+    def __init__(
+        self,
+        config: EvaluatorConfig | None = None,
+        output_dir: str | Path = "output/reports/benchmark",
+    ):
+        self.config = config or EvaluatorConfig()
+        self.output_dir = Path(output_dir)
+        self.output_dir.mkdir(parents=True, exist_ok=True)
+
+    def evaluate_dataset(
+        self,
+        dataset_items: list[dict[str, Any]],
+        strict_location: bool = False,
+        strict_severity: bool = True,
+    ) -> tuple[BenchmarkEvaluationSummary, list[CategorizedError], dict[str, Any]]:
+        """Evaluates a collection of annotated test items.
+        
+        Each item in dataset_items should have:
+        - "document_id": str (anonymous)
+        - "reference_annotations": list[dict or BenchmarkAnnotation]
+        - "detected_findings": list[dict]
+        - optional "reviewer_1_labels": list[str]
+        - optional "reviewer_2_labels": list[str]
+        """
+        all_matches: list[MatchResult] = []
+        all_errors: list[CategorizedError] = []
+
+        total_ref_count = 0
+        total_det_count = 0
+
+        r1_all_labels: list[str] = []
+        r2_all_labels: list[str] = []
+
+        for item in dataset_items:
+            doc_id = item.get("document_id", "DOC-ANON")
+            raw_refs = item.get("reference_annotations", [])
+            raw_dets = item.get("detected_findings", [])
+
+            # Parse references into BenchmarkAnnotation objects
+            refs: list[BenchmarkAnnotation] = []
+            for r in raw_refs:
+                if isinstance(r, BenchmarkAnnotation):
+                    refs.append(r)
+                elif isinstance(r, dict):
+                    refs.append(BenchmarkAnnotation.from_dict(r))
+
+            total_ref_count += len(refs)
+            total_det_count += len(raw_dets)
+
+            matcher = FindingMatcher(
+                reference_annotations=refs,
+                detected_findings=raw_dets,
+                strict_location=strict_location,
+                strict_severity=strict_severity,
+            )
+            matches = matcher.match()
+            all_matches.extend(matches)
+
+            # Error analysis
+            analyzer = ErrorAnalyzer(matches, document_id=doc_id)
+            all_errors.extend(analyzer.analyze())
+
+            # Reviewer agreement data if present
+            if "reviewer_1_labels" in item and "reviewer_2_labels" in item:
+                r1_all_labels.extend(item["reviewer_1_labels"])
+                r2_all_labels.extend(item["reviewer_2_labels"])
+
+        # Compute category-wise and micro/macro metrics
+        cat_metrics = compute_category_metrics(all_matches)
+        micro_metrics, macro_metrics = compute_micro_macro_metrics(cat_metrics)
+
+        summary = BenchmarkEvaluationSummary(
+            total_documents=len(dataset_items),
+            total_reference_findings=total_ref_count,
+            total_detected_findings=total_det_count,
+            per_category=cat_metrics,
+            micro_metrics=micro_metrics,
+            macro_metrics=macro_metrics,
+        )
+
+        # Compute inter-annotator agreement if reviewer labels were collected
+        agreement = compute_cohens_kappa(r1_all_labels, r2_all_labels)
+
+        return summary, all_errors, agreement
+
+    def generate_reports(
+        self,
+        summary: BenchmarkEvaluationSummary,
+        errors: list[CategorizedError],
+        agreement: dict[str, Any],
+        report_prefix: str = "thesis_audit_benchmark",
+    ) -> tuple[Path, Path]:
+        """Exports both JSON and Markdown benchmark evaluation reports."""
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+        error_summary = ErrorAnalyzer.summarize_errors(errors)
+
+        # Quality Gate Assessment
+        micro_f1 = summary.micro_metrics.get("f1_score")
+        micro_p = summary.micro_metrics.get("precision")
+        micro_r = summary.micro_metrics.get("recall")
+
+        gate_passed = (
+            micro_f1 is not None and micro_f1 >= 85.0
+            and micro_p is not None and micro_p >= 85.0
+            and micro_r is not None and micro_r >= 85.0
+        )
+
+        quality_gate = {
+            "status": "PASSED" if gate_passed else "FAILED",
+            "threshold_target": ">= 85.0%",
+            "micro_f1": f"{micro_f1}%" if micro_f1 is not None else "N/A",
+            "micro_precision": f"{micro_p}%" if micro_p is not None else "N/A",
+            "micro_recall": f"{micro_r}%" if micro_r is not None else "N/A",
+        }
+
+        # 1. Structure JSON Report
+        json_data = {
+            "metadata": {
+                "report_title": "LAPORAN EVALUASI BENCHMARK AKADEMIK AUDITOR TESIS MIKOM 2026",
+                "evaluation_timestamp": timestamp,
+                "base_commit": getattr(self.config, "base_commit", self.config.code_version),
+                "code_version": self.config.code_version,
+                "working_tree_dirty": getattr(self.config, "working_tree_dirty", True),
+                "dataset_version": self.config.dataset_version,
+                "ruleset_id": self.config.ruleset_id,
+                "ruleset_version": self.config.ruleset_version,
+                "split": self.config.split,
+                "deterministic": True,
+                "offline_compatible": self.config.offline_mode,
+            },
+            "quality_gate": quality_gate,
+            "evaluation_summary": summary.to_dict(),
+            "inter_annotator_agreement": agreement,
+            "error_analysis": error_summary,
+            "evaluation_limitations": [
+                "Sifat Dataset: Evaluasi ini menggunakan dataset terstandarisasi berbasis skenario untuk menguji konsistensi dan determinisme penegakan aturan formal pada naskah tesis. Hasilnya belum dapat digeneralisasi ke seluruh variasi dokumen tesis mahasiswa tanpa pengujian empiris tambahan pada dokumen nyata yang dianonimkan.",
+                "Cakupan Sistem yang Dievaluasi: Benchmark berfokus pada komponen audit berbasis aturan, termasuk pemeriksaan pola teks, geometri atau tata letak dokumen, validasi formula, dan keselarasan antardokumen. Evaluasi ini tidak mengukur halusinasi pada generative Large Language Models (LLM), dan tidak membuktikan bahwa seluruh komponen aplikasi bebas dari kesalahan.",
+                "Pemisahan Dataset dan Potensi Data Leakage: Dataset pengembangan dan evaluasi dimaksudkan untuk memiliki fungsi yang terpisah. Namun, klaim bebas data leakage memerlukan verifikasi terhadap duplikasi dokumen, kesamaan contoh, serta penggunaan informasi evaluasi dalam pengembangan aturan. Pemisahan tersebut tidak dianggap tervalidasi hanya berdasarkan label split.",
+                "Ukuran Sampel dan Representativitas: Jumlah dokumen dan temuan referensi pada benchmark ini terbatas. Oleh karena itu, nilai Precision, Recall, F1-score, dan kesepakatan antarpenilai hanya menggambarkan performa pada sampel evaluasi yang diuji. Nilai tersebut tidak boleh ditafsirkan sebagai estimasi akurasi populasi seluruh naskah tesis.",
+                "Kecocokan Lokasi dan Tingkat Keparahan: Evaluasi dengan strict_location=False tidak menguji kesesuaian halaman secara ketat. Ketepatan lokasi dan tingkat keparahan perlu dilaporkan secara terpisah, dengan pengujian tambahan ketika informasi halaman pada anotasi referensi tersedia.",
+                "Kebutuhan Validasi Lanjutan: Sebelum digunakan sebagai bukti validasi eksternal atau dasar klaim kinerja publikasi ilmiah, benchmark perlu diperluas menggunakan dokumen yang representatif, anotasi independen dari penilai yang kompeten, prosedur adjudikasi atas perbedaan penilaian, serta pengujian reproduksibilitas pada lingkungan yang bersih."
+            ]
+        }
+
+        json_path = self.output_dir / f"{report_prefix}_{self.config.split}.json"
+        with open(json_path, "w", encoding="utf-8") as f:
+            json.dump(json_data, f, indent=2, ensure_ascii=False)
+
+        # 2. Markdown Report
+        md_content = self._render_markdown_report(
+            timestamp=timestamp,
+            quality_gate=quality_gate,
+            summary=summary,
+            agreement=agreement,
+            error_summary=error_summary,
+        )
+
+        md_path = self.output_dir / f"{report_prefix}_{self.config.split}.md"
+        with open(md_path, "w", encoding="utf-8") as f:
+            f.write(md_content)
+
+        return json_path, md_path
+
+    def _render_markdown_report(
+        self,
+        timestamp: str,
+        quality_gate: dict[str, Any],
+        summary: BenchmarkEvaluationSummary,
+        agreement: dict[str, Any],
+        error_summary: dict[str, Any],
+    ) -> str:
+        """Renders an academic Markdown report."""
+        # Render category table
+        cat_rows = []
+        for cat, m in summary.per_category.items():
+            cat_rows.append(
+                f"| `{cat}` | {m.support} | {m.true_positives} | {m.false_positives} | {m.false_negatives} | "
+                f"{m.to_dict()['precision_display']} | {m.to_dict()['recall_display']} | {m.to_dict()['f1_display']} |"
+            )
+        table_cats = "\n".join(cat_rows) if cat_rows else "| - | - | - | - | - | - | - | - |"
+
+        # Render error breakdown
+        err_breakdown_rows = []
+        for err_type, count in error_summary.get("breakdown", {}).items():
+            err_breakdown_rows.append(f"- **{err_type}**: {count} kasus")
+        err_list = "\n".join(err_breakdown_rows) if err_breakdown_rows else "- Tidak ada error terdeteksi."
+
+        gate_badge = "🟢 **PASSED**" if quality_gate["status"] == "PASSED" else "🔴 **FAILED**"
+
+        return f"""# LAPORAN EVALUASI BENCHMARK AKADEMIK AUDITOR TESIS (MIKOM 2026)
+
+**Tanggal Evaluasi:** {timestamp}  
+**Commit Acuan:** `{getattr(self.config, 'base_commit', self.config.code_version)}` (working tree dirty: {getattr(self.config, 'working_tree_dirty', True)})  
+**Versi Dataset:** `{self.config.dataset_version}` ({self.config.split} split)  
+**Aturan Acuan:** `{self.config.ruleset_id} v{self.config.ruleset_version}`  
+**Mode Eksekusi:** Deterministik & Offline (100% Bebas Akses Internet)
+
+---
+
+## 1. Status Quality Gate
+
+| Parameter | Target Ambang Batas | Hasil Aktual | Status |
+|---|:---:|:---:|:---:|
+| **Status Rilis** | Standar Kualitas Rilis | {quality_gate['status']} | {gate_badge} |
+| **Micro Precision** | >= 85.0% | {quality_gate['micro_precision']} | {'✓' if quality_gate['status'] == 'PASSED' else '❌'} |
+| **Micro Recall** | >= 85.0% | {quality_gate['micro_recall']} | {'✓' if quality_gate['status'] == 'PASSED' else '❌'} |
+| **Micro F1-Score** | >= 85.0% | {quality_gate['micro_f1']} | {'✓' if quality_gate['status'] == 'PASSED' else '❌'} |
+
+---
+
+## 2. Ringkasan Kinerja & Evaluasi Per Kategori
+
+- **Total Dokumen Teranotasi:** {summary.total_documents}
+- **Total Temuan Referensi (Ground Truth):** {summary.total_reference_findings}
+- **Total Temuan Terdeteksi:** {summary.total_detected_findings}
+
+### Tabel Metrik per Kategori Audit
+
+| Kategori Audit | Support (Ref) | TP | FP | FN | Precision | Recall | F1-Score |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+{table_cats}
+
+### Ringkasan Rata-Rata Agregat
+
+- **Micro Average:** Precision: {summary.micro_metrics['precision_display']} | Recall: {summary.micro_metrics['recall_display']} | F1: {summary.micro_metrics['f1_display']}
+- **Macro Average:** Precision: {summary.macro_metrics['precision_display']} | Recall: {summary.macro_metrics['recall_display']} | F1: {summary.macro_metrics['f1_display']}
+
+---
+
+## 3. Kesepakatan Antar-Penilai (Inter-Annotator Agreement)
+
+- **Jumlah Sampel Evaluasi Penilai:** {agreement.get('sample_count', 0)}
+- **Persentase Kesepakatan ($P_o$):** {agreement.get('observed_agreement', 'N/A')}%
+- **Peluang Kesepakatan Acak ($P_e$):** {agreement.get('chance_agreement', 'N/A')}%
+- **Koefisien Cohen's Kappa (κ):** {agreement.get('kappa', 'N/A')}
+- **Tingkat Kekuatan Kesepakatan:** {agreement.get('agreement_strength', 'N/A')}
+- **Jumlah Perbedaan Penilaian:** {agreement.get('disagreements_count', 0)}
+
+---
+
+## 4. Taksonomi & Analisis Kesalahan (Error Analysis)
+
+- **Total Kesalahan Teridentifikasi:** {error_summary.get('total_errors', 0)}
+- **Kategori Risiko Tertinggi:** `{error_summary.get('highest_risk_category', 'None')}`
+
+### Rincian Kegagalan:
+{err_list}
+
+---
+
+## 5. Batasan Evaluasi (*Evaluation Limitations*)
+
+1. **Sifat Dataset.** Evaluasi ini menggunakan dataset terstandarisasi berbasis skenario untuk menguji konsistensi dan determinisme penegakan aturan formal pada naskah tesis. Hasilnya belum dapat digeneralisasi ke seluruh variasi dokumen tesis mahasiswa tanpa pengujian empiris tambahan pada dokumen nyata yang dianonimkan.
+
+2. **Cakupan Sistem yang Dievaluasi.** Benchmark berfokus pada komponen audit berbasis aturan, termasuk pemeriksaan pola teks, geometri atau tata letak dokumen, validasi formula, dan keselarasan antardokumen. Evaluasi ini tidak mengukur halusinasi pada generative Large Language Models (LLM), dan tidak membuktikan bahwa seluruh komponen aplikasi bebas dari kesalahan.
+
+3. **Pemisahan Dataset dan Potensi *Data Leakage*.** Dataset pengembangan dan evaluasi dimaksudkan untuk memiliki fungsi yang terpisah. Namun, klaim bebas *data leakage* memerlukan verifikasi terhadap duplikasi dokumen, kesamaan contoh, serta penggunaan informasi evaluasi dalam pengembangan aturan. Pemisahan tersebut tidak dianggap tervalidasi hanya berdasarkan label split.
+
+4. **Ukuran Sampel dan Representativitas.** Jumlah dokumen dan temuan referensi pada benchmark ini terbatas. Oleh karena itu, nilai Precision, Recall, F1-score, dan kesepakatan antarpenilai hanya menggambarkan performa pada sampel evaluasi yang diuji. Nilai tersebut tidak boleh ditafsirkan sebagai estimasi akurasi populasi seluruh naskah tesis.
+
+5. **Kecocokan Lokasi dan Tingkat Keparahan.** Evaluasi dengan `strict_location=False` tidak menguji kesesuaian halaman secara ketat. Ketepatan lokasi dan tingkat keparahan perlu dilaporkan secara terpisah, dengan pengujian tambahan ketika informasi halaman pada anotasi referensi tersedia.
+
+6. **Kebutuhan Validasi Lanjutan.** Sebelum digunakan sebagai bukti validasi eksternal atau dasar klaim kinerja publikasi ilmiah, benchmark perlu diperluas menggunakan dokumen yang representatif, anotasi independen dari penilai yang kompeten, prosedur adjudikasi atas perbedaan penilaian, serta pengujian reproduksibilitas pada lingkungan yang bersih.
+"""
+
+=== 4. SUMBER KAPPA DAN ANOTASI ===
+core/evaluation/benchmark_runner.py:19:    compute_cohens_kappa,
+core/evaluation/benchmark_runner.py:47:        - "reference_annotations": list[dict or BenchmarkAnnotation]
+core/evaluation/benchmark_runner.py:49:        - optional "reviewer_1_labels": list[str]
+core/evaluation/benchmark_runner.py:50:        - optional "reviewer_2_labels": list[str]
+core/evaluation/benchmark_runner.py:63:            raw_refs = item.get("reference_annotations", [])
+core/evaluation/benchmark_runner.py:78:                reference_annotations=refs,
+core/evaluation/benchmark_runner.py:90:            # Reviewer agreement data if present
+core/evaluation/benchmark_runner.py:91:            if "reviewer_1_labels" in item and "reviewer_2_labels" in item:
+core/evaluation/benchmark_runner.py:92:                r1_all_labels.extend(item["reviewer_1_labels"])
+core/evaluation/benchmark_runner.py:93:                r2_all_labels.extend(item["reviewer_2_labels"])
+core/evaluation/benchmark_runner.py:108:        # Compute inter-annotator agreement if reviewer labels were collected
+core/evaluation/benchmark_runner.py:109:        agreement = compute_cohens_kappa(r1_all_labels, r2_all_labels)
+core/evaluation/benchmark_runner.py:111:        return summary, all_errors, agreement
+core/evaluation/benchmark_runner.py:117:        agreement: dict[str, Any],
+core/evaluation/benchmark_runner.py:161:            "inter_annotator_agreement": agreement,
+core/evaluation/benchmark_runner.py:182:            agreement=agreement,
+core/evaluation/benchmark_runner.py:197:        agreement: dict[str, Any],
+core/evaluation/benchmark_runner.py:260:- **Jumlah Sampel Evaluasi Penilai:** {agreement.get('sample_count', 0)}
+core/evaluation/benchmark_runner.py:261:- **Persentase Kesepakatan ($P_o$):** {agreement.get('observed_agreement', 'N/A')}%
+core/evaluation/benchmark_runner.py:262:- **Peluang Kesepakatan Acak ($P_e$):** {agreement.get('chance_agreement', 'N/A')}%
+core/evaluation/benchmark_runner.py:263:- **Koefisien Cohen's Kappa (κ):** {agreement.get('kappa', 'N/A')}
+core/evaluation/benchmark_runner.py:264:- **Tingkat Kekuatan Kesepakatan:** {agreement.get('agreement_strength', 'N/A')}
+core/evaluation/benchmark_runner.py:265:- **Jumlah Perbedaan Penilaian:** {agreement.get('disagreements_count', 0)}
+core/evaluation/matcher.py:55:        reference_annotations: list[BenchmarkAnnotation],
+core/evaluation/matcher.py:60:        self.references = reference_annotations
+core/evaluation/metrics.py:4:and inter-annotator agreement (Cohen's Kappa & Percent Agreement) with rigorous
+core/evaluation/metrics.py:185:def compute_cohens_kappa(
+core/evaluation/metrics.py:186:    reviewer_1_labels: list[str],
+core/evaluation/metrics.py:187:    reviewer_2_labels: list[str],
+core/evaluation/metrics.py:189:    """Computes Cohen's Kappa coefficient of inter-annotator agreement between two reviewers.
+core/evaluation/metrics.py:193:      Po = relative observed agreement among raters
+core/evaluation/metrics.py:194:      Pe = hypothetical probability of chance agreement
+core/evaluation/metrics.py:196:    if len(reviewer_1_labels) != len(reviewer_2_labels) or len(reviewer_1_labels) == 0:
+core/evaluation/metrics.py:198:            "sample_count": len(reviewer_1_labels),
+core/evaluation/metrics.py:199:            "observed_agreement": None,
+core/evaluation/metrics.py:200:            "chance_agreement": None,
+core/evaluation/metrics.py:202:            "agreement_strength": "N/A (insufficient or mismatched data)",
+core/evaluation/metrics.py:203:            "disagreements": [],
+core/evaluation/metrics.py:206:    n = len(reviewer_1_labels)
+core/evaluation/metrics.py:207:    agreements = sum(1 for a, b in zip(reviewer_1_labels, reviewer_2_labels) if a == b)
+core/evaluation/metrics.py:208:    po = agreements / n
+core/evaluation/metrics.py:211:    all_labels = sorted(list(set(reviewer_1_labels + reviewer_2_labels)))
+core/evaluation/metrics.py:216:        p1 = sum(1 for a in reviewer_1_labels if a == label) / n
+core/evaluation/metrics.py:217:        p2 = sum(1 for b in reviewer_2_labels if b == label) / n
+core/evaluation/metrics.py:224:        strength = "N/A (kappa undefined: expected agreement is 1)"
+core/evaluation/metrics.py:230:            strength = "Poor (less than chance agreement)"
+core/evaluation/metrics.py:232:            strength = "Slight agreement"
+core/evaluation/metrics.py:234:            strength = "Fair agreement"
+core/evaluation/metrics.py:236:            strength = "Moderate agreement"
+core/evaluation/metrics.py:238:            strength = "Substantial agreement"
+core/evaluation/metrics.py:240:            strength = "Almost perfect agreement"
+core/evaluation/metrics.py:242:    disagreements = [
+core/evaluation/metrics.py:243:        {"item_index": idx, "reviewer_1": a, "reviewer_2": b}
+core/evaluation/metrics.py:244:        for idx, (a, b) in enumerate(zip(reviewer_1_labels, reviewer_2_labels))
+core/evaluation/metrics.py:249:        "sample_count": n,
+core/evaluation/metrics.py:250:        "observed_agreement": round(po * 100, 2),
+core/evaluation/metrics.py:251:        "chance_agreement": round(pe * 100, 2),
+core/evaluation/metrics.py:253:        "agreement_strength": strength,
+core/evaluation/metrics.py:254:        "disagreements_count": len(disagreements),
+core/evaluation/metrics.py:255:        "disagreements": disagreements,
+tests/golden_dataset/test_academic_benchmark.py:4:computes inter-annotator agreement, and exports official JSON and Markdown benchmark reports.
+tests/golden_dataset/test_academic_benchmark.py:99:            "reference_annotations": item["reference_annotations"],
+tests/golden_dataset/test_academic_benchmark.py:101:            "reviewer_1_labels": item.get("reviewer_1_labels", []),
+tests/golden_dataset/test_academic_benchmark.py:102:            "reviewer_2_labels": item.get("reviewer_2_labels", []),
+tests/golden_dataset/test_academic_benchmark.py:118:    summary, errors, agreement = runner.evaluate_dataset(
+tests/golden_dataset/test_academic_benchmark.py:125:    json_path, md_path = runner.generate_reports(summary, errors, agreement)
+tests/golden_dataset/test_academic_benchmark.py:142:    # Inter-annotator agreement assertions
+tests/golden_dataset/test_academic_benchmark.py:143:    assert agreement["sample_count"] > 0
+tests/golden_dataset/test_academic_benchmark.py:144:    assert agreement["observed_agreement"] is not None
+tests/golden_dataset/test_academic_benchmark.py:145:    assert agreement["kappa"] is not None
+tests/golden_dataset/test_academic_benchmark.py:146:    # Kappa should reflect substantial to high agreement between standardized reviewers
+tests/golden_dataset/test_academic_benchmark.py:147:    assert agreement["kappa"] >= 0.60, f"Cohen's Kappa {agreement['kappa']} below 0.60"
+tests/golden_dataset/test_academic_benchmark.py:154:    print(f"Cohen's Kappa   : {agreement['kappa']} ({agreement['agreement_strength']})")
+
+=== 5. BANDINGKAN ISI DOCX DENGAN BASELINE GIT ===
+Jumlah fixture DOCX: 12
+
+TEST-001_normal.docx
+  baseline paragraf/baris tabel: 110
+  working paragraf/baris tabel: 110
+  isi tekstual sama: False
+  baris lama yang hilang: 2
+  baris baru/berubah: 2
+  - BASELINE: P:Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan dengan respon kognitif audiens sasaran. Secara metodologis 
+  - BASELINE: P:BAB II TINJAUAN PUSTAKA
+2.1 Penelitian Terdahulu
+Kajian terdahulu oleh Smith (2022) mengemukakan pentingnya infrastruktur digital dalam menunjang interaksi pengguna.
+2.2 Tinjauan
+  + WORKING: P:BAB II TINJAUAN PUSTAKA
+2.1 Penelitian Terdahulu
+Kajian terdahulu oleh Smith (2022) mengemukakan pentingnya infrastruktur digital dalam menunjang interaksi pengguna. Rahmawati (2
+  + WORKING: P:Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan dengan respon kognitif audiens sasaran. Secara metodologis 
+
+TEST-002_margin_salah.docx
+  baseline paragraf/baris tabel: 110
+  working paragraf/baris tabel: 110
+  isi tekstual sama: False
+  baris lama yang hilang: 2
+  baris baru/berubah: 2
+  - BASELINE: P:Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan dengan respon kognitif audiens sasaran. Secara metodologis 
+  - BASELINE: P:BAB II TINJAUAN PUSTAKA
+2.1 Penelitian Terdahulu
+Kajian terdahulu oleh Smith (2022) mengemukakan pentingnya infrastruktur digital dalam menunjang interaksi pengguna.
+2.2 Tinjauan
+  + WORKING: P:BAB II TINJAUAN PUSTAKA
+2.1 Penelitian Terdahulu
+Kajian terdahulu oleh Smith (2022) mengemukakan pentingnya infrastruktur digital dalam menunjang interaksi pengguna. Rahmawati (2
+  + WORKING: P:Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan dengan respon kognitif audiens sasaran. Secara metodologis 
+
+TEST-003_font_salah.docx
+  baseline paragraf/baris tabel: 110
+  working paragraf/baris tabel: 110
+  isi tekstual sama: False
+  baris lama yang hilang: 2
+  baris baru/berubah: 2
+  - BASELINE: P:Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan dengan respon kognitif audiens sasaran. Secara metodologis 
+  - BASELINE: P:BAB II TINJAUAN PUSTAKA
+2.1 Penelitian Terdahulu
+Kajian terdahulu oleh Smith (2022) mengemukakan pentingnya infrastruktur digital dalam menunjang interaksi pengguna.
+2.2 Tinjauan
+  + WORKING: P:BAB II TINJAUAN PUSTAKA
+2.1 Penelitian Terdahulu
+Kajian terdahulu oleh Smith (2022) mengemukakan pentingnya infrastruktur digital dalam menunjang interaksi pengguna. Rahmawati (2
+  + WORKING: P:Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan dengan respon kognitif audiens sasaran. Secara metodologis 
+
+TEST-004_bab3_hilang.docx
+  baseline paragraf/baris tabel: 94
+  working paragraf/baris tabel: 94
+  isi tekstual sama: False
+  baris lama yang hilang: 2
+  baris baru/berubah: 2
+  - BASELINE: P:Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan dengan respon kognitif audiens sasaran. Secara metodologis 
+  - BASELINE: P:BAB II TINJAUAN PUSTAKA
+2.1 Penelitian Terdahulu
+Kajian terdahulu oleh Smith (2022) mengemukakan pentingnya infrastruktur digital dalam menunjang interaksi pengguna.
+2.2 Tinjauan
+  + WORKING: P:BAB II TINJAUAN PUSTAKA
+2.1 Penelitian Terdahulu
+Kajian terdahulu oleh Smith (2022) mengemukakan pentingnya infrastruktur digital dalam menunjang interaksi pengguna. Rahmawati (2
+  + WORKING: P:Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan dengan respon kognitif audiens sasaran. Secara metodologis 
+
+TEST-005_citation_missing_bib.docx
+  baseline paragraf/baris tabel: 110
+  working paragraf/baris tabel: 110
+  isi tekstual sama: False
+  baris lama yang hilang: 2
+  baris baru/berubah: 2
+  - BASELINE: P:Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan dengan respon kognitif audiens sasaran. Secara metodologis 
+  - BASELINE: P:BAB II TINJAUAN PUSTAKA
+2.1 Penelitian Terdahulu
+Kajian terdahulu oleh Smith (2022) mengemukakan pentingnya infrastruktur digital dalam menunjang interaksi pengguna.
+2.2 Tinjauan
+  + WORKING: P:BAB II TINJAUAN PUSTAKA
+2.1 Penelitian Terdahulu
+Kajian terdahulu oleh Smith (2022) mengemukakan pentingnya infrastruktur digital dalam menunjang interaksi pengguna. Rahmawati (2
+  + WORKING: P:Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan dengan respon kognitif audiens sasaran. Secara metodologis 
+
+TEST-006_variable_mutation.docx
+  baseline paragraf/baris tabel: 110
+  working paragraf/baris tabel: 110
+  isi tekstual sama: False
+  baris lama yang hilang: 2
+  baris baru/berubah: 2
+  - BASELINE: P:Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan dengan respon kognitif audiens sasaran. Secara metodologis 
+  - BASELINE: P:BAB II TINJAUAN PUSTAKA
+2.1 Penelitian Terdahulu
+Kajian terdahulu oleh Smith (2022) mengemukakan pentingnya infrastruktur digital dalam menunjang interaksi pengguna.
+2.2 Tinjauan
+  + WORKING: P:BAB II TINJAUAN PUSTAKA
+2.1 Penelitian Terdahulu
+Kajian terdahulu oleh Smith (2022) mengemukakan pentingnya infrastruktur digital dalam menunjang interaksi pengguna. Rahmawati (2
+  + WORKING: P:Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan dengan respon kognitif audiens sasaran. Secara metodologis 
+
+TEST-007_formula_error.docx
+  baseline paragraf/baris tabel: 110
+  working paragraf/baris tabel: 110
+  isi tekstual sama: False
+  baris lama yang hilang: 2
+  baris baru/berubah: 2
+  - BASELINE: P:Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan dengan respon kognitif audiens sasaran. Secara metodologis 
+  - BASELINE: P:BAB II TINJAUAN PUSTAKA
+2.1 Penelitian Terdahulu
+Kajian terdahulu oleh Smith (2022) mengemukakan pentingnya infrastruktur digital dalam menunjang interaksi pengguna.
+2.2 Tinjauan
+  + WORKING: P:BAB II TINJAUAN PUSTAKA
+2.1 Penelitian Terdahulu
+Kajian terdahulu oleh Smith (2022) mengemukakan pentingnya infrastruktur digital dalam menunjang interaksi pengguna. Rahmawati (2
+  + WORKING: P:Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan dengan respon kognitif audiens sasaran. Secara metodologis 
+
+TEST-008_stat_contradiction.docx
+  baseline paragraf/baris tabel: 110
+  working paragraf/baris tabel: 110
+  isi tekstual sama: False
+  baris lama yang hilang: 2
+  baris baru/berubah: 2
+  - BASELINE: P:Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan dengan respon kognitif audiens sasaran. Secara metodologis 
+  - BASELINE: P:BAB II TINJAUAN PUSTAKA
+2.1 Penelitian Terdahulu
+Kajian terdahulu oleh Smith (2022) mengemukakan pentingnya infrastruktur digital dalam menunjang interaksi pengguna.
+2.2 Tinjauan
+  + WORKING: P:BAB II TINJAUAN PUSTAKA
+2.1 Penelitian Terdahulu
+Kajian terdahulu oleh Smith (2022) mengemukakan pentingnya infrastruktur digital dalam menunjang interaksi pengguna. Rahmawati (2
+  + WORKING: P:Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan dengan respon kognitif audiens sasaran. Secara metodologis 
+
+TEST-009_sample_mismatch.docx
+  baseline paragraf/baris tabel: 110
+  working paragraf/baris tabel: 110
+  isi tekstual sama: False
+  baris lama yang hilang: 2
+  baris baru/berubah: 2
+  - BASELINE: P:Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan dengan respon kognitif audiens sasaran. Secara metodologis 
+  - BASELINE: P:BAB II TINJAUAN PUSTAKA
+2.1 Penelitian Terdahulu
+Kajian terdahulu oleh Smith (2022) mengemukakan pentingnya infrastruktur digital dalam menunjang interaksi pengguna.
+2.2 Tinjauan
+  + WORKING: P:BAB II TINJAUAN PUSTAKA
+2.1 Penelitian Terdahulu
+Kajian terdahulu oleh Smith (2022) mengemukakan pentingnya infrastruktur digital dalam menunjang interaksi pengguna. Rahmawati (2
+  + WORKING: P:Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan dengan respon kognitif audiens sasaran. Secara metodologis 
+
+TEST-010_journal.docx
+  baseline paragraf/baris tabel: 2
+  working paragraf/baris tabel: 2
+  isi tekstual sama: True
+
+TEST-010_thesis.docx
+  baseline paragraf/baris tabel: 110
+  working paragraf/baris tabel: 110
+  isi tekstual sama: False
+  baris lama yang hilang: 2
+  baris baru/berubah: 2
+  - BASELINE: P:Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan dengan respon kognitif audiens sasaran. Secara metodologis 
+  - BASELINE: P:BAB II TINJAUAN PUSTAKA
+2.1 Penelitian Terdahulu
+Kajian terdahulu oleh Smith (2022) mengemukakan pentingnya infrastruktur digital dalam menunjang interaksi pengguna.
+2.2 Tinjauan
+  + WORKING: P:BAB II TINJAUAN PUSTAKA
+2.1 Penelitian Terdahulu
+Kajian terdahulu oleh Smith (2022) mengemukakan pentingnya infrastruktur digital dalam menunjang interaksi pengguna. Rahmawati (2
+  + WORKING: P:Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan dengan respon kognitif audiens sasaran. Secara metodologis 
+
+TEST-011_unused_reference.docx: TIDAK ADA BASELINE DI HEAD
+
+Catatan: teks yang sama tidak membuktikan margin, font, style, atau format identik.
+
+=== 6. STATUS AKHIR TANPA MODIFIKASI GIT ===
+## main...origin/main
+ M .gitignore
+ M engines/citation_auditor.py
+ M golden_dataset/documents/TEST-001_normal.docx
+ M golden_dataset/documents/TEST-002_margin_salah.docx
+ M golden_dataset/documents/TEST-003_font_salah.docx
+ M golden_dataset/documents/TEST-004_bab3_hilang.docx
+ M golden_dataset/documents/TEST-005_citation_missing_bib.docx
+ M golden_dataset/documents/TEST-006_variable_mutation.docx
+ M golden_dataset/documents/TEST-007_formula_error.docx
+ M golden_dataset/documents/TEST-008_stat_contradiction.docx
+ M golden_dataset/documents/TEST-009_sample_mismatch.docx
+ M golden_dataset/documents/TEST-010_journal.docx
+ M golden_dataset/documents/TEST-010_thesis.docx
+ M golden_dataset/generator.py
+ M models/document_model.py
+ M tests/test_docx_parser.py
+?? BIT10_REVERSE_ENGINEERING_ALL.sh
+?? BIT11_BENCHMARK_FIXTURE_AUDIT.sh
+?? BIT_TESIS_CHECK_FINAL.sh
+?? BIT_TESIS_PATCH_ISOLATION.sh
+?? core/evaluation/benchmark_runner.py
+?? core/evaluation/error_analysis.py
+?? core/evaluation/matcher.py
+?? core/evaluation/metrics.py
+?? core/evaluation/schema.py
+?? data/
+?? golden_dataset/documents/TEST-011_unused_reference.docx
+?? tests/golden_dataset/test_academic_benchmark.py
+?? tests/unit/test_evaluation_metrics.py
+?? tests/unit/test_generator_isolation.py
+
+Tidak ada staging, commit, push, atau deployment.

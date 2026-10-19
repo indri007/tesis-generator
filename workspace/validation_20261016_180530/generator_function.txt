@@ -1,0 +1,46 @@
+174:def generate_golden_dataset(output_dir=None) -> dict[str, dict]:
+175-    """Generates the 10 golden test cases."""
+176-    docs_dir = Path(output_dir) if output_dir is not None else DOCS_DIR
+177-    docs_dir.mkdir(parents=True, exist_ok=True)
+178-    dataset = {}
+179-
+180-    # TEST-001: Tesis Normal (Semua valid)
+181-    t1_text = create_base_thesis_text(pad_to_40k=True)
+182-    t1_path = docs_dir / "TEST-001_normal.docx"
+183-    save_test_docx(t1_text, t1_path)
+184-    dataset["TEST-001"] = {
+185-        "file": str(t1_path),
+186-        "description": "Tesis normal sesuai standar MIKOM 2026",
+187-        "expected_errors": []
+188-    }
+189-
+190-    # TEST-002: Margin Salah (Left margin 3.0 cm bukannya 4.0 cm)
+191-    t2_path = docs_dir / "TEST-002_margin_salah.docx"
+192-    save_test_docx(t1_text, t2_path, left_cm=3.0)
+193-    dataset["TEST-002"] = {
+194-        "file": str(t2_path),
+195-        "description": "Margin kiri salah (3.0 cm)",
+196-        "expected_errors": ["FORMAT_MARGIN_LEFT_001"]
+197-    }
+198-
+199-    # TEST-003: Font Salah (Arial bukannya Times New Roman)
+200-    t3_path = docs_dir / "TEST-003_font_salah.docx"
+201-    save_test_docx(t1_text, t3_path, font_name="Arial")
+202-    dataset["TEST-003"] = {
+203-        "file": str(t3_path),
+204-        "description": "Font salah (Arial)",
+205-        "expected_errors": ["FORMAT_FONT_FAMILY_001"]
+206-    }
+207-
+208-    # TEST-004: BAB III Hilang
+209-    t4_text = create_base_thesis_text(chap3="", pad_to_40k=True)
+210-    t4_path = docs_dir / "TEST-004_bab3_hilang.docx"
+211-    save_test_docx(t4_text, t4_path)
+212-    dataset["TEST-004"] = {
+213-        "file": str(t4_path),
+214-        "description": "BAB III hilang",
+215-        "expected_errors": ["STRUCT_CHAP_BAB3_001"]
+216-    }
+217-
+218-    # TEST-005: Citation Tanpa Reference
+219-    t5_text = create_base_thesis_text(

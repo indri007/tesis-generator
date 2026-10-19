@@ -1,0 +1,62 @@
+golden_dataset/generator.py:12:DOCS_DIR = BASE_DIR / "documents"
+golden_dataset/generator.py:13:DOCS_DIR.mkdir(parents=True, exist_ok=True)
+golden_dataset/generator.py:143:def save_test_docx(
+golden_dataset/generator.py:174:def generate_golden_dataset() -> dict[str, dict]:
+golden_dataset/generator.py:180:    t1_path = DOCS_DIR / "TEST-001_normal.docx"
+golden_dataset/generator.py:181:    save_test_docx(t1_text, t1_path)
+golden_dataset/generator.py:189:    t2_path = DOCS_DIR / "TEST-002_margin_salah.docx"
+golden_dataset/generator.py:190:    save_test_docx(t1_text, t2_path, left_cm=3.0)
+golden_dataset/generator.py:198:    t3_path = DOCS_DIR / "TEST-003_font_salah.docx"
+golden_dataset/generator.py:199:    save_test_docx(t1_text, t3_path, font_name="Arial")
+golden_dataset/generator.py:208:    t4_path = DOCS_DIR / "TEST-004_bab3_hilang.docx"
+golden_dataset/generator.py:209:    save_test_docx(t4_text, t4_path)
+golden_dataset/generator.py:221:    t5_path = DOCS_DIR / "TEST-005_citation_missing_bib.docx"
+golden_dataset/generator.py:222:    save_test_docx(t5_text, t5_path)
+golden_dataset/generator.py:235:    t6_path = DOCS_DIR / "TEST-006_variable_mutation.docx"
+golden_dataset/generator.py:236:    save_test_docx(t6_text, t6_path)
+golden_dataset/generator.py:245:    t7_path = DOCS_DIR / "TEST-007_formula_error.docx"
+golden_dataset/generator.py:246:    save_test_docx(t7_text, t7_path)
+golden_dataset/generator.py:255:    t8_path = DOCS_DIR / "TEST-008_stat_contradiction.docx"
+golden_dataset/generator.py:256:    save_test_docx(t8_text, t8_path)
+golden_dataset/generator.py:265:    t9_path = DOCS_DIR / "TEST-009_sample_mismatch.docx"
+golden_dataset/generator.py:266:    save_test_docx(t9_text, t9_path)
+golden_dataset/generator.py:282:    t10_thesis_path = DOCS_DIR / "TEST-010_thesis.docx"
+golden_dataset/generator.py:283:    t10_journal_path = DOCS_DIR / "TEST-010_journal.docx"
+golden_dataset/generator.py:285:    save_test_docx(t10_thesis_text, t10_thesis_path)
+golden_dataset/generator.py:286:    save_test_docx(t10_journal_text, t10_journal_path)
+core/evaluation/schema.py:112:    base_commit: str = "1c34578"
+core/evaluation/schema.py:113:    code_version: str = "1c34578"
+core/evaluation/schema.py:114:    working_tree_dirty: bool = True
+core/evaluation/benchmark_runner.py:31:        output_dir: str | Path = "output/reports/benchmark",
+core/evaluation/benchmark_runner.py:40:        strict_location: bool = False,
+core/evaluation/benchmark_runner.py:41:        strict_severity: bool = True,
+core/evaluation/benchmark_runner.py:80:                strict_location=strict_location,
+core/evaluation/benchmark_runner.py:81:                strict_severity=strict_severity,
+core/evaluation/benchmark_runner.py:149:                "base_commit": getattr(self.config, "base_commit", self.config.code_version),
+core/evaluation/benchmark_runner.py:150:                "code_version": self.config.code_version,
+core/evaluation/benchmark_runner.py:151:                "working_tree_dirty": getattr(self.config, "working_tree_dirty", True),
+core/evaluation/benchmark_runner.py:168:                "Kecocokan Lokasi dan Tingkat Keparahan: Evaluasi dengan strict_location=False tidak menguji kesesuaian halaman secara ketat. Ketepatan lokasi dan tingkat keparahan perlu dilaporkan secara terpisah, dengan pengujian tambahan ketika informasi halaman pada anotasi referensi tersedia.",
+core/evaluation/benchmark_runner.py:221:**Commit Acuan:** `{getattr(self.config, 'base_commit', self.config.code_version)}` (working tree dirty: {getattr(self.config, 'working_tree_dirty', True)})  
+core/evaluation/benchmark_runner.py:289:5. **Kecocokan Lokasi dan Tingkat Keparahan.** Evaluasi dengan `strict_location=False` tidak menguji kesesuaian halaman secara ketat. Ketepatan lokasi dan tingkat keparahan perlu dilaporkan secara terpisah, dengan pengujian tambahan ketika informasi halaman pada anotasi referensi tersedia.
+core/evaluation/matcher.py:57:        strict_location: bool = False,
+core/evaluation/matcher.py:58:        strict_severity: bool = True,
+core/evaluation/matcher.py:62:        self.strict_location = strict_location
+core/evaluation/matcher.py:63:        self.strict_severity = strict_severity
+core/evaluation/matcher.py:101:            if self.strict_location and ref_loc.page is not None:
+core/evaluation/matcher.py:115:            elif self.strict_severity and det_sev != ref_sev:
+tests/golden_dataset/test_academic_benchmark.py:20:from golden_dataset.generator import generate_golden_dataset
+tests/golden_dataset/test_academic_benchmark.py:33:    golden_docs = generate_golden_dataset()
+tests/golden_dataset/test_academic_benchmark.py:34:    from golden_dataset.generator import create_base_thesis_text, save_test_docx, DOCS_DIR
+tests/golden_dataset/test_academic_benchmark.py:45:    p_unused = DOCS_DIR / "TEST-011_unused_reference.docx"
+tests/golden_dataset/test_academic_benchmark.py:46:    save_test_docx(text_unused, p_unused)
+tests/golden_dataset/test_academic_benchmark.py:95:        base_commit="1c34578",
+tests/golden_dataset/test_academic_benchmark.py:96:        code_version="1c34578",
+tests/golden_dataset/test_academic_benchmark.py:97:        working_tree_dirty=True,
+tests/golden_dataset/test_academic_benchmark.py:104:    runner = AcademicBenchmarkRunner(config=config, output_dir="output/reports/benchmark")
+tests/golden_dataset/test_academic_benchmark.py:108:        strict_location=False,
+tests/golden_dataset/test_academic_benchmark.py:109:        strict_severity=True
+tests/unit/test_evaluation_metrics.py:140:        # 3. Wrong location -> WRONG_LOCATION (when strict_location=True)
+tests/unit/test_evaluation_metrics.py:162:        strict_location=True,
+tests/unit/test_evaluation_metrics.py:163:        strict_severity=True
+tests/test_golden_dataset.py:8:from golden_dataset.generator import generate_golden_dataset
+tests/test_golden_dataset.py:14:    return generate_golden_dataset()

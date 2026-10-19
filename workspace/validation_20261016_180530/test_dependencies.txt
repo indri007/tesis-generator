@@ -1,0 +1,54 @@
+Name: pytest
+Version: 9.1.1
+Summary: pytest: simple powerful testing with Python
+Home-page: https://docs.pytest.org/en/latest/
+Author: Brianna Laugher, Bruno Oliveira, Floris Bruynooghe, Freya Bruhin, Holger Krekel, Others (See AUTHORS), Ronny Pfannschmidt
+Author-email: 
+License-Expression: MIT
+Location: /Users/jevin/AI-Thesis-Generator/.venv-test/lib/python3.11/site-packages
+Requires: iniconfig, packaging, pluggy, pygments
+Required-by: pytest-cov, pytest-playwright
+---
+Name: python-docx
+Version: 1.2.0
+Summary: Create, read, and update Microsoft Word .docx files.
+Home-page: https://github.com/python-openxml/python-docx
+Author: 
+Author-email: Steve Canny <stcanny@gmail.com>
+License: MIT
+Location: /Users/jevin/AI-Thesis-Generator/.venv-test/lib/python3.11/site-packages
+Requires: lxml, typing_extensions
+Required-by: 
+---
+Name: pypdf
+Version: 6.21.0
+Summary: A pure-python PDF library capable of splitting, merging, cropping, and transforming PDF files
+Home-page: 
+Author: 
+Author-email: Mathieu Fenniak <biziqe@mathieu.fenniak.net>
+License-Expression: BSD-3-Clause
+Location: /Users/jevin/AI-Thesis-Generator/.venv-test/lib/python3.11/site-packages
+Requires: 
+Required-by: 
+---
+Name: pymupdf
+Version: 1.28.2
+Summary: A high performance Python library for data extraction, analysis, conversion & manipulation of PDF (and other) documents.
+Home-page: 
+Author: Artifex
+Author-email: support@artifex.com
+License: Dual Licensed - GNU AFFERO GPL 3.0 or Artifex Commercial License
+Location: /Users/jevin/AI-Thesis-Generator/.venv-test/lib/python3.11/site-packages
+Requires: 
+Required-by: 
+---
+Name: streamlit
+Version: 1.66.0
+Summary: A faster way to build and share data apps
+Home-page: https://streamlit.io
+Author: 
+Author-email: Snowflake Inc <hello@streamlit.io>
+License-Expression: Apache-2.0
+Location: /Users/jevin/AI-Thesis-Generator/.venv-test/lib/python3.11/site-packages
+Requires: altair, anyio, click, itsdangerous, numpy, packaging, pandas, pillow, protobuf, pyarrow, pydeck, python-multipart, requests, starlette, typing-extensions, uvicorn, websockets
+Required-by: 

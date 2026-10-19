@@ -1,0 +1,132 @@
+=== BIT 15: CONTROLLED REPAIR PRECHECK ===
+Fri Oct 16 18:25:04 WIB 2026
+
+=== 1. PYTHON ENVIRONMENT ===
+Python 3.11.15
+No broken requirements found.
+
+=== 2. GENERATOR AND BENCHMARK FILES ===
+--- golden_dataset/generator.py
+     297 golden_dataset/generator.py
+fa6901bc9920b3c142fc8d7b3dc5e3f015e6845764aca69d50a877ba7e3423b1  golden_dataset/generator.py
+--- core/evaluation/benchmark_runner.py
+     292 core/evaluation/benchmark_runner.py
+a2690015805d9074bdea7042f531293259f8761c7cb85831b8a65f7c0e591f8f  core/evaluation/benchmark_runner.py
+--- core/evaluation/metrics.py
+     256 core/evaluation/metrics.py
+dae6c977e4b3bab4d7ae02ef7d65f4d43da63c82daca1fde8cdd99187ecbe453  core/evaluation/metrics.py
+--- core/evaluation/matcher.py
+     161 core/evaluation/matcher.py
+361350d435bde3d839bd8e8205f6f15e69c50a82503e19adbf95ede9369f41df  core/evaluation/matcher.py
+--- tests/golden_dataset/test_academic_benchmark.py
+     156 tests/golden_dataset/test_academic_benchmark.py
+b16fb55d11219013357256a7612e76bb6ea79d3a248e0c59f639c8dc4d8275b0  tests/golden_dataset/test_academic_benchmark.py
+
+=== 3. DUPLICATE CONTENT SUMMARY ===
+TEST-001_normal.docx: total=110, unique=11, duplicate_excess=99
+  100x: Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan d
+TEST-002_margin_salah.docx: total=110, unique=11, duplicate_excess=99
+  100x: Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan d
+TEST-003_font_salah.docx: total=110, unique=11, duplicate_excess=99
+  100x: Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan d
+TEST-004_bab3_hilang.docx: total=94, unique=10, duplicate_excess=84
+  85x: Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan d
+TEST-005_citation_missing_bib.docx: total=110, unique=11, duplicate_excess=99
+  100x: Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan d
+TEST-006_variable_mutation.docx: total=110, unique=11, duplicate_excess=99
+  100x: Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan d
+TEST-007_formula_error.docx: total=110, unique=11, duplicate_excess=99
+  100x: Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan d
+TEST-008_stat_contradiction.docx: total=110, unique=11, duplicate_excess=99
+  100x: Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan d
+TEST-009_sample_mismatch.docx: total=110, unique=11, duplicate_excess=99
+  100x: Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan d
+TEST-010_journal.docx: total=2, unique=2, duplicate_excess=0
+TEST-010_thesis.docx: total=110, unique=11, duplicate_excess=99
+  100x: Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan d
+TEST-011_unused_reference.docx: total=110, unique=11, duplicate_excess=99
+  100x: Analisis mendalam mengenai dinamika komunikasi menunjukkan adanya kesinambungan yang konsisten antara ekspektasi pesan d
+
+=== 4. BENCHMARK TEST ===
+.                                                                        [100%]
+=============================== warnings summary ===============================
+<frozen importlib._bootstrap>:241
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute
+
+<frozen importlib._bootstrap>:241
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute
+
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+1 passed, 5 warnings in 1.16s
+sys:1: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+benchmark_exit=0
+
+=== 5. FULL REGRESSION ===
+..................................................                       [100%]
+=============================== warnings summary ===============================
+<frozen importlib._bootstrap>:241
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute
+
+<frozen importlib._bootstrap>:241
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute
+
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+50 passed, 5 warnings in 3.83s
+regression_exit=0
+
+=== 6. STREAMLIT ENTRYPOINT ===
+app_compile_exit=0
+
+=== 7. FINAL DIFF CHECK ===
+diff_check_exit=0
+
+=== 8. GIT STATUS ===
+## main...origin/main
+ M .gitignore
+ M engines/citation_auditor.py
+ M golden_dataset/documents/TEST-001_normal.docx
+ M golden_dataset/documents/TEST-002_margin_salah.docx
+ M golden_dataset/documents/TEST-003_font_salah.docx
+ M golden_dataset/documents/TEST-004_bab3_hilang.docx
+ M golden_dataset/documents/TEST-005_citation_missing_bib.docx
+ M golden_dataset/documents/TEST-006_variable_mutation.docx
+ M golden_dataset/documents/TEST-007_formula_error.docx
+ M golden_dataset/documents/TEST-008_stat_contradiction.docx
+ M golden_dataset/documents/TEST-009_sample_mismatch.docx
+ M golden_dataset/documents/TEST-010_journal.docx
+ M golden_dataset/documents/TEST-010_thesis.docx
+ M golden_dataset/generator.py
+ M models/document_model.py
+ M tests/test_docx_parser.py
+?? BIT10_REVERSE_ENGINEERING_ALL.sh
+?? BIT11_BENCHMARK_FIXTURE_AUDIT.sh
+?? BIT12_FIXTURE_FORENSICS.sh
+?? BIT13_DUPLICATION_AND_GENERATOR_AUDIT.sh
+?? BIT14_SAFE_BENCHMARK_GATE.sh
+?? BIT15_CONTROLLED_REPAIR_PRECHECK.sh
+?? BIT_TESIS_CHECK_FINAL.sh
+?? BIT_TESIS_PATCH_ISOLATION.sh
+?? core/evaluation/benchmark_runner.py
+?? core/evaluation/error_analysis.py
+?? core/evaluation/matcher.py
+?? core/evaluation/metrics.py
+?? core/evaluation/schema.py
+?? data/
+?? golden_dataset/documents/TEST-011_unused_reference.docx
+?? tests/golden_dataset/test_academic_benchmark.py
+?? tests/unit/test_evaluation_metrics.py
+?? tests/unit/test_generator_isolation.py
+
+=== END ===
+Precheck tidak mengubah fixture, kode aplikasi, atau riwayat Git.
+Tidak melakukan staging, commit, push, atau deployment.

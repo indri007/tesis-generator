@@ -1,0 +1,160 @@
+engines/pdf_parser.py:1:from pathlib import Path
+engines/pdf_parser.py:8:from models.document_model import (
+engines/revision_engine.py:3:from __future__ import annotations
+engines/revision_engine.py:5:from pathlib import Path
+engines/revision_engine.py:6:from typing import Any
+engines/revision_engine.py:8:from docx import Document
+engines/revision_engine.py:9:from docx.enum.text import WD_ALIGN_PARAGRAPH
+engines/revision_engine.py:10:from docx.shared import Cm, Pt
+engines/format_auditor.py:3:from __future__ import annotations
+engines/format_auditor.py:5:from typing import Any
+engines/format_auditor.py:7:from models.document_model import ParsedDocument
+engines/docx_parser.py:1:from pathlib import Path
+engines/docx_parser.py:3:from docx import Document
+engines/docx_parser.py:5:from models.document_model import (
+engines/evidence_mapper.py:3:from __future__ import annotations
+engines/evidence_mapper.py:5:import re
+engines/evidence_mapper.py:6:import unicodedata
+engines/evidence_mapper.py:7:from typing import Any
+engines/rule_loader.py:3:from __future__ import annotations
+engines/rule_loader.py:5:import json
+engines/rule_loader.py:6:from pathlib import Path
+engines/rule_loader.py:8:from jsonschema import Draft202012Validator
+engines/__init__.py:3:from engines.audit_engine import AuditResult, audit_thesis
+engines/__init__.py:4:from engines.evidence_engine import Evidence, create_evidence
+engines/__init__.py:5:from engines.finding_engine import build_findings, summarize
+engines/__init__.py:6:from engines.rule_engine import evaluate_rule
+engines/__init__.py:7:from engines.rule_loader import load_rules
+engines/rule_engine.py:3:from __future__ import annotations
+engines/rule_engine.py:5:import re
+engines/rule_engine.py:6:from typing import Any
+engines/audit_engine.py:3:from __future__ import annotations
+engines/audit_engine.py:5:from dataclasses import dataclass
+engines/audit_engine.py:7:from engines.finding_engine import build_findings, summarize
+engines/audit_engine.py:8:from engines.rule_engine import evaluate_rule
+engines/audit_engine.py:9:from engines.rule_loader import load_rules
+engines/citation_auditor.py:3:from __future__ import annotations
+engines/citation_auditor.py:5:import re
+engines/citation_auditor.py:6:from typing import Any
+engines/citation_auditor.py:8:from models.document_model import ParsedDocument
+engines/cross_document_auditor.py:3:from __future__ import annotations
+engines/cross_document_auditor.py:5:import re
+engines/cross_document_auditor.py:6:from typing import Any
+engines/cross_document_auditor.py:8:from models.document_model import ParsedDocument
+engines/evidence_engine.py:3:from __future__ import annotations
+engines/evidence_engine.py:5:from pydantic import BaseModel
+engines/reference_auditor.py:3:from __future__ import annotations
+engines/reference_auditor.py:5:import json
+engines/reference_auditor.py:6:from pathlib import Path
+engines/reference_auditor.py:7:import re
+engines/reference_auditor.py:8:import urllib.request
+engines/reference_auditor.py:9:from typing import Any
+engines/reference_auditor.py:11:from models.document_model import ParsedDocument
+engines/statistical_auditor.py:3:from __future__ import annotations
+engines/statistical_auditor.py:5:import re
+engines/statistical_auditor.py:6:from typing import Any
+engines/statistical_auditor.py:8:from models.document_model import ParsedDocument
+engines/statistical_auditor.py:9:from utils.number_utils import parse_id_number
+engines/structure_auditor.py:3:from __future__ import annotations
+engines/structure_auditor.py:5:from typing import Any
+engines/structure_auditor.py:7:from models.document_model import ParsedDocument
+engines/structure_auditor.py:8:from parsers.structure_parser import DocumentStructure
+engines/finding_engine.py:3:from __future__ import annotations
+engines/finding_engine.py:5:from collections import Counter
+engines/formula_auditor.py:3:from __future__ import annotations
+engines/formula_auditor.py:5:import re
+engines/formula_auditor.py:6:from typing import Any
+engines/formula_auditor.py:8:from models.document_model import ParsedDocument
+engines/formula_auditor.py:9:from parsers.formula_parser import FormulaParser
+engines/formula_auditor.py:10:from utils.number_utils import check_formula_recalculation, parse_id_number
+engines/document_parser.py:1:from pathlib import Path
+engines/document_parser.py:3:from engines.docx_parser import parse_docx
+engines/document_parser.py:4:from engines.pdf_parser import parse_pdf
+engines/report_engine.py:3:from __future__ import annotations
+engines/report_engine.py:5:import io
+engines/report_engine.py:6:import json
+engines/report_engine.py:7:from typing import Any
+engines/report_engine.py:9:from docx import Document
+engines/report_engine.py:10:from reportlab.lib import colors
+engines/report_engine.py:11:from reportlab.lib.pagesizes import A4
+engines/report_engine.py:12:from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
+engines/report_engine.py:13:from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
+parsers/pdf_parser.py:3:from __future__ import annotations
+parsers/pdf_parser.py:5:import io
+parsers/pdf_parser.py:6:from typing import Any
+parsers/pdf_parser.py:8:import pymupdf  # PyMuPDF
+parsers/formula_parser.py:3:from __future__ import annotations
+parsers/formula_parser.py:5:import re
+parsers/formula_parser.py:6:from typing import Any
+parsers/docx_parser.py:3:from __future__ import annotations
+parsers/docx_parser.py:5:from typing import Any
+parsers/docx_parser.py:7:import docx
+parsers/docx_parser.py:8:from docx.enum.text import WD_ALIGN_PARAGRAPH
+parsers/structure_parser.py:3:from __future__ import annotations
+parsers/structure_parser.py:5:import re
+parsers/structure_parser.py:6:from typing import Any
+parsers/table_parser.py:3:from __future__ import annotations
+parsers/table_parser.py:5:import re
+parsers/table_parser.py:6:from typing import Any
+models/document_model.py:1:from __future__ import annotations
+models/document_model.py:3:import re
+models/document_model.py:4:from dataclasses import dataclass, field
+models/document_model.py:5:from typing import Any
+models/document_model.py:7:from parsers.formula_parser import FormulaParser
+models/document_model.py:8:from parsers.structure_parser import DocumentStructure
+models/document_model.py:9:from utils.number_utils import check_formula_recalculation, parse_id_number
+core/database/db_manager.py:6:from __future__ import annotations
+core/database/db_manager.py:8:import json
+core/database/db_manager.py:9:import sqlite3
+core/database/db_manager.py:10:from pathlib import Path
+core/database/db_manager.py:11:from typing import Any, Dict, List, Optional
+core/ingestion/document_model.py:5:from models.document_model import (
+core/ingestion/pdf_parser.py:1:from pathlib import Path
+core/ingestion/pdf_parser.py:8:from models.document_model import (
+core/ingestion/docx_parser.py:1:from pathlib import Path
+core/ingestion/docx_parser.py:3:from docx import Document
+core/ingestion/docx_parser.py:5:from models.document_model import (
+core/ingestion/document_parser.py:1:from pathlib import Path
+core/ingestion/document_parser.py:3:from engines.docx_parser import parse_docx
+core/ingestion/document_parser.py:4:from engines.pdf_parser import parse_pdf
+core/ocr/ocr_engine.py:3:import logging
+core/ocr/ocr_engine.py:4:import shutil
+core/ocr/ocr_engine.py:5:from pathlib import Path
+core/ocr/ocr_engine.py:6:from typing import Optional, Any
+core/ocr/ocr_engine.py:7:from PIL import Image, ImageOps, ImageFilter
+core/ocr/__init__.py:3:from core.ocr.ocr_engine import OCREngine
+core/utils/security.py:3:from __future__ import annotations
+core/utils/security.py:5:import os
+core/utils/security.py:6:import re
+core/utils/security.py:7:import shutil
+core/utils/security.py:8:import tempfile
+core/utils/security.py:9:from pathlib import Path
+core/utils/security.py:10:from typing import BinaryIO
+core/utils/security.py:12:from typing_extensions import Self
+core/utils/page_utils.py:3:from __future__ import annotations
+core/utils/page_utils.py:5:import re
+core/utils/number_utils.py:3:from __future__ import annotations
+core/utils/number_utils.py:5:import ast
+core/utils/number_utils.py:6:import re
+core/utils/number_utils.py:7:from typing import Any
+core/document_processing/unified_extractor.py:3:import logging
+core/document_processing/unified_extractor.py:4:from pathlib import Path
+core/document_processing/unified_extractor.py:5:from typing import Any, Optional
+core/document_processing/unified_extractor.py:12:from docx import Document
+core/document_processing/unified_extractor.py:13:from PIL import Image
+core/document_processing/unified_extractor.py:15:from core.ocr.ocr_engine import OCREngine
+core/document_processing/__init__.py:3:from core.document_processing.unified_extractor import (
+core/generator/thesis_generator.py:12:from __future__ import annotations
+core/generator/thesis_generator.py:14:import io
+core/generator/thesis_generator.py:15:from pathlib import Path
+core/generator/thesis_generator.py:16:from typing import Any, Dict, List, Optional
+core/generator/thesis_generator.py:17:import docx
+core/generator/thesis_generator.py:18:from docx import Document
+core/generator/thesis_generator.py:19:from docx.enum.text import WD_ALIGN_PARAGRAPH
+core/generator/thesis_generator.py:20:from docx.shared import Cm, Pt
+core/review/format_auditor.py:3:from __future__ import annotations
+core/review/format_auditor.py:5:from typing import Any
+core/review/format_auditor.py:7:from models.document_model import ParsedDocument
+core/review/audit_engine.py:3:from __future__ import annotations
+core/review/audit_engine.py:5:from dataclasses import dataclass
+core/review/audit_engine.py:7:from engines.finding_engine import build_findings, summarize

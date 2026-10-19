@@ -1,0 +1,12 @@
+requirements.txt:13:python-dotenv>=1.0.1
+app.py:4:Built with Material Design 3 (M3) design tokens, WCAG 2.2 AA accessibility, and SQLite WAL storage.
+app.py:9:import tempfile
+app.py:55:# Material Design 3 CSS Design Tokens & Styles
+app.py:300:            with tempfile.TemporaryDirectory() as temp_dir:
+app.py:584:            with tempfile.TemporaryDirectory() as td:
+app.py:644:        - 🎨 **[Material Design 3 (M3)](https://m3.material.io/):** Sistem token antarmuka semantik, tipografi berjenjang, dan palet dinamis.
+core/utils/security.py:8:import tempfile
+core/utils/security.py:35:class TempFileManager:
+core/utils/security.py:43:        self.temp_dir = tempfile.mkdtemp(prefix=self.prefix)
+core/evaluation/matcher.py:89:                unmatched_refs.remove(matched_ref)
+core/evaluation/matcher.py:90:                unmatched_detected.remove(det)

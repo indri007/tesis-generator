@@ -1,0 +1,99 @@
+=== BIT 3: RELEASE AUDIT ===
+Fri Oct 16 18:13:30 WIB 2026
+
+=== 1. VALIDASI JSON DAN PEMISAHAN DATA ===
+development_set.json split= development dataset_id= DS-DEV-MIKOM-2026 items= 5 items_with_id= 0 unique_ids= 0 duplicate_ids= 0
+evaluation_set.json split= evaluation dataset_id= DS-EVAL-MIKOM-2026 items= 7 items_with_id= 0 unique_ids= 0 duplicate_ids= 0
+OVERLAPPING_IDS: 0
+ID_OVERLAP_CHECK: PASS (berdasarkan ID yang tersedia)
+SCHEMA_REQUIRED: ['schema_version', 'split', 'dataset_id', 'items']
+SCHEMA_FIELDS: ['schema_version', 'split', 'dataset_id', 'items']
+
+=== 2. ENTRY POINT DAN KONFIGURASI ===
+PASS: app.py ada
+PASS: requirements.txt ada
+PASS: config.toml ada
+2:maxUploadSize = 200
+6:[theme]
+14:gatherUsageStats = false
+
+=== 3. PERUBAHAN FIXTURE ===
+ golden_dataset/documents/TEST-001_normal.docx       | Bin 41892 -> 41360 bytes
+ golden_dataset/documents/TEST-002_margin_salah.docx | Bin 41891 -> 41359 bytes
+ golden_dataset/documents/TEST-003_font_salah.docx   | Bin 41875 -> 41290 bytes
+ golden_dataset/documents/TEST-004_bab3_hilang.docx  | Bin 41194 -> 40733 bytes
+ .../documents/TEST-005_citation_missing_bib.docx    | Bin 41843 -> 41315 bytes
+ .../documents/TEST-006_variable_mutation.docx       | Bin 41895 -> 41363 bytes
+ .../documents/TEST-007_formula_error.docx           | Bin 41892 -> 41360 bytes
+ .../documents/TEST-008_stat_contradiction.docx      | Bin 41887 -> 41356 bytes
+ .../documents/TEST-009_sample_mismatch.docx         | Bin 41892 -> 41360 bytes
+ golden_dataset/documents/TEST-010_journal.docx      | Bin 36817 -> 36817 bytes
+ golden_dataset/documents/TEST-010_thesis.docx       | Bin 41892 -> 41360 bytes
+ 11 files changed, 0 insertions(+), 0 deletions(-)
+
+Daftar fixture yang berubah:
+golden_dataset/documents/TEST-001_normal.docx
+golden_dataset/documents/TEST-002_margin_salah.docx
+golden_dataset/documents/TEST-003_font_salah.docx
+golden_dataset/documents/TEST-004_bab3_hilang.docx
+golden_dataset/documents/TEST-005_citation_missing_bib.docx
+golden_dataset/documents/TEST-006_variable_mutation.docx
+golden_dataset/documents/TEST-007_formula_error.docx
+golden_dataset/documents/TEST-008_stat_contradiction.docx
+golden_dataset/documents/TEST-009_sample_mismatch.docx
+golden_dataset/documents/TEST-010_journal.docx
+golden_dataset/documents/TEST-010_thesis.docx
+
+=== 4. PEMERIKSAAN KEBERSIHAN PATCH ===
+git diff --check exit=0
+
+=== 5. TES OTOMATIS ===
+..................................................                       [100%]
+=============================== warnings summary ===============================
+<frozen importlib._bootstrap>:241
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute
+
+<frozen importlib._bootstrap>:241
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute
+
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+50 passed, 5 warnings in 4.09s
+pytest exit=0
+
+=== 6. STATUS AKHIR ===
+## main...origin/main
+ M .gitignore
+ M engines/citation_auditor.py
+ M golden_dataset/documents/TEST-001_normal.docx
+ M golden_dataset/documents/TEST-002_margin_salah.docx
+ M golden_dataset/documents/TEST-003_font_salah.docx
+ M golden_dataset/documents/TEST-004_bab3_hilang.docx
+ M golden_dataset/documents/TEST-005_citation_missing_bib.docx
+ M golden_dataset/documents/TEST-006_variable_mutation.docx
+ M golden_dataset/documents/TEST-007_formula_error.docx
+ M golden_dataset/documents/TEST-008_stat_contradiction.docx
+ M golden_dataset/documents/TEST-009_sample_mismatch.docx
+ M golden_dataset/documents/TEST-010_journal.docx
+ M golden_dataset/documents/TEST-010_thesis.docx
+ M golden_dataset/generator.py
+ M models/document_model.py
+ M tests/test_docx_parser.py
+?? BIT_TESIS_CHECK_FINAL.sh
+?? BIT_TESIS_PATCH_ISOLATION.sh
+?? core/evaluation/benchmark_runner.py
+?? core/evaluation/error_analysis.py
+?? core/evaluation/matcher.py
+?? core/evaluation/metrics.py
+?? core/evaluation/schema.py
+?? data/
+?? golden_dataset/documents/TEST-011_unused_reference.docx
+?? tests/golden_dataset/test_academic_benchmark.py
+?? tests/unit/test_evaluation_metrics.py
+?? tests/unit/test_generator_isolation.py
+
+CATATAN: audit lokal; belum ada staging, commit, push, atau deployment.

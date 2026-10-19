@@ -1,0 +1,219 @@
+==================================================
+BIT 10 — REVERSE ENGINEERING & RELEASE READINESS
+Fri Oct 16 18:20:54 WIB 2026
+==================================================
+
+=== 1. STATUS GIT DAN DIFF ===
+## main...origin/main
+ M .gitignore
+ M engines/citation_auditor.py
+ M golden_dataset/documents/TEST-001_normal.docx
+ M golden_dataset/documents/TEST-002_margin_salah.docx
+ M golden_dataset/documents/TEST-003_font_salah.docx
+ M golden_dataset/documents/TEST-004_bab3_hilang.docx
+ M golden_dataset/documents/TEST-005_citation_missing_bib.docx
+ M golden_dataset/documents/TEST-006_variable_mutation.docx
+ M golden_dataset/documents/TEST-007_formula_error.docx
+ M golden_dataset/documents/TEST-008_stat_contradiction.docx
+ M golden_dataset/documents/TEST-009_sample_mismatch.docx
+ M golden_dataset/documents/TEST-010_journal.docx
+ M golden_dataset/documents/TEST-010_thesis.docx
+ M golden_dataset/generator.py
+ M models/document_model.py
+ M tests/test_docx_parser.py
+?? BIT10_REVERSE_ENGINEERING_ALL.sh
+?? BIT_TESIS_CHECK_FINAL.sh
+?? BIT_TESIS_PATCH_ISOLATION.sh
+?? core/evaluation/benchmark_runner.py
+?? core/evaluation/error_analysis.py
+?? core/evaluation/matcher.py
+?? core/evaluation/metrics.py
+?? core/evaluation/schema.py
+?? data/
+?? golden_dataset/documents/TEST-011_unused_reference.docx
+?? tests/golden_dataset/test_academic_benchmark.py
+?? tests/unit/test_evaluation_metrics.py
+?? tests/unit/test_generator_isolation.py
+diff_check_exit=0
+
+=== 2. VALIDASI BENCHMARK JSON DAN ANOTASI ===
+
+--- data/benchmark/annotated_schema.json ---
+JSON valid: YES
+JSON Schema valid: YES
+
+--- data/benchmark/development_set.json ---
+JSON valid: YES
+split: development
+dataset_id: DS-DEV-MIKOM-2026
+schema_version: 2026.1
+WARNING: reference_annotations kosong untuk DOC-ANON-DEV-001
+item count: 5
+unique document IDs: 5
+items missing references: 0
+label frequency: {'PASS': 8, 'ERROR': 8}
+reviewer label pairs available: 5
+reviewer label list disagreements: 0
+
+--- data/benchmark/evaluation_set.json ---
+JSON valid: YES
+split: evaluation
+dataset_id: DS-EVAL-MIKOM-2026
+schema_version: 2026.1
+WARNING: reference_annotations kosong untuk DOC-ANON-EVAL-001
+item count: 7
+unique document IDs: 7
+items missing references: 0
+label frequency: {'PASS': 11, 'ERROR': 10, 'WARNING': 1}
+reviewer label pairs available: 7
+reviewer label list disagreements: 1
+disagreement IDs: ['DOC-ANON-EVAL-007']
+NOTE: list mismatch is not itself a Cohen's kappa score.
+
+=== SPLIT OVERLAP ===
+development IDs: 5
+evaluation IDs: 7
+overlap count: 0
+
+=== BENCHMARK STRUCTURAL RESULT ===
+ERROR COUNT: 0
+Catatan: validitas anotasi manusia tidak dapat dibuktikan hanya dengan JSON.
+benchmark_script_exit=0
+
+=== 3. AUDIT METRIK DAN KAPPA ===
+core/evaluation/metrics.py:3:Computes precision, recall, F1-score, support, confusion counts per category,
+core/evaluation/metrics.py:27:    def precision(self) -> float | None:
+core/evaluation/metrics.py:35:    def recall(self) -> float | None:
+core/evaluation/metrics.py:43:    def f1_score(self) -> float | None:
+core/evaluation/metrics.py:45:        p = self.precision
+core/evaluation/metrics.py:46:        r = self.recall
+core/evaluation/metrics.py:52:        p = self.precision
+core/evaluation/metrics.py:53:        r = self.recall
+core/evaluation/metrics.py:54:        f1 = self.f1_score
+core/evaluation/metrics.py:63:            "precision": round(p * 100, 2) if p is not None else None,
+core/evaluation/metrics.py:64:            "recall": round(r * 100, 2) if r is not None else None,
+core/evaluation/metrics.py:65:            "f1_score": round(f1 * 100, 2) if f1 is not None else None,
+core/evaluation/metrics.py:66:            "precision_display": f"{p * 100:.1f}%" if p is not None else "N/A (undefined)",
+core/evaluation/metrics.py:67:            "recall_display": f"{r * 100:.1f}%" if r is not None else "N/A (undefined)",
+core/evaluation/metrics.py:78:    micro_metrics: dict[str, Any]
+core/evaluation/metrics.py:79:    macro_metrics: dict[str, Any]
+core/evaluation/metrics.py:87:            "micro_metrics": self.micro_metrics,
+core/evaluation/metrics.py:88:            "macro_metrics": self.macro_metrics,
+core/evaluation/metrics.py:134:def compute_micro_macro_metrics(category_metrics: dict[str, CategoryMetrics]) -> tuple[dict[str, Any], dict[str, Any]]:
+core/evaluation/metrics.py:155:        "precision": round(micro_p * 100, 2) if micro_p is not None else None,
+core/evaluation/metrics.py:156:        "recall": round(micro_r * 100, 2) if micro_r is not None else None,
+core/evaluation/metrics.py:157:        "f1_score": round(micro_f1 * 100, 2) if micro_f1 is not None else None,
+core/evaluation/metrics.py:158:        "precision_display": f"{micro_p * 100:.1f}%" if micro_p is not None else "N/A",
+core/evaluation/metrics.py:159:        "recall_display": f"{micro_r * 100:.1f}%" if micro_r is not None else "N/A",
+core/evaluation/metrics.py:164:    defined_p = [m.precision for m in category_metrics.values() if m.precision is not None]
+core/evaluation/metrics.py:165:    defined_r = [m.recall for m in category_metrics.values() if m.recall is not None]
+core/evaluation/metrics.py:166:    defined_f1 = [m.f1_score for m in category_metrics.values() if m.f1_score is not None]
+core/evaluation/metrics.py:174:        "precision": round(macro_p * 100, 2) if macro_p is not None else None,
+core/evaluation/metrics.py:175:        "recall": round(macro_r * 100, 2) if macro_r is not None else None,
+core/evaluation/metrics.py:176:        "f1_score": round(macro_f1 * 100, 2) if macro_f1 is not None else None,
+core/evaluation/metrics.py:177:        "precision_display": f"{macro_p * 100:.1f}%" if macro_p is not None else "N/A",
+core/evaluation/metrics.py:178:        "recall_display": f"{macro_r * 100:.1f}%" if macro_r is not None else "N/A",
+core/evaluation/metrics.py:185:def compute_cohens_kappa(
+core/evaluation/metrics.py:199:            "observed_agreement": None,
+core/evaluation/metrics.py:235:        elif kappa <= 0.60:
+core/evaluation/metrics.py:250:        "observed_agreement": round(po * 100, 2),
+core/evaluation/benchmark_runner.py:19:    compute_cohens_kappa,
+core/evaluation/benchmark_runner.py:20:    compute_micro_macro_metrics,
+core/evaluation/benchmark_runner.py:97:        micro_metrics, macro_metrics = compute_micro_macro_metrics(cat_metrics)
+core/evaluation/benchmark_runner.py:104:            micro_metrics=micro_metrics,
+core/evaluation/benchmark_runner.py:105:            macro_metrics=macro_metrics,
+core/evaluation/benchmark_runner.py:109:        agreement = compute_cohens_kappa(r1_all_labels, r2_all_labels)
+core/evaluation/benchmark_runner.py:126:        micro_f1 = summary.micro_metrics.get("f1_score")
+core/evaluation/benchmark_runner.py:127:        micro_p = summary.micro_metrics.get("precision")
+core/evaluation/benchmark_runner.py:128:        micro_r = summary.micro_metrics.get("recall")
+core/evaluation/benchmark_runner.py:131:            micro_f1 is not None and micro_f1 >= 85.0
+core/evaluation/benchmark_runner.py:132:            and micro_p is not None and micro_p >= 85.0
+core/evaluation/benchmark_runner.py:133:            and micro_r is not None and micro_r >= 85.0
+core/evaluation/benchmark_runner.py:138:            "threshold_target": ">= 85.0%",
+core/evaluation/benchmark_runner.py:140:            "micro_precision": f"{micro_p}%" if micro_p is not None else "N/A",
+core/evaluation/benchmark_runner.py:141:            "micro_recall": f"{micro_r}%" if micro_r is not None else "N/A",
+core/evaluation/benchmark_runner.py:206:                f"{m.to_dict()['precision_display']} | {m.to_dict()['recall_display']} | {m.to_dict()['f1_display']} |"
+core/evaluation/benchmark_runner.py:233:| **Micro Precision** | >= 85.0% | {quality_gate['micro_precision']} | {'✓' if quality_gate['status'] == 'PASSED' else '❌'} |
+core/evaluation/benchmark_runner.py:234:| **Micro Recall** | >= 85.0% | {quality_gate['micro_recall']} | {'✓' if quality_gate['status'] == 'PASSED' else '❌'} |
+core/evaluation/benchmark_runner.py:235:| **Micro F1-Score** | >= 85.0% | {quality_gate['micro_f1']} | {'✓' if quality_gate['status'] == 'PASSED' else '❌'} |
+core/evaluation/benchmark_runner.py:253:- **Micro Average:** Precision: {summary.micro_metrics['precision_display']} | Recall: {summary.micro_metrics['recall_display']} | F1: {summary.micro_metrics['f1_display']}
+core/evaluation/benchmark_runner.py:254:- **Macro Average:** Precision: {summary.macro_metrics['precision_display']} | Recall: {summary.macro_metrics['recall_display']} | F1: {summary.macro_metrics['f1_display']}
+core/evaluation/benchmark_runner.py:261:- **Persentase Kesepakatan ($P_o$):** {agreement.get('observed_agreement', 'N/A')}%
+tests/golden_dataset/test_academic_benchmark.py:132:    micro = summary.micro_metrics
+tests/golden_dataset/test_academic_benchmark.py:133:    assert micro["precision"] is not None
+tests/golden_dataset/test_academic_benchmark.py:134:    assert micro["recall"] is not None
+tests/golden_dataset/test_academic_benchmark.py:135:    assert micro["f1_score"] is not None
+tests/golden_dataset/test_academic_benchmark.py:138:    assert micro["precision"] >= 85.0, f"Precision {micro['precision']}% below 85%"
+tests/golden_dataset/test_academic_benchmark.py:139:    assert micro["recall"] >= 85.0, f"Recall {micro['recall']}% below 85%"
+tests/golden_dataset/test_academic_benchmark.py:140:    assert micro["f1_score"] >= 85.0, f"F1-score {micro['f1_score']}% below 85%"
+tests/golden_dataset/test_academic_benchmark.py:144:    assert agreement["observed_agreement"] is not None
+tests/golden_dataset/test_academic_benchmark.py:147:    assert agreement["kappa"] >= 0.60, f"Cohen's Kappa {agreement['kappa']} below 0.60"
+tests/golden_dataset/test_academic_benchmark.py:151:    print(f"Micro Precision : {micro['precision']}%")
+tests/golden_dataset/test_academic_benchmark.py:152:    print(f"Micro Recall    : {micro['recall']}%")
+tests/golden_dataset/test_academic_benchmark.py:153:    print(f"Micro F1-Score  : {micro['f1_score']}%")
+
+=== 4. DEPENDENSI ===
+No broken requirements found.
+pip_check_exit=0
+No known vulnerabilities found
+pip_audit_exit=0
+
+=== 5. REGRESI TES ===
+..................................................                       [100%]
+=============================== warnings summary ===============================
+<frozen importlib._bootstrap>:241
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute
+
+<frozen importlib._bootstrap>:241
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute
+
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+50 passed, 5 warnings in 3.94s
+pytest_exit=0
+
+=== 6. BATAS HALAMAN DAN UPLOAD ===
+app.py:117:    - **Maksimal:** 175 Halaman (Hard Limit)
+app.py:136:    config={"max_pages": 175, "margins_cm": {"top": 4.0, "left": 4.0, "bottom": 3.0, "right": 3.0}}
+app.py:176:            g_target_pages = st.slider("Target Tebal Halaman (Maksimal 175)", min_value=50, max_value=175, value=100)
+app.py:266:        uploaded_thesis = st.file_uploader(
+app.py:267:            "Unggah naskah tesis lengkap (.docx atau .pdf, maks. 175 halaman)",
+app.py:273:        uploaded_journal = st.file_uploader(
+app.py:300:            with tempfile.TemporaryDirectory() as temp_dir:
+app.py:317:                # Cek Batas 175 Halaman (PDF Fisik & Estimasi DOCX)
+app.py:318:                page_count = doc.get_effective_page_count()
+app.py:319:                if doc.is_page_count_estimated:
+app.py:320:                    st.info(f"ℹ️ Estimasi Format DOCX: Terdeteksi sekitar ~{page_count} halaman (berdasarkan densitas ~275 kata/halaman spasi ganda MIKOM 2026). Jumlah cetak aktual dapat sedikit berbeda tergantung tabel dan margin.")
+app.py:321:                if page_count > 175:
+app.py:322:                    if doc.is_page_count_estimated:
+app.py:323:                        st.error(f"❌ FATAL ERROR: Naskah Word (.docx) diperkirakan mencapai ~{page_count} halaman, melampaui batas maksimal 175 halaman. Harap kurangi volume naskah.")
+app.py:325:                        st.error(f"❌ FATAL ERROR: Naskah PDF fisik melebihi batas 175 halaman (Terdeteksi pasti: {page_count} halaman).")
+app.py:522:        doc_info = {"filename": uploaded_thesis.name, "page_count": doc.page_count}
+app.py:567:    docx_file = st.file_uploader("Unggah naskah Word (.docx) untuk auto-revisi", type=["docx"], key="auto_fix_uploader")
+app.py:584:            with tempfile.TemporaryDirectory() as td:
+app.py:628:        st.markdown("**1. Ingest Naskah**\nUpload berkas `.docx` atau `.pdf` (maks. 175 halaman).")
+.streamlit/config.toml:2:maxUploadSize = 200
+
+=== 7. PERUBAHAN FIXTURE ===
+-	-	golden_dataset/documents/TEST-001_normal.docx
+-	-	golden_dataset/documents/TEST-002_margin_salah.docx
+-	-	golden_dataset/documents/TEST-003_font_salah.docx
+-	-	golden_dataset/documents/TEST-004_bab3_hilang.docx
+-	-	golden_dataset/documents/TEST-005_citation_missing_bib.docx
+-	-	golden_dataset/documents/TEST-006_variable_mutation.docx
+-	-	golden_dataset/documents/TEST-007_formula_error.docx
+-	-	golden_dataset/documents/TEST-008_stat_contradiction.docx
+-	-	golden_dataset/documents/TEST-009_sample_mismatch.docx
+-	-	golden_dataset/documents/TEST-010_journal.docx
+-	-	golden_dataset/documents/TEST-010_thesis.docx
+Periksa apakah perubahan DOCX memang disengaja sebelum commit.
+
+=== 8. STATUS RILIS ===
+Tes dan audit di atas adalah bukti lokal, bukan bukti deployment.
+Jangan klaim akurasi >=85% atau kappa >=0.60 sebelum metrik aktual diverifikasi.
+Jangan commit fixture yang berubah tanpa pemeriksaan.
+Tidak ada staging, commit, push, atau deployment.

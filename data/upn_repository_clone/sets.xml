@@ -1,0 +1,1380 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet type='text/xsl' href='/oai2.xsl' ?>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+  <responseDate>2026-10-17T14:02:48Z</responseDate>
+  <request verb="ListSets">https://repository.upnjatim.ac.id/cgi/oai2</request>
+  <ListSets>
+    <set>
+      <setSpec>7374617475733D707562</setSpec>
+      <setName>Status = Published</setName>
+    </set>
+    <set>
+      <setSpec>7374617475733D756E707562</setSpec>
+      <setName>Status = Unpublished</setName>
+    </set>
+    <set>
+      <setSpec>7374617475733D7375626D6974746564</setSpec>
+      <setName>Status = Submitted</setName>
+    </set>
+    <set>
+      <setSpec>7374617475733D696E7072657373</setSpec>
+      <setName>Status = In Press</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4843</setSpec>
+      <setName>Subject = H Social Sciences: HC Economics</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D53:5331:53363331</setSpec>
+      <setName>Subject = S Agriculture: S Agriculture (General): S631-667 Fertilizers and Improvement of the soil</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D44:4454</setSpec>
+      <setName>Subject = D History General and Old World: DT Africa</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D52:5243:524331323030</setSpec>
+      <setName>Subject = R Medicine: RC Internal medicine: RC1200 Sports Medicine</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:5031:5039392E35</setSpec>
+      <setName>Subject = P Language and Literature: P Philology. Linguistics: P99.5 Non Verbal communication</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D55</setSpec>
+      <setName>Subject = U Military Science</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D56:5631</setSpec>
+      <setName>Subject = V Naval Science: V Naval Science (General)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D43:4344:4344393231</setSpec>
+      <setName>Subject = C Auxiliary Sciences of History: CD Diplomatics. Archives. Seals: CD921 Archives</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D52:524C</setSpec>
+      <setName>Subject = R Medicine: RL Dermatology</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4E:4E31:4E3831</setSpec>
+      <setName>Subject = N Fine Arts: N Visual arts: N81-390 Study and teaching. Research</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D47:474E</setSpec>
+      <setName>Subject = G Geography. Anthropology. Recreation: GN Anthropology</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D42:4256:425631343630</setSpec>
+      <setName>Subject = B Philosophy. Psychology. Religion: BV Practical Theology: BV1460 Religious Education</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4847:4847343530312D36303531</setSpec>
+      <setName>Subject = H Social Sciences: HG Finance: HG4501-6051 Investment, capital formation, speculation</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4844:484433302E3238</setSpec>
+      <setName>Subject = H Social Sciences: HD Industries. Land use. Labor: HD30.28 Strategic Planning</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4C:4C31</setSpec>
+      <setName>Subject = L Education: L Education (General)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4847</setSpec>
+      <setName>Subject = H Social Sciences: HG Finance</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D44:444A</setSpec>
+      <setName>Subject = D History General and Old World: DJ Netherlands (Holland)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D46</setSpec>
+      <setName>Subject = F History United States, Canada, Latin America</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D44:4445</setSpec>
+      <setName>Subject = D History General and Old World: DE The Mediterranean Region. The Greco-Roman World</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4844:484433302E33</setSpec>
+      <setName>Subject = H Social Sciences: HD Industries. Land use. Labor: HD30.3 Communication in Organizations</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54:5431:5435352E34</setSpec>
+      <setName>Subject = T Technology: T Technology (General): T55.4-60.8 Industrial engineering. Management engineering</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4A:4A46:4A46323032</setSpec>
+      <setName>Subject = J Political Science: JF Political institutions (General): JF20-2112 Political institutions and public administration</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:5044</setSpec>
+      <setName>Subject = P Language and Literature: PD Germanic languages</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D47:4743</setSpec>
+      <setName>Subject = G Geography. Anthropology. Recreation: GC Oceanography</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4A:4A4B</setSpec>
+      <setName>Subject = J Political Science: JK Political institutions (United States)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:484D</setSpec>
+      <setName>Subject = H Social Sciences: HM Sociology</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4844:48443238</setSpec>
+      <setName>Subject = H Social Sciences: HD Industries. Land use. Labor: HD28 Management. Industrial Management</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D44:4446</setSpec>
+      <setName>Subject = D History General and Old World: DF Greece</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4847:484731373039</setSpec>
+      <setName>Subject = H Social Sciences: HG Finance: HG1709 Data processing</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4C:4C43:4C4335323031</setSpec>
+      <setName>Subject = L Education: LC Special aspects of education: LC5201 Education extension. Adult education. Continuing education</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4E:4E43</setSpec>
+      <setName>Subject = N Fine Arts: NC Drawing Design Illustration</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D53:5331</setSpec>
+      <setName>Subject = S Agriculture: S Agriculture (General)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54:5444</setSpec>
+      <setName>Subject = T Technology: TD Environmental technology. Sanitary engineering</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D44:4431:44383339</setSpec>
+      <setName>Subject = D History General and Old World: D History (General): D839 Post-war History, 1945 on</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4E:4E31:4E343030</setSpec>
+      <setName>Subject = N Fine Arts: N Visual arts: N400-3990 Art museums, galleries, etc.</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4851</setSpec>
+      <setName>Subject = H Social Sciences: HQ The family. Marriage. Woman</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:484E</setSpec>
+      <setName>Subject = H Social Sciences: HN Social history and conditions. Social problems. Social reform</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D44:444A:444A4B</setSpec>
+      <setName>Subject = D History General and Old World: DJ Netherlands (Holland): DJK Eastern Europe</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D41</setSpec>
+      <setName>Subject = A General Works</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D46:4631303031</setSpec>
+      <setName>Subject = F History United States, Canada, Latin America: F1001 Canada (General)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:505A</setSpec>
+      <setName>Subject = P Language and Literature: PZ Childrens literature</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4846:484635303031</setSpec>
+      <setName>Subject = H Social Sciences: HF Commerce: HF5001 Business. Business Administration</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D51:5142</setSpec>
+      <setName>Subject = Q Science: QB Astronomy</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:484A</setSpec>
+      <setName>Subject = H Social Sciences: HJ Public Finance</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D43:4342</setSpec>
+      <setName>Subject = C Auxiliary Sciences of History: CB History of civilization</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:5041</setSpec>
+      <setName>Subject = P Language and Literature: PA Classical philology</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D44:4447</setSpec>
+      <setName>Subject = D History General and Old World: DG Italy</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4E:4E45</setSpec>
+      <setName>Subject = N Fine Arts: NE Print media</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4D:4D54</setSpec>
+      <setName>Subject = M Music and Books on Music: MT Musical instruction and study</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D52:5231</setSpec>
+      <setName>Subject = R Medicine: R Medicine (General)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D47:4745</setSpec>
+      <setName>Subject = G Geography. Anthropology. Recreation: GE Environmental Sciences</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54:5431:54323031</setSpec>
+      <setName>Subject = T Technology: T Technology (General): T201 Patents. Trademarks</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D44:4448</setSpec>
+      <setName>Subject = D History General and Old World: DH Netherlands (The Low Countries)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4B:4B46</setSpec>
+      <setName>Subject = K Law: KF United States Federal Law</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4854</setSpec>
+      <setName>Subject = H Social Sciences: HT Communities. Classes. Races</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54:5441</setSpec>
+      <setName>Subject = T Technology: TA Engineering (General). Civil engineering (General)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D51:5141:514137362E392E413235</setSpec>
+      <setName>Subject = Q Science: QA Mathematics: QA76.9 .A25 Computer Security</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D47:4746</setSpec>
+      <setName>Subject = G Geography. Anthropology. Recreation: GF Human ecology. Anthropogeography</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:5031:7039332E35</setSpec>
+      <setName>Subject = P Language and Literature: P Philology. Linguistics: P93.5 Visual Communication</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D44:4443</setSpec>
+      <setName>Subject = D History General and Old World: DC France</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D44:4431:44393031</setSpec>
+      <setName>Subject = D History General and Old World: D History (General): D901 Europe (General)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54:5453</setSpec>
+      <setName>Subject = T Technology: TS Manufactures</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54:5453:5453313535</setSpec>
+      <setName>Subject = T Technology: TS Manufactures: TS 155-194 Production Management, Operations Management</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D42</setSpec>
+      <setName>Subject = B Philosophy. Psychology. Religion</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D51:514B</setSpec>
+      <setName>Subject = Q Science: QK Botany</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D41:4149</setSpec>
+      <setName>Subject = A General Works: AI Indexes (General)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:504E:504E31393933</setSpec>
+      <setName>Subject = P Language and Literature: PN Literature (General): PN1993 Motion Pictures</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:5031:7039342E37</setSpec>
+      <setName>Subject = P Language and Literature: P Philology. Linguistics: P94.7 Interpersonal communication</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D46:46303031</setSpec>
+      <setName>Subject = F History United States, Canada, Latin America: F001 United States local history</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54:5458</setSpec>
+      <setName>Subject = T Technology: TX Home economics</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D47:4754</setSpec>
+      <setName>Subject = G Geography. Anthropology. Recreation: GT Manners and customs</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4846</setSpec>
+      <setName>Subject = H Social Sciences: HF Commerce</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4C</setSpec>
+      <setName>Subject = L Education</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54:5450</setSpec>
+      <setName>Subject = T Technology: TP Chemical technology</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4845</setSpec>
+      <setName>Subject = H Social Sciences: HE Transportation and Communications</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4844:484433302E323133</setSpec>
+      <setName>Subject = H Social Sciences: HD Industries. Land use. Labor: HD30.213 Decision Support Systems</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:5053</setSpec>
+      <setName>Subject = P Language and Literature: PS American literature</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4C:4C46</setSpec>
+      <setName>Subject = L Education: LF Individual institutions (Europe)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D42:4253</setSpec>
+      <setName>Subject = B Philosophy. Psychology. Religion: BS The Bible</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4E:4E41:4E4132363935</setSpec>
+      <setName>Subject = N Fine Arts: NA Architecture: NA2695-2793 Architectural drawing and design</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4C:4C45</setSpec>
+      <setName>Subject = L Education: LE Individual institutions (America except United States)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4E:4E41:4E4132343030</setSpec>
+      <setName>Subject = N Fine Arts: NA Architecture: NA2400-2460 Museums. Exhibitions</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D42:4258</setSpec>
+      <setName>Subject = B Philosophy. Psychology. Religion: BX Christian Denominations</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D47:4752</setSpec>
+      <setName>Subject = G Geography. Anthropology. Recreation: GR Folklore</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D52:524D</setSpec>
+      <setName>Subject = R Medicine: RM Therapeutics. Pharmacology</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4A:4A41</setSpec>
+      <setName>Subject = J Political Science: JA Political science (General)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D44:4431:44303531</setSpec>
+      <setName>Subject = D History General and Old World: D History (General): D051 Ancient History</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D51:5141:51413736</setSpec>
+      <setName>Subject = Q Science: QA Mathematics: QA76 Computer software</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:484A:484A39373031</setSpec>
+      <setName>Subject = H Social Sciences: HJ Public Finance: HJ9701-9940 Public accounting. Auditing</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D51:5141:51413735</setSpec>
+      <setName>Subject = Q Science: QA Mathematics: QA75 Electronic computers. Computer science</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D42:4250</setSpec>
+      <setName>Subject = B Philosophy. Psychology. Religion: BP Islam. Bahaism. Theosophy, etc</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4D:4D4C</setSpec>
+      <setName>Subject = M Music and Books on Music: ML Literature of music</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D52:5247</setSpec>
+      <setName>Subject = R Medicine: RG Gynecology and obstetrics</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4A:4A58</setSpec>
+      <setName>Subject = J Political Science: JX International law</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D51:5152:5152333535</setSpec>
+      <setName>Subject = Q Science: QR Microbiology: QR355 Virology</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54:5431:5435382E36</setSpec>
+      <setName>Subject = T Technology: T Technology (General): T58.6-58.62 Management Information Systems</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4A:4A4E:4A4E313031</setSpec>
+      <setName>Subject = J Political Science: JN Political institutions (Europe): JN101 Great Britain</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4844:484436322E3135</setSpec>
+      <setName>Subject = H Social Sciences: HD Industries. Land use. Labor: HD62.15 Total Quality Management</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4844:484439393830</setSpec>
+      <setName>Subject = H Social Sciences: HD Industries. Land use. Labor: HD9980 Service Industries</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4A:4A4E:4A4E31313837</setSpec>
+      <setName>Subject = J Political Science: JN Political institutions (Europe): JN1187 Scotland</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D53:5346</setSpec>
+      <setName>Subject = S Agriculture: SF Animal culture</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4A:4A53</setSpec>
+      <setName>Subject = J Political Science: JS Local government Municipal government</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54:5453:5453313830</setSpec>
+      <setName>Subject = T Technology: TS Manufactures: TS 180-TS180.8 Material Handling</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D43</setSpec>
+      <setName>Subject = C Auxiliary Sciences of History</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4C:4C54</setSpec>
+      <setName>Subject = L Education: LT Textbooks</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4846:4846353638312E5433</setSpec>
+      <setName>Subject = H Social Sciences: HF Commerce: HF5681.T3 Tax Accounting</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D44:4431</setSpec>
+      <setName>Subject = D History General and Old World: D History (General)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D44</setSpec>
+      <setName>Subject = D History General and Old World</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4A</setSpec>
+      <setName>Subject = J Political Science</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D52:5243</setSpec>
+      <setName>Subject = R Medicine: RC Internal medicine</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D51:5141:514137362E363235</setSpec>
+      <setName>Subject = Q Science: QA Mathematics: QA76.625 Internet Programming</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54:5450:5450313535</setSpec>
+      <setName>Subject = T Technology: TP Chemical technology: TP155 Chemical engineering</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:5031:50333032</setSpec>
+      <setName>Subject = P Language and Literature: P Philology. Linguistics: P302-302.87 Discourse analysis</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D43:4344</setSpec>
+      <setName>Subject = C Auxiliary Sciences of History: CD Diplomatics. Archives. Seals</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D51:5144</setSpec>
+      <setName>Subject = Q Science: QD Chemistry</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D52:5245</setSpec>
+      <setName>Subject = R Medicine: RE Ophthalmology</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D47:4731</setSpec>
+      <setName>Subject = G Geography. Anthropology. Recreation: G Geography (General)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4B:4B31</setSpec>
+      <setName>Subject = K Law: K Law (General)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D52:5246</setSpec>
+      <setName>Subject = R Medicine: RF Otorhinolaryngology</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D56:564D</setSpec>
+      <setName>Subject = V Naval Science: VM Naval architecture. Shipbuilding. Marine engineering</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D45:45313531</setSpec>
+      <setName>Subject = E History America: E151 United States (General)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54:5450:5450353030</setSpec>
+      <setName>Subject = T Technology: TP Chemical technology: TP500 Fermentation industries. Beverages. Alcohol</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D51:5141:514137362E3837</setSpec>
+      <setName>Subject = Q Science: QA Mathematics: QA76.87 Neural computers</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D53:5348</setSpec>
+      <setName>Subject = S Agriculture: SH Aquaculture. Fisheries. Angling</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D52:5241:524130343231</setSpec>
+      <setName>Subject = R Medicine: RA Public aspects of medicine: RA0421 Public health. Hygiene. Preventive Medicine</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D5A:5A303034</setSpec>
+      <setName>Subject = Z Bibliography. Library Science. Information Resources: Z004 Books. Writing. Paleography</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D5A:5A41:5A4134343530</setSpec>
+      <setName>Subject = Z Bibliography. Library Science. Information Resources: ZA Information resources: ZA4450 Databases</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:5042</setSpec>
+      <setName>Subject = P Language and Literature: PB Modern European Languages</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4A:4A56</setSpec>
+      <setName>Subject = J Political Science: JV Colonies and colonization. Emigration and immigration. International migration</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D41:4143</setSpec>
+      <setName>Subject = A General Works: AC Collections. Series. Collected works</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4E:4E31:4E38363030</setSpec>
+      <setName>Subject = N Fine Arts: N Visual arts: N8600-8675 Economics of art</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4E:4E31</setSpec>
+      <setName>Subject = N Fine Arts: N Visual arts</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D51:5141</setSpec>
+      <setName>Subject = Q Science: QA Mathematics</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D42:4244</setSpec>
+      <setName>Subject = B Philosophy. Psychology. Religion: BD Speculative Philosophy</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D52:5254</setSpec>
+      <setName>Subject = R Medicine: RT Nursing</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54:544B</setSpec>
+      <setName>Subject = T Technology: TK Electrical engineering. Electronics Nuclear engineering</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4D</setSpec>
+      <setName>Subject = M Music and Books on Music</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4A:4A46:4A4631333338</setSpec>
+      <setName>Subject = J Political Science: JF Political institutions (General): JF1338-2112 Public administration</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D43:4353</setSpec>
+      <setName>Subject = C Auxiliary Sciences of History: CS Genealogy</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4D:4D31</setSpec>
+      <setName>Subject = M Music and Books on Music: M Music</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4A:4A5A</setSpec>
+      <setName>Subject = J Political Science: JZ International relations</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4C:4C47</setSpec>
+      <setName>Subject = L Education: LG Individual institutions (Asia. Africa)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4831</setSpec>
+      <setName>Subject = H Social Sciences: H Social Sciences (General)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D41:414D</setSpec>
+      <setName>Subject = A General Works: AM Museums (General). Collectors and collecting (General)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D44:444C</setSpec>
+      <setName>Subject = D History General and Old World: DL Northern Europe. Scandinavia</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D42:4256</setSpec>
+      <setName>Subject = B Philosophy. Psychology. Religion: BV Practical Theology</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D52:5241:524131303031</setSpec>
+      <setName>Subject = R Medicine: RA Public aspects of medicine: RA1001 Forensic Medicine. Medical jurisprudence. Legal medicine</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:504E:504E30303830</setSpec>
+      <setName>Subject = P Language and Literature: PN Literature (General): PN0080 Criticism</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4C:4C43</setSpec>
+      <setName>Subject = L Education: LC Special aspects of education</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D44:4452</setSpec>
+      <setName>Subject = D History General and Old World: DR Balkan Peninsula</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D52:524A</setSpec>
+      <setName>Subject = R Medicine: RJ Pediatrics</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D45:453131</setSpec>
+      <setName>Subject = E History America: E11 America (General)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D51:5150</setSpec>
+      <setName>Subject = Q Science: QP Physiology</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:504B</setSpec>
+      <setName>Subject = P Language and Literature: PK Indo-Iranian</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4C:4C42:4C4231363033</setSpec>
+      <setName>Subject = L Education: LB Theory and practice of education: LB1603 Secondary Education. High schools</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4846:484635343130</setSpec>
+      <setName>Subject = H Social Sciences: HF Commerce: HF5410 Marketing. Distribution of Products</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4858</setSpec>
+      <setName>Subject = H Social Sciences: HX Socialism. Communism. Anarchism</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D5A:5A41:5A4134303530</setSpec>
+      <setName>Subject = Z Bibliography. Library Science. Information Resources: ZA Information resources: ZA4050 Electronic information resources</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D51:5131</setSpec>
+      <setName>Subject = Q Science: Q Science (General)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50</setSpec>
+      <setName>Subject = P Language and Literature</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4E:4E41</setSpec>
+      <setName>Subject = N Fine Arts: NA Architecture</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D43:4331</setSpec>
+      <setName>Subject = C Auxiliary Sciences of History: C Auxiliary sciences of history (General)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D51:5148:5148343236</setSpec>
+      <setName>Subject = Q Science: QH Natural history: QH426 Genetics</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:5046</setSpec>
+      <setName>Subject = P Language and Literature: PF West Germanic</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D51:5141:514137362E37362E453935</setSpec>
+      <setName>Subject = Q Science: QA Mathematics: QA76.76.E95 Expert Systems</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D51</setSpec>
+      <setName>Subject = Q Science</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4A:4A4C</setSpec>
+      <setName>Subject = J Political Science: JL Political institutions (America except United States)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:5045</setSpec>
+      <setName>Subject = P Language and Literature: PE English</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D44:4441:444157</setSpec>
+      <setName>Subject = D History General and Old World: DA Great Britain: DAW Central Europe</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4853</setSpec>
+      <setName>Subject = H Social Sciences: HS Societies secret benevolent etc</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D44:4444</setSpec>
+      <setName>Subject = D History General and Old World: DD Germany</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4B</setSpec>
+      <setName>Subject = K Law</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D56</setSpec>
+      <setName>Subject = V Naval Science</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4844:484433302E3237</setSpec>
+      <setName>Subject = H Social Sciences: HD Industries. Land use. Labor: HD30.27 Business Forecasting</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D52:5242</setSpec>
+      <setName>Subject = R Medicine: RB Pathology</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54:5445</setSpec>
+      <setName>Subject = T Technology: TE Highway engineering. Roads and pavements</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D53:5342:3935302D393839</setSpec>
+      <setName>Subject = S Agriculture: SB Plant culture: SB950-989 Pest Control and Treatment of Diseases, Plant Protection</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D51:5141:514137362E36</setSpec>
+      <setName>Subject = Q Science: QA Mathematics: QA76.6 Computer Programming</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D47:4741</setSpec>
+      <setName>Subject = G Geography. Anthropology. Recreation: GA Mathematical geography. Cartography</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54:5446</setSpec>
+      <setName>Subject = T Technology: TF Railroad engineering and operation</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:5031:703935</setSpec>
+      <setName>Subject = P Language and Literature: P Philology. Linguistics: P95-95.6 Oral communication. Speech</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D55:5531</setSpec>
+      <setName>Subject = U Military Science: U Military Science (General)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54:544B:544B35313035</setSpec>
+      <setName>Subject = T Technology: TK Electrical engineering. Electronics Nuclear engineering: TK5105 Computer Network</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54:544B:544B353130352E383838</setSpec>
+      <setName>Subject = T Technology: TK Electrical engineering. Electronics Nuclear engineering: TK5105.888 World Wild Web</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4846:4846353638362E4338</setSpec>
+      <setName>Subject = H Social Sciences: HF Commerce: HF5686.C8 Cost Accounting</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D42:424C</setSpec>
+      <setName>Subject = B Philosophy. Psychology. Religion: BL Religion</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54:544A</setSpec>
+      <setName>Subject = T Technology: TJ Mechanical engineering and machinery</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D52:5243:524330333231</setSpec>
+      <setName>Subject = R Medicine: RC Internal medicine: RC0321 Neuroscience. Biological psychiatry. Neuropsychiatry</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D44:4455</setSpec>
+      <setName>Subject = D History General and Old World: DU Oceania (South Seas)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D42:4252</setSpec>
+      <setName>Subject = B Philosophy. Psychology. Religion: BR Christianity</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:5054</setSpec>
+      <setName>Subject = P Language and Literature: PT Germanic literature</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4846:484635363031</setSpec>
+      <setName>Subject = H Social Sciences: HF Commerce: HF5601 Accounting</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D44:4431:44383830</setSpec>
+      <setName>Subject = D History General and Old World: D History (General): D880 Developing Countries</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4841</setSpec>
+      <setName>Subject = H Social Sciences: HA Statistics</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D51:5148:5148333031</setSpec>
+      <setName>Subject = Q Science: QH Natural history: QH301 Biology</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D52:524B</setSpec>
+      <setName>Subject = R Medicine: RK Dentistry</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4B:4B44:4B4443</setSpec>
+      <setName>Subject = K Law: KD England and Wales: KDC Scotland</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54:5454</setSpec>
+      <setName>Subject = T Technology: TT Handicrafts Arts and crafts</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:504E:504E31393930</setSpec>
+      <setName>Subject = P Language and Literature: PN Literature (General): PN1990 Broadcasting</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4E:4E58</setSpec>
+      <setName>Subject = N Fine Arts: NX Arts in general</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4C:4C42:4C4231353031</setSpec>
+      <setName>Subject = L Education: LB Theory and practice of education: LB1501 Primary Education</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:504A</setSpec>
+      <setName>Subject = P Language and Literature: PJ Semitic</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4C:4C42:4C4232333030</setSpec>
+      <setName>Subject = L Education: LB Theory and practice of education: LB2300 Higher Education</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:5031:503939</setSpec>
+      <setName>Subject = P Language and Literature: P Philology. Linguistics: P99 Semiotics. Signs and Symbols</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D45</setSpec>
+      <setName>Subject = E History America</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4A:4A46:4A4631353031</setSpec>
+      <setName>Subject = J Political Science: JF Political institutions (General): JF1501-1521 Civil service</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D44:4431:44323034</setSpec>
+      <setName>Subject = D History General and Old World: D History (General): D204 Modern History</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D51:514C</setSpec>
+      <setName>Subject = Q Science: QL Zoology</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D43:4352</setSpec>
+      <setName>Subject = C Auxiliary Sciences of History: CR Heraldry</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D51:5152</setSpec>
+      <setName>Subject = Q Science: QR Microbiology</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4847:4847313730362D31373038</setSpec>
+      <setName>Subject = H Social Sciences: HG Finance: HG1706-1708 Accounting. Bookkeeping</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D5A:5A363635</setSpec>
+      <setName>Subject = Z Bibliography. Library Science. Information Resources: Z665 Library Science. Information Science</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:5051</setSpec>
+      <setName>Subject = P Language and Literature: PQ Romance literatures</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:504E</setSpec>
+      <setName>Subject = P Language and Literature: PN Literature (General)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D44:4450</setSpec>
+      <setName>Subject = D History General and Old World: DP Spain</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4A:4A31</setSpec>
+      <setName>Subject = J Political Science: J General legislative and executive papers</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D52</setSpec>
+      <setName>Subject = R Medicine</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D44:4431:44383930</setSpec>
+      <setName>Subject = D History General and Old World: D History (General): D890 Eastern Hemisphere</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D47:4756</setSpec>
+      <setName>Subject = G Geography. Anthropology. Recreation: GV Recreation Leisure</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54:544E</setSpec>
+      <setName>Subject = T Technology: TN Mining engineering. Metallurgy</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D53:534B</setSpec>
+      <setName>Subject = S Agriculture: SK Hunting sports</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4844</setSpec>
+      <setName>Subject = H Social Sciences: HD Industries. Land use. Labor</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:504E:504E30343431</setSpec>
+      <setName>Subject = P Language and Literature: PN Literature (General): PN0441 Literary History</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D44:4453</setSpec>
+      <setName>Subject = D History General and Old World: DS Asia</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4846:484635353439</setSpec>
+      <setName>Subject = H Social Sciences: HF Commerce: HF5549 Personnel Management. Employment Management</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4C:4C42</setSpec>
+      <setName>Subject = L Education: LB Theory and practice of education</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:504D</setSpec>
+      <setName>Subject = P Language and Literature: PM Hyperborean, Indian, and Artificial languages</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54:5431:54333835</setSpec>
+      <setName>Subject = T Technology: T Technology (General): T385 Computer Graphics</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D42:4231</setSpec>
+      <setName>Subject = B Philosophy. Psychology. Religion: B Philosophy (General)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54:5448</setSpec>
+      <setName>Subject = T Technology: TH Building construction</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4E:4E44</setSpec>
+      <setName>Subject = N Fine Arts: ND Painting</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54:5443</setSpec>
+      <setName>Subject = T Technology: TC Hydraulic engineering. Ocean engineering</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4B:4B5A</setSpec>
+      <setName>Subject = K Law: KZ Law of Nations</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:5047</setSpec>
+      <setName>Subject = P Language and Literature: PG Slavic, Baltic, Albanian languages and literature</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:5031:503837</setSpec>
+      <setName>Subject = P Language and Literature: P Philology. Linguistics: P87 Communication. Mass Media</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D44:4441</setSpec>
+      <setName>Subject = D History General and Old World: DA Great Britain</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54:5447</setSpec>
+      <setName>Subject = T Technology: TG Bridge engineering</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4844:484433382E35</setSpec>
+      <setName>Subject = H Social Sciences: HD Industries. Land use. Labor: HD38.5 Supply Chain Management</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4847:4847313530312D33353530</setSpec>
+      <setName>Subject = H Social Sciences: HG Finance: HG1501-3550 Banking</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D52:524A:524A313031</setSpec>
+      <setName>Subject = R Medicine: RJ Pediatrics: RJ101 Child Health. Child health services</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:5043</setSpec>
+      <setName>Subject = P Language and Literature: PC Romance languages</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D53:5342</setSpec>
+      <setName>Subject = S Agriculture: SB Plant culture</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4B:4B44</setSpec>
+      <setName>Subject = K Law: KD England and Wales</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4856</setSpec>
+      <setName>Subject = H Social Sciences: HV Social pathology. Social and public welfare</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54:5450:5450333638</setSpec>
+      <setName>Subject = T Technology: TP Chemical technology: TP368 Food processing and manufacture</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D52:5243:524330323534</setSpec>
+      <setName>Subject = R Medicine: RC Internal medicine: RC0254 Neoplasms. Tumors. Oncology (including Cancer)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:5048</setSpec>
+      <setName>Subject = P Language and Literature: PH Finno-Ugrian, Basque languages and literatures</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D44:4431:44373331</setSpec>
+      <setName>Subject = D History General and Old World: D History (General): D731 World War II</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4A:4A41:4A413531</setSpec>
+      <setName>Subject = J Political Science: JA Political science (General): JA51 Public management</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D47:4742</setSpec>
+      <setName>Subject = G Geography. Anthropology. Recreation: GB Physical geography</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54</setSpec>
+      <setName>Subject = T Technology</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D42:4248</setSpec>
+      <setName>Subject = B Philosophy. Psychology. Religion: BH Aesthetics</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54:5431</setSpec>
+      <setName>Subject = T Technology: T Technology (General)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:5042:504231353031</setSpec>
+      <setName>Subject = P Language and Literature: PB Modern European Languages: PB1501 Gaelic (Scottish Gaelic, Erse)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D53:5344</setSpec>
+      <setName>Subject = S Agriculture: SD Forestry</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D53:5342:53423539392D3939302E35</setSpec>
+      <setName>Subject = S Agriculture: SB Plant culture: SB599-990.5 Pests and Diseases</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D52:5241</setSpec>
+      <setName>Subject = R Medicine: RA Public aspects of medicine</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D5A</setSpec>
+      <setName>Subject = Z Bibliography. Library Science. Information Resources</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D42:4243</setSpec>
+      <setName>Subject = B Philosophy. Psychology. Religion: BC Logic</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D43:4345</setSpec>
+      <setName>Subject = C Auxiliary Sciences of History: CE Technical chronology. Calendar</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D51:5145</setSpec>
+      <setName>Subject = Q Science: QE Geology</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D41:415A</setSpec>
+      <setName>Subject = A General Works: AZ History of Scholarship The Humanities</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4E:4E31:4E3631</setSpec>
+      <setName>Subject = N Fine Arts: N Visual arts: N61-72 Theory. Philosophy. Aesthetics of the visual arts</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D46:4631323031</setSpec>
+      <setName>Subject = F History United States, Canada, Latin America: F1201 Latin America (General)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D53</setSpec>
+      <setName>Subject = S Agriculture</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:5031</setSpec>
+      <setName>Subject = P Language and Literature: P Philology. Linguistics</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4A:4A4E</setSpec>
+      <setName>Subject = J Political Science: JN Political institutions (Europe)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4A:4A51</setSpec>
+      <setName>Subject = J Political Science: JQ Political institutions Asia</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4A:4A51:4A51323234</setSpec>
+      <setName>Subject = J Political Science: JQ Political institutions Asia: JQ224 Public policy and administration</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4E:4E42</setSpec>
+      <setName>Subject = N Fine Arts: NB Sculpture</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4A:4A43</setSpec>
+      <setName>Subject = J Political Science: JC Political theory</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D42:424D</setSpec>
+      <setName>Subject = B Philosophy. Psychology. Religion: BM Judaism</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4C:4C44</setSpec>
+      <setName>Subject = L Education: LD Individual institutions (United States)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D51:5152:5152313830</setSpec>
+      <setName>Subject = Q Science: QR Microbiology: QR180 Immunology</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D5A:5A41</setSpec>
+      <setName>Subject = Z Bibliography. Library Science. Information Resources: ZA Information resources</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D5A:5A373139</setSpec>
+      <setName>Subject = Z Bibliography. Library Science. Information Resources: Z719 Libraries (General)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54:544B:544B353130352E383832</setSpec>
+      <setName>Subject = T Technology: TK Electrical engineering. Electronics Nuclear engineering: TK5105.882 Internet</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4842</setSpec>
+      <setName>Subject = H Social Sciences: HB Economic Theory</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D43:434A</setSpec>
+      <setName>Subject = C Auxiliary Sciences of History: CJ Numismatics</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D44:4431:44313131</setSpec>
+      <setName>Subject = D History General and Old World: D History (General): D111 Medieval History</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D52:5253</setSpec>
+      <setName>Subject = R Medicine: RS Pharmacy and materia medica</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4844:484435392D35392E36</setSpec>
+      <setName>Subject = H Social Sciences: HD Industries. Land use. Labor: HD59-59.6 Public relations. Industrial publicity</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D42:4251</setSpec>
+      <setName>Subject = B Philosophy. Psychology. Religion: BQ Buddhism</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D43:4354</setSpec>
+      <setName>Subject = C Auxiliary Sciences of History: CT Biography</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4E:4E4B</setSpec>
+      <setName>Subject = N Fine Arts: NK Decorative arts Applied arts Decoration and ornament</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D52:5258</setSpec>
+      <setName>Subject = R Medicine: RX Homeopathy</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4E</setSpec>
+      <setName>Subject = N Fine Arts</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4A:4A46:6A66323031</setSpec>
+      <setName>Subject = J Political Science: JF Political institutions (General): JF20-1177 General Comparative government</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54:544C</setSpec>
+      <setName>Subject = T Technology: TL Motor vehicles. Aeronautics. Astronautics</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D53:5331:53353930</setSpec>
+      <setName>Subject = S Agriculture: S Agriculture (General): S590-599.9 Soils. Soil science</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D52:5256</setSpec>
+      <setName>Subject = R Medicine: RV Botanic, Thomsonian, and eclectic medicine</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D47</setSpec>
+      <setName>Subject = G Geography. Anthropology. Recreation</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D44:4431:44353031</setSpec>
+      <setName>Subject = D History General and Old World: D History (General): D501 World War I</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D51:514D</setSpec>
+      <setName>Subject = Q Science: QM Human anatomy</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4C:4C41</setSpec>
+      <setName>Subject = L Education: LA History of education</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4844:484439303030</setSpec>
+      <setName>Subject = H Social Sciences: HD Industries. Land use. Labor: HD9000 Agricultural Industries</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:5049</setSpec>
+      <setName>Subject = P Language and Literature: PI Oriental languages and literatures</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D54:5452</setSpec>
+      <setName>Subject = T Technology: TR Photography</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4C:4C42:4C4232333631</setSpec>
+      <setName>Subject = L Education: LB Theory and practice of education: LB2361 Curriculum</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D42:424A</setSpec>
+      <setName>Subject = B Philosophy. Psychology. Religion: BJ Ethics</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D41:4153</setSpec>
+      <setName>Subject = A General Works: AS Academies and learned societies (General)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D4A:4A46</setSpec>
+      <setName>Subject = J Political Science: JF Political institutions (General)</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:5052</setSpec>
+      <setName>Subject = P Language and Literature: PR English literature</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D42:4254</setSpec>
+      <setName>Subject = B Philosophy. Psychology. Religion: BT Doctrinal Theology</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D44:444B</setSpec>
+      <setName>Subject = D History General and Old World: DK Russia. Soviet Union. Former Soviet Republics</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D43:434E</setSpec>
+      <setName>Subject = C Auxiliary Sciences of History: CN Inscriptions. Epigraphy.</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:504C</setSpec>
+      <setName>Subject = P Language and Literature: PL Languages and literatures of Eastern Asia, Africa, Oceania</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D51:5148</setSpec>
+      <setName>Subject = Q Science: QH Natural history</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4844:484431343031</setSpec>
+      <setName>Subject = H Social Sciences: HD Industries. Land use. Labor: HD1401 Agriculture-Economic aspects</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4844:48443631</setSpec>
+      <setName>Subject = H Social Sciences: HD Industries. Land use. Labor: HD61 Risk Management</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4847:4847343030312D34323835</setSpec>
+      <setName>Subject = H Social Sciences: HG Finance: HG4001-4285 Finance management. Business finance. Corporation finance</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D52:5244</setSpec>
+      <setName>Subject = R Medicine: RD Surgery</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D43:4343</setSpec>
+      <setName>Subject = C Auxiliary Sciences of History: CC Archaeology</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D51:5143</setSpec>
+      <setName>Subject = Q Science: QC Physics</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D52:525A</setSpec>
+      <setName>Subject = R Medicine: RZ Other systems of medicine</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48</setSpec>
+      <setName>Subject = H Social Sciences</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D44:4442</setSpec>
+      <setName>Subject = D History General and Old World: DB Austria</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D50:504E:504E32303030</setSpec>
+      <setName>Subject = P Language and Literature: PN Literature (General): PN2000 Dramatic representation. The Theater</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D48:4846:4846353431352E35</setSpec>
+      <setName>Subject = H Social Sciences: HF Commerce: HF5415.5 Customer services</setName>
+    </set>
+    <set>
+      <setSpec>7375626A656374733D42:4246</setSpec>
+      <setName>Subject = B Philosophy. Psychology. Religion: BF Psychology</setName>
+    </set>
+    <set>
+      <setSpec>74797065733D706572666F726D616E6365</setSpec>
+      <setName>Type = Performance</setName>
+    </set>
+    <set>
+      <setSpec>74797065733D626F6F6B</setSpec>
+      <setName>Type = Book</setName>
+    </set>
+    <set>
+      <setSpec>74797065733D626F6F6B5F73656374696F6E</setSpec>
+      <setName>Type = Book Section</setName>
+    </set>
+    <set>
+      <setSpec>74797065733D6578706572696D656E74</setSpec>
+      <setName>Type = Experiment</setName>
+    </set>
+    <set>
+      <setSpec>74797065733D6D6F6E6F6772617068</setSpec>
+      <setName>Type = Monograph</setName>
+    </set>
+    <set>
+      <setSpec>74797065733D636F6E666572656E63655F6974656D</setSpec>
+      <setName>Type = Conference or Workshop Item</setName>
+    </set>
+    <set>
+      <setSpec>74797065733D6172746566616374</setSpec>
+      <setName>Type = Artefact</setName>
+    </set>
+    <set>
+      <setSpec>74797065733D696D616765</setSpec>
+      <setName>Type = Image</setName>
+    </set>
+    <set>
+      <setSpec>74797065733D7465616368696E675F7265736F75726365</setSpec>
+      <setName>Type = Teaching Resource</setName>
+    </set>
+    <set>
+      <setSpec>74797065733D766964656F</setSpec>
+      <setName>Type = Video</setName>
+    </set>
+    <set>
+      <setSpec>74797065733D65786869626974696F6E</setSpec>
+      <setName>Type = Show/Exhibition</setName>
+    </set>
+    <set>
+      <setSpec>74797065733D64617461736574</setSpec>
+      <setName>Type = Dataset</setName>
+    </set>
+    <set>
+      <setSpec>74797065733D706174656E74</setSpec>
+      <setName>Type = Patent</setName>
+    </set>
+    <set>
+      <setSpec>74797065733D636F6D706F736974696F6E</setSpec>
+      <setName>Type = Composition</setName>
+    </set>
+    <set>
+      <setSpec>74797065733D61727469636C65</setSpec>
+      <setName>Type = Article</setName>
+    </set>
+    <set>
+      <setSpec>74797065733D6F74686572</setSpec>
+      <setName>Type = Other</setName>
+    </set>
+    <set>
+      <setSpec>74797065733D617564696F</setSpec>
+      <setName>Type = Audio</setName>
+    </set>
+    <set>
+      <setSpec>74797065733D746865736973</setSpec>
+      <setName>Type = Thesis</setName>
+    </set>
+    <set>
+      <setSpec>driver</setSpec>
+      <setName>Open Access DRIVERset</setName>
+    </set>
+  </ListSets>
+</OAI-PMH>
