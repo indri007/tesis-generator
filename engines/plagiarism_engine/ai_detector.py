@@ -41,7 +41,7 @@ class AIDetector(BaseChecker):
         self.model = None
         self.use_neural = use_neural_model and TRANSFORMERS_AVAILABLE
         self.originality_api_key = originality_api_key or os.getenv("ORIGINALITY_API_KEY")
-        self.zerogpt_api_key = zerogpt_api_key or os.getenv("ZEROGPT_API_KEY", "a8f1a64f-00ac-426e-9c39-aa9b6b8d4c03")
+        self.zerogpt_api_key = zerogpt_api_key or os.getenv("ZEROGPT_API_KEY")
 
         if self.use_neural:
             try:
