@@ -1,0 +1,110 @@
+{
+  "schema_version": "2026.1",
+  "split": "development",
+  "dataset_id": "DS-DEV-MIKOM-2026",
+  "items": [
+    {
+      "document_id": "DOC-ANON-DEV-001",
+      "description": "Draf tesis kepatuhan standar tanpa pelanggaran aturan dasar",
+      "reviewer_1_labels": ["PASS", "PASS", "PASS"],
+      "reviewer_2_labels": ["PASS", "PASS", "PASS"],
+      "reference_annotations": []
+    },
+    {
+      "document_id": "DOC-ANON-DEV-002",
+      "description": "Margin kiri naskah tidak sesuai standar (3.0 cm bukannya 4.0 cm)",
+      "reviewer_1_labels": ["ERROR", "PASS"],
+      "reviewer_2_labels": ["ERROR", "PASS"],
+      "reference_annotations": [
+        {
+          "document_id": "DOC-ANON-DEV-002",
+          "audit_category": "format",
+          "rule_id": "FORMAT_MARGIN_LEFT_001",
+          "reference_finding": "Margin kiri terdeteksi 3.0 cm, diharapkan 4.0 cm",
+          "evidence_location": {
+            "page": 1,
+            "section": "Format Naskah",
+            "excerpt_query": null
+          },
+          "expected_severity": "ERROR",
+          "expected_verification_status": "VERIFIED",
+          "reviewer_id": "REV-ALPHA",
+          "adjudication_status": "CONSENSUS",
+          "notes": "Pelanggaran margin tepi kiri pengetikan"
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-ANON-DEV-003",
+      "description": "Tipografi naskah menggunakan Arial bukannya Times New Roman",
+      "reviewer_1_labels": ["ERROR"],
+      "reviewer_2_labels": ["ERROR"],
+      "reference_annotations": [
+        {
+          "document_id": "DOC-ANON-DEV-003",
+          "audit_category": "format",
+          "rule_id": "FORMAT_FONT_FAMILY_001",
+          "reference_finding": "Jenis huruf terdeteksi Arial, diharapkan Times New Roman",
+          "evidence_location": {
+            "page": 1,
+            "section": "Tipografi",
+            "excerpt_query": null
+          },
+          "expected_severity": "ERROR",
+          "expected_verification_status": "VERIFIED",
+          "reviewer_id": "REV-BETA",
+          "adjudication_status": "CONSENSUS",
+          "notes": "Huruf standar MIKOM adalah Times New Roman"
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-ANON-DEV-004",
+      "description": "Bagian Bab III Metode Penelitian tidak ditemukan pada naskah",
+      "reviewer_1_labels": ["ERROR"],
+      "reviewer_2_labels": ["ERROR"],
+      "reference_annotations": [
+        {
+          "document_id": "DOC-ANON-DEV-004",
+          "audit_category": "structure",
+          "rule_id": "STRUCT_CHAP_BAB3_001",
+          "reference_finding": "Tesis wajib memuat BAB III METODE PENELITIAN",
+          "evidence_location": {
+            "page": null,
+            "section": "Struktur Dokumen",
+            "excerpt_query": null
+          },
+          "expected_severity": "ERROR",
+          "expected_verification_status": "VERIFIED",
+          "reviewer_id": "REV-ALPHA",
+          "adjudication_status": "CONSENSUS",
+          "notes": "Kelengkapan bab wajib I s.d. V"
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-ANON-DEV-005",
+      "description": "Sitasi teks Smith (2022) tidak tercantum pada Daftar Pustaka",
+      "reviewer_1_labels": ["ERROR"],
+      "reviewer_2_labels": ["ERROR"],
+      "reference_annotations": [
+        {
+          "document_id": "DOC-ANON-DEV-005",
+          "audit_category": "citations",
+          "rule_id": "CITATION_ORPHAN_001",
+          "reference_finding": "Sitasi Smith (2022) tidak memiliki rujukan di Daftar Pustaka",
+          "evidence_location": {
+            "page": 2,
+            "section": "Bab II",
+            "excerpt_query": "Smith (2022)"
+          },
+          "expected_severity": "ERROR",
+          "expected_verification_status": "VERIFIED",
+          "reviewer_id": "REV-BETA",
+          "adjudication_status": "CONSENSUS",
+          "notes": "Resiprositas sitasi APA 7th edition"
+        }
+      ]
+    }
+  ]
+}

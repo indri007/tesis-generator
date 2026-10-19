@@ -1,0 +1,139 @@
+{
+  "metadata": {
+    "report_title": "LAPORAN EVALUASI BENCHMARK AKADEMIK AUDITOR TESIS MIKOM 2026",
+    "evaluation_timestamp": "2026-10-16 17:47:55",
+    "base_commit": "1c34578",
+    "code_version": "1c34578",
+    "working_tree_dirty": true,
+    "dataset_version": "2026.1",
+    "ruleset_id": "MIKOM_2026",
+    "ruleset_version": "2026.1.0",
+    "split": "evaluation",
+    "deterministic": true,
+    "offline_compatible": true
+  },
+  "quality_gate": {
+    "status": "PASSED",
+    "threshold_target": ">= 85.0%",
+    "micro_f1": "100.0%",
+    "micro_precision": "100.0%",
+    "micro_recall": "100.0%"
+  },
+  "evaluation_summary": {
+    "total_documents": 7,
+    "total_reference_findings": 6,
+    "total_detected_findings": 6,
+    "per_category": {
+      "statistics": {
+        "category": "statistics",
+        "true_positives": 3,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "wrong_locations": 0,
+        "wrong_severities": 0,
+        "support": 3,
+        "precision": 100.0,
+        "recall": 100.0,
+        "f1_score": 100.0,
+        "precision_display": "100.0%",
+        "recall_display": "100.0%",
+        "f1_display": "100.0%"
+      },
+      "formula": {
+        "category": "formula",
+        "true_positives": 1,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "wrong_locations": 0,
+        "wrong_severities": 0,
+        "support": 1,
+        "precision": 100.0,
+        "recall": 100.0,
+        "f1_score": 100.0,
+        "precision_display": "100.0%",
+        "recall_display": "100.0%",
+        "f1_display": "100.0%"
+      },
+      "journal_alignment": {
+        "category": "journal_alignment",
+        "true_positives": 1,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "wrong_locations": 0,
+        "wrong_severities": 0,
+        "support": 1,
+        "precision": 100.0,
+        "recall": 100.0,
+        "f1_score": 100.0,
+        "precision_display": "100.0%",
+        "recall_display": "100.0%",
+        "f1_display": "100.0%"
+      },
+      "citations": {
+        "category": "citations",
+        "true_positives": 1,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "wrong_locations": 0,
+        "wrong_severities": 0,
+        "support": 1,
+        "precision": 100.0,
+        "recall": 100.0,
+        "f1_score": 100.0,
+        "precision_display": "100.0%",
+        "recall_display": "100.0%",
+        "f1_display": "100.0%"
+      }
+    },
+    "micro_metrics": {
+      "true_positives": 6,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "support": 6,
+      "precision": 100.0,
+      "recall": 100.0,
+      "f1_score": 100.0,
+      "precision_display": "100.0%",
+      "recall_display": "100.0%",
+      "f1_display": "100.0%"
+    },
+    "macro_metrics": {
+      "categories_evaluated": 4,
+      "precision": 100.0,
+      "recall": 100.0,
+      "f1_score": 100.0,
+      "precision_display": "100.0%",
+      "recall_display": "100.0%",
+      "f1_display": "100.0%"
+    }
+  },
+  "inter_annotator_agreement": {
+    "sample_count": 11,
+    "observed_agreement": 90.91,
+    "chance_agreement": 45.45,
+    "kappa": 0.8333,
+    "agreement_strength": "Almost perfect agreement",
+    "disagreements_count": 1,
+    "disagreements": [
+      {
+        "item_index": 10,
+        "reviewer_1": "WARNING",
+        "reviewer_2": "PASS"
+      }
+    ]
+  },
+  "error_analysis": {
+    "total_errors": 0,
+    "breakdown": {},
+    "highest_risk_category": "None",
+    "samples": []
+  },
+  "evaluation_limitations": [
+    "Sifat Dataset: Evaluasi ini menggunakan dataset terstandarisasi berbasis skenario untuk menguji konsistensi dan determinisme penegakan aturan formal pada naskah tesis. Hasilnya belum dapat digeneralisasi ke seluruh variasi dokumen tesis mahasiswa tanpa pengujian empiris tambahan pada dokumen nyata yang dianonimkan.",
+    "Cakupan Sistem yang Dievaluasi: Benchmark berfokus pada komponen audit berbasis aturan, termasuk pemeriksaan pola teks, geometri atau tata letak dokumen, validasi formula, dan keselarasan antardokumen. Evaluasi ini tidak mengukur halusinasi pada generative Large Language Models (LLM), dan tidak membuktikan bahwa seluruh komponen aplikasi bebas dari kesalahan.",
+    "Pemisahan Dataset dan Potensi Data Leakage: Dataset pengembangan dan evaluasi dimaksudkan untuk memiliki fungsi yang terpisah. Namun, klaim bebas data leakage memerlukan verifikasi terhadap duplikasi dokumen, kesamaan contoh, serta penggunaan informasi evaluasi dalam pengembangan aturan. Pemisahan tersebut tidak dianggap tervalidasi hanya berdasarkan label split.",
+    "Ukuran Sampel dan Representativitas: Jumlah dokumen dan temuan referensi pada benchmark ini terbatas. Oleh karena itu, nilai Precision, Recall, F1-score, dan kesepakatan antarpenilai hanya menggambarkan performa pada sampel evaluasi yang diuji. Nilai tersebut tidak boleh ditafsirkan sebagai estimasi akurasi populasi seluruh naskah tesis.",
+    "Kecocokan Lokasi dan Tingkat Keparahan: Evaluasi dengan strict_location=False tidak menguji kesesuaian halaman secara ketat. Ketepatan lokasi dan tingkat keparahan perlu dilaporkan secara terpisah, dengan pengujian tambahan ketika informasi halaman pada anotasi referensi tersedia.",
+    "Kebutuhan Validasi Lanjutan: Sebelum digunakan sebagai bukti validasi eksternal atau dasar klaim kinerja publikasi ilmiah, benchmark perlu diperluas menggunakan dokumen yang representatif, anotasi independen dari penilai yang kompeten, prosedur adjudikasi atas perbedaan penilaian, serta pengujian reproduksibilitas pada lingkungan yang bersih."
+  ]
+}

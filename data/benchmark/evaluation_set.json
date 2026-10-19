@@ -1,0 +1,158 @@
+{
+  "schema_version": "2026.1",
+  "split": "evaluation",
+  "dataset_id": "DS-EVAL-MIKOM-2026",
+  "items": [
+    {
+      "document_id": "DOC-ANON-EVAL-001",
+      "description": "Naskah tesis lengkap dan patuh terhadap standar pedoman MIKOM 2026",
+      "reviewer_1_labels": ["PASS", "PASS", "PASS", "PASS"],
+      "reviewer_2_labels": ["PASS", "PASS", "PASS", "PASS"],
+      "reference_annotations": []
+    },
+    {
+      "document_id": "DOC-ANON-EVAL-002",
+      "description": "Mutasi definisi variabel X1 antara Bab II (Kualitas Sistem) dan Bab III (Kualitas Informasi)",
+      "reviewer_1_labels": ["ERROR", "PASS"],
+      "reviewer_2_labels": ["ERROR", "PASS"],
+      "reference_annotations": [
+        {
+          "document_id": "DOC-ANON-EVAL-002",
+          "audit_category": "statistics",
+          "rule_id": "VARIABLE_CONSISTENCY_001",
+          "reference_finding": "Konstruk X1 didefinisikan secara tidak konsisten antar-bab",
+          "evidence_location": {
+            "page": 5,
+            "section": "Bab III",
+            "excerpt_query": "X1 adalah"
+          },
+          "expected_severity": "ERROR",
+          "expected_verification_status": "VERIFIED",
+          "reviewer_id": "REV-ALPHA",
+          "adjudication_status": "CONSENSUS",
+          "notes": "Konsistensi nama operasionalisasi variabel"
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-ANON-EVAL-003",
+      "description": "Kesalahan aritmetika rekalkulasi rumus regresi (klaim Y=7.5 padahal hitungan 6.5)",
+      "reviewer_1_labels": ["ERROR"],
+      "reviewer_2_labels": ["ERROR"],
+      "reference_annotations": [
+        {
+          "document_id": "DOC-ANON-EVAL-003",
+          "audit_category": "formula",
+          "rule_id": "FORMULA_RECALCULATION_001",
+          "reference_finding": "Kesalahan hitung aritmetika regresi linier pada naskah",
+          "evidence_location": {
+            "page": 8,
+            "section": "Bab IV",
+            "excerpt_query": "Y = 2,5 + 0,4X"
+          },
+          "expected_severity": "ERROR",
+          "expected_verification_status": "VERIFIED",
+          "reviewer_id": "REV-BETA",
+          "adjudication_status": "CONSENSUS",
+          "notes": "Verifikasi rekalkulasi deterministik sympy"
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-ANON-EVAL-004",
+      "description": "Kontradiksi interpretasi statistik (p=0.032 namun disimpulkan tidak berpengaruh signifikan)",
+      "reviewer_1_labels": ["ERROR"],
+      "reviewer_2_labels": ["ERROR"],
+      "reference_annotations": [
+        {
+          "document_id": "DOC-ANON-EVAL-004",
+          "audit_category": "statistics",
+          "rule_id": "STAT_DECISION_CONSISTENCY_001",
+          "reference_finding": "Keputusan hipotesis bertentangan dengan nilai p-value",
+          "evidence_location": {
+            "page": 9,
+            "section": "Bab IV",
+            "excerpt_query": "p = 0,032"
+          },
+          "expected_severity": "ERROR",
+          "expected_verification_status": "VERIFIED",
+          "reviewer_id": "REV-ALPHA",
+          "adjudication_status": "CONSENSUS",
+          "notes": "Kaidah alpha 0.05"
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-ANON-EVAL-005",
+      "description": "Diskrepansi jumlah responden antara Bab III (120 orang) dan Bab IV (118 orang)",
+      "reviewer_1_labels": ["ERROR"],
+      "reviewer_2_labels": ["ERROR"],
+      "reference_annotations": [
+        {
+          "document_id": "DOC-ANON-EVAL-005",
+          "audit_category": "statistics",
+          "rule_id": "STAT_SAMPLE_CONSISTENCY_001",
+          "reference_finding": "Jumlah sampel berbeda tanpa penjelasan data outlier atau drop",
+          "evidence_location": {
+            "page": 7,
+            "section": "Bab IV",
+            "excerpt_query": "118 responden"
+          },
+          "expected_severity": "ERROR",
+          "expected_verification_status": "VERIFIED",
+          "reviewer_id": "REV-BETA",
+          "adjudication_status": "CONSENSUS",
+          "notes": "Integritas sampel internal tesis"
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-ANON-EVAL-006",
+      "description": "Perbedaan sampel antara publikasi artikel jurnal (100) dan naskah tesis (120)",
+      "reviewer_1_labels": ["ERROR"],
+      "reviewer_2_labels": ["ERROR"],
+      "reference_annotations": [
+        {
+          "document_id": "DOC-ANON-EVAL-006",
+          "audit_category": "journal_alignment",
+          "rule_id": "JOURNAL_ALIGNMENT_SAMPLE_001",
+          "reference_finding": "Jumlah sampel pada artikel jurnal berbeda dengan naskah tesis",
+          "evidence_location": {
+            "page": 1,
+            "section": "Cross-Document",
+            "excerpt_query": "100 responden"
+          },
+          "expected_severity": "ERROR",
+          "expected_verification_status": "VERIFIED",
+          "reviewer_id": "REV-ALPHA",
+          "adjudication_status": "CONSENSUS",
+          "notes": "Komponen publikasi ilmiah tesis (3 SKS)"
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-ANON-EVAL-007",
+      "description": "Kasus ambigu: jarak spasi daftar pustaka (Reviewer 1 menilai WARNING, Reviewer 2 menilai PASS)",
+      "reviewer_1_labels": ["WARNING"],
+      "reviewer_2_labels": ["PASS"],
+      "reference_annotations": [
+        {
+          "document_id": "DOC-ANON-EVAL-007",
+          "audit_category": "citations",
+          "rule_id": "CITATION_UNUSED_REF_001",
+          "reference_finding": "Rujukan pada Daftar Pustaka belum disitasi di tubuh teks",
+          "evidence_location": {
+            "page": 15,
+            "section": "Daftar Pustaka",
+            "excerpt_query": null
+          },
+          "expected_severity": "WARNING",
+          "expected_verification_status": "AMBIGUOUS",
+          "reviewer_id": "REV-GAMMA",
+          "adjudication_status": "ADJUDICATED",
+          "notes": "Hasil adjudikasi tim ahli menetapkan keparahan WARNING (bukan ERROR kritis)"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,232 @@
+=== 1. ROOT GIT DAN LOKASI .GIT ===
+/Users/jevin/Downloads/TesisCheck_MIKOM2026
+/Users/jevin
+/Users/jevin/.git
+
+=== 2. SEMUA REFERENSI RULE SITASI DI KODE ===
+./engines/citation_auditor.py:71:                "rule_id": "CITATION_ORPHAN_001",
+./golden_dataset/generator.py:225:        "expected_errors": ["CITATION_ORPHAN_001"]
+
+=== 3. LOGIKA SITASI DAN DAFTAR PUSTAKA ===
+tests/test_engines.py:166:        "bibliography": {"exists": True},
+tests/test_engines.py:171:        "citations": {"orphaned_count": 0},
+tests/test_engines.py:172:        "references": {"unused_count": 0},
+tests/test_golden_dataset.py:27:        "citation": {"tp": 0, "fp": 0, "fn": 0, "tn": 0},
+tests/test_golden_dataset.py:84:                    domain_eval["citation"]["tp"] += 1
+tests/test_golden_dataset.py:86:                    domain_eval["citation"]["fn"] += 1
+./parsers/structure_parser.py:1:"""Structure parser for identifying chapters, subbabs, preliminaries, bibliography, and word counts."""
+./parsers/structure_parser.py:17:        self.bibliography: dict[str, Any] = {}
+./parsers/structure_parser.py:99:        self.bibliography = {
+./parsers/table_parser.py:10:    """Extracts table and figure definitions and cross-references them against narrative text."""
+./parsers/table_parser.py:32:                "is_referenced_in_text": total_mentions > 1  # 1 for caption itself, >1 for text reference
+./parsers/table_parser.py:51:                "is_referenced_in_text": total_mentions > 1
+./datasets/scicite/scicite.py:33:This is a dataset for classifying citation intents in academic papers.
+./datasets/scicite/scicite.py:34:The main citation intent label for each Json object is specified with the label
+./datasets/scicite/scicite.py:35:key while the citation context is specified in with a context key. Example:
+./datasets/scicite/scicite.py:55:    """This is a dataset for classifying citation intents in academic papers."""
+./datasets/scicite/scicite.py:90:            citation=_CITATION,
+./tests/test_engines.py:166:        "bibliography": {"exists": True},
+./tests/test_engines.py:171:        "citations": {"orphaned_count": 0},
+./tests/test_engines.py:172:        "references": {"unused_count": 0},
+./tests/test_golden_dataset.py:27:        "citation": {"tp": 0, "fp": 0, "fn": 0, "tn": 0},
+./tests/test_golden_dataset.py:84:                    domain_eval["citation"]["tp"] += 1
+./tests/test_golden_dataset.py:86:                    domain_eval["citation"]["fn"] += 1
+./models/document_model.py:62:        # 2. Extract citations
+./models/document_model.py:64:        citation_pattern = re.compile(
+./models/document_model.py:67:        found_citations = []
+./models/document_model.py:68:        for m in citation_pattern.finditer(full_text):
+./models/document_model.py:71:            found_citations.append({"raw": cit_text, "author": author})
+./models/document_model.py:73:        # 3. Extract bibliography entries
+./models/document_model.py:74:        bib_lines = struct.bibliography.get("lines", [])
+./models/document_model.py:75:        bib_text = struct.bibliography.get("text", "")
+./models/document_model.py:76:        orphaned_citations = 0
+./models/document_model.py:79:            for c in found_citations:
+./models/document_model.py:82:                    orphaned_citations += 1
+./models/document_model.py:84:        unused_references = 0
+./models/document_model.py:86:            body_before_bib = full_text[:full_text.lower().find("daftar pustaka")] if "daftar pustaka" in full_text.lower() else full_text
+./models/document_model.py:93:                        unused_references += 1
+./models/document_model.py:221:            "bibliography": {
+./models/document_model.py:222:                "exists": struct.bibliography.get("is_present", False),
+./models/document_model.py:229:            "citations": {
+./models/document_model.py:230:                "count": len(found_citations),
+./models/document_model.py:231:                "orphaned_count": orphaned_citations
+./models/document_model.py:233:            "references": {
+./models/document_model.py:235:                "unused_count": unused_references
+./models/document_model.py:255:                "citations": [c["raw"] for c in found_citations],
+./engines/revision_engine.py:34:            elif any(k in cat for k in ["struktur", "sitasi", "referensi", "abstrak"]):
+./engines/citation_auditor.py:1:"""Citation and Reference Auditor: Cross-references in-text citations against Daftar Pustaka (APA 7)."""
+./engines/citation_auditor.py:12:    """Verifies citation reciprocity and APA 7th edition formatting."""
+./engines/citation_auditor.py:21:        # 1. Extract in-text citations: (Author, Year) or Author (Year)
+./engines/citation_auditor.py:25:        citations = []
+./engines/citation_auditor.py:32:            citations.append({
+./engines/citation_auditor.py:38:        # 2. Extract bibliography entries
+./engines/citation_auditor.py:51:                "field": "bibliography.exists",
+./engines/citation_auditor.py:61:        # Cross-reference 1: In-text citations missing from Bibliography
+./engines/citation_auditor.py:64:        for cit in citations:
+./engines/citation_auditor.py:74:                "field": "citations.orphaned_count",
+./engines/citation_auditor.py:75:                "actual": f"{len(unique_missing)} sitasi tanpa rujukan: {', '.join(unique_missing[:3])}",
+./engines/citation_auditor.py:76:                "expected": "Semua sitasi memiliki rujukan di Daftar Pustaka",
+./engines/citation_auditor.py:77:                "message": f"Ditemukan {len(unique_missing)} sitasi teks yang tidak memiliki entri pada Daftar Pustaka.",
+./engines/citation_auditor.py:78:                "recommendation": "Lengkapi entri Daftar Pustaka untuk setiap sitasi di atas.",
+./engines/citation_auditor.py:83:        # Cross-reference 2: References never cited in body text
+./engines/citation_auditor.py:84:        body_before_bib = self.text[:self.text.lower().find("daftar pustaka")] if "daftar pustaka" in self.text.lower() else self.text
+./engines/citation_auditor.py:99:                "field": "references.unused_count",
+./engines/citation_auditor.py:100:                "actual": f"{len(unused_refs)} rujukan tidak disitasi",
+./engines/citation_auditor.py:101:                "expected": "Semua rujukan disitasi dalam isi naskah",
+./engines/citation_auditor.py:102:                "message": f"Terdapat {len(unused_refs)} entri pada Daftar Pustaka yang tidak pernah disitasi dalam badan naskah.",
+./engines/citation_auditor.py:103:                "recommendation": "Hapus rujukan yang tidak disitasi atau tambahkan sitasinya pada bab pembahasan.",
+./engines/reference_auditor.py:23:    cache_file = Path("data/processed/clean_references.jsonl")
+./engines/reference_auditor.py:88:    """Audits bibliography entries for completeness, APA 7 compliance, and DOI verification."""
+./engines/reference_auditor.py:113:                    "field": "references.format",
+./engines/reference_auditor.py:133:                        "field": "references.doi",
+./scripts/process_metadata.py:8:PROCESSED_FILE = Path("data/processed/clean_references.jsonl")
+./app.py:14:from engines.citation_auditor import CitationAuditor
+./app.py:20:from engines.reference_auditor import ReferenceAuditor
+./app.py:163:                citation_auditor = CitationAuditor(doc_thesis)
+./app.py:171:                    citation_auditor.audit() +
+./app.py:347:            st.success("✓ Seluruh sitasi memiliki rujukan dan sesuai kaidah APA 7.")
+./golden_dataset/generator.py:220:    t5_path = DOCS_DIR / "TEST-005_citation_missing_bib.docx"
+
+=== 4. DEFINISI TEST NORMAL ===
+    dataset = {}
+
+    # TEST-001: Tesis Normal (Semua valid)
+    t1_text = create_base_thesis_text(pad_to_40k=True)
+    t1_path = DOCS_DIR / "TEST-001_normal.docx"
+    save_test_docx(t1_text, t1_path)
+    dataset["TEST-001"] = {
+        "file": str(t1_path),
+        "description": "Tesis normal sesuai standar MIKOM 2026",
+        "expected_errors": []
+    }
+
+    # TEST-002: Margin Salah (Left margin 3.0 cm bukannya 4.0 cm)
+    t2_path = DOCS_DIR / "TEST-002_margin_salah.docx"
+    save_test_docx(t1_text, t2_path, left_cm=3.0)
+    dataset["TEST-002"] = {
+        "file": str(t2_path),
+        "description": "Margin kiri salah (3.0 cm)",
+        "expected_errors": ["FORMAT_MARGIN_LEFT_001"]
+    }
+
+    # TEST-003: Font Salah (Arial bukannya Times New Roman)
+    t3_path = DOCS_DIR / "TEST-003_font_salah.docx"
+    save_test_docx(t1_text, t3_path, font_name="Arial")
+    dataset["TEST-003"] = {
+        "file": str(t3_path),
+        "description": "Font salah (Arial)",
+        "expected_errors": ["FORMAT_FONT_FAMILY_001"]
+    }
+
+    # TEST-004: BAB III Hilang
+
+=== 5. HASIL DETEKSI TEST NORMAL ===
+77-161-============================================================
+78-162-GOLDEN DATASET BENCHMARK EVALUATION (10 TEST CASES)
+79-163-============================================================
+80-164-[TEST-001] ❌ MISMATCH - Tesis normal sesuai standar MIKOM 2026
+81-165-    Expected: []
+82:166-    Detected: ['CITATION_ORPHAN_001']
+83-167-[TEST-002] ❌ MISMATCH - Margin kiri salah (3.0 cm)
+84-168-    Expected: ['FORMAT_MARGIN_LEFT_001']
+85:169-    Detected: ['CITATION_ORPHAN_001', 'FORMAT_MARGIN_LEFT_001']
+86-170-[TEST-003] ❌ MISMATCH - Font salah (Arial)
+87---
+88-206-<frozen importlib._bootstrap>:491
+89-207-  <frozen importlib._bootstrap>:491: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute
+90-208-
+91-209-<frozen importlib._bootstrap>:491
+92-210-  <frozen importlib._bootstrap>:491: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+93-211-
+94-212--- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+95-213-=========================== short test summary info ============================
+--
+203-409-                                  "'citations.orphaned_count': nilai aktual 1, "
+204-410-                                  'diharapkan 0.',
+205-411-                       'recommendation': 'Lengkapi rujukan daftar pustaka '
+206-412-                                         'untuk setiap sitasi yang ditemukan '
+207-413-                                         'di badan naskah.',
+208:414-                       'rule_id': 'CITATION_ORPHAN_001',
+209-415:                       'severity': 'ERROR',
+210-416-                       'source': {'chapter': 'Bab IV.D',
+211-417-                                  'document': 'PEDOMAN PENULISAN TESIS MIKOM '
+212-418-                                              '2026',
+213-419-                                  'page': 43},
+214-420:                       'status': 'ERROR'},
+215-421-                      {'actual': 1,
+216-422-                       'category': 'citation',
+217-423-                       'description': 'Setiap entri Daftar Pustaka harus '
+218-424-                                      'disitasi dalam isi naskah.',
+--
+573-823-                                     "'citations.orphaned_count': nilai aktual "
+574-824-                                     '1, diharapkan 0.',
+575-825-                          'recommendation': 'Lengkapi rujukan daftar pustaka '
+576-826-                                            'untuk setiap sitasi yang '
+577-827-                                            'ditemukan di badan naskah.',
+578:828-                          'rule_id': 'CITATION_ORPHAN_001',
+579-829:                          'severity': 'ERROR',
+580-830-                          'source': {'chapter': 'Bab IV.D',
+581-831-                                     'document': 'PEDOMAN PENULISAN TESIS '
+582-832-                                                 'MIKOM 2026',
+583-833-                                     'page': 43},
+584-834:                          'status': 'ERROR'},
+585-835-                         {'actual': 1,
+586-836-                          'category': 'citation',
+587-837-                          'description': 'Setiap entri Daftar Pustaka harus '
+588-838-                                         'disitasi dalam isi naskah.',
+--
+706-967-                          'source': {'chapter': 'Komponen Publikasi Ilmiah',
+707-968-                                     'document': 'PEDOMAN PENULISAN TESIS '
+708-969-                                                 'MIKOM 2026',
+709-970-                                     'page': 3},
+710-971:                          'status': 'ERROR'}])
+711:972-detected_errors = {'CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001'}
+712-973-doc        = ParsedDocument(filename='TEST-010_thesis.docx',
+713-974-               file_type='docx',
+714-975-               page_count=None,
+715-976-               paragraphs=[ParsedParagraph(text='ABSTRAK\n'
+716-977-                                                'Penelitian ini bertujuan '
+717-978-                                                'untuk menganalisis '
+718-979-                                                'efektivitas komunikasi '
+719-980-                                                'pemasaran digital terhadap '
+720-981-                                                'loyalitas audiens pada '
+721-982-                                                'platform media sosial. '
+--
+795-29260-thesis_path = '/Users/jevin/Downloads/TesisCheck_MIKOM2026/golden_dataset/documents/TEST-010_thesis.docx'
+796-29261-tn         = 0
+797-29262-tp         = 1
+798-29263-true_negatives = 0
+799-29264-true_positives = 8
+800:29265-unexpected = {'CITATION_ORPHAN_001'}
+801-29266-
+802-29267:tests/test_golden_dataset.py:137: AssertionError
+803-29268------------------------------ Captured stdout call -----------------------------
+804-29269-
+805-29270-============================================================
+806-29271-GOLDEN DATASET BENCHMARK EVALUATION (10 TEST CASES)
+807-29272-============================================================
+808-29273-[TEST-001] ❌ MISMATCH - Tesis normal sesuai standar MIKOM 2026
+809-29274-    Expected: []
+810:29275-    Detected: ['CITATION_ORPHAN_001']
+811-29276-[TEST-002] ❌ MISMATCH - Margin kiri salah (3.0 cm)
+812-29277-    Expected: ['FORMAT_MARGIN_LEFT_001']
+813:29278-    Detected: ['FORMAT_MARGIN_LEFT_001', 'CITATION_ORPHAN_001']
+814-29279-[TEST-003] ❌ MISMATCH - Font salah (Arial)
+815---
+816-29315-<frozen importlib._bootstrap>:491
+817-29316-  <frozen importlib._bootstrap>:491: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute
+818-29317-
+819-29318-<frozen importlib._bootstrap>:491
+820-29319-  <frozen importlib._bootstrap>:491: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+821-29320-
+822-29321--- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+823-29322-=========================== short test summary info ============================
+
+=== 6. STATUS FILE PROYEK ===
+?? .streamlit/
+?? app.py
+?? golden_dataset/
+?? requirements.txt
+?? tests/
+
+=== END BIT 24 ===

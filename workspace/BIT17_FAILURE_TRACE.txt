@@ -1,0 +1,213 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.14.2, pytest-9.1.1, pluggy-1.7.0 -- /Users/jevin/Downloads/TesisCheck_MIKOM2026/.venv/bin/python3
+cachedir: .pytest_cache
+hypothesis profile 'default'
+rootdir: /Users/jevin/Downloads/TesisCheck_MIKOM2026
+configfile: pyproject.toml
+plugins: cov-7.1.0, hypothesis-6.170.0, playwright-0.10.0, platformdirs-4.13.3, anyio-4.15.1
+collecting ... collected 15 items
+
+tests/test_app.py::test_app_starts_without_exception PASSED              [  6%]
+tests/test_document_parser.py::test_parse_document_dispatcher PASSED     [ 13%]
+tests/test_docx_parser.py::test_parse_docx PASSED                        [ 20%]
+tests/test_engines.py::test_rule_loader_validates_json PASSED            [ 26%]
+tests/test_engines.py::test_margin_matches_expected_value PASSED         [ 33%]
+tests/test_engines.py::test_missing_field_is_unverified PASSED           [ 40%]
+tests/test_engines.py::test_rule_engine_operators PASSED                 [ 46%]
+tests/test_engines.py::test_finding_engine_filters_and_summarizes PASSED [ 53%]
+tests/test_engines.py::test_evidence_engine_creation PASSED              [ 60%]
+tests/test_engines.py::test_audit_thesis_end_to_end PASSED               [ 66%]
+tests/test_evidence_mapper.py::test_normalize_text PASSED                [ 73%]
+tests/test_evidence_mapper.py::test_find_evidence_with_page PASSED       [ 80%]
+tests/test_evidence_mapper.py::test_missing_evidence_is_unverified PASSED [ 86%]
+tests/test_golden_dataset.py::test_golden_dataset_evaluation FAILED      [ 93%]
+
+=================================== FAILURES ===================================
+________________________ test_golden_dataset_evaluation ________________________
+
+golden_dataset = {'TEST-001': {'file': '/Users/jevin/Downloads/TesisCheck_MIKOM2026/golden_dataset/documents/TEST-001_normal.docx', 'de...cuments/TEST-004_bab3_hilang.docx', 'description': 'BAB III hilang', 'expected_errors': ['STRUCT_CHAP_BAB3_001']}, ...}
+
+    def test_golden_dataset_evaluation(golden_dataset):
+        """Evaluates the 10 golden test cases against ground-truth labels."""
+        true_positives = 0
+        false_positives = 0
+        false_negatives = 0
+        true_negatives = 0
+    
+        domain_eval = {
+            "formula": {"tp": 0, "fp": 0, "fn": 0, "tn": 0},
+            "variable": {"tp": 0, "fp": 0, "fn": 0, "tn": 0},
+            "citation": {"tp": 0, "fp": 0, "fn": 0, "tn": 0},
+            "statistics": {"tp": 0, "fp": 0, "fn": 0, "tn": 0},
+            "journal": {"tp": 0, "fp": 0, "fn": 0, "tn": 0},
+            "format_structure": {"tp": 0, "fp": 0, "fn": 0, "tn": 0},
+        }
+    
+        results_summary = []
+    
+        for test_id, item in golden_dataset.items():
+            thesis_path = item["file"]
+            journal_path = item.get("journal_file")
+            expected_errors = set(item.get("expected_errors", []))
+    
+            # Parse and audit
+            doc = parse_document(thesis_path)
+            if journal_path:
+                doc_j = parse_document(journal_path)
+                doc.journal_document = doc_j
+    
+            rule_input = doc.to_rule_input()
+            audit_res = audit_thesis(rule_input)
+    
+            # Mapped findings
+            detected_errors = set()
+            for f in audit_res.findings:
+                if f["status"] == "ERROR":
+                    detected_errors.add(f["rule_id"])
+    
+            # Check accuracy for this test case
+            matched = expected_errors.intersection(detected_errors)
+            missed = expected_errors - detected_errors
+            unexpected = detected_errors - expected_errors
+    
+            tp = len(matched)
+            fn = len(missed)
+            fp = len(unexpected)
+            tn = 1 if len(expected_errors) == 0 and len(detected_errors) == 0 else 0
+    
+            true_positives += tp
+            false_positives += fp
+            false_negatives += fn
+            true_negatives += tn
+    
+            # Domain categorization
+            for err in expected_errors:
+                if "FORMULA" in err:
+                    if err in detected_errors:
+                        domain_eval["formula"]["tp"] += 1
+                    else:
+                        domain_eval["formula"]["fn"] += 1
+                elif "VARIABLE" in err:
+                    if err in detected_errors:
+                        domain_eval["variable"]["tp"] += 1
+                    else:
+                        domain_eval["variable"]["fn"] += 1
+                elif "CITATION" in err or "BIB" in err:
+                    if err in detected_errors:
+                        domain_eval["citation"]["tp"] += 1
+                    else:
+                        domain_eval["citation"]["fn"] += 1
+                elif "STAT" in err:
+                    if err in detected_errors:
+                        domain_eval["statistics"]["tp"] += 1
+                    else:
+                        domain_eval["statistics"]["fn"] += 1
+                elif "JOURNAL" in err:
+                    if err in detected_errors:
+                        domain_eval["journal"]["tp"] += 1
+                    else:
+                        domain_eval["journal"]["fn"] += 1
+                else:
+                    if err in detected_errors:
+                        domain_eval["format_structure"]["tp"] += 1
+                    else:
+                        domain_eval["format_structure"]["fn"] += 1
+    
+            results_summary.append({
+                "test_id": test_id,
+                "description": item["description"],
+                "expected_errors": list(expected_errors),
+                "detected_errors": list(detected_errors),
+                "is_correct": len(missed) == 0 and len(unexpected) == 0
+            })
+    
+        # Compute overall metrics
+        precision = true_positives / (true_positives + false_positives) if (true_positives + false_positives) > 0 else 1.0
+        recall = true_positives / (true_positives + false_negatives) if (true_positives + false_negatives) > 0 else 1.0
+        f1 = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 1.0
+    
+        print("\n" + "=" * 60)
+        print("GOLDEN DATASET BENCHMARK EVALUATION (10 TEST CASES)")
+        print("=" * 60)
+        for r in results_summary:
+            status_sym = "✓ PASS" if r["is_correct"] else "❌ MISMATCH"
+            print(f"[{r['test_id']}] {status_sym} - {r['description']}")
+            if not r["is_correct"]:
+                print(f"    Expected: {r['expected_errors']}")
+                print(f"    Detected: {r['detected_errors']}")
+    
+        print("-" * 60)
+        print(f"True Positives  : {true_positives}")
+        print(f"False Positives : {false_positives}")
+        print(f"False Negatives : {false_negatives}")
+        print(f"Precision       : {precision * 100:.1f}%")
+        print(f"Recall          : {recall * 100:.1f}%")
+        print(f"F1 Score        : {f1 * 100:.1f}%")
+        print("=" * 60)
+    
+        # Verification criteria
+        assert recall >= 0.85, f"Recall {recall} is below target 85%"
+>       assert precision >= 0.85, f"Precision {precision} is below target 85%"
+E       AssertionError: Precision 0.47058823529411764 is below target 85%
+E       assert 0.47058823529411764 >= 0.85
+
+tests/test_golden_dataset.py:137: AssertionError
+----------------------------- Captured stdout call -----------------------------
+
+============================================================
+GOLDEN DATASET BENCHMARK EVALUATION (10 TEST CASES)
+============================================================
+[TEST-001] ❌ MISMATCH - Tesis normal sesuai standar MIKOM 2026
+    Expected: []
+    Detected: ['CITATION_ORPHAN_001']
+[TEST-002] ❌ MISMATCH - Margin kiri salah (3.0 cm)
+    Expected: ['FORMAT_MARGIN_LEFT_001']
+    Detected: ['FORMAT_MARGIN_LEFT_001', 'CITATION_ORPHAN_001']
+[TEST-003] ❌ MISMATCH - Font salah (Arial)
+    Expected: ['FORMAT_FONT_FAMILY_001']
+    Detected: ['CITATION_ORPHAN_001']
+[TEST-004] ❌ MISMATCH - BAB III hilang
+    Expected: ['STRUCT_CHAP_BAB3_001']
+    Detected: ['CITATION_ORPHAN_001', 'STRUCT_CHAP_BAB3_001']
+[TEST-005] ✓ PASS - Sitasi Smith (2022) tidak ada di Daftar Pustaka
+[TEST-006] ❌ MISMATCH - Definisi variabel X1 berubah antara Bab II dan Bab III
+    Expected: ['VARIABLE_CONSISTENCY_001']
+    Detected: ['VARIABLE_CONSISTENCY_001', 'CITATION_ORPHAN_001']
+[TEST-007] ❌ MISMATCH - Kesalahan hitung aritmetika rumus (Y diklaim 7,5 padahal 6,5)
+    Expected: ['FORMULA_RECALCULATION_001']
+    Detected: ['CITATION_ORPHAN_001', 'FORMULA_RECALCULATION_001']
+[TEST-008] ❌ MISMATCH - Kesimpulan statistik kontradiktif dengan p-value (p=0,032 dinyatakan tidak signifikan)
+    Expected: ['STAT_DECISION_CONSISTENCY_001']
+    Detected: ['CITATION_ORPHAN_001', 'STAT_DECISION_CONSISTENCY_001']
+[TEST-009] ❌ MISMATCH - Perbedaan jumlah responden antara Bab III (120) dan Bab IV (118)
+    Expected: ['STAT_SAMPLE_CONSISTENCY_001']
+    Detected: ['CITATION_ORPHAN_001', 'STAT_SAMPLE_CONSISTENCY_001']
+[TEST-010] ❌ MISMATCH - Perbedaan sampel antara publikasi jurnal (100) dan tesis (120)
+    Expected: ['JOURNAL_ALIGNMENT_SAMPLE_001']
+    Detected: ['CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001']
+------------------------------------------------------------
+True Positives  : 8
+False Positives : 9
+False Negatives : 1
+Precision       : 47.1%
+Recall          : 88.9%
+F1 Score        : 61.5%
+============================================================
+=============================== warnings summary ===============================
+<frozen importlib._bootstrap>:491
+<frozen importlib._bootstrap>:491
+  <frozen importlib._bootstrap>:491: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute
+
+<frozen importlib._bootstrap>:491
+<frozen importlib._bootstrap>:491
+  <frozen importlib._bootstrap>:491: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute
+
+<frozen importlib._bootstrap>:491
+  <frozen importlib._bootstrap>:491: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_golden_dataset.py::test_golden_dataset_evaluation - AssertionError: Precision 0.47058823529411764 is below target 85%
+assert 0.47058823529411764 >= 0.85
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+=================== 1 failed, 13 passed, 5 warnings in 1.95s ===================

@@ -1,0 +1,184 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@2.0.3
+
+executors:
+  py:
+    docker:
+      - image: cimg/python:3.11
+    resource_class: small
+    working_directory: ~/project
+
+commands:
+  install_deps:
+    description: "Install dependencies dengan cache"
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-deps-{{ checksum "requirements.txt" }}-{{ checksum "pyproject.toml" }}
+            - v1-deps-
+      - run:
+          name: Install Python dependencies
+          command: |
+            python -m venv venv
+            . venv/bin/activate
+            pip install --upgrade pip
+            pip install -r requirements.txt
+            pip install -e .
+            pip install pytest pytest-cov ruff mypy bandit pip-audit
+      - save_cache:
+          key: v1-deps-{{ checksum "requirements.txt" }}-{{ checksum "pyproject.toml" }}
+          paths:
+            - venv
+
+jobs:
+  # ─────────────────────────────────────────
+  # 1. LINT (Ruff)
+  # ─────────────────────────────────────────
+  lint:
+    executor: py
+    steps:
+      - install_deps
+      - run:
+          name: Ruff check
+          command: |
+            . venv/bin/activate
+            ruff check .
+            ruff format --check .
+
+  # ─────────────────────────────────────────
+  # 2. TYPE CHECK (mypy)
+  # ─────────────────────────────────────────
+  type_check:
+    executor: py
+    steps:
+      - install_deps
+      - run:
+          name: mypy
+          command: |
+            . venv/bin/activate
+            mypy engines core app --ignore-missing-imports
+
+  # ─────────────────────────────────────────
+  # 3. SECURITY (Bandit + pip-audit)
+  # ─────────────────────────────────────────
+  security:
+    executor: py
+    steps:
+      - install_deps
+      - run:
+          name: Bandit
+          command: |
+            . venv/bin/activate
+            bandit -r engines core app -f json -o bandit-report.json || true
+      - run:
+          name: pip-audit
+          command: |
+            . venv/bin/activate
+            pip-audit || true
+      - store_artifacts:
+          path: bandit-report.json
+
+  # ─────────────────────────────────────────
+  # 4. TEST (pytest + coverage)
+  # ─────────────────────────────────────────
+  test:
+    executor: py
+    steps:
+      - install_deps
+      - run:
+          name: Run tests with coverage
+          command: |
+            . venv/bin/activate
+            pytest tests/ \
+              --cov=engines --cov=core --cov=app \
+              --cov-report=xml --cov-report=term \
+              --junitxml=test-results/pytest.xml
+          no_output_timeout: 20m
+      - run:
+          name: Verify MCP config (opsional)
+          command: |
+            if [ -z "$SCOPUS_API_KEY" ]; then
+              echo "SCOPUS_API_KEY tidak diset, melewati tes integrasi Scopus"
+            else
+              pytest tests/test_mcp_integration.py
+            fi
+      - store_test_results:
+          path: test-results
+      - store_artifacts:
+          path: coverage.xml
+
+  # ─────────────────────────────────────────
+  # 5. SMOKE TEST STREAMLIT (tanpa browser)
+  # ─────────────────────────────────────────
+  streamlit_smoke:
+    executor: py
+    steps:
+      - install_deps
+      - run:
+          name: Streamlit AppTest
+          command: |
+            . venv/bin/activate
+            pytest tests/test_ui_e2e.py -v
+          no_output_timeout: 10m
+
+  # ─────────────────────────────────────────
+  # 6. DEPLOY KE VPS (main branch)
+  # ─────────────────────────────────────────
+  deploy:
+    executor: py
+    steps:
+      - run:
+          name: Deploy ke VPS
+          command: |
+            if [ -z "$VPS_HOST" ] || [ -z "$VPS_USER" ]; then
+              echo "VPS_HOST atau VPS_USER tidak diset, melewati auto-deploy"
+              exit 0
+            fi
+            ssh -o StrictHostKeyChecking=no "$VPS_USER@$VPS_HOST" << 'ENDSSH'
+              cd "${VPS_APP_DIR:-/home/ubuntu/TesisCheck_MIKOM2026}"
+              git pull origin main
+              source venv/bin/activate
+              pip install -q -r requirements.txt
+              pip install -q -e .
+              
+              # Restart Streamlit via systemd
+              sudo systemctl restart tesis-generator
+            ENDSSH
+
+workflows:
+  ci:
+    jobs:
+      - lint:
+          filters:
+            branches:
+              ignore: /^wip-.*/
+      - type_check:
+          filters:
+            branches:
+              ignore: /^wip-.*/
+      - security:
+          filters:
+            branches:
+              ignore: /^wip-.*/
+      - test:
+          filters:
+            branches:
+              ignore: /^wip-.*/
+      - streamlit_smoke:
+          filters:
+            branches:
+              ignore: /^wip-.*/
+      - deploy:
+          requires:
+            - lint
+            - type_check
+            - security
+            - test
+            - streamlit_smoke
+          filters:
+            branches:
+              only: main
+

@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "scopus-plus": {
+      "command": "uvx",
+      "args": ["scopus-plus-mcp"],
+      "env": {
+        "SCOPUS_API_KEY": "c694251fc3e890d881aa94fd08c00170"
+      }
+    },
+    "sinta": {
+      "command": "python",
+      "args": ["-m", "sinta_mcp_server"]
+    }
+  }
+}

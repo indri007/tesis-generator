@@ -1,0 +1,335 @@
+=== BIT 21: CITATION RULE AUDIT ===
+Fri Oct 16 18:32:49 WIB 2026
+
+=== 1. ROOT GIT ===
+/Users/jevin
+main
+8e8b2ff first commit
+
+=== 2. IMPLEMENTASI CITATION_ORPHAN_001 ===
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:166:    Detected: ['CITATION_ORPHAN_001']
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:169:    Detected: ['CITATION_ORPHAN_001', 'FORMAT_MARGIN_LEFT_001']
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:172:    Detected: ['CITATION_ORPHAN_001']
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:175:    Detected: ['CITATION_ORPHAN_001', 'STRUCT_CHAP_BAB3_001']
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:179:    Detected: ['CITATION_ORPHAN_001', 'VARIABLE_CONSISTENCY_001']
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:182:    Detected: ['CITATION_ORPHAN_001', 'FORMULA_RECALCULATION_001']
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:185:    Detected: ['CITATION_ORPHAN_001', 'STAT_DECISION_CONSISTENCY_001']
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:188:    Detected: ['CITATION_ORPHAN_001', 'STAT_SAMPLE_CONSISTENCY_001']
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:191:    Detected: ['CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001']
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:414:                       'rule_id': 'CITATION_ORPHAN_001',
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:828:                          'rule_id': 'CITATION_ORPHAN_001',
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:972:detected_errors = {'CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001'}
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:19900:              'expected_errors': ['CITATION_ORPHAN_001'],
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:19934: 'detected_errors': ['CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001'],
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:19940:  'detected_errors': ['CITATION_ORPHAN_001'],
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:19945:  'detected_errors': ['FORMAT_MARGIN_LEFT_001', 'CITATION_ORPHAN_001'],
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:19950:  'detected_errors': ['CITATION_ORPHAN_001'],
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:19955:  'detected_errors': ['STRUCT_CHAP_BAB3_001', 'CITATION_ORPHAN_001'],
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:19960:  'detected_errors': ['CITATION_ORPHAN_001'],
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:19961:  'expected_errors': ['CITATION_ORPHAN_001'],
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:19965:  'detected_errors': ['CITATION_ORPHAN_001', 'VARIABLE_CONSISTENCY_001'],
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:19971:  'detected_errors': ['CITATION_ORPHAN_001', 'FORMULA_RECALCULATION_001'],
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:19977:  'detected_errors': ['CITATION_ORPHAN_001', 'STAT_DECISION_CONSISTENCY_001'],
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:19983:  'detected_errors': ['CITATION_ORPHAN_001', 'STAT_SAMPLE_CONSISTENCY_001'],
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:19989:  'detected_errors': ['CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001'],
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:29265:unexpected = {'CITATION_ORPHAN_001'}
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:29275:    Detected: ['CITATION_ORPHAN_001']
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:29278:    Detected: ['FORMAT_MARGIN_LEFT_001', 'CITATION_ORPHAN_001']
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:29281:    Detected: ['CITATION_ORPHAN_001']
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:29284:    Detected: ['STRUCT_CHAP_BAB3_001', 'CITATION_ORPHAN_001']
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:29288:    Detected: ['CITATION_ORPHAN_001', 'VARIABLE_CONSISTENCY_001']
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:29291:    Detected: ['CITATION_ORPHAN_001', 'FORMULA_RECALCULATION_001']
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:29294:    Detected: ['CITATION_ORPHAN_001', 'STAT_DECISION_CONSISTENCY_001']
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:29297:    Detected: ['CITATION_ORPHAN_001', 'STAT_SAMPLE_CONSISTENCY_001']
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:29300:    Detected: ['CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001']
+./workspace/BIT17_FAILURE_TRACE.txt:162:    Detected: ['CITATION_ORPHAN_001']
+./workspace/BIT17_FAILURE_TRACE.txt:165:    Detected: ['FORMAT_MARGIN_LEFT_001', 'CITATION_ORPHAN_001']
+./workspace/BIT17_FAILURE_TRACE.txt:168:    Detected: ['CITATION_ORPHAN_001']
+./workspace/BIT17_FAILURE_TRACE.txt:171:    Detected: ['CITATION_ORPHAN_001', 'STRUCT_CHAP_BAB3_001']
+./workspace/BIT17_FAILURE_TRACE.txt:175:    Detected: ['VARIABLE_CONSISTENCY_001', 'CITATION_ORPHAN_001']
+./workspace/BIT17_FAILURE_TRACE.txt:178:    Detected: ['CITATION_ORPHAN_001', 'FORMULA_RECALCULATION_001']
+./workspace/BIT17_FAILURE_TRACE.txt:181:    Detected: ['CITATION_ORPHAN_001', 'STAT_DECISION_CONSISTENCY_001']
+./workspace/BIT17_FAILURE_TRACE.txt:184:    Detected: ['CITATION_ORPHAN_001', 'STAT_SAMPLE_CONSISTENCY_001']
+./workspace/BIT17_FAILURE_TRACE.txt:187:    Detected: ['CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001']
+./workspace/BIT21_CITATION_RULE_AUDIT.txt:9:=== 2. IMPLEMENTASI CITATION_ORPHAN_001 ===
+./workspace/BIT16_RELEASE_VERIFICATION.txt:344:    Detected: ['CITATION_ORPHAN_001']
+./workspace/BIT16_RELEASE_VERIFICATION.txt:347:    Detected: ['FORMAT_MARGIN_LEFT_001', 'CITATION_ORPHAN_001']
+./workspace/BIT16_RELEASE_VERIFICATION.txt:350:    Detected: ['CITATION_ORPHAN_001']
+./workspace/BIT16_RELEASE_VERIFICATION.txt:353:    Detected: ['CITATION_ORPHAN_001', 'STRUCT_CHAP_BAB3_001']
+./workspace/BIT16_RELEASE_VERIFICATION.txt:357:    Detected: ['CITATION_ORPHAN_001', 'VARIABLE_CONSISTENCY_001']
+./workspace/BIT16_RELEASE_VERIFICATION.txt:360:    Detected: ['FORMULA_RECALCULATION_001', 'CITATION_ORPHAN_001']
+./workspace/BIT16_RELEASE_VERIFICATION.txt:363:    Detected: ['STAT_DECISION_CONSISTENCY_001', 'CITATION_ORPHAN_001']
+./workspace/BIT16_RELEASE_VERIFICATION.txt:366:    Detected: ['STAT_SAMPLE_CONSISTENCY_001', 'CITATION_ORPHAN_001']
+./workspace/BIT16_RELEASE_VERIFICATION.txt:369:    Detected: ['JOURNAL_ALIGNMENT_SAMPLE_001', 'CITATION_ORPHAN_001']
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:82:166-    Detected: ['CITATION_ORPHAN_001']
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:85:169-    Detected: ['CITATION_ORPHAN_001', 'FORMAT_MARGIN_LEFT_001']
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:208:414-                       'rule_id': 'CITATION_ORPHAN_001',
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:578:828-                          'rule_id': 'CITATION_ORPHAN_001',
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:711:972-detected_errors = {'CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001'}
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:800:29265-unexpected = {'CITATION_ORPHAN_001'}
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:810:29275-    Detected: ['CITATION_ORPHAN_001']
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:813:29278-    Detected: ['FORMAT_MARGIN_LEFT_001', 'CITATION_ORPHAN_001']
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:1087:                       'rule_id': 'CITATION_ORPHAN_001',
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:1501:                          'rule_id': 'CITATION_ORPHAN_001',
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:1645:detected_errors = {'CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001'}
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:20573:              'expected_errors': ['CITATION_ORPHAN_001'],
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:20607: 'detected_errors': ['CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001'],
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:20613:  'detected_errors': ['CITATION_ORPHAN_001'],
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:20618:  'detected_errors': ['FORMAT_MARGIN_LEFT_001', 'CITATION_ORPHAN_001'],
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:20623:  'detected_errors': ['CITATION_ORPHAN_001'],
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:20628:  'detected_errors': ['STRUCT_CHAP_BAB3_001', 'CITATION_ORPHAN_001'],
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:20633:  'detected_errors': ['CITATION_ORPHAN_001'],
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:20634:  'expected_errors': ['CITATION_ORPHAN_001'],
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:20638:  'detected_errors': ['CITATION_ORPHAN_001', 'VARIABLE_CONSISTENCY_001'],
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:20644:  'detected_errors': ['CITATION_ORPHAN_001', 'FORMULA_RECALCULATION_001'],
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:20650:  'detected_errors': ['CITATION_ORPHAN_001', 'STAT_DECISION_CONSISTENCY_001'],
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:20656:  'detected_errors': ['STAT_SAMPLE_CONSISTENCY_001', 'CITATION_ORPHAN_001'],
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:20662:  'detected_errors': ['CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001'],
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:29938:unexpected = {'CITATION_ORPHAN_001'}
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:29948:    Detected: ['CITATION_ORPHAN_001']
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:29951:    Detected: ['FORMAT_MARGIN_LEFT_001', 'CITATION_ORPHAN_001']
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:29954:    Detected: ['CITATION_ORPHAN_001']
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:29957:    Detected: ['STRUCT_CHAP_BAB3_001', 'CITATION_ORPHAN_001']
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:29961:    Detected: ['CITATION_ORPHAN_001', 'VARIABLE_CONSISTENCY_001']
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:29964:    Detected: ['CITATION_ORPHAN_001', 'FORMULA_RECALCULATION_001']
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:29967:    Detected: ['CITATION_ORPHAN_001', 'STAT_DECISION_CONSISTENCY_001']
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:29970:    Detected: ['STAT_SAMPLE_CONSISTENCY_001', 'CITATION_ORPHAN_001']
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:29973:    Detected: ['CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001']
+./engines/citation_auditor.py:71:                "rule_id": "CITATION_ORPHAN_001",
+./rules/mikom_2026.json:306:      "id": "CITATION_ORPHAN_001",
+./golden_dataset/generator.py:225:        "expected_errors": ["CITATION_ORPHAN_001"]
+
+=== 3. IMPLEMENTASI JOURNAL_ALIGNMENT_SAMPLE_001 ===
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:190:    Expected: ['JOURNAL_ALIGNMENT_SAMPLE_001']
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:191:    Detected: ['CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001']
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:454:                       'rule_id': 'JOURNAL_ALIGNMENT_SAMPLE_001',
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:965:                          'rule_id': 'JOURNAL_ALIGNMENT_SAMPLE_001',
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:972:detected_errors = {'CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001'}
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:19862:err        = 'JOURNAL_ALIGNMENT_SAMPLE_001'
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:19863:expected_errors = {'JOURNAL_ALIGNMENT_SAMPLE_001'}
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:19876: 'rule_id': 'JOURNAL_ALIGNMENT_SAMPLE_001',
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:19920:              'expected_errors': ['JOURNAL_ALIGNMENT_SAMPLE_001'],
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:19925: 'expected_errors': ['JOURNAL_ALIGNMENT_SAMPLE_001'],
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:19929:matched    = {'JOURNAL_ALIGNMENT_SAMPLE_001'}
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:19934: 'detected_errors': ['CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001'],
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:19935: 'expected_errors': ['JOURNAL_ALIGNMENT_SAMPLE_001'],
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:19989:  'detected_errors': ['CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001'],
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:19990:  'expected_errors': ['JOURNAL_ALIGNMENT_SAMPLE_001'],
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:29299:    Expected: ['JOURNAL_ALIGNMENT_SAMPLE_001']
+./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:29300:    Detected: ['CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001']
+./workspace/BIT17_FAILURE_TRACE.txt:186:    Expected: ['JOURNAL_ALIGNMENT_SAMPLE_001']
+./workspace/BIT17_FAILURE_TRACE.txt:187:    Detected: ['CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001']
+./workspace/BIT21_CITATION_RULE_AUDIT.txt:18:./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:191:    Detected: ['CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001']
+./workspace/BIT21_CITATION_RULE_AUDIT.txt:21:./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:972:detected_errors = {'CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001'}
+./workspace/BIT21_CITATION_RULE_AUDIT.txt:23:./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:19934: 'detected_errors': ['CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001'],
+./workspace/BIT21_CITATION_RULE_AUDIT.txt:34:./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:19989:  'detected_errors': ['CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001'],
+./workspace/BIT21_CITATION_RULE_AUDIT.txt:44:./workspace/BIT18_DIAGNOSE_FIX_REGRESSION_DEPLOY_GATE.txt:29300:    Detected: ['CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001']
+./workspace/BIT21_CITATION_RULE_AUDIT.txt:53:./workspace/BIT17_FAILURE_TRACE.txt:187:    Detected: ['CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001']
+./workspace/BIT21_CITATION_RULE_AUDIT.txt:63:./workspace/BIT16_RELEASE_VERIFICATION.txt:369:    Detected: ['JOURNAL_ALIGNMENT_SAMPLE_001', 'CITATION_ORPHAN_001']
+./workspace/BIT21_CITATION_RULE_AUDIT.txt:68:./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:711:972-detected_errors = {'CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001'}
+./workspace/BIT21_CITATION_RULE_AUDIT.txt:74:./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:1645:detected_errors = {'CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001'}
+./workspace/BIT21_CITATION_RULE_AUDIT.txt:76:./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:20607: 'detected_errors': ['CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001'],
+./workspace/BIT21_CITATION_RULE_AUDIT.txt:87:./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:20662:  'detected_errors': ['CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001'],
+./workspace/BIT21_CITATION_RULE_AUDIT.txt:97:./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:29973:    Detected: ['CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001']
+./workspace/BIT21_CITATION_RULE_AUDIT.txt:102:=== 3. IMPLEMENTASI JOURNAL_ALIGNMENT_SAMPLE_001 ===
+./workspace/BIT16_RELEASE_VERIFICATION.txt:368:    Expected: ['JOURNAL_ALIGNMENT_SAMPLE_001']
+./workspace/BIT16_RELEASE_VERIFICATION.txt:369:    Detected: ['JOURNAL_ALIGNMENT_SAMPLE_001', 'CITATION_ORPHAN_001']
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:235:454-                       'rule_id': 'JOURNAL_ALIGNMENT_SAMPLE_001',
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:704:965-                          'rule_id': 'JOURNAL_ALIGNMENT_SAMPLE_001',
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:711:972-detected_errors = {'CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001'}
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:753:19876- 'rule_id': 'JOURNAL_ALIGNMENT_SAMPLE_001',
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:1127:                       'rule_id': 'JOURNAL_ALIGNMENT_SAMPLE_001',
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:1638:                          'rule_id': 'JOURNAL_ALIGNMENT_SAMPLE_001',
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:1645:detected_errors = {'CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001'}
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:20535:err        = 'JOURNAL_ALIGNMENT_SAMPLE_001'
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:20536:expected_errors = {'JOURNAL_ALIGNMENT_SAMPLE_001'}
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:20549: 'rule_id': 'JOURNAL_ALIGNMENT_SAMPLE_001',
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:20593:              'expected_errors': ['JOURNAL_ALIGNMENT_SAMPLE_001'],
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:20598: 'expected_errors': ['JOURNAL_ALIGNMENT_SAMPLE_001'],
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:20602:matched    = {'JOURNAL_ALIGNMENT_SAMPLE_001'}
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:20607: 'detected_errors': ['CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001'],
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:20608: 'expected_errors': ['JOURNAL_ALIGNMENT_SAMPLE_001'],
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:20662:  'detected_errors': ['CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001'],
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:20663:  'expected_errors': ['JOURNAL_ALIGNMENT_SAMPLE_001'],
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:29972:    Expected: ['JOURNAL_ALIGNMENT_SAMPLE_001']
+./workspace/BIT19_FAILURE_DIAGNOSTIC.txt:29973:    Detected: ['CITATION_ORPHAN_001', 'JOURNAL_ALIGNMENT_SAMPLE_001']
+./engines/cross_document_auditor.py:54:                    "rule_id": "JOURNAL_ALIGNMENT_SAMPLE_001",
+./rules/mikom_2026.json:411:      "id": "JOURNAL_ALIGNMENT_SAMPLE_001",
+./golden_dataset/generator.py:291:        "expected_errors": ["JOURNAL_ALIGNMENT_SAMPLE_001"]
+
+=== 4. ASSERTION BENCHMARK ===
+"""Golden Dataset Evaluation Test: Runs audit on 10 synthetic test cases and computes Precision, Recall, and Accuracy."""
+
+
+import pytest
+
+from engines.audit_engine import audit_thesis
+from engines.document_parser import parse_document
+from golden_dataset.generator import generate_golden_dataset
+
+
+@pytest.fixture(scope="module")
+def golden_dataset():
+    """Generates the 10 golden test documents."""
+    return generate_golden_dataset()
+
+
+def test_golden_dataset_evaluation(golden_dataset):
+    """Evaluates the 10 golden test cases against ground-truth labels."""
+    true_positives = 0
+    false_positives = 0
+    false_negatives = 0
+    true_negatives = 0
+
+    domain_eval = {
+        "formula": {"tp": 0, "fp": 0, "fn": 0, "tn": 0},
+        "variable": {"tp": 0, "fp": 0, "fn": 0, "tn": 0},
+        "citation": {"tp": 0, "fp": 0, "fn": 0, "tn": 0},
+        "statistics": {"tp": 0, "fp": 0, "fn": 0, "tn": 0},
+        "journal": {"tp": 0, "fp": 0, "fn": 0, "tn": 0},
+        "format_structure": {"tp": 0, "fp": 0, "fn": 0, "tn": 0},
+    }
+
+    results_summary = []
+
+    for test_id, item in golden_dataset.items():
+        thesis_path = item["file"]
+        journal_path = item.get("journal_file")
+        expected_errors = set(item.get("expected_errors", []))
+
+        # Parse and audit
+        doc = parse_document(thesis_path)
+        if journal_path:
+            doc_j = parse_document(journal_path)
+            doc.journal_document = doc_j
+
+        rule_input = doc.to_rule_input()
+        audit_res = audit_thesis(rule_input)
+
+        # Mapped findings
+        detected_errors = set()
+        for f in audit_res.findings:
+            if f["status"] == "ERROR":
+                detected_errors.add(f["rule_id"])
+
+        # Check accuracy for this test case
+        matched = expected_errors.intersection(detected_errors)
+        missed = expected_errors - detected_errors
+        unexpected = detected_errors - expected_errors
+
+        tp = len(matched)
+        fn = len(missed)
+        fp = len(unexpected)
+        tn = 1 if len(expected_errors) == 0 and len(detected_errors) == 0 else 0
+
+        true_positives += tp
+        false_positives += fp
+        false_negatives += fn
+        true_negatives += tn
+
+        # Domain categorization
+        for err in expected_errors:
+            if "FORMULA" in err:
+                if err in detected_errors:
+                    domain_eval["formula"]["tp"] += 1
+                else:
+                    domain_eval["formula"]["fn"] += 1
+            elif "VARIABLE" in err:
+                if err in detected_errors:
+                    domain_eval["variable"]["tp"] += 1
+                else:
+                    domain_eval["variable"]["fn"] += 1
+            elif "CITATION" in err or "BIB" in err:
+                if err in detected_errors:
+                    domain_eval["citation"]["tp"] += 1
+                else:
+                    domain_eval["citation"]["fn"] += 1
+            elif "STAT" in err:
+                if err in detected_errors:
+                    domain_eval["statistics"]["tp"] += 1
+                else:
+                    domain_eval["statistics"]["fn"] += 1
+            elif "JOURNAL" in err:
+                if err in detected_errors:
+                    domain_eval["journal"]["tp"] += 1
+                else:
+                    domain_eval["journal"]["fn"] += 1
+            else:
+                if err in detected_errors:
+                    domain_eval["format_structure"]["tp"] += 1
+                else:
+                    domain_eval["format_structure"]["fn"] += 1
+
+        results_summary.append({
+            "test_id": test_id,
+            "description": item["description"],
+            "expected_errors": list(expected_errors),
+            "detected_errors": list(detected_errors),
+            "is_correct": len(missed) == 0 and len(unexpected) == 0
+        })
+
+    # Compute overall metrics
+    precision = true_positives / (true_positives + false_positives) if (true_positives + false_positives) > 0 else 1.0
+    recall = true_positives / (true_positives + false_negatives) if (true_positives + false_negatives) > 0 else 1.0
+    f1 = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 1.0
+
+    print("\n" + "=" * 60)
+    print("GOLDEN DATASET BENCHMARK EVALUATION (10 TEST CASES)")
+    print("=" * 60)
+    for r in results_summary:
+        status_sym = "✓ PASS" if r["is_correct"] else "❌ MISMATCH"
+        print(f"[{r['test_id']}] {status_sym} - {r['description']}")
+        if not r["is_correct"]:
+            print(f"    Expected: {r['expected_errors']}")
+            print(f"    Detected: {r['detected_errors']}")
+
+    print("-" * 60)
+    print(f"True Positives  : {true_positives}")
+    print(f"False Positives : {false_positives}")
+    print(f"False Negatives : {false_negatives}")
+    print(f"Precision       : {precision * 100:.1f}%")
+    print(f"Recall          : {recall * 100:.1f}%")
+    print(f"F1 Score        : {f1 * 100:.1f}%")
+    print("=" * 60)
+
+    # Verification criteria
+    assert recall >= 0.85, f"Recall {recall} is below target 85%"
+    assert precision >= 0.85, f"Precision {precision} is below target 85%"
+
+=== 5. DAFTAR EXPECTED ERRORS ===
+tests/test_golden_dataset.py:38:        expected_errors = set(item.get("expected_errors", []))
+tests/test_golden_dataset.py:56:        matched = expected_errors.intersection(detected_errors)
+tests/test_golden_dataset.py:57:        missed = expected_errors - detected_errors
+tests/test_golden_dataset.py:58:        unexpected = detected_errors - expected_errors
+tests/test_golden_dataset.py:63:        tn = 1 if len(expected_errors) == 0 and len(detected_errors) == 0 else 0
+tests/test_golden_dataset.py:71:        for err in expected_errors:
+tests/test_golden_dataset.py:106:            "expected_errors": list(expected_errors),
+tests/test_golden_dataset.py:123:            print(f"    Expected: {r['expected_errors']}")
+tests/test_evidence_mapper.py:44:        "rule_id": "TEST-001",
+golden_dataset/generator.py:177:    # TEST-001: Tesis Normal (Semua valid)
+golden_dataset/generator.py:179:    t1_path = DOCS_DIR / "TEST-001_normal.docx"
+golden_dataset/generator.py:181:    dataset["TEST-001"] = {
+golden_dataset/generator.py:184:        "expected_errors": []
+golden_dataset/generator.py:193:        "expected_errors": ["FORMAT_MARGIN_LEFT_001"]
+golden_dataset/generator.py:202:        "expected_errors": ["FORMAT_FONT_FAMILY_001"]
+golden_dataset/generator.py:212:        "expected_errors": ["STRUCT_CHAP_BAB3_001"]
+golden_dataset/generator.py:225:        "expected_errors": ["CITATION_ORPHAN_001"]
+golden_dataset/generator.py:239:        "expected_errors": ["VARIABLE_CONSISTENCY_001"]
+golden_dataset/generator.py:249:        "expected_errors": ["FORMULA_RECALCULATION_001"]
+golden_dataset/generator.py:259:        "expected_errors": ["STAT_DECISION_CONSISTENCY_001"]
+golden_dataset/generator.py:269:        "expected_errors": ["STAT_SAMPLE_CONSISTENCY_001"]
+golden_dataset/generator.py:272:    # TEST-010: Jurnal Berbeda dengan Tesis (Tesis sampel 120, Jurnal sampel 100)
+golden_dataset/generator.py:281:    t10_thesis_path = DOCS_DIR / "TEST-010_thesis.docx"
+golden_dataset/generator.py:282:    t10_journal_path = DOCS_DIR / "TEST-010_journal.docx"
+golden_dataset/generator.py:287:    dataset["TEST-010"] = {
+golden_dataset/generator.py:291:        "expected_errors": ["JOURNAL_ALIGNMENT_SAMPLE_001"]
+
+=== 6. STATUS GIT TERBATAS ===
+?? .streamlit/
+?? app.py
+?? data/
+?? golden_dataset/
+?? requirements.txt
+?? tests/
+
+=== END BIT 21 ===

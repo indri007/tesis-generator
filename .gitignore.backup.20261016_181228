@@ -1,0 +1,56 @@
+# Python & Environments
+.venv/
+env/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.hypothesis/
+
+# Vendor submodules & large clones
+vendor/
+data/raw/
+*.jsonl
+*.pdf
+*.docx
+!golden_dataset/documents/*.docx
+!golden_dataset/documents/*.pdf
+
+# System & IDE files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Project logs & workspace runtime artifacts
+logs/
+output/
+workspace/projects/*/input/*
+workspace/projects/*/extracted/*
+workspace/projects/*/revisions/*
+workspace/projects/*/exports/*

@@ -1,0 +1,66 @@
+/* ==============================================================================
+   ART DIRECTION & DESIGN TOKENS — TESISCHECK MIKOM 2026
+   Obsidian, Midnight Navy, Deep Blue, Electric Cyan, Soft White, Restrained Violet
+   ============================================================================== */
+
+:root {
+  /* Core Color Palette */
+  --color-obsidian: #080B12;
+  --color-midnight: #0D1424;
+  --color-deep-blue: #142A4A;
+  --color-deep-blue-hover: #1B355C;
+  --color-surface-glass: rgba(13, 20, 36, 0.72);
+  --color-surface-card: rgba(20, 42, 74, 0.45);
+  --color-surface-card-hover: rgba(27, 53, 92, 0.65);
+
+  /* Signature Highlight Accents (Controlled, not overwhelming) */
+  --color-cyan: #58D8FF;
+  --color-cyan-glow: rgba(88, 216, 255, 0.28);
+  --color-cyan-subtle: rgba(88, 216, 255, 0.12);
+  --color-violet: #8B7CFF;
+  --color-violet-glow: rgba(139, 124, 255, 0.25);
+  --color-violet-subtle: rgba(139, 124, 255, 0.12);
+
+  /* Status Colors */
+  --color-pass-green: #34D399;
+  --color-pass-glow: rgba(52, 211, 153, 0.2);
+  --color-warn-amber: #FBBF24;
+  --color-warn-glow: rgba(251, 191, 36, 0.2);
+  --color-error-red: #F87171;
+  --color-error-glow: rgba(248, 113, 113, 0.2);
+
+  /* Typography Colors */
+  --color-text-primary: #F5F7FB;
+  --color-text-secondary: #94A3B8;
+  --color-text-tertiary: #64748B;
+  --color-text-accent: #58D8FF;
+
+  /* Borders & Dividers */
+  --border-subtle: 1px solid rgba(148, 163, 184, 0.12);
+  --border-cyan: 1px solid rgba(88, 216, 255, 0.24);
+  --border-cyan-active: 1px solid rgba(88, 216, 255, 0.6);
+  --border-glass: 1px solid rgba(255, 255, 255, 0.08);
+
+  /* Typography Stacks */
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+
+  /* Elevations & Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45), 0 0 1px rgba(88, 216, 255, 0.2);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.65), 0 0 32px rgba(88, 216, 255, 0.15);
+  --shadow-cyan-glow: 0 0 24px rgba(88, 216, 255, 0.35);
+
+  /* Transitions */
+  --transition-fast: 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout Spacing */
+  --container-max-width: 1360px;
+  --nav-height: 72px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+}

@@ -1,0 +1,27 @@
+{
+  "manifest_created_at": "2026-10-16T17:49:45.878809+07:00",
+  "base_commit": "1c345785c451f7ce96b34d67c55ebdb3457ba036",
+  "working_tree_dirty": true,
+  "python_version": "3.14.2",
+  "platform": "macOS-15.3.1-arm64-arm-64bit-Mach-O",
+  "dataset_version": "2026.1",
+  "ruleset_id": "MIKOM_2026",
+  "ruleset_version": "2026.1.0",
+  "split": "evaluation",
+  "sha256_files": {
+    "core/evaluation/schema.py": "d7dda007f903e92fe6f26b530f7b3aa2ba28f0ec4cdcfc283d83cf29617c107b",
+    "core/evaluation/benchmark_runner.py": "a2690015805d9074bdea7042f531293259f8761c7cb85831b8a65f7c0e591f8f",
+    "core/evaluation/matcher.py": "361350d435bde3d839bd8e8205f6f15e69c50a82503e19adbf95ede9369f41df",
+    "core/evaluation/metrics.py": "dae6c977e4b3bab4d7ae02ef7d65f4d43da63c82daca1fde8cdd99187ecbe453",
+    "core/evaluation/error_analysis.py": "77e52a36cbcae9d3e933a4a5decda43386d56429c9602723fc818cdb74b6827c",
+    "tests/golden_dataset/test_academic_benchmark.py": "3d0becc37c007e5d339e7286e58af6e8932c89b4470a4412fd609dd30f6e707f",
+    "data/benchmark/evaluation_set.json": "5ab476c4f3f6d8d1dc8d88b3da85c1f89355e464d96c9e1be5b9212cc99b51df",
+    "requirements.txt": "02fe2220d0f9e32f070cdea250aad64404ea783ff49ca569f2c663623cc64cc1"
+  },
+  "missing_files": [],
+  "limitations": [
+    "Manifest merekam identitas file pada saat dibuat.",
+    "Manifest ini sendiri belum menjamin reproduksibilitas penuh.",
+    "Hasil benchmark sintetis tidak mewakili seluruh dokumen tesis."
+  ]
+}

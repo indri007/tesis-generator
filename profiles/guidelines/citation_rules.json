@@ -1,0 +1,18 @@
+{
+  "category": "citation",
+  "style": "APA 7th Edition",
+  "in_text_patterns": [
+    "\\(([A-Z][a-zA-Z\\s\\-–]+(?:,\\s*(?:19|20)\\d{2}|\\s+(?:19|20)\\d{2}))\\)",
+    "([A-Z][a-zA-Z\\s\\-–]+)\\s*\\(((?:19|20)\\d{2}[a-z]?)\\)",
+    "\\(([A-Z][a-zA-Z\\s\\-–]+(?:&|dan|and)\\s*[A-Z][a-zA-Z\\s\\-–]+,\\s*(?:19|20)\\d{2})\\)",
+    "\\(([A-Z][a-zA-Z\\s\\-–]+(?:et\\s+al\\.|dkk\\.),\\s*(?:19|20)\\d{2})\\)"
+  ],
+  "requirements": {
+    "every_citation_must_have_reference": true,
+    "every_reference_must_have_citation": true,
+    "require_year": true,
+    "require_title": true,
+    "require_publisher_or_journal": true,
+    "require_doi_or_url_for_online": true
+  }
+}

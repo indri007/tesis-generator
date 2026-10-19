@@ -1,0 +1,406 @@
+=== BIT 16: RELEASE VERIFICATION ===
+Fri Oct 16 18:29:50 WIB 2026
+
+=== 1. REPOSITORY DAN COMMIT LOKAL ===
+origin	https://github.com/digimetateam-hash/project-vedathon.git (fetch)
+origin	https://github.com/digimetateam-hash/project-vedathon.git (push)
+main
+8e8b2ff4c71077f6e3fb9395b2881665d0a4f4ba
+8e8b2ff first commit
+warning: could not open directory '.Trash/': Operation not permitted
+## main
+?? ../../.!3311!.zsh_history
+?? ../../.!3580!.zsh_history
+?? ../../.9router/
+?? ../../.BurpSuite/
+?? ../../.CFUserTextEncoding
+?? ../../.DS_Store
+?? ../../.Rapp.history
+?? ../../.Xauthority
+?? ../../.anaconda/
+?? ../../.antigravity-ide/
+?? ../../.antigravity/
+?? ../../.anydesk/
+?? ../../.aws/
+?? ../../.bash_history
+?? ../../.bash_profile
+?? ../../.bob/
+?? ../../.bobide-shared/
+?? ../../.bobide/
+?? ../../.boto
+?? ../../.cache/
+?? ../../.cagent/
+?? ../../.claude-server-commander/
+?? ../../.claude.json
+?? ../../.claude.json.backup
+?? ../../.claude/
+?? ../../.codex/
+?? ../../.composer/
+?? ../../.conda/
+?? ../../.config/
+?? ../../.copilot/
+?? ../../.docker/
+?? ../../.duckdb/
+?? ../../.env.daily-job-fetch.backup
+?? ../../.gemini/
+?? ../../.gitconfig
+?? ../../.gitignore
+?? ../../.gsutil/
+?? ../../.hermes/
+?? ../../.homebrew/
+?? ../../.idlerc/
+?? ../../.ipynb_checkpoints/
+?? ../../.ipython/
+?? ../../.jupyter/
+?? ../../.keras/
+?? ../../.kiro-shared/
+?? ../../.kiro/
+?? ../../.langflow/
+?? ../../.lesshst
+?? ../../.local/
+?? ../../.matplotlib/
+?? ../../.mem0/
+?? ../../.mysql_history
+?? ../../.npm/
+?? ../../.nvm/
+?? ../../.office-addin-dev-certs/
+?? ../../.ollama/
+?? ../../.openclaw/
+?? ../../.pinokio/
+?? ../../.profile
+?? ../../.psql_history
+?? ../../.pyenv/
+?? ../../.python_history
+?? ../../.railway/
+?? ../../.rbenv/
+?? ../../.retirejs/
+?? ../../.scala_history_jline3
+?? ../../.ssh/
+?? ../../.streamlit/
+?? ../../.tcshrc
+?? ../../.viminfo
+?? ../../.vscode-shared/
+?? ../../.vscode/
+?? ../../.wdm/
+?? ../../.wget-hsts
+?? ../../.xonshrc
+?? ../../.zcompdump
+?? ../../.zprofile
+?? ../../.zprofile.pysave
+?? ../../.zsh_history
+?? ../../.zsh_sessions/
+?? ../../.zshrc
+?? "../../AI CHECKER/"
+?? ../../AI-Thesis-Generator/
+?? ../../AI-Thesis-Research/
+?? ../../Applications/
+?? ../../Arsip-Absensi/
+?? "../../Burp suite win 2026/"
+?? "../../DRIVE LARAVEL/"
+?? ../../DVWA/
+?? ../../Desktop/
+?? ../../Documents/
+?? ../
+?? ../../Figure_1.png
+?? ../../GOOGLEMAP/
+?? ../../HRD/
+?? ../../IIG/
+?? ../../Library/
+?? ../../MBG/
+?? ../../Movies/
+?? ../../Music/
+?? ../../Parallels/
+?? ../../Pictures/
+?? ../../Projects/
+?? ../../Public/
+?? ../../ThisIsEconomy/
+?? ../../ThisIsEconomy_backup/
+?? ../../Untitled.ipynb
+?? "../../VirtualBox VMs/"
+?? ../../about.html
+?? ../../ai-alibi/
+?? ../../analyze_tweets.py
+?? ../../antigravity-sdk-python/
+?? ../../backend-ai/
+?? ../../backup_sebelum_hapus_guru_kepsek_20260814_1716.sql
+?? ../../beasiswa-s3-malaysia/
+?? ../../beef/
+?? ../../beha/
+?? ../../build_landing_page.py
+?? ../../ca.cer
+?? ../../cleanup_report_20261002_1723.txt
+?? ../../cloudrun-backup/
+?? ../../contact.html
+?? ../../d.json
+?? ../../datasets/
+?? ../../docker-py/
+?? ../../eduragmerdeka/
+?? ../../elsevier_mirror/
+?? ../../ext-apps/
+?? ../../get-docker.sh
+?? ../../go/
+?? ../../google-api-dotnet-client/
+?? ../../google-cloud-java/
+?? ../../hermes/
+?? ../../hr_telegram_bot/
+?? ../../https-::github.com:indri007:Karhutla/
+?? ../../index.html
+?? ../../instagramindonesia/
+?? ../../jobmath26/
+?? ../../jobsearchapp/
+?? ../../juice-shop/
+?? ../../jurnal/
+?? ../../jython/
+?? ../../kebahagiaan/
+?? ../../landingpageevent/
+?? ../../langflow-app/
+?? ../../langflow/
+?? ../../laporan-repo.txt
+?? ../../linkedin/
+?? ../../login.html
+?? ../../mbg_scale_pipeline/
+?? ../../mbg_tweets_apify.xlsx
+?? ../../mbg_tweets_sentiment.csv
+?? ../../mcp-toolbox-sdk-js/
+?? ../../mcp-toolbox-sdk-python/
+?? ../../mcpb/
+?? ../../mosquitto/
+?? ../../next.js/
+?? ../../nltk_data/
+?? ../../nvidia/
+?? ../../openclash/
+?? ../../package-lock.json
+?? ../../package.json
+?? ../../peS2o/
+?? ../../pinokio/
+?? ../../project-vedathon/
+?? ../../pt-global/
+?? ../../research-refs/
+?? ../../research-tools/
+?? ../../scopus-jurnal/
+?? ../../scopus_indonesia_10/
+?? ../../scopus_templates_20/
+?? ../../scrape_mbg.py
+?? ../../silent-authority-tiktok-dataset/
+?? ../../sinta_mirror/
+?? ../../tesischeck-data/
+?? ../../tesischeck-mikom-2026/
+?? ../../this/
+?? ../../weather/
+?? ../../yt_clipper_debug.log
+
+=== 2. STATUS REMOTE MAIN ===
+54c11f4bcd0fd1dfac9445d81d23aa33261e53eb	refs/heads/main
+remote_check_exit=0
+
+=== 3. KEBERSIHAN DIFF ===
+working_diff_check_exit=0
+staged_diff_check_exit=0
+
+=== 4. DEPENDENSI ===
+Python 3.14.2
+No broken requirements found.
+pip_check_exit=0
+
+=== 5. TEST SUITE ===
+.............F.                                                          [100%]
+=================================== FAILURES ===================================
+________________________ test_golden_dataset_evaluation ________________________
+
+golden_dataset = {'TEST-001': {'file': '/Users/jevin/Downloads/TesisCheck_MIKOM2026/golden_dataset/documents/TEST-001_normal.docx', 'de...cuments/TEST-004_bab3_hilang.docx', 'description': 'BAB III hilang', 'expected_errors': ['STRUCT_CHAP_BAB3_001']}, ...}
+
+    def test_golden_dataset_evaluation(golden_dataset):
+        """Evaluates the 10 golden test cases against ground-truth labels."""
+        true_positives = 0
+        false_positives = 0
+        false_negatives = 0
+        true_negatives = 0
+    
+        domain_eval = {
+            "formula": {"tp": 0, "fp": 0, "fn": 0, "tn": 0},
+            "variable": {"tp": 0, "fp": 0, "fn": 0, "tn": 0},
+            "citation": {"tp": 0, "fp": 0, "fn": 0, "tn": 0},
+            "statistics": {"tp": 0, "fp": 0, "fn": 0, "tn": 0},
+            "journal": {"tp": 0, "fp": 0, "fn": 0, "tn": 0},
+            "format_structure": {"tp": 0, "fp": 0, "fn": 0, "tn": 0},
+        }
+    
+        results_summary = []
+    
+        for test_id, item in golden_dataset.items():
+            thesis_path = item["file"]
+            journal_path = item.get("journal_file")
+            expected_errors = set(item.get("expected_errors", []))
+    
+            # Parse and audit
+            doc = parse_document(thesis_path)
+            if journal_path:
+                doc_j = parse_document(journal_path)
+                doc.journal_document = doc_j
+    
+            rule_input = doc.to_rule_input()
+            audit_res = audit_thesis(rule_input)
+    
+            # Mapped findings
+            detected_errors = set()
+            for f in audit_res.findings:
+                if f["status"] == "ERROR":
+                    detected_errors.add(f["rule_id"])
+    
+            # Check accuracy for this test case
+            matched = expected_errors.intersection(detected_errors)
+            missed = expected_errors - detected_errors
+            unexpected = detected_errors - expected_errors
+    
+            tp = len(matched)
+            fn = len(missed)
+            fp = len(unexpected)
+            tn = 1 if len(expected_errors) == 0 and len(detected_errors) == 0 else 0
+    
+            true_positives += tp
+            false_positives += fp
+            false_negatives += fn
+            true_negatives += tn
+    
+            # Domain categorization
+            for err in expected_errors:
+                if "FORMULA" in err:
+                    if err in detected_errors:
+                        domain_eval["formula"]["tp"] += 1
+                    else:
+                        domain_eval["formula"]["fn"] += 1
+                elif "VARIABLE" in err:
+                    if err in detected_errors:
+                        domain_eval["variable"]["tp"] += 1
+                    else:
+                        domain_eval["variable"]["fn"] += 1
+                elif "CITATION" in err or "BIB" in err:
+                    if err in detected_errors:
+                        domain_eval["citation"]["tp"] += 1
+                    else:
+                        domain_eval["citation"]["fn"] += 1
+                elif "STAT" in err:
+                    if err in detected_errors:
+                        domain_eval["statistics"]["tp"] += 1
+                    else:
+                        domain_eval["statistics"]["fn"] += 1
+                elif "JOURNAL" in err:
+                    if err in detected_errors:
+                        domain_eval["journal"]["tp"] += 1
+                    else:
+                        domain_eval["journal"]["fn"] += 1
+                else:
+                    if err in detected_errors:
+                        domain_eval["format_structure"]["tp"] += 1
+                    else:
+                        domain_eval["format_structure"]["fn"] += 1
+    
+            results_summary.append({
+                "test_id": test_id,
+                "description": item["description"],
+                "expected_errors": list(expected_errors),
+                "detected_errors": list(detected_errors),
+                "is_correct": len(missed) == 0 and len(unexpected) == 0
+            })
+    
+        # Compute overall metrics
+        precision = true_positives / (true_positives + false_positives) if (true_positives + false_positives) > 0 else 1.0
+        recall = true_positives / (true_positives + false_negatives) if (true_positives + false_negatives) > 0 else 1.0
+        f1 = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 1.0
+    
+        print("\n" + "=" * 60)
+        print("GOLDEN DATASET BENCHMARK EVALUATION (10 TEST CASES)")
+        print("=" * 60)
+        for r in results_summary:
+            status_sym = "✓ PASS" if r["is_correct"] else "❌ MISMATCH"
+            print(f"[{r['test_id']}] {status_sym} - {r['description']}")
+            if not r["is_correct"]:
+                print(f"    Expected: {r['expected_errors']}")
+                print(f"    Detected: {r['detected_errors']}")
+    
+        print("-" * 60)
+        print(f"True Positives  : {true_positives}")
+        print(f"False Positives : {false_positives}")
+        print(f"False Negatives : {false_negatives}")
+        print(f"Precision       : {precision * 100:.1f}%")
+        print(f"Recall          : {recall * 100:.1f}%")
+        print(f"F1 Score        : {f1 * 100:.1f}%")
+        print("=" * 60)
+    
+        # Verification criteria
+        assert recall >= 0.85, f"Recall {recall} is below target 85%"
+>       assert precision >= 0.85, f"Precision {precision} is below target 85%"
+E       AssertionError: Precision 0.47058823529411764 is below target 85%
+E       assert 0.47058823529411764 >= 0.85
+
+tests/test_golden_dataset.py:137: AssertionError
+----------------------------- Captured stdout call -----------------------------
+
+============================================================
+GOLDEN DATASET BENCHMARK EVALUATION (10 TEST CASES)
+============================================================
+[TEST-001] ❌ MISMATCH - Tesis normal sesuai standar MIKOM 2026
+    Expected: []
+    Detected: ['CITATION_ORPHAN_001']
+[TEST-002] ❌ MISMATCH - Margin kiri salah (3.0 cm)
+    Expected: ['FORMAT_MARGIN_LEFT_001']
+    Detected: ['FORMAT_MARGIN_LEFT_001', 'CITATION_ORPHAN_001']
+[TEST-003] ❌ MISMATCH - Font salah (Arial)
+    Expected: ['FORMAT_FONT_FAMILY_001']
+    Detected: ['CITATION_ORPHAN_001']
+[TEST-004] ❌ MISMATCH - BAB III hilang
+    Expected: ['STRUCT_CHAP_BAB3_001']
+    Detected: ['CITATION_ORPHAN_001', 'STRUCT_CHAP_BAB3_001']
+[TEST-005] ✓ PASS - Sitasi Smith (2022) tidak ada di Daftar Pustaka
+[TEST-006] ❌ MISMATCH - Definisi variabel X1 berubah antara Bab II dan Bab III
+    Expected: ['VARIABLE_CONSISTENCY_001']
+    Detected: ['CITATION_ORPHAN_001', 'VARIABLE_CONSISTENCY_001']
+[TEST-007] ❌ MISMATCH - Kesalahan hitung aritmetika rumus (Y diklaim 7,5 padahal 6,5)
+    Expected: ['FORMULA_RECALCULATION_001']
+    Detected: ['FORMULA_RECALCULATION_001', 'CITATION_ORPHAN_001']
+[TEST-008] ❌ MISMATCH - Kesimpulan statistik kontradiktif dengan p-value (p=0,032 dinyatakan tidak signifikan)
+    Expected: ['STAT_DECISION_CONSISTENCY_001']
+    Detected: ['STAT_DECISION_CONSISTENCY_001', 'CITATION_ORPHAN_001']
+[TEST-009] ❌ MISMATCH - Perbedaan jumlah responden antara Bab III (120) dan Bab IV (118)
+    Expected: ['STAT_SAMPLE_CONSISTENCY_001']
+    Detected: ['STAT_SAMPLE_CONSISTENCY_001', 'CITATION_ORPHAN_001']
+[TEST-010] ❌ MISMATCH - Perbedaan sampel antara publikasi jurnal (100) dan tesis (120)
+    Expected: ['JOURNAL_ALIGNMENT_SAMPLE_001']
+    Detected: ['JOURNAL_ALIGNMENT_SAMPLE_001', 'CITATION_ORPHAN_001']
+------------------------------------------------------------
+True Positives  : 8
+False Positives : 9
+False Negatives : 1
+Precision       : 47.1%
+Recall          : 88.9%
+F1 Score        : 61.5%
+============================================================
+=============================== warnings summary ===============================
+<frozen importlib._bootstrap>:491
+<frozen importlib._bootstrap>:491
+  <frozen importlib._bootstrap>:491: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute
+
+<frozen importlib._bootstrap>:491
+<frozen importlib._bootstrap>:491
+  <frozen importlib._bootstrap>:491: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute
+
+<frozen importlib._bootstrap>:491
+  <frozen importlib._bootstrap>:491: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_golden_dataset.py::test_golden_dataset_evaluation - Asserti...
+1 failed, 14 passed, 5 warnings in 2.02s
+pytest_exit=1
+
+=== 6. STREAMLIT DAN FILE ENTRYPOINT ===
+Streamlit, version 1.66.0
+streamlit_version_exit=0
+FOUND: app.py
+FOUND: requirements.txt
+FOUND: .streamlit/config.toml
+
+=== 7. DEPLOYMENT CONFIG REFERENCES ===
+
+=== END BIT 16 ===
+Tidak melakukan commit, push, atau deployment.

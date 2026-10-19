@@ -1,0 +1,51 @@
+{
+  "repetitions": 5,
+  "document": "TEST-001_normal.docx (42,665 words / 156 pages)",
+  "raw_measurements": [
+    {
+      "iteration": 1,
+      "parsing_ms": 154.32,
+      "auditing_ms": 121.06,
+      "post_process_ms": 30.25,
+      "e2e_ms": 305.63,
+      "peak_ram_mb": 4.04
+    },
+    {
+      "iteration": 2,
+      "parsing_ms": 152.64,
+      "auditing_ms": 112.31,
+      "post_process_ms": 29.84,
+      "e2e_ms": 294.79,
+      "peak_ram_mb": 4.9
+    },
+    {
+      "iteration": 3,
+      "parsing_ms": 157.97,
+      "auditing_ms": 110.6,
+      "post_process_ms": 29.87,
+      "e2e_ms": 298.44,
+      "peak_ram_mb": 5.37
+    },
+    {
+      "iteration": 4,
+      "parsing_ms": 154.96,
+      "auditing_ms": 112.36,
+      "post_process_ms": 30.35,
+      "e2e_ms": 297.67,
+      "peak_ram_mb": 5.83
+    },
+    {
+      "iteration": 5,
+      "parsing_ms": 156.26,
+      "auditing_ms": 113.81,
+      "post_process_ms": 31.11,
+      "e2e_ms": 301.18,
+      "peak_ram_mb": 6.28
+    }
+  ],
+  "avg_parsing_ms": 155.23,
+  "avg_auditing_ms": 114.03,
+  "avg_post_process_ms": 30.28,
+  "avg_e2e_ms": 299.54,
+  "max_peak_ram_mb": 6.28
+}

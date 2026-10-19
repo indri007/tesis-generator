@@ -1,0 +1,70 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.14.2, pytest-9.1.1, pluggy-1.7.0 -- /Users/jevin/Downloads/TesisCheck_MIKOM2026/.venv/bin/python3
+cachedir: .pytest_cache
+hypothesis profile 'default'
+rootdir: /Users/jevin/AI-Thesis-Generator
+configfile: pyproject.toml
+plugins: cov-7.1.0, hypothesis-6.170.0, playwright-0.10.0, platformdirs-4.13.3, anyio-4.15.1
+collecting ... collected 46 items
+
+tests/golden_dataset/test_academic_benchmark.py::test_reproducible_academic_benchmark PASSED [  2%]
+tests/test_app.py::test_app_starts_without_exception PASSED              [  4%]
+tests/test_document_parser.py::test_parse_document_dispatcher PASSED     [  6%]
+tests/test_docx_parser.py::test_parse_docx PASSED                        [  8%]
+tests/test_engines.py::test_rule_loader_validates_json PASSED            [ 10%]
+tests/test_engines.py::test_margin_matches_expected_value PASSED         [ 13%]
+tests/test_engines.py::test_missing_field_is_unverified PASSED           [ 15%]
+tests/test_engines.py::test_rule_engine_operators PASSED                 [ 17%]
+tests/test_engines.py::test_finding_engine_filters_and_summarizes PASSED [ 19%]
+tests/test_engines.py::test_evidence_engine_creation PASSED              [ 21%]
+tests/test_engines.py::test_audit_thesis_end_to_end PASSED               [ 23%]
+tests/test_evidence_mapper.py::test_normalize_text PASSED                [ 26%]
+tests/test_evidence_mapper.py::test_find_evidence_with_page PASSED       [ 28%]
+tests/test_evidence_mapper.py::test_missing_evidence_is_unverified PASSED [ 30%]
+tests/test_golden_dataset.py::test_golden_dataset_evaluation PASSED      [ 32%]
+tests/test_pdf_parser.py::test_parse_pdf PASSED                          [ 34%]
+tests/unit/test_db_manager.py::test_foreign_key_enforcement PASSED       [ 36%]
+tests/unit/test_db_manager.py::test_document_page_limit_enforcement PASSED [ 39%]
+tests/unit/test_db_manager.py::test_audit_session_and_findings_persistence PASSED [ 41%]
+tests/unit/test_db_manager.py::test_init_db_idempotency_and_migration_integrity PASSED [ 43%]
+tests/unit/test_document_processing.py::test_pdf_digital_text_extraction PASSED [ 45%]
+tests/unit/test_document_processing.py::test_docx_structure_and_table_extraction PASSED [ 47%]
+tests/unit/test_document_processing.py::test_empty_or_corrupted_file_validation PASSED [ 50%]
+tests/unit/test_document_processing.py::test_mismatched_extension_validation PASSED [ 52%]
+tests/unit/test_document_processing.py::test_oversized_file_validation PASSED [ 54%]
+tests/unit/test_document_processing.py::test_ocr_engine_fallback_behavior PASSED [ 56%]
+tests/unit/test_document_processing.py::test_document_converter_multi_format PASSED [ 58%]
+tests/unit/test_document_processing.py::test_encrypted_pdf_rejection PASSED [ 60%]
+tests/unit/test_document_processing.py::test_page_limit_175_exact_and_176_rejection PASSED [ 63%]
+tests/unit/test_document_processing.py::test_docx_page_count_never_none PASSED [ 65%]
+tests/unit/test_document_processing.py::test_boundary_word_counts_and_invalid_types PASSED [ 67%]
+tests/unit/test_document_processing.py::test_map_finding_to_evidence_handles_lists_and_cross_document_auditor PASSED [ 69%]
+tests/unit/test_document_processing.py::test_invalid_tuple_and_partial_auditor_failure PASSED [ 71%]
+tests/unit/test_document_processing.py::test_non_dict_and_nested_list_findings_sanitization PASSED [ 73%]
+tests/unit/test_document_processing.py::test_evidence_mapper_preserves_locations_and_status PASSED [ 76%]
+tests/unit/test_document_processing.py::test_report_engine_multi_format_export PASSED [ 78%]
+tests/unit/test_evaluation_metrics.py::test_category_metrics_zero_denominators PASSED [ 80%]
+tests/unit/test_evaluation_metrics.py::test_cohens_kappa_manual_derivation PASSED [ 82%]
+tests/unit/test_evaluation_metrics.py::test_finding_matcher_synthetic_fixtures PASSED [ 84%]
+tests/unit/test_evaluation_metrics.py::test_error_analyzer_eight_taxonomies PASSED [ 86%]
+tests/unit/test_revision_engine.py::test_docx_auto_fixer_applies_mikom_2026_formatting PASSED [ 89%]
+tests/unit/test_revision_engine.py::test_docx_auto_fixer_preserves_headings_and_tables PASSED [ 91%]
+tests/unit/test_revision_engine.py::test_docx_auto_fixer_error_handling PASSED [ 93%]
+tests/unit/test_thesis_generator.py::test_page_budget_calculation PASSED [ 95%]
+tests/unit/test_thesis_generator.py::test_chapter_generation_consistency PASSED [ 97%]
+tests/unit/test_thesis_generator.py::test_compile_docx_formatting PASSED [100%]
+
+=============================== warnings summary ===============================
+<frozen importlib._bootstrap>:491
+<frozen importlib._bootstrap>:491
+  <frozen importlib._bootstrap>:491: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute
+
+<frozen importlib._bootstrap>:491
+<frozen importlib._bootstrap>:491
+  <frozen importlib._bootstrap>:491: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute
+
+<frozen importlib._bootstrap>:491
+  <frozen importlib._bootstrap>:491: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================== 46 passed, 5 warnings in 3.29s ========================

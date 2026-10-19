@@ -1,0 +1,97 @@
+{
+  "repository_endpoint": "https://repository.upnjatim.ac.id/view/divisions/comm/2026.html",
+  "system": "EPrints 3.x UPN Veteran Jawa Timur",
+  "division_code": "comm",
+  "division_name": "Fakultas Ilmu Sosial dan Ilmu Politik > Program Studi Magister Ilmu Komunikasi (S2)",
+  "year": 2026,
+  "thesis_type": "thesis",
+  "thesis_degree": "Masters",
+  "institution": "UPN Veteran Jawa Timur",
+  "submission_requirements": {
+    "plagiarism_threshold_percent": 20.0,
+    "plagiarism_tool_official": "Turnitin Perpustakaan / Fakultas UPN Veteran Jawa Timur",
+    "required_language_abstract": ["id", "en"],
+    "min_abstract_words": 150,
+    "max_abstract_words": 250,
+    "min_keywords": 3,
+    "max_keywords": 5,
+    "email_domain_requirement": "@upnjatim.ac.id",
+    "required_pages_scan_physical": [
+      "Halaman Pengesahan Pembimbing & Penguji",
+      "Halaman Persetujuan",
+      "Surat Pernyataan Bebas Plagiasi (Bermaterai 10.000 Asli)"
+    ]
+  },
+  "file_naming_manifest": [
+    {
+      "code": "cover",
+      "label": "Cover / Sampul Luar & Dalam",
+      "pattern": "{npm}-cover.pdf",
+      "source_type": "word_converted_pdf",
+      "access_policy": "open_access"
+    },
+    {
+      "code": "pengesahan",
+      "label": "Lembar Pengesahan, Persetujuan & Pernyataan Bermaterai",
+      "pattern": "{npm}-pengesahan.pdf",
+      "source_type": "scanned_physical_pdf",
+      "access_policy": "restricted"
+    },
+    {
+      "code": "bab1",
+      "label": "BAB I: Pendahuluan",
+      "pattern": "{npm}.-bab1.pdf",
+      "source_type": "word_converted_pdf",
+      "access_policy": "open_access"
+    },
+    {
+      "code": "bab2",
+      "label": "BAB II: Tinjauan Pustaka",
+      "pattern": "{npm}.-bab2.pdf",
+      "source_type": "word_converted_pdf",
+      "access_policy": "restricted"
+    },
+    {
+      "code": "bab3",
+      "label": "BAB III: Metode Penelitian",
+      "pattern": "{npm}.-bab3.pdf",
+      "source_type": "word_converted_pdf",
+      "access_policy": "restricted"
+    },
+    {
+      "code": "bab4",
+      "label": "BAB IV: Hasil Penelitian dan Pembahasan",
+      "pattern": "{npm}.-bab4.pdf",
+      "source_type": "word_converted_pdf",
+      "access_policy": "restricted"
+    },
+    {
+      "code": "bab5",
+      "label": "BAB V: Kesimpulan dan Saran",
+      "pattern": "{npm}.-bab5.pdf",
+      "source_type": "word_converted_pdf",
+      "access_policy": "open_access"
+    },
+    {
+      "code": "daftarpustaka",
+      "label": "Daftar Pustaka (APA 7th Edition)",
+      "pattern": "{npm}.-daftarpustaka.pdf",
+      "source_type": "word_converted_pdf",
+      "access_policy": "open_access"
+    },
+    {
+      "code": "lampiran",
+      "label": "Lampiran Dokumen Penelitian",
+      "pattern": "{npm}.-lampiran.pdf",
+      "source_type": "word_converted_pdf",
+      "access_policy": "restricted"
+    },
+    {
+      "code": "artikel",
+      "label": "Artikel Publikasi Ilmiah Luaran Tesis",
+      "pattern": "{npm}-artikel.pdf",
+      "source_type": "word_converted_pdf",
+      "access_policy": "open_access"
+    }
+  ]
+}
