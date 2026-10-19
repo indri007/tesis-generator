@@ -15,6 +15,9 @@ from typing import Any
 import streamlit as st
 import plotly.graph_objects as go
 from utils.plotting_style import generate_excel_bar_chart, generate_spss_regression_chart, generate_vosviewer_sna_chart, generate_prisma_flowchart
+from utils.premium_docx import apply_premium_typography, set_booktabs_style, generate_sample_premium_docx
+from utils.premium_plot import create_premium_chart, MUTED_PALETTE
+from utils.palette_generator import show_palette_ui, generate_premium_palette
 
 from core.database.db_manager import DatabaseManager
 try:
@@ -737,6 +740,118 @@ with tab_vector:
                         mime="image/svg+xml",
                         use_container_width=True,
                     )
+
+        # -----------------------------------------------------------------
+        # 💎 Tesis Generator: Premium Mode (Tipografi, Tabel Booktabs & Palet Muted)
+        # -----------------------------------------------------------------
+        with st.expander("💎 Tesis Generator: Mode Premium (Tipografi, Booktabs & Palet)", expanded=False):
+            st.markdown(
+                "Standarisasi naskah eksklusif: format tipografi Times New Roman 12pt, "
+                "tabel standar jurnal *Booktabs* (tanpa garis vertikal), dan palet warna *earth/muted tones*."
+            )
+
+            # 1. Fitur Palet Warna
+            show_palette_ui(key_prefix="prem_mode")
+
+            st.markdown("---")
+            st.markdown("##### 📄 Generator Dokumen Word Premium (.docx)")
+            col_doc1, col_doc2 = st.columns(2)
+            with col_doc1:
+                prem_doc_title = st.text_input("Judul Bab / Naskah", value="BAB I PENDAHULUAN", key="prem_doc_title")
+            with col_doc2:
+                prem_sample_var = st.text_input("Variabel Utama", value="Transformasi Komunikasi Digital MBG", key="prem_sample_var")
+
+            prem_body = st.text_area(
+                "Paragraf Pembuka",
+                value="Penelitian ini menganalisis pengaruh transformasi komunikasi digital terhadap keterlibatan publik dalam program kebijakan gizi nasional. Seluruh naskah diformat menggunakan standar tipografi tesis MIKOM 2026 (Times New Roman 12pt, Rata Kanan-Kiri/Justified, Widow/Orphan Control aktif).",
+                key="prem_doc_body"
+            )
+
+            if st.button("📝 Generate Dokumen Word Premium (Booktabs Table)", use_container_width=True, key="btn_gen_prem_doc"):
+                custom_table = [
+                    ["Variabel Penelitian", "Mean", "Std. Dev", "Sig."],
+                    [prem_sample_var, "4.52", "0.68", "0.001"],
+                    ["Keterlibatan Publik (Y)", "4.38", "0.72", "0.003"],
+                    ["Kepercayaan Audiens (Z)", "4.61", "0.54", "0.002"],
+                ]
+                doc_bytes = generate_sample_premium_docx(
+                    title=prem_doc_title,
+                    body_text=prem_body,
+                    table_data=custom_table
+                )
+                st.session_state["prem_docx_bytes"] = doc_bytes.getvalue()
+                st.success("✓ Dokumen Word premium berhasil dibuat dengan format Booktabs (tanpa garis vertikal)!")
+
+            if "prem_docx_bytes" in st.session_state and st.session_state["prem_docx_bytes"]:
+                st.download_button(
+                    "📥 Unduh Dokumen Word (.docx)",
+                    data=st.session_state["prem_docx_bytes"],
+                    file_name="Tesis_Premium_Booktabs.docx",
+                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                    use_container_width=True,
+                    key="dl_prem_docx"
+                )
+
+            st.markdown("---")
+            st.markdown("##### 📈 Grafik Garis Akademik Eksklusif (Muted Theme)")
+            col_gr1, col_gr2 = st.columns(2)
+            with col_gr1:
+                gr_title = st.text_input("Judul Grafik Garis", value="Tren Keterlibatan Publik Digital (2022-2026)", key="gr_title")
+                gr_x = st.text_input("Data Sumbu X (pisah koma)", value="2022, 2023, 2024, 2025, 2026", key="gr_x")
+            with col_gr2:
+                gr_annot = st.text_input("Teks Anotasi Titik Puncak", value="Puncak Sosialisasi MBG", key="gr_annot")
+                gr_y = st.text_input("Data Sumbu Y (pisah koma)", value="45, 62, 78, 85, 94", key="gr_y")
+
+            if st.button("🎨 Generate Grafik Garis Muted", use_container_width=True, key="btn_gen_prem_chart"):
+                try:
+                    x_vals = [float(v.strip()) for v in gr_x.split(",")]
+                except ValueError:
+                    x_vals = [v.strip() for v in gr_x.split(",")]
+                y_vals = [float(v.strip()) for v in gr_y.split(",")]
+
+                png_buf = create_premium_chart(
+                    x_data=x_vals,
+                    y_data=y_vals,
+                    title=gr_title,
+                    xlabel="Tahun Periode",
+                    ylabel="Skor Keterlibatan (%)",
+                    annotation_text=gr_annot,
+                    export_fmt="png"
+                )
+                svg_buf = create_premium_chart(
+                    x_data=x_vals,
+                    y_data=y_vals,
+                    title=gr_title,
+                    xlabel="Tahun Periode",
+                    ylabel="Skor Keterlibatan (%)",
+                    annotation_text=gr_annot,
+                    export_fmt="svg"
+                )
+                st.session_state["prem_chart_png"] = png_buf.getvalue()
+                st.session_state["prem_chart_svg"] = svg_buf.getvalue()
+
+            if "prem_chart_png" in st.session_state and st.session_state["prem_chart_png"]:
+                st.image(st.session_state["prem_chart_png"], use_container_width=True)
+                col_c_dl1, col_c_dl2 = st.columns(2)
+                with col_c_dl1:
+                    st.download_button(
+                        "🖼️ Unduh Grafik PNG (300 DPI)",
+                        data=st.session_state["prem_chart_png"],
+                        file_name="Grafik_Muted_300DPI.png",
+                        mime="image/png",
+                        use_container_width=True,
+                        key="dl_prem_c_png"
+                    )
+                with col_c_dl2:
+                    st.download_button(
+                        "📐 Unduh Vektor SVG",
+                        data=st.session_state["prem_chart_svg"],
+                        file_name="Grafik_Muted.svg",
+                        mime="image/svg+xml",
+                        use_container_width=True,
+                        key="dl_prem_c_svg"
+                    )
+
         st.divider()
         st.subheader("📥 Ekspor Format Publikasi")
         svg_code = FigureBridge.project_to_svg(project_obj)
