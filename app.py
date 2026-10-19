@@ -14,6 +14,7 @@ from typing import Any
 
 import streamlit as st
 import plotly.graph_objects as go
+from utils.plotting_style import generate_excel_bar_chart, generate_spss_regression_chart, generate_vosviewer_sna_chart, generate_prisma_flowchart
 
 from core.database.db_manager import DatabaseManager
 try:
@@ -595,7 +596,147 @@ with tab_vector:
                     st.rerun()
                 except Exception as exc:
                     st.error(f"Format berkas proyek tidak valid: {exc}")
+        # -----------------------------------------------------------------
+        # 📊 Matplotlib Chart Generation & HD Export (PNG 300 DPI / SVG)
+        # -----------------------------------------------------------------
+        with st.expander("📊 Generate Grafik Akademis & Ekspor Super HD", expanded=False):
+            st.markdown(
+                "Buat grafik bergaya **Excel / SPSS / VOSviewer / PRISMA** standar tesis "
+                "dengan resolusi **300 DPI** (cetak A4) atau **vektor SVG** yang tidak pecah."
+            )
 
+            chart_type = st.selectbox(
+                "Pilih Tipe Grafik Akademis",
+                [
+                    "📊 Excel-Style Bar Chart (Data Label + Outlier Box)",
+                    "📈 SPSS-Style Regression Scatter Plot",
+                    "🕸️ VOSviewer / NodeXL SNA Network Chart",
+                    "📋 PRISMA 2020 Systematic Review Flowchart",
+                ],
+                key="vstudio_chart_type",
+            )
+
+            # --- Parameters per chart type ---
+            chart_buf = None
+            chart_base_name = "chart"
+
+            if "Excel" in chart_type:
+                st.markdown("##### Parameter Grafik Batang Excel")
+                col_ec1, col_ec2 = st.columns(2)
+                with col_ec1:
+                    ec_title = st.text_input("Judul Grafik", value="Distribusi Penerima Manfaat MBG (2025-2026)", key="ec_title")
+                    ec_ylabel = st.text_input("Label Sumbu Y", value="Jumlah (Jiwa)", key="ec_ylabel")
+                with col_ec2:
+                    ec_cats = st.text_input("Kategori (pisah koma)", value="Tahap 1, Tahap 2, Tahap 3, Tahap 4, Tahap 5", key="ec_cats")
+                    ec_vals = st.text_input("Nilai (pisah koma)", value="15200, 31400, 48900, 64500, 81800", key="ec_vals")
+                ec_source = st.text_input("Anotasi Sumber", value="Sumber: Diolah peneliti dari data primer (2026)", key="ec_source")
+                ec_outlier = st.number_input("Indeks Outlier (kotak merah, -1=nonaktif)", value=-1, min_value=-1, max_value=10, key="ec_outlier")
+                ec_outlier_note = st.text_input("Catatan Outlier", value="Data dikecualikan", key="ec_outlier_note")
+
+                if st.button("🎨 Generate Grafik Excel", use_container_width=True, key="btn_gen_excel"):
+                    cats = [c.strip() for c in ec_cats.split(",")]
+                    vals = [float(v.strip()) for v in ec_vals.split(",")]
+                    _kwargs = dict(
+                        categories=cats, values=vals, title=ec_title,
+                        ylabel=ec_ylabel, source_text=ec_source,
+                        outlier_idx=int(ec_outlier) if ec_outlier >= 0 else None,
+                        outlier_note=ec_outlier_note if ec_outlier >= 0 else None,
+                    )
+                    chart_buf = generate_excel_bar_chart(**_kwargs, export_fmt="png")
+                    svg_buf = generate_excel_bar_chart(**_kwargs, export_fmt="svg")
+                    chart_base_name = "Excel_Bar_Chart"
+                    st.session_state["vstudio_chart_buf"] = chart_buf.getvalue()
+                    st.session_state["vstudio_chart_svg"] = svg_buf.getvalue()
+                    st.session_state["vstudio_chart_name"] = chart_base_name
+
+            elif "SPSS" in chart_type:
+                st.markdown("##### Parameter Grafik Regresi SPSS")
+                col_sp1, col_sp2 = st.columns(2)
+                with col_sp1:
+                    sp_vx = st.text_input("Variabel X", value="Kualitas Konten Komunikasi Digital", key="sp_vx")
+                    sp_a = st.number_input("Konstanta (a)", value=2.5, key="sp_a")
+                    sp_p = st.number_input("p-value", value=0.032, format="%.3f", key="sp_p")
+                with col_sp2:
+                    sp_vy = st.text_input("Variabel Y", value="Loyalitas Audiens", key="sp_vy")
+                    sp_b = st.number_input("Koefisien (b)", value=0.4, key="sp_b")
+                    sp_n = st.number_input("Jumlah Sampel (N)", value=120, min_value=30, key="sp_n")
+
+                if st.button("🎨 Generate Grafik SPSS", use_container_width=True, key="btn_gen_spss"):
+                    _kwargs = dict(
+                        var_x=sp_vx, var_y=sp_vy,
+                        a_const=float(sp_a), b_coef=float(sp_b),
+                        p_val=float(sp_p), sample_n=int(sp_n),
+                    )
+                    chart_buf = generate_spss_regression_chart(**_kwargs, export_fmt="png")
+                    svg_buf = generate_spss_regression_chart(**_kwargs, export_fmt="svg")
+                    chart_base_name = "SPSS_Regression_Chart"
+                    st.session_state["vstudio_chart_buf"] = chart_buf.getvalue()
+                    st.session_state["vstudio_chart_svg"] = svg_buf.getvalue()
+                    st.session_state["vstudio_chart_name"] = chart_base_name
+
+            elif "VOSviewer" in chart_type:
+                st.markdown("##### Parameter Jaringan SNA (VOSviewer)")
+                sna_title = st.text_input("Judul Visualisasi", value="Visualisasi Klaster Jaringan Komunikasi (Gaya VOSviewer)", key="sna_title")
+                sna_source = st.text_input("Anotasi Sumber", value="Sumber: Pemetaan Bibliometrik VOSviewer / Ekstraksi Korpus MIKOM 2026", key="sna_source")
+
+                if st.button("🎨 Generate Grafik VOSviewer", use_container_width=True, key="btn_gen_vos"):
+                    _kwargs = dict(title=sna_title, source_text=sna_source)
+                    chart_buf = generate_vosviewer_sna_chart(**_kwargs, export_fmt="png")
+                    svg_buf = generate_vosviewer_sna_chart(**_kwargs, export_fmt="svg")
+                    chart_base_name = "VOSviewer_SNA_Chart"
+                    st.session_state["vstudio_chart_buf"] = chart_buf.getvalue()
+                    st.session_state["vstudio_chart_svg"] = svg_buf.getvalue()
+                    st.session_state["vstudio_chart_name"] = chart_base_name
+
+            else:  # PRISMA
+                st.markdown("##### Parameter Bagan Alur PRISMA 2020")
+                col_pr1, col_pr2 = st.columns(2)
+                with col_pr1:
+                    pr_id = st.number_input("Identifikasi (n)", value=480, step=10, key="pr_id")
+                    pr_scr = st.number_input("Disaring (n)", value=340, step=10, key="pr_scr")
+                    pr_ret = st.number_input("Dinilai Kelayakan (n)", value=160, step=5, key="pr_ret")
+                with col_pr2:
+                    pr_exc = st.number_input("Dikeluarkan (n)", value=180, step=10, key="pr_exc")
+                    pr_inc = st.number_input("Disertakan Akhir (n)", value=45, step=5, key="pr_inc")
+
+                if st.button("🎨 Generate Bagan PRISMA", use_container_width=True, key="btn_gen_prisma"):
+                    _kwargs = dict(
+                        identification_n=int(pr_id), screened_n=int(pr_scr),
+                        excluded_n=int(pr_exc), retrieved_n=int(pr_ret),
+                        included_n=int(pr_inc),
+                    )
+                    chart_buf = generate_prisma_flowchart(**_kwargs, export_fmt="png")
+                    svg_buf = generate_prisma_flowchart(**_kwargs, export_fmt="svg")
+                    chart_base_name = "PRISMA_2020_Flowchart"
+                    st.session_state["vstudio_chart_buf"] = chart_buf.getvalue()
+                    st.session_state["vstudio_chart_svg"] = svg_buf.getvalue()
+                    st.session_state["vstudio_chart_name"] = chart_base_name
+
+            # --- Preview & Export ---
+            if "vstudio_chart_buf" in st.session_state and st.session_state["vstudio_chart_buf"]:
+                st.divider()
+                st.markdown("##### 👁️ Pratinjau Hasil (300 DPI)")
+                st.image(st.session_state["vstudio_chart_buf"], use_container_width=True)
+
+                cname = st.session_state.get("vstudio_chart_name", "chart")
+                col_dl1, col_dl2 = st.columns(2)
+                with col_dl1:
+                    st.download_button(
+                        "🖼️ Unduh Super HD PNG (300 DPI)",
+                        data=st.session_state["vstudio_chart_buf"],
+                        file_name=f"{cname}_300DPI.png",
+                        mime="image/png",
+                        use_container_width=True,
+                    )
+                with col_dl2:
+                    svg_data = st.session_state.get("vstudio_chart_svg", b"")
+                    st.download_button(
+                        "📐 Unduh Vektor SVG",
+                        data=svg_data,
+                        file_name=f"{cname}.svg",
+                        mime="image/svg+xml",
+                        use_container_width=True,
+                    )
         st.divider()
         st.subheader("📥 Ekspor Format Publikasi")
         svg_code = FigureBridge.project_to_svg(project_obj)
