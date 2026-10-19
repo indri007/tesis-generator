@@ -878,6 +878,15 @@ with tab_audit:
                     st.warning(f"Plagiarism & AI integrity engine mengalami kendala: {e}")
                     st.session_state["plag_report"] = None
 
+                # Master Auditor: Readability & Reference Typo Integrity
+                try:
+                    if suffix_thesis == ".docx":
+                        from engines.master_auditor import MasterAuditor
+                        master_aud = MasterAuditor()
+                        st.session_state["advanced_audit_report"] = master_aud.run_full_audit(str(thesis_path))
+                except Exception as e:
+                    st.session_state["advanced_audit_report"] = None
+
                 # Flatten and sanitize findings (guarantee each element is a dict)
                 sanitized_findings: list[dict[str, Any]] = []
                 for item in findings:
@@ -1042,6 +1051,49 @@ with tab_audit:
                     <div class="metric-label">Status Integritas Teks</div>
                 </div>
                 """, unsafe_allow_html=True)
+
+        # ─────────────────────────────────────────────
+        # ADVANCED AUDITOR (READABILITY & TYPO REFERENSI)
+        # ─────────────────────────────────────────────
+        adv_report = st.session_state.get("advanced_audit_report")
+        if adv_report and isinstance(adv_report, dict):
+            st.divider()
+            st.subheader(f"🧠 Advanced Audit Findings (Skor Kesehatan: {adv_report['scores'].get('overall', 80)}/100)")
+
+            adv_col1, adv_col2, adv_col3 = st.columns(3)
+            with adv_col1:
+                adv_col1.metric("Volume Kata", adv_report["findings"].get("word_count", {}).get("total", words))
+            with adv_col2:
+                plag_val = adv_report["findings"].get("plagiarism", {}).get("overall_plagiarism_score", 0.0)
+                adv_col2.metric("Risiko Plagiasi", f"{plag_val * 100:.1f}%")
+            with adv_col3:
+                ai_val = adv_report["findings"].get("plagiarism", {}).get("overall_ai_score", 0.0)
+                adv_col3.metric("Risiko AI", f"{ai_val * 100:.1f}%")
+
+            # Tampilkan Typo Referensi
+            st.markdown("#### 🔴 Temuan Typo & Referensi")
+            ref_issues = adv_report["findings"].get("reference_typos", [])
+            if ref_issues:
+                st.dataframe(ref_issues, use_container_width=True)
+            else:
+                st.info("Aman: Tidak ada typo referensi yang terdeteksi.")
+
+            # Tampilkan Wall of Text
+            st.markdown("#### ⚠️ Paragraf Terlalu Panjang (Wall of Text)")
+            wall_issues = adv_report["findings"].get("readability", [])
+            if wall_issues:
+                st.dataframe(wall_issues, use_container_width=True)
+            else:
+                st.info("Format paragraf sudah baik.")
+
+            # Tombol Ekspor JSON
+            st.download_button(
+                label="⬇️ Unduh Laporan Audit (JSON)",
+                data=json.dumps(adv_report, indent=2).encode('utf-8'),
+                file_name="laporan_audit_mikom.json",
+                mime="application/json",
+                key="btn_download_adv_audit_json"
+            )
 
         # Tabbed Findings Explorer
         st.write("")
