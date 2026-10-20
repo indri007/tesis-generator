@@ -20,6 +20,9 @@ def count_words_excl_figures(path: str | Path | Any, start_pat: str = r"^BAB I\b
             total, inside = 0, False
             for p in doc.paragraphs:
                 t = p.text.strip()
+                is_toc = (hasattr(p, "style") and p.style and hasattr(p.style, "name") and p.style.name and p.style.name.lower().startswith("toc")) or bool(re.search(r"\t\d+$", t))
+                if is_toc:
+                    continue
                 is_heading = (hasattr(p, "style") and p.style and hasattr(p.style, "name") and p.style.name and p.style.name.startswith("Heading"))
                 if re.match(start_pat, t, re.I) and (is_heading or re.match(r"^BAB\s+I(\b|:|\s)", t, re.I)):
                     inside = True
@@ -46,6 +49,9 @@ def count_words_excl_figures(path: str | Path | Any, start_pat: str = r"^BAB I\b
             total, inside = 0, False
             for p in doc.paragraphs:
                 t = p.text.strip()
+                is_toc = (hasattr(p, "style") and p.style and hasattr(p.style, "name") and p.style.name and p.style.name.lower().startswith("toc")) or bool(re.search(r"\t\d+$", t))
+                if is_toc:
+                    continue
                 is_heading = (hasattr(p, "style") and p.style and hasattr(p.style, "name") and p.style.name and p.style.name.startswith("Heading"))
                 if re.match(start_pat, t, re.I) and (is_heading or re.match(r"^BAB\s+I(\b|:|\s)", t, re.I)):
                     inside = True
